@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Vectorization</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Vectorization"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Vectorization"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Vectorization"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/vectorization.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="vectorization">Vectorization<a class="headerlink" href="#vectorization" title="Permalink to this headline" id="vectorization">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#vectorization">Vectorization</a>
+   <ul>
+   <li><a class="reference internal" href="#in-place-vectorization">In place vectorization</a>   </li>
+   <li><a class="reference internal" href="#element-wise-method-execution">Element wise method execution</a>   </li>
+   <li><a class="reference internal" href="#element-wise-field-access-and-assignment">Element wise field access and assignment</a>   </li>
+   <li><a class="reference internal" href="#chained-vectorization">Chained Vectorization</a>   </li>
+   <li><a class="reference internal" href="#disambiguation-of-vectorized-calls">Disambiguation of vectorized calls</a>   </li>
+   <li><a class="reference internal" href="#vectorizable-expressions">Vectorizable expressions</a>   </li>
+   <li><a class="reference internal" href="#no-hat-needed">No hat needed</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Concurnas contains special support for performing what are known as vectorized operations. This is incredibly useful in cases where one wishes to apply an operation (see the <a href="operators.html#operators">Operators</a> chapter) or function to each of the elements of an array, matrix or other n-dimensional array or list, without having to change the function or apply the operator explicitly to each element.</p>
+<p>Say we wish to apply the sine function to every element of an array, we pass the array into our function as normal, except appended with a hat<code class="lang-conc">^</code>:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin//sin expects our single value input to be expressed as radians
+
+myarry = [ 1 2 3 4]
+appliedsin = sin(myarry^)//applies the sin function to every element of the array, returning another array
+</code></pre>
+<p>In the above example the result of the vectorized call is of type <code class="lang-conc">double[]</code>double[], if <code class="lang-conc">myarry</code> were a list then the result would be of type <code class="lang-conc">List&lt;Double&gt;</code>.</p>
+<div class="section">
+<div class="section">
+<h2 id="in-place-vectorization">In place vectorization<a class="headerlink" href="#in-place-vectorization" title="Permalink to this headline" id="in-place-vectorization">?</a></h2>
+<p>The above will return a new array, if we wish to apply the vectorized operation in place to the passed array we can append a hat hat: <code class="lang-conc">^^</code> to the call:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin//sin expects our single value input to be expressed as radians
+
+myarry = [ 1 2; 3 4]
+sin(myarry^^)//applies the sin function to every element of the matrix in place. myarry will now contain the result
+</code></pre>
+</div>
+<div class="section">
+<h2 id="element-wise-method-execution">Element wise method execution<a class="headerlink" href="#element-wise-method-execution" title="Permalink to this headline" id="element-wise-method-execution">?</a></h2>
+<p>We can call an instance method on every element of an array or list as follows:</p>
+<pre><code class="lang-conc">class MyClass{
+  def anOperation() = 'result!'
+}
+
+myAr = [MyClass() MyClass()]
+
+res = myAr^anOperation()//apply anOperation to each element of the array
+
+//res == [result! result!]
+</code></pre>
+<p>Function references can be created in a similar manner:</p>
+<pre><code class="lang-conc">class MyClass{
+  def anOperation() = 'result!'
+}
+
+myAr = [MyClass() MyClass()]
+
+funcrefs= myAr^anOperation&amp;()//create a funcref to anOperation
+res = x() for x in funcrefs
+
+//res == [result! result!]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="element-wise-field-access-and-assignment">Element wise field access and assignment<a class="headerlink" href="#element-wise-field-access-and-assignment" title="Permalink to this headline" id="element-wise-field-access-and-assignment">?</a></h2>
+<p>Object field access can be vectorized as follows:</p>
+<pre><code class="lang-conc">class Myclass(public field int)
+
+A = [Myclass(1) Myclass(2) Myclass(3)]
+
+res =A^field //extract the value of field from each object of array A
+
+//res == [1 2 3]
+</code></pre>
+<p>And fields can be assigned via vectorization as well:</p>
+<pre><code class="lang-conc">class Myclass(public field int){	
+  override toString() =&gt; 'Myclass: {field}'
+}
+A = [Myclass(1) Myclass(2) Myclass(3)]
+
+A^field = 99//set value of each field in object in array A to 99
+
+//A == [Myclass: 1  Myclass: 2 Myclass: 3]
+</code></pre>
+<p>Access and assignment to fields can be chained using the vectorization operator <code class="lang-conc">^</code>:</p>
+<pre><code class="lang-conc">class FieldCls(valu int){
+  override toString() =&gt; 'FieldCls: {valu}'
+}
+
+class Myclass(field FieldCls){
+  override toString() =&gt; 'Myclass: {field}'
+}
+
+A = Myclass( [FieldCls(1) FieldCls(2) ; FieldCls(3) FieldCls(4)]^) 
+
+res1 = A^field^valu
+A^field^valu = 99
+
+//res1  == [1 2 ; 3 4]
+//A 	== [Myclass: FieldCls 99 Myclass: FieldCls 99 ; Myclass: FieldCls 99 Myclass: FieldCls 99]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="chained-vectorization">Chained Vectorization<a class="headerlink" href="#chained-vectorization" title="Permalink to this headline" id="chained-vectorization">?</a></h2>
+<p>We can chain together vectorized calls as well:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin, toRadians
+mymat = [ 80 170; 260 350]
+sins = sin(toRadians((mymat^ + 10) mod 360))
+</code></pre>
+<p>For cases where we wish to chain together a vectorized expression and have the result written in place, we may specify a vectorized variable within a nested function invocation as the destination for this in place writing:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin, toRadians
+myarry = [ 80 170; 260 350]
+funcres = sin(toRadians((myarry^^ + 10).))//The result of the entire vectorized expression will be written to myarry
+</code></pre>
+<p>Not all expressions referenced in the call chain need to be arrays or vectors. For example:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin, toRadians
+
+def rsin(item double, torad bool) =&gt; sin((toRadians(item) if torad else item)
+
+myarry = [ 80 170; 260 350]
+
+def getToRad() = true
+
+rsin(myarry^^, getToRad())//applies the sin function to every element of the array in place with radian conversion
+</code></pre>
+<p>Note that in the above function invocation, the second expression (<code class="lang-conc">getToRad()</code>) bound to the torad parameter is executed for each element of myarry.</p>
+<p>Our invocation, chained and/or containing vectorized operator calls, may reference more than one array, however both the dimensions and number of elements per dimension should match those of the first referenced array. If subsequent arrays exceed the first referenced array in elements then the excess will not be processed. If subsequent arrays do not contain enough elements then an array access exception may (depending on the first underlying structure) be thrown. A null pointer exception maybe be thrown if null elements are present.</p>
+<pre><code class="lang-conc">toinvert = [-1 -2 -3 4]
+choices = [false false true true]
+
+def inverter(arg int, choice boolean) =&gt; -arg if choice else arg
+
+applied = inverter(toinvert^, choices^)//apply inverter function to each element and return result to applied
+inverter(toinvert^^, choices^)//result stored in place within choices array
+
+//applied and toinvert == [-1 -2 3 -4]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="disambiguation-of-vectorized-calls">Disambiguation of vectorized calls<a class="headerlink" href="#disambiguation-of-vectorized-calls" title="Permalink to this headline" id="disambiguation-of-vectorized-calls">?</a></h2>
+<p>In cases where a method/function having vectorized arguments has been overloaded, and where that overloading means that the vectorized version of a function call can match more than one version of the function, differing only in the degree of the vectorized expansion, then the version which expands the vectorized arguments to the smallest degree will be chosen:</p>
+<pre><code class="lang-conc">myarray = [1 2 ; 3 4]
+
+def foo(a int[]) = '2d: ' + a
+def foo(a int) = '1d: ' + a
+
+res = foo(myarray^)//maps to foo(a int[])
+
+//res == [2d: [1, 2], 2d: [3, 4]]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="vectorizable-expressions">Vectorizable expressions<a class="headerlink" href="#vectorizable-expressions" title="Permalink to this headline" id="vectorizable-expressions">?</a></h2>
+<p>In addition to function and methods being vectorized as we have previously seen. All the operators may be vectorized (see the <a href="operators.html#operators">Operators</a> chapter). Examples:</p>
+<pre><code class="lang-conc">myAr = [1 2 3 4 5]
+gt = myAr^ &gt; 5
+addOne = myAr^ + 1
+power = myAr^ ** 1
+altpow = myAr^ * myAr^
+toString = myAr^ + '' //toString is a String[]
+
+assortment = ['aString' Integer(1) Float(22) 'anotherString']
+whichStr = assortment^ is String //=&gt; [true false false true]
+
+wanted = [ 2 3]
+subarray = myAr[wanted^]//=&gt; [3 4]
+subranges = myAr[0 ... wanted^]//=&gt; [1 2] [1 2 3]
+</code></pre>
+<p>In place assignment can also be vectorized:</p>
+<pre><code class="lang-conc">myAr = [1 2 3 4 5]
+myAr^ += 1 //increment by 1 assignment
+myAr^++ //add 1 as a postfix increment operation
+</code></pre>
+<p>Constructor and actor invocations as well as method references can be vectorized:</p>
+<pre><code class="lang-conc">class IntPair(a int, b int){
+  override toString() =&gt; "(IntPair: {a} {b})"
+}
+def inca(a int, b int) =&gt; a+b
+
+ar = [1 2 3]
+
+objs = new IntPair(12, ar^)//an array of IntPair's
+incrementees = inca&amp;(ar^, _ int)//an array of function refences of type: (int) int
+
+res = x(10) for x in incrementees
+
+//objs == [ (IntPair: 12 1) (IntPair: 12 2) (IntPair: 12 3) ]
+//res  == [11 12 13 ]
+</code></pre>
+<p>Array access and assignment operations can be vectorized:</p>
+<pre><code class="lang-conc">A = [ 1 2 3 ; 4 5 6 ; 7 8 9 ]
+B = A@//copy of A
+C = A@//copy of A
+
+firstOfEach1 = A^[0]
+firstOfEach2 = B[ [ 0 1 2]^, 0]
+oneOfEach   = C^[ [ 0 1 2]^ ]
+
+A^[0] = 99
+B[ [ 0 1 2]^, 0] = 99
+C^[ [ 0 1 2]^ ] = 99
+
+//firstOfEach1  == 1 4 7]
+//firstOfEach2  == [1 4 7]
+//oneOfEach 	== [1 5 9]
+
+//A == [ 99 2 3 ; 99 5 6 ; 99 8 9 ]
+//B == [ 99 2 3 ; 99 5 6 ; 99 8 9 ]
+//C == [ 99 2 3 ; 4 99 6 ; 7 8 99 ]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="no-hat-needed">No hat needed<a class="headerlink" href="#no-hat-needed" title="Permalink to this headline" id="no-hat-needed">?</a></h2>
+<p>Note that it's not always necessary to use the hat <code class="lang-conc">^</code> notation. A neat time saving feature of Concurnas is its ability to implicitly vectorize call chains if the input array argument and input arguments of function being called suit such a call structure. This means we can write the following:</p>
+<pre><code class="lang-conc">from java.lang.Math import sin
+myarry = [ 1 2; 3 4]
+appliedsin = sin(myarry)
+</code></pre>
+<p>The above call is automatically converted to the form: <code class="lang-conc">appliedsin = sin(myarry^)</code> as the sin function only takes a scalar input.</p>
+<p>In cases where a function or method is overloaded and either a array input (with matching dimensionality) or a scalar input can be matched against an array input in the call, the array input will take precedence. In order to explicitly route the call to the scalar input function (and vectorize the call) one must explicitly use the dot as above. Example:</p>
+<pre><code class="lang-conc">def addone(a int) = a+1  //version 1
+def addone(a int[]) = [a 1] //version 2
+
+myar = [1 2 3]
+
+addone(myar) //implicitly will be routed to version 2
+addone(myar^) //explicitly routed to version 1
+</code></pre>
+<p>Compiler note: Concurnas contains optimizations for vectorized call chains to avoid unnecessary matrix creation and thus save memory and creation time, take for example the following:</p>
+<pre><code class="lang-conc">A = [1 2]
+B = [3 4]
+C = [5 6]
+
+Result = A + B + C
+</code></pre>
+<p>A naive implementation would create a temporary matrix used to hold the calculated value of A+B before performing the +C component. Concurnas avoids the creation of the temporary matrix and just creates one holding the result.</p>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1 current"><a class="reference internal current" href="vectorization.html">Vectorization</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#in-place-vectorization">In place vectorization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#element-wise-method-execution">Element wise method execution</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#element-wise-field-access-and-assignment">Element wise field access and assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#chained-vectorization">Chained Vectorization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#disambiguation-of-vectorized-calls">Disambiguation of vectorized calls</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#vectorizable-expressions">Vectorizable expressions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#no-hat-needed">No hat needed</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

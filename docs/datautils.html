@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Datautils</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Datautils"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Datautils"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Datautils"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/datautils.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="datautils">Datautils<a class="headerlink" href="#datautils" title="Permalink to this headline" id="datautils">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#datautils">Datautils</a>
+   <ul>
+   <li><a class="reference internal" href="#lists">Lists</a>   </li>
+   <li><a class="reference internal" href="#sets">Sets</a>   </li>
+   <li><a class="reference internal" href="#maps1">Maps</a>   </li>
+   <li><a class="reference internal" href="#other-utilities">Other utilities</a>   <ul>
+   <li><a class="reference internal" href="#sorted">Sorted</a>   </li>
+   <li><a class="reference internal" href="#reversed">Reversed</a>   </li>
+   <li><a class="reference internal" href="#enumerations1">Enumerations</a>   </li>
+   <li><a class="reference internal" href="#zips">Zips</a>   </li>
+   <li><a class="reference internal" href="#print-and-error">print and error</a>   </li>
+   <li><a class="reference internal" href="#sum">sum</a>   </li>
+   <li><a class="reference internal" href="#min-and-max">min and max</a>   </li>
+   <li><a class="reference internal" href="#abs">abs</a>   </li>
+   <li><a class="reference internal" href="#any-and-all">any and all</a>   </li>
+   <li><a class="reference internal" href="#foreach">forEach</a>   </li>
+   <li><a class="reference internal" href="#reduce">reduce</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Concurnas includes a number of commonly used data related utility typedefs and functions which can be used to make writing programs using the common data structures: list, map and set easier and more succinct. These are defined in: <code class="lang-conc">com.concurnas.lang.datautils</code> and <b>are automatically imported</b>. Most of these data related utility functions are generic and so we're able to take advantage of Concurnases advanced usage based type inference functionality to enable us to write concise programs where this generic type information can largely be omitted and left to the compiler to infer.</p>
+<div class="section">
+<div class="section">
+<h2 id="lists">Lists<a class="headerlink" href="#lists" title="Permalink to this headline" id="lists">?</a></h2>
+<p>The <code class="lang-conc">list</code> functions and typedefs defined within <code class="lang-conc">datautils</code> create instances of <code class="lang-conc">java.util.ArrayList</code></p>
+<pre><code class="lang-conc">alist list = list()//generic type infered as Integer
+alist.add([1 2 3]^)
+//alist is equvilent to: [1,2,3]
+
+another = list&lt;String&gt;()//generic type information provided
+</code></pre>
+</div>
+<div class="section">
+<h2 id="sets">Sets<a class="headerlink" href="#sets" title="Permalink to this headline" id="sets">?</a></h2>
+<p>The <code class="lang-conc">set</code> functions and typedefs defined within <code class="lang-conc">datautils</code> create instances of <code class="lang-conc">java.util.HashSet</code></p>
+<pre><code class="lang-conc">aset set = set()//generic type infered as Integer
+aset.add([1 2 3]^)
+
+another = set&lt;String&gt;()//generic type information provided
+</code></pre>
+</div>
+<div class="section">
+<h2 id="maps1">Maps<a class="headerlink" href="#maps1" title="Permalink to this headline" id="maps1">?</a></h2>
+<p>The <code class="lang-conc">map</code> functions and typedefs defined within <code class="lang-conc">datautils</code> create instances of <code class="lang-conc">java.util.HashMap</code>. The map function may consume a lambda which can be used in order to to populate the map with a default value for missing keys.</p>
+<pre><code class="lang-conc">amap map = map()//generic type infered as String, Integer
+amap["auspicious"] = 108
+//amap is equvilent to: {"auspicious" -&gt; 108}
+
+another = map&lt;String, Integer&gt;()//generic type information provided
+
+counter = map(a =&gt; 0)//with default value mapping
+counter[0]++
+counter[0]++
+counter[10]++
+
+//counter == {0 -&gt; 2, 10 -&gt; 1}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="other-utilities">Other utilities<a class="headerlink" href="#other-utilities" title="Permalink to this headline" id="other-utilities">?</a></h2>
+<p>Concurnas offers a few basic utilities for working with collections of data, these basic utilities are often used as the basis of more complex and specific data related algorithms.</p>
+<div class="section">
+<div class="section">
+<h3 id="sorted">Sorted<a class="headerlink" href="#sorted" title="Permalink to this headline" id="sorted">?</a></h3>
+<p>The <code class="lang-conc">sorted</code> function may be used to sort an ordered collection (e.g. a list) in place or as a copy. It can consume an optional comparator - itself a SAM class thus permitting the definition of a lambda in its place:</p>
+<pre><code class="lang-conc">xyz1 = [1, 4, 3, 2, 5, 4, 3, 2]
+xyz2 = xyz1@//deep copy of xyz1
+xyz3 = xyz1@
+xyz4 = xyz1@
+
+xyz1sorted = sorted(xyz1)
+
+sorted(xyz2, inplace=true)
+
+xyz3reversed = sorted(xyz3, java.util.Collections.reverseOrder())
+xyz4reversed = sorted(xyz4, (o1 , o2) =&gt; o2-o1)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="reversed">Reversed<a class="headerlink" href="#reversed" title="Permalink to this headline" id="reversed">?</a></h3>
+<p>The <code class="lang-conc">reversed</code> function reverses an ordered collection and can act in place or return a copy of the input collection:</p>
+<pre><code class="lang-conc">xyz1 = [1, 4, 3, 2, 5, 4, 3, 2]
+xyz2 = xyz1@//deep copy of xyz1
+
+xyz1reversed = reversed(xyz1)
+reversed(xyz2, inplace=true)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="enumerations1">Enumerations<a class="headerlink" href="#enumerations1" title="Permalink to this headline" id="enumerations1">?</a></h3>
+<p>The <code class="lang-conc">enumerate</code> function adds counter to a <code class="lang-conc">java.lang.Iterable&lt;X&gt;</code> instance object (including lists, sets, ranges etc) and returns it as a list of tuples. The returned type is: <code class="lang-conc">java.util.List&lt;(Integer, X)</code>.</p>
+<pre><code class="lang-conc">mylist=[1, 2, 400, 4, 5]
+
+res = enumerate(mylist)
+//res == [(0, 1), (1, 2), (2, 400), (3, 4), (4, 5)]
+</code></pre>
+</div>
+<div class="section">
+<h3 id="zips">Zips<a class="headerlink" href="#zips" title="Permalink to this headline" id="zips">?</a></h3>
+<p>The <code class="lang-conc">zip</code> function creates a <code class="lang-conc">java.lang.List&lt;(X, ..., X)&gt;</code> of n dimensional tuples from the provided n <code class="lang-conc">java.lang.List&lt;X&gt;</code> instances. The i-th tuple contains the i-th element from each of the input arguments. The length of the returned list equals the length of the first input argument list. The <code class="lang-conc">zip</code> function may consume up to 10 input arguments.</p>
+<pre><code class="lang-conc">x = zip([1, 2, 3, 4], [4, 3, 2, 1])
+y = zip([1, 2, 3, 4], [4, 3, 2, 1],[4, 3, 2, 1],[4, 3, 2, 1] )
+
+//x == [(1, 4), (2, 3), (3, 2), (4, 1)]
+//y == [(1, 4, 4, 4), (2, 3, 3, 3), (3, 2, 2, 2), (4, 1, 1, 1)]
+</code></pre>
+</div>
+<div class="section">
+<h3 id="print-and-error">print and error<a class="headerlink" href="#print-and-error" title="Permalink to this headline" id="print-and-error">?</a></h3>
+<p>The <code class="lang-conc">print</code> and <code class="lang-conc">error</code> functions can be used to pretty print any object to <code class="lang-conc">stdout</code> and <code class="lang-conc">stderr</code> respectfully. The pretty print goes beyond the standard <code class="lang-conc">System.out.println(xyz)</code> and can handle arrays etc:</p>
+<pre><code class="lang-conc">print([1, 2, 3, 4], [4, 3, 2, 1])
+print("hello world")
+error("oh no!")
+</code></pre>
+</div>
+<div class="section">
+<h3 id="sum">sum<a class="headerlink" href="#sum" title="Permalink to this headline" id="sum">?</a></h3>
+<p>The <code class="lang-conc">sum</code> function will calculate the sum an array of numerical (primitive or boxed) inputs. It may also be used with vararg input:</p>
+<pre><code class="lang-conc">sum([1 2 3 4])//=&gt;10
+sum(1, 2, 3, 4)  //=&gt;10
+sum(1.2, 3.0)    //=&gt;4.2
+</code></pre>
+</div>
+<div class="section">
+<h3 id="min-and-max">min and max<a class="headerlink" href="#min-and-max" title="Permalink to this headline" id="min-and-max">?</a></h3>
+<p>The <code class="lang-conc">min</code> and <code class="lang-conc">max</code> functions will find the min and max value of an array or <code class="lang-conc">java.util.Collection&lt;X&gt;</code>. In the case where a collection is provided, an optional comparator argument may be specified. Where only two input arguments of primitive or boxed type are provided an optimized version of the functions are invoked:</p>
+<pre><code class="lang-conc">min([1 2 3 4])
+max(1, 2, 3, 4)  
+max(2, 5)
+min("a", "z")
+</code></pre>
+</div>
+<div class="section">
+<h3 id="abs">abs<a class="headerlink" href="#abs" title="Permalink to this headline" id="abs">?</a></h3>
+<p>The <code class="lang-conc">sum</code> function will return the absolute value of the input primitive or boxed type:</p>
+<pre><code class="lang-conc">abs(-1)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="any-and-all">any and all<a class="headerlink" href="#any-and-all" title="Permalink to this headline" id="any-and-all">?</a></h3>
+<p>The <code class="lang-conc">any</code> and <code class="lang-conc">all</code> functions operator upon arrays of primitive or boxed types, and <code class="lang-conc">java.util.Collection&lt;X&gt;</code>'s. The functions will return <code class="lang-conc">true</code> if any input value is equivalent of true or all values are the equivalent of true respectfully:</p>
+<pre><code class="lang-conc">any([0 1 0])
+any(0, 1, 0)
+
+all(true, true, false, true)
+class MyClass(value int){ override toBoolean() =&gt; this.value &gt; 10 }
+
+any(MyClass 5, MyClass 88)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="foreach">forEach<a class="headerlink" href="#foreach" title="Permalink to this headline" id="foreach">?</a></h3>
+<p>The <code class="lang-conc">forEach</code> function will apply a function to each element of an array or <code class="lang-conc">java.util.Collection&lt;X&gt;</code> and will return a new array or collection respectfully:</p>
+<pre><code class="lang-conc">forEach([1, 2, 3], a =&gt; a*10)//returns: [10, 20, 30]
+</code></pre>
+</div>
+<div class="section">
+<h3 id="reduce">reduce<a class="headerlink" href="#reduce" title="Permalink to this headline" id="reduce">?</a></h3>
+<p>The <code class="lang-conc">reduce</code> function will apply a reduction function to each element of an array or <code class="lang-conc">java.util.Collection&lt;X&gt;</code> in order to return a single value. An initial value may optionally be specified:</p>
+<pre><code class="lang-conc">reduce([1, 2, 3, 4], a, b =&gt; a*b) //returns: 24
+reduce([1, 2, 3, 4], 2, a, b =&gt; a*b) //returns: 48	
+</code></pre>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="datautils.html">Datautils</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#lists">Lists</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#sets">Sets</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#maps1">Maps</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#other-utilities">Other utilities</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#sorted">Sorted</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#reversed">Reversed</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#enumerations1">Enumerations</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#zips">Zips</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#print-and-error">print and error</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#sum">sum</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#min-and-max">min and max</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#abs">abs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#any-and-all">any and all</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#foreach">forEach</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#reduce">reduce</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

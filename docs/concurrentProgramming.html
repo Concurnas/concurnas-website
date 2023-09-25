@@ -1,0 +1,1935 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Concurrent Programming</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Concurrent Programming"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Concurrent Programming"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Concurrent Programming"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/concurrentProgramming.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="concurrent-programming">Concurrent Programming<a class="headerlink" href="#concurrent-programming" title="Permalink to this headline" id="concurrent-programming">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#concurrent-programming">Concurrent Programming</a>
+   <ul>
+   <li><a class="reference internal" href="#isolates">Isolates</a>   <ul>
+   <li><a class="reference internal" href="#isolate-dependencies">Isolate dependencies</a>   <ul>
+   <li><a class="reference internal" href="#module-level-state">Module level state</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#values-returned-from-isolates">Values returned from isolates</a>   </li>
+   <li><a class="reference internal" href="#exceptions-in-isolates">Exceptions in isolates</a>   <ul>
+   <li><a class="reference internal" href="#default-exception-handler">Default exception handler</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#isolate-executors">Isolate Executors</a>   <ul>
+   <li><a class="reference internal" href="#dedicated-thread">Dedicated Thread</a>   </li>
+   <li><a class="reference internal" href="#dedicated-thread-worker-pool">Dedicated Thread Worker Pool</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#sync-blocks">Sync blocks</a>   <ul>
+   <li><a class="reference internal" href="#returning-values-from-sync">Returning values from sync</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#shared-variables-and-classes">Shared variables and classes</a>   <ul>
+   <li><a class="reference internal" href="#caveats">Caveats</a>   </li>
+   <li><a class="reference internal" href="#shared-classes1">Shared Classes</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#actors1">Actors</a>   <ul>
+   <li><a class="reference internal" href="#untyped-actors">Untyped Actors</a>   </li>
+   <li><a class="reference internal" href="#typed-actors">Typed Actors</a>   <ul>
+   <li><a class="reference internal" href="#the-of-keyword">The of keyword</a>   </li>
+   <li><a class="reference internal" href="#calling-actor-methods">Calling actor methods</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#default-actors">Default Actors</a>   </li>
+   <li><a class="reference internal" href="#instances-of-and-casting-actors">Instances of and casting actors</a>   </li>
+   <li><a class="reference internal" href="#shared-variables-and-classes1">Shared variables and classes</a>   <ul>
+   <li><a class="reference internal" href="#shared-method-parameters-for-actors">Shared Method Parameters for Actors</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#actor-gotcha's">Actor gotcha's</a>   <ul>
+   <li><a class="reference internal" href="#spawning-isolates-directly-within-actors">Spawning isolates directly within actors</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#refs1">Refs</a>   <ul>
+   <li><a class="reference internal" href="#creating-refs">Creating refs</a>   </li>
+   <li><a class="reference internal" href="#using-refs">Using refs</a>   <ul>
+   <li><a class="reference internal" href="#ref-variable-dereferencing">Ref variable dereferencing</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#notable-methods-on-refs">Notable methods on refs</a>   </li>
+   <li><a class="reference internal" href="#arrays-of-refs">Arrays of refs</a>   </li>
+   <li><a class="reference internal" href="#ref-variable-reassignment">Ref variable reassignment</a>   </li>
+   <li><a class="reference internal" href="#refs-are-reified-types">Refs are reified types</a>   </li>
+   <li><a class="reference internal" href="#closing-refs">Closing refs</a>   </li>
+   <li><a class="reference internal" href="#custom-refs">Custom refs</a>   <ul>
+   <li><a class="reference internal" href="#no-argument-constructor">No argument constructor</a>   </li>
+   <li><a class="reference internal" href="#using-custom-refs">Using custom refs</a>   </li>
+   <li><a class="reference internal" href="#refarrays">RefArrays</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#nested-refs">Nested refs</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#reactive-programming">Reactive programming</a>   <ul>
+   <li><a class="reference internal" href="#await">await</a>   <ul>
+   <li><a class="reference internal" href="#await-guards">await guards</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#every-and-onchange">every and onchange</a>   <ul>
+   <li><a class="reference internal" href="#declarations-within-every-and-onchange-blocks">Declarations within every and onchange blocks</a>   </li>
+   <li><a class="reference internal" href="#returning-from-every-and-onchange">Returning from every and onchange</a>   </li>
+   <li><a class="reference internal" href="#every-and-onchange-parameters">every and onchange parameters</a>   </li>
+   <li><a class="reference internal" href="#implicit-ref-monitoring">Implicit ref monitoring</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#compact-every-and-onchange">Compact every and onchange</a>   </li>
+   <li><a class="reference internal" href="#async">Async</a>   <ul>
+   <li><a class="reference internal" href="#async-returning-values">Async returning values</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#reacting-to-multiple-refs">Reacting to multiple refs</a>   <ul>
+   <li><a class="reference internal" href="#changed">changed</a>   </li>
+   <li><a class="reference internal" href="#reactive-element-termination">Reactive Element termination</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#transactions">Transactions</a>   <ul>
+   <li><a class="reference internal" href="#transaction-execution">Transaction execution</a>   </li>
+   <li><a class="reference internal" href="#returning-from-transactions">Returning from transactions</a>   </li>
+   <li><a class="reference internal" href="#nested-transactions">Nested Transactions</a>   </li>
+   <li><a class="reference internal" href="#change-sets">Change sets</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#temporal-computing">Temporal Computing</a>   <ul>
+   <li><a class="reference internal" href="#developing-temporal-applications">Developing temporal applications</a>   <ul>
+   <li><a class="reference internal" href="#testing-temporal-applications">Testing temporal applications</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#parfor">Parfor</a>   <ul>
+   <li><a class="reference internal" href="#parforsync1">Parforsync</a>   </li>
+   <li><a class="reference internal" href="#parfor-list-comprehension">Parfor list comprehension</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#which-solution-to-use">Which solution to use</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>This bridge comes to life</p>
+<p>As our footsteps light the path that we have walked</p>
+<p>Its thundering heartbeat roars and shakes the foundation of the sky</p>
+<p>As she says, I command thee Daedalus awaken</p><footer>- Invictus Daedalus from Acheron [Compendium] by Mechina (2018)</footer></blockquote>
+<p>Just as <a href="objProviders.html#object-providers">object providers</a> allow us to separate the more interesting algorithmic work from the plumbing of an overall system, so does the concurrency model of Concurnas. With the Concurnas concurrency model we aim to eliminate the hard work and risk from building concurrent solutions, permitting the developer to focus on the more algorithmic and business relevant parts of their work and enabling that to scale.</p>
+<p>This is achieved via six principal areas: isolates, actors, refs, reactive programming, temporal computing, transactions and parfor.</p>
+<p>The solutions in this section are typically best aligned to scaling problems which are task based in nature. For solutions to more data oriented problems, taking advantage of Concurnas' support for GPUs is advisable, for more details on this see the <a href="gpuParallelProgramming.html#gpu/parallel-programming">GPU/Parallel programming</a> chapter.</p>
+<p>Solutions created in Concurnas using the concurrency primitives described here will naturally scale in line with the maximum physical hardware provided to them. However, they can only do so within the bounds of that physical hardware. In time, scaling beyond the confounds of a single machine is necessary, and here we enter the realm of distributed computing, for more details on this see the <a href="distComp.html#distributed-computing">Distributed computing</a> chapter.</p>
+<div class="section">
+<div class="section">
+<h2 id="isolates">Isolates<a class="headerlink" href="#isolates" title="Permalink to this headline" id="isolates">?</a></h2>
+<p>Isolates are like threads in conventional programming languages. Execution is concurrent and non deterministic. They are best suited for solving task based concurrent problems. In Concurnas they are automatically managed and mapped on to underlying hardware threads, the number of which are spawned being contingent on the underlying machine specification (usually the number of logical processor cores available). The upper bound for the number of isolates, and therefore concurrent tasks is constrained only by the amount of heap memory one has access to, as opposed to the much more restrictive limit in terms of hardware threads which can be created in conventional programming languages.</p>
+<p>One of the most beautiful aspects of the isolate model, as we shall see, is that whether you have access to one processor core, or 100, your isolates will behave in a deterministic manner. This means that you don't have to re-write all your software when upgrading from a single core machine to one with 100 cores, and in fact, with idiomatic Concurnas code with many spawned isolates, your software will normally automatically take advantage of that added n core count and operate in a \(\frac{1}{n}\)th of the time.</p>
+<p>The syntax to spawn an isolate is:</p>
+<center>
+<p><code class="lang-conc">{/*code to execute*/}</code><code class="lang-conc">!</code>.</p>
+</center>
+<p>Lets create some isolates now:</p>
+<pre><code class="lang-conc">def gcd(x int, y int){//greatest common divisor of two integers
+  while(y){
+    x, y = y, x mod y
+  }
+  x
+}
+
+calc1 = {gcd(8, 20)}!//run this calculation in a isolate
+calc2 = {gcd(6, 45)}!//run this calculation in a separate isolate, concurrently!
+
+calc3 = {gcd(calc1, calc2)}!//wait for the results of calc1 and calc2 before calculating calc3, also in an isolate
+</code></pre>
+<p>Above, we are initially creating two isolates which will execute concurrently to calculate some greatest common divisor (<code class="lang-conc">gcd</code>) values. When the values of these executions are known then these will be passed into a third invocation of <code class="lang-conc">gcd</code>, again for concurrent execution.</p>
+<p>If we have a single method to which we wish to run within an isolate, one need not use the curly brace notation: <code class="lang-conc">{/*code to execute*/}</code><code class="lang-conc">!</code>, but may simply append the function call with the bang operator: <code class="lang-conc">!</code>:</p>
+<pre><code class="lang-conc">gcd(8, 20)!
+//is equvilent to:
+{gcd(8, 20)}!
+</code></pre>
+<p>Isolates are scheduled in a fair (currently non pre-emptive) manner and are able to pause execution at certain blocking points, such as in accessing a ref which does not already have a value assigned. This allows the underlying hardware processor to execute other isolates whilst whatever is blocking execution is resolved, maximising throughput!</p>
+<p>Care should be taken to avoid calling blocking io code in an isolate as this will have the effect of locking up the underlying execution thread for the duration of the blocking operation. Instead, consider using an actor dedicated for i/o or using a reactive computing pattern (made easy with the support provided by Concurnas see the <a href="concurrentProgramming.html#reactive-programming">Reactive programming</a> section below). Care should also be taken with actively infinitely looping code, which is generally considered poor practice in any programming language - luckily Concurnas provides us with lots of alternatives to this.</p>
+<div class="section">
+<div class="section">
+<h3 id="isolate-dependencies">Isolate dependencies<a class="headerlink" href="#isolate-dependencies" title="Permalink to this headline" id="isolate-dependencies">?</a></h3>
+<p>Isolates operate within their own dedicated memory spaces. It is not possible to directly share memory between isolates, rather, isolate share state via communication: either with refs, actors or the variable tagged with the shared keyword. This makes reasoning and implementation of concurrent algorithms with Concurnas much easier than conventional programming languages which allow all state to be shared and where the developer must explicitly apply concurrency control on the subsection of shared state which is actually intentionally shared within the program.</p>
+<p>This isolation of state is achieved by Concurnas explicitly copying all the dependencies of an isolate lazily upon execution. For example:</p>
+<pre><code class="lang-conc">n = 10
+
+nplusone  = { n += 1; n }!//perform this calculation in an isolate
+nminusone = { n -= 1; n }!//and this
+
+assert nplusone == 11
+assert nminusone == 9
+assert n==10//n always remains unchanged
+</code></pre>
+<p>The above code will always provide a consistent output, despite the isolates non deterministic nature, since the <code class="lang-conc">n</code> variable dependency is copied into each of the isolates and is not shared between them. Thus changes made to the variable in one isolate do not affect the other. Notice how we've not had to define anything in the way of a critical section, synchronization, lock management etc.</p>
+<p>The dependency copy itself is a default copy in Concurnas, i.e. a deep copy of the isolates dependency, so for object dependencies which are very large, either making use of an actor (see the <a href="concurrentProgramming.html#actors1">Actors</a> section) or marking the dependant variable as <code class="lang-conc">shared</code> (see the <a href="concurrentProgramming.html#shared-variables-and-classes">Shared variables and classes</a> section) may be a more appropriate option.</p>
+<p>Transient variables and <a href="specialClasses.html#transient-classes">transient classes</a> are not copied into isolates. These will have their values set to <code class="lang-conc">null</code> even if they are not declared as being of nullable type. This process will also invalidate any inferences made about the null-ability of an affected variable. Here is an example with a transient class:</p>
+<pre><code class="lang-conc">transient class Myclass{
+  def foo() =&gt; "im not null"
+}
+mc = Myclass()
+result = {'uh oh' if null == mc else mc.foo() }!
+//result == 'uh oh'
+</code></pre>
+<p>Note above that normally the <code class="lang-conc">null == mc</code> test would resolve to a compilation error as we've already inferred that <code class="lang-conc">mc</code> cannot be null, but because this comparison occurs within an isolate, on a variable of transient class type, this inference is no longer valid.</p>
+<div class="section">
+<div class="section">
+<h4 id="module-level-state">Module level state<a class="headerlink" href="#module-level-state" title="Permalink to this headline" id="module-level-state">?</a></h4>
+<p>Variables defined outside of a function/class/actor (termed module level state) are copied in a special manner when it comes to usage within isolates. The rule is that state defined within the module spawning the isolate will be copied, but module level state defined in modules other than that spawning the isolate will be reinitialized (which means running all of the associated top level code to initialize them) within the isolate - i.e. the current state not copied.</p>
+<p>For example:</p>
+<pre><code class="lang-conc">//code defined in com.mycompany.library:
+def initFromLit(){
+  System out println 'initlaize fromLib'
+  100
+}
+fromLib = initFromLit()
+
+//code in seperate module defined in: com.mycompany.myApplication:
+m = 100
+
+com.mycompany.library.fromLib = 101
+m = 101
+
+res = { "fromLib={com.mycompany.library.fromLib}, m={m}" } !
+
+//com.mycompany.library.fromLib == 101
+//res == "fromLib=100, m=101":
+</code></pre>
+<p>Above we see that <code class="lang-conc">fromLib</code> has 'reverted' to it's initial state of <code class="lang-conc">100</code>, whereas <code class="lang-conc">m</code> is captured as <code class="lang-conc">101</code>. Furthermore, <code class="lang-conc">initFromLit()</code> will be executed twice (once on the initial use of fromLib and secondly on the copying into the spawned isolate) - so <code class="lang-conc">'initlaize fromLib'</code> will be output to the console twice.</p>
+</div>
+</div>
+<h3 id="values-returned-from-isolates">Values returned from isolates<a class="headerlink" href="#values-returned-from-isolates" title="Permalink to this headline" id="values-returned-from-isolates">?</a></h3>
+<p>Isolates return refs (discussed in detail in the <a href="concurrentProgramming.html#refs1">Refs</a> section) which hold values of the type returned from the code within the isolate. For example:</p>
+<pre><code class="lang-conc">res = {"I am an Isolate"}!
+deref String = res
+</code></pre>
+<p>Above <code class="lang-conc">res</code> is of type <code class="lang-conc">String:</code>. We later extract the result contained within <code class="lang-conc">res</code> when we assign it to the <code class="lang-conc">deref</code> variable which itself is not a ref.</p>
+<p>In the case where our isolate does not return a value we can still assign its result to a variable as follows:</p>
+<pre><code class="lang-conc">def hi() void{
+  System out println "hello world"
+}
+
+res = hi()!
+await(res)
+//when we reach this point we know that hi has been executed fully
+</code></pre>
+<p>Above, <code class="lang-conc">res</code> will be assigned an object of type <code class="lang-conc">Object</code>. We then use the <code class="lang-conc">await</code> keyword in order to wait for the aforementioned value to be set to <code class="lang-conc">res</code> before continuing with execution. This is of course an optional step, we could just fire and forget about our <code class="lang-conc">hi() call</code> scheduled for concurrent execution within an isolate.</p>
+</div>
+<div class="section">
+<h3 id="exceptions-in-isolates">Exceptions in isolates<a class="headerlink" href="#exceptions-in-isolates" title="Permalink to this headline" id="exceptions-in-isolates">?</a></h3>
+<p>If an isolate throws an exception which it doesn't catch within its call chain/body then this will be assigned to the returning ref if there is one. Parts of the code which rely upon that returned value will then be required to handle that exception. This approach is advantageous since it ensures that if an exception has occurred within the ref it is not lost within the program. For example:</p>
+<pre><code class="lang-conc">def divOp(a int, b int) =&gt; a/b//can throw a div by zero, ArithmeticException
+
+res = divOp(12, 0)!
+
+deref int = res//ArithmeticException is thrown on the access of 'res' here!
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="default-exception-handler">Default exception handler<a class="headerlink" href="#default-exception-handler" title="Permalink to this headline" id="default-exception-handler">?</a></h4>
+<p>In cases where an isolate does not return a value from a ref the default exception handler shall handle it. This simply prints a stack trace to the console via <code class="lang-conc">System.err</code> and permits execution of the program to otherwise continue uninterrupted.</p>
+<pre><code class="lang-conc">def divOp(a int, b int) =&gt; a/b//can throw a div by zero, ArithmeticException
+
+divOp(12, 0)! //no return value assignment!
+//any thrown ArithmeticException will be printted to the console via System.err
+</code></pre>
+</div>
+</div>
+<h3 id="isolate-executors">Isolate Executors<a class="headerlink" href="#isolate-executors" title="Permalink to this headline" id="isolate-executors">?</a></h3>
+<p>In some circumstances it is appropriate to modify the way in which isolates are executed. To this end there are a number of special isolate executors available as part of the Concurnas Standard Library which can be used.</p>
+<p>The general syntax for spawning isolates within an executor is as follows:</p>
+<center>
+<p><code class="lang-conc">isolate ! ( executor )</code></p>
+</center>
+<p>The custom isolate executors as part of the Concurnas standard library are:</p>
+<div class="section">
+<div class="section">
+<h4 id="dedicated-thread">Dedicated Thread<a class="headerlink" href="#dedicated-thread" title="Permalink to this headline" id="dedicated-thread">?</a></h4>
+<p>The <code class="lang-conc">concurrent.DedicatedThread()</code> executor will force execution of the isolate to take place within a dedicated worker with its own thread. This is particularly useful in cases where one is calling non-Concurnas JVM code (for instance, written in Scala or Java) which blocks on io (e.g. networking) or otherwise (e.g. infinite loops). Recall that blocking code would otherwise prevent other isolates from being executed in a timely manner via the usual mechanism, so this executor is a good choice in this instance.</p>
+<p>If the called code within the isolate either directly or indirectly spawns new isolates, then these will be multiplexed as normal onto the root set of workers.</p>
+<p>This executor should be used judiciously since creating dedicated threads doesn't scale as well as isolates multiplexed onto the usual set of shared workers. Though if one is calling code which is known to block, then this is usually the only, and best, option available.</p>
+<p>Here is an example:</p>
+<pre><code class="lang-conc">added = {10+10}!(concurrent.DedicatedThread())
+</code></pre>
+<p>It is not necessary to explicitly terminate a <code class="lang-conc">concurrent.DedicatedThread()</code> executor since it is meant for once time use, it is automatically terminated after completion of an isolate executed via it. Note that this means that <code class="lang-conc">concurrent.DedicatedThread()</code> executors cannot be reused.</p>
+</div>
+<div class="section">
+<h4 id="dedicated-thread-worker-pool">Dedicated Thread Worker Pool<a class="headerlink" href="#dedicated-thread-worker-pool" title="Permalink to this headline" id="dedicated-thread-worker-pool">?</a></h4>
+<p>The <code class="lang-conc">concurrent.DedicatedThreadWorkerPool()</code> executor creates a pool of workers on to which isolates may be executed via  reference to the executor instance. It is similar to the aforementioned <code class="lang-conc">concurrent.DedicatedThread()</code> executor in that it will force execution of the isolate to take place within a dedicated worker with its own thread. The difference here is that if the called code within the isolate either directly or indirectly spawns new isolates, then these will be multiplexed onto the new pool of dedicated workers.</p>
+<p>The number of workers created is definable by specifying the <code class="lang-conc">workerCount</code> default parameter of the <code class="lang-conc">concurrent.DedicatedThreadWorkerPool()</code> executor constructor. If unspecified this value defaults to the number of core Concurnas workers spawned by the scheduler associated with the current running isolate in which the <code class="lang-conc">concurrent.DedicatedThread()</code> executor is created.</p>
+<p>Unlike the <code class="lang-conc">concurrent.DedicatedThread()</code> executor, it is best practice to explicitly terminate the executor after one has finished using it as this will shut down the spawned worker threads which are no longer useful. This can be achieved by calling the <code class="lang-conc">terminate</code> method on the executor. Note that, upon garbage collection, or termination of an implicit 'parent' executor (including the root executor), the worker pool will be implicitly terminated.</p>
+<p>An example of usage:</p>
+<pre><code class="lang-conc">pool = new concurrent.DedicatedThreadWorkerPool()
+added = {10+10}!(pool)
+pool.terminate()
+</code></pre>
+</div>
+</div>
+<h3 id="sync-blocks">Sync blocks<a class="headerlink" href="#sync-blocks" title="Permalink to this headline" id="sync-blocks">?</a></h3>
+<p>A <code class="lang-conc">sync</code> block will ensure that all isolates created by code executed either directly or indirectly bt its body within the context of its executing isolate, have completed execution before permitting further execution by the aforementioned isolate. For example:</p>
+<pre><code class="lang-conc">def gcd(x int, y int){//greatest common divisor of two integers
+  while(y){
+    x, y = y, x mod y
+  }
+  x
+}
+
+calc1 int:
+calc2 int:
+
+sync{
+  calc1 = {gcd(8, 20)}!
+  calc2 = {gcd(6, 45)}!
+}
+
+//calc1 and calc2 have now been set
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="returning-values-from-sync">Returning values from sync<a class="headerlink" href="#returning-values-from-sync" title="Permalink to this headline" id="returning-values-from-sync">?</a></h4>
+<p>Sync blocks may return a value:</p>
+<pre><code class="lang-conc">def gcd(x int, y int){//greatest common divisor of two integers
+  while(y){
+    x, y = y, x mod y
+  }
+  x
+}
+
+calc1 int:
+calc2 int:
+
+complete = sync{
+  calc1 = {gcd(8, 20)}!
+  calc2 = {gcd(6, 45)}!
+  "all done"
+}
+
+//complete == "all done" and calc1 and calc2 have now been set
+</code></pre>
+</div>
+</div>
+</div>
+<h2 id="shared-variables-and-classes">Shared variables and classes<a class="headerlink" href="#shared-variables-and-classes" title="Permalink to this headline" id="shared-variables-and-classes">?</a></h2>
+<p>Isolates will make a copy of all of their non ref and non actor dependencies in order to ensure that no state is accidentally shared between instances. This default behaviour is always safe but sometimes is inappropriate, for instance when making use of Java objects which have their own concurrency control, and for read only data structures (especially when they are large since the copy operation performs a deep copy). This can be overridden by making use of the <code class="lang-conc">shared</code> keyword.</p>
+<p>We can declare a new variable assignment as being shared and use it as normal within an isolate as follows:</p>
+<pre><code class="lang-conc">shared numbers = [1, 2, 3, 4, 5, 6]
+
+complete = {numbers += 1; true}! //vectorize add one to each element
+
+await(complete)//wait for iso to complete
+
+// numbers == [2, 3, 4, 5, 6, 7]
+</code></pre>
+<p>Method variables and class fields may also be tagged as shared.</p>
+<div class="section">
+<div class="section">
+<h3 id="caveats">Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline" id="caveats">?</a></h3>
+<p><b>Only the value of the variable is shared, the variable itself is not.</b> As a result, re-assigning a shared variable to a different value will not result in the new value being shared. Consequently non array primitive types may not be tagged as shared.</p>
+<p>Top level global variables, at module level, may be declared with an initial value as shared, but care should be taken when assigning them values at module level (both directly or indirectly via a function/method etc). Since, as we have previously seen, top level module code is run on import by an isolate, this has the effect of wiping out whatever was previously stored within the shared variable every time an isolate which uses any aspect of the module is executed... (thus defeating the point of the variable being shared). Here is an example of what to watch out for:</p>
+<pre><code class="lang-conc">//in module com.myorg.code.py
+public shared sharedvar = new Integer(0)
+
+sharedvar = 26 //top level module core assigning a value to sharedvar - dangerous
+
+//in module: com.myorg.othercode
+from com.myorg.code import sharedvar
+
+defmymethod(){
+  sharedvar = 50
+  [sharedvar {sharedvar}!]//when the iso is executed sharedvar will be 'reset' to 26 within the iso
+}
+
+defmymethod()// [50 26:]
+</code></pre>
+<p>Removing the <code class="lang-conc">sharedvar = 26</code> line will have the effect of allowing us to preserve the assigned value of <code class="lang-conc">50</code> within the <code class="lang-conc">defmymethod</code> method when the isolate: {sharedvar}! is run. i.e.</p>
+<pre><code class="lang-conc">//in module com.myorg.code.conc
+public shared sharedvar = new Integer(0)
+
+//in module: com.myorg.othercode
+from com.myorg.code import sharedvar
+
+defmymethod(){
+  sharedvar = 50
+  [sharedvar {sharedvar}!]
+}
+
+defmymethod()// == [50 50:]
+</code></pre>
+<p>The shared tag is ignored when shared variables are assigned to, or read from refs... they are still copied, though refs themselves are naturally shareable between isolates.</p>
+</div>
+<div class="section">
+<h3 id="shared-classes1">Shared Classes<a class="headerlink" href="#shared-classes1" title="Permalink to this headline" id="shared-classes1">?</a></h3>
+<p>Classes may be tagged as shared, this has the same effect as tagging a variable as shared but applies to all instances of objects of the shared class (including subclasses). See the <a href="specialClasses.html#shared-classes">Shared Classes section</a> for more information.</p>
+</div>
+</div>
+<h2 id="actors1">Actors<a class="headerlink" href="#actors1" title="Permalink to this headline" id="actors1">?</a></h2>
+<p>Concurnas supports concurrency through Actors. The actor model of concurrency itself has existed since the 1970's and is seeing a resurgence in recent years due to the proliferation of multicore computer architectures and the fact that, compared to the shared state model of computation, offers a simpler and more intuitive model</p>
+<p>Actors in Concurnas behave like classes in that instances of actors can be created with constructors and methods may be called upon those instances. The difference compared to classes however is that actors can be shared between isolates, they are not copied. They are able to do this because they provide concurrency control on all of their method invocations to the effect of turning execution on an actor into a single threaded operation. This makes them ideal for implementing the likes of i/o operations (especially those such as writing to disk where contention from concurrency would actually reduce throughput).</p>
+<p>Under the hood actors run within their own isolate and like isolates, actors (which run in their own dedicated isolate), will make a copy of all input arguments to any of their constructors or methods that are invoked.</p>
+<p>One of the nice things about the way in which Actors have been implemented in Concurnas is that one does not have to give up the advantages of static typing in order to use them.</p>
+<p>Actors are defined in a very similar way to classes and have two variants, untyped actors and typed actors which we explore here.</p>
+<div class="section">
+<div class="section">
+<h3 id="untyped-actors">Untyped Actors<a class="headerlink" href="#untyped-actors" title="Permalink to this headline" id="untyped-actors">?</a></h3>
+<p>Let's create an untyped actor:</p>
+<pre><code class="lang-conc">open actor MyActor{
+  -count = 0
+  def increment(){
+    count++
+  }
+}
+</code></pre>
+<p>We say this actor is 'untyped' since it does not explicitly operate upon another type, we will examine the concept of a 'typed' actor which does operate on another type in detail in the <a href="concurrentProgramming.html#typed-actors">Typed Actors</a> section. When defining actors we may use the same syntax as classes - including generics, constructors, class definition level fields, fields, inheritance, traits etc.</p>
+<p>The actor manages its own concurrency to the extent of sequentially executing concurrent requests made of it. Method invocations seem to behave as normal from the perspective of authoring code, i.e. the caller invokes the method and a value is returned if appropriate - as normal. However, at runtime behind the scenes, execution is being requested of the actor in its own isolate, the caller isolate pauses execution until it receives a response from said actor. When the method has been executed by the actor it will notify the caller which can then can then carry on with execution as normal. This is different from normal method invocation where there is transference of stack frame control into the method and where the invoking isolate is responsible for code execution.</p>
+<p>We can create an instance of the aforedefined actor, and call some methods upon it as follows:</p>
+<pre><code class="lang-conc">ma = new MyActor()
+
+ma.increment()//just like normal method call will block until exeuction is complete
+
+sync{
+  {ma.increment()}!//called concurrently
+  {ma.increment()}!
+}
+
+count = ma.count//count == 3
+</code></pre>
+<p>The above would not be possible if were to an ordinary object in place of our actor since they do not have any concurrency control and as such must be copied into isolates in order to prevent the state of the object being <i>accidentally</i> shared. Never the less as we can see above, one of the nice things about actors in Concurnas is that they can be used seamlessly like ordinary objects.</p>
+<p>Like classes, typed actors may inherit from other actors:</p>
+<pre><code class="lang-conc">actor Decount &lt; MyActor{
+  def decrement(){
+    count--
+  }
+}
+</code></pre>
+<p>One restriction placed upon actors is that non private fields of actors may not be accessed. Instead, getters and setters should be used (which can be easily automatically generated in Concurnas see the <a href="classes.html#setters-and-getters">Setters and Getters</a> section).</p>
+</div>
+<div class="section">
+<h3 id="typed-actors">Typed Actors<a class="headerlink" href="#typed-actors" title="Permalink to this headline" id="typed-actors">?</a></h3>
+<p>Typed actors enable us to create an actor which wraps around an instance of an ordinary object. This is ideal for use in cases where we're using pre existing code, perhaps from user defined libraries or the JDK, and wish to create an actor instance of them.</p>
+<p>For example let's say we have a predefined class we wish to use as an actor:</p>
+<pre><code class="lang-conc">class MyCounter(-count int){
+  def increment(){
+    count++
+  }
+}
+</code></pre>
+<p>We can now define and use our typed actor through the aid of the <i>of</i> keyword as follows:</p>
+<pre><code class="lang-conc">actor MyActor of MyCounter(0)
+
+//let's use our new typed actor:
+ma = new MyActor()
+
+ma.increment()
+
+sync{
+  ma.increment()!
+  ma.increment()!
+}
+
+count = ma.count//count == 3
+</code></pre>
+<p>Our typed actor defined above, <code class="lang-conc">MyActor</code>, has created a stub method instance of all of the methods exposed within our ordinary class: <code class="lang-conc">MyCounter</code> such that they can be seamlessly called as if <code class="lang-conc">MyActor</code> were an instance of <code class="lang-conc">MyCounter</code>. As and when we come to create an instance of <code class="lang-conc">MyActor</code>, the typed actor will, behind the scenes, create a <code class="lang-conc">MyCounter</code> instance (accessible as the variable <code class="lang-conc">of</code> - see the <a href="concurrentProgramming.html#the-of-keyword">The \lstinline!of! keyword</a> section) to which it will direct method invocations in a serial manner. It's for this reason that all the constructors defined on the wrapped <code class="lang-conc">MyCounter</code> instance are also callable on the <code class="lang-conc">MyActor</code> instance.</p>
+<p>Instances of generic classes may be created as above with generic qualification or that qualification differed to the creator of the actor:</p>
+<pre><code class="lang-conc">actor StringListActor of java.util.ArrayList&lt;String&gt;//qualified
+
+open actor ListActor&lt;X&gt; of java.util.ArrayList&lt;X&gt;//differed
+</code></pre>
+<p>As with untyped actors, actors may inherit from other actors or even be defined as abstract:</p>
+<pre><code class="lang-conc">actor ChildStringListActor &lt; ListActor&lt;String&gt;
+abstract actor AbstractListActor&lt;X Number&gt; &lt; ListActor&lt;X&gt;
+</code></pre>
+<p>Typed actors implement all traits defined by the class of which it's an actor of. Hence the following holds:</p>
+<pre><code class="lang-conc">trait MyTrait1
+trait MyTrait2
+class ChildClass ~ MyTrait1, MyTrait2
+
+actor MyActor of ChildClass
+
+//
+ma = new MyActor()
+
+assert ma is MyTrait1 //true!
+assert ma is MyTrait2 //true!
+</code></pre>
+<p>Typed actors may not be created of actors. So the following is not valid:</p>
+<pre><code class="lang-conc">actor InvalidActor of ChildStringListActor//not valid!
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="the-of-keyword">The of keyword<a class="headerlink" href="#the-of-keyword" title="Permalink to this headline" id="the-of-keyword">?</a></h4>
+<p>Like untyped actors, typed actors can define methods:</p>
+<pre><code class="lang-conc">actor MyActor of MyCounter(0){
+  def decrement(){
+    of.count--
+  }
+}
+</code></pre>
+<p>In the example above we can see that the <code class="lang-conc">of</code> keyword is used in order to refer to the object which our defined actor is referring to. Also, just like the <code class="lang-conc">this</code> keyword the <code class="lang-conc">of</code> keyword can usually be inferred. Thus it would be acceptable to write the above code as:</p>
+<pre><code class="lang-conc">actor MyActor of MyCounter(0){
+  def decrement(){
+    count--
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h4 id="calling-actor-methods">Calling actor methods<a class="headerlink" href="#calling-actor-methods" title="Permalink to this headline" id="calling-actor-methods">?</a></h4>
+<p>Sometimes, we are obliged to create a method on a typed actor having the same signature as that of the class to which it is acting upon. In these circumstances when a normal method invocation is observed on the actor instance, Concurnas will infer that the actor method upon the class being acted upon should be invoked, instead of that defined on the actor itself. In order to force execution of the actor version of said method, one can use the <code class="lang-conc">:</code> operator as follows:</p>
+<pre><code class="lang-conc">actor MyActor of MyCounter(0){
+  def increment(){
+    of.increment()
+    of.increment()
+  }
+	
+}
+
+def doings(){
+  ma = new MyActor()
+  ma:increment() //call version of method defined on MyActor
+	
+  "ok " + ma.count
+}
+</code></pre>
+</div>
+</div>
+<h3 id="default-actors">Default Actors<a class="headerlink" href="#default-actors" title="Permalink to this headline" id="default-actors">?</a></h3>
+<p>Another way to create a typed actor is to simply use the actor keyword in place of or in addition to the new keyword when creating an object. For example:</p>
+<pre><code class="lang-conc">class MyCounter(-count int){
+  def increment(){
+    count++
+  }
+}
+
+inst1 = actor MyCounter(0)      //create a new actor on MyCounter
+inst2 = new actor MyCounter(0)  //create a new actor on MyCounter
+</code></pre>
+<p>We can now use <code class="lang-conc">inst1</code> and <code class="lang-conc">inst2</code> as actor instances.</p>
+</div>
+<div class="section">
+<h3 id="instances-of-and-casting-actors">Instances of and casting actors<a class="headerlink" href="#instances-of-and-casting-actors" title="Permalink to this headline" id="instances-of-and-casting-actors">?</a></h3>
+<p>Typed actors may only be compared with other actors via the <code class="lang-conc">is</code> and <code class="lang-conc">as</code> keywords, but they are reified types. Thus we're able to write code such as the following:</p>
+<pre><code class="lang-conc">actor MyUntyped  {
+  def something() =&gt; "hi"
+}
+
+xxx = new MyUntyped()
+o Object = xxx
+
+assert o is actor //true
+assert o is MyUntyped //true
+res = (o as  MyUntyped).something() //res == "hi"
+</code></pre>
+<p>And when using generics this can be very helpful:</p>
+<pre><code class="lang-conc">class MyClass&lt;X&gt;(~x X)
+actor MyActor&lt;X&gt; of MyClass&lt;X&gt;
+
+xxx = new MyActor&lt;String&gt;('hi')
+o Object = xxx
+assert o is MyActor&lt;String&gt; //true
+</code></pre>
+</div>
+<div class="section">
+<h3 id="shared-variables-and-classes1">Shared variables and classes<a class="headerlink" href="#shared-variables-and-classes1" title="Permalink to this headline" id="shared-variables-and-classes1">?</a></h3>
+<p>Actors will ignore the shared nature any variables which have been marked as shared when they are passed to an actor method. That is to say that they will be copied as par normal irregardless of the fact that they have been marked as shared. This is not the case for constructor invocation however, when a actor constructor is invoked and shared variables passed as arguments are treated as being shared and are not copied.</p>
+<p>The behaviour of shared classes remains unchanged, i.e. if an instance object of a class marked as shared is passed to either a actor constructor or method, it will not be copied as par usual.</p>
+<div class="section">
+<div class="section">
+<h4 id="shared-method-parameters-for-actors">Shared Method Parameters for Actors<a class="headerlink" href="#shared-method-parameters-for-actors" title="Permalink to this headline" id="shared-method-parameters-for-actors">?</a></h4>
+<p>Recall that actors operate within their own dedicated Isolate. As such, mutable state is copied into them on execution. In order to suppress this behaviour, e.g. for classes having transient fields, for a method parameter (as part of a method of an actor), mark the input parameter as being shared:</p>
+<pre><code class="lang-conc">actor MyActor(){
+  def callme(shared aparam WithTransientFields){
+    //... work as normal
+  }
+}
+</code></pre>
+</div>
+</div>
+<h3 id="actor-gotcha's">Actor gotcha's<a class="headerlink" href="#actor-gotcha's" title="Permalink to this headline" id="actor-gotcha's">?</a></h3>
+<p>There are a few gotcha's which one must factor into one's design of software when using actors.</p>
+<div class="section">
+<div class="section">
+<h4 id="spawning-isolates-directly-within-actors">Spawning isolates directly within actors<a class="headerlink" href="#spawning-isolates-directly-within-actors" title="Permalink to this headline" id="spawning-isolates-directly-within-actors">?</a></h4>
+<p>Isolates spawned directly by <b>Untyped actors</b> run within the context of the spawning actor. This has the effect of forcing the isolate, for all intents and purposes, to run non-concurrently. For example:</p>
+<pre><code class="lang-conc">actor MyActor{
+  -an int = 99
+	
+  def spawndoer(){
+    done := {an++; true}!//this will be run in the context of the actor
+    done:
+  }
+}
+
+
+anActor = new MyActor()
+await(anActor.spawndoer())
+got = anActor.an //returns 100 as expected
+</code></pre>
+<p>Isolates spawned directly by normal classes, which have been captured by typed actors are run upon the actor as normal, they are not run within the context of the spawning actor, but rather a copy of the captured class. Here is an illustration of this behaviour:</p>
+<pre><code class="lang-conc">class Myclass{//normal class
+  -an int = 99
+	
+  def spawndoer(){
+    done := {an++}!
+    await(done)	
+  }
+}
+
+anActor = actor Myclass()//normal class captured by typed actor
+anActor.spawndoer()//spawns an isolate to perform the operation
+got = anActor.an //an is still 99, not 100!
+</code></pre>
+</div>
+</div>
+</div>
+<h2 id="refs1">Refs<a class="headerlink" href="#refs1" title="Permalink to this headline" id="refs1">?</a></h2>
+<p>Standard thread based models of communication in most programming languages require state to be shared and for access to it to be explicitly controlled in critical sections. Generally this is implemented on a pessimistic basis, in assuming that shared data access will be contentious, by requiring the use of explicit read-write locks or synchronized blocks on our critical sections. Engineering concurrent applications wish shared memory is one of the most challenging aspects of modern software engineering.</p>
+<p>Concurnas is different. Concurnas introduces the concept of a ref. This is an entity which can be freely shared between isolates which refers to and safely manages another value. refs provide an optimistic approach towards concurrency in that they provide communication of state via message passing. Message passing is widely accepted as an easier though equally capable model of concurrency to work with as we do not need to spend time coding read-write locks or synchronized blocks, rather than time can be spent working on our core objectives.</p>
+<p>As the value of a ref can change over time this allows us to build reactive components upon them (such as <code class="lang-conc">await</code>, <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> explored below) which again opens up a far more natural way of programming than what most developers are used to. Concurnas provides transactions for the times when we need to change one or more refs on an atomic basis.</p>
+<div class="section">
+<div class="section">
+<h3 id="creating-refs">Creating refs<a class="headerlink" href="#creating-refs" title="Permalink to this headline" id="creating-refs">?</a></h3>
+<p>There are a number of ways in which refs can be created:</p>
+<pre><code class="lang-conc">aref1 int: //defined but unassigned local ref of type int
+aref2 = new int://defined but unassigned local ref of type int
+aref3 int := 21 //defined and assigned local ref of type int
+aref4 := 21 //assigned local ref of inferred type int
+aref5 = 21: //assigned variable of inferred type int: with the right hand side being a ref creation expression
+aref6 = {21}! //assigned variable of inferred type int: - right hand side being a ref returned from an isolate - this is the most computationally expensive variety of ref creation - if you find yourself doing this to create simple refs from expressions that don't require concurrent execution, consider using the preceding form
+</code></pre>
+<p>Refs can be created of any type - even refs themselves (see below <a href="concurrentProgramming.html#nested-refs">refs of refs</a>)! Refs may not be of nullable types.</p>
+<p>All the refs above are of type <code class="lang-conc">int:</code>. As can be seen above the key when creating refs is the use of <code class="lang-conc">:</code> postfixed to a type or prefixed to the assignment operator <code class="lang-conc">=</code> - this tells the compiler that we wish to create a ref type.</p>
+</div>
+<div class="section">
+<h3 id="using-refs">Using refs<a class="headerlink" href="#using-refs" title="Permalink to this headline" id="using-refs">?</a></h3>
+<p>Just like normal variables, we can assign a value to the ref at any point during or post declaration. For example:</p>
+<pre><code class="lang-conc">aref1 int: //defined but unassigned local ref of type int
+aref1 = 100 //assigned just like normal!
+</code></pre>
+<p>When we have a method or other location where a ref is expected as an input type, and the input we have provided is of that refs component type, Concurnas will automatically create a ref to hold that value and set it as appropriate. For example:</p>
+<pre><code class="lang-conc">def expectsRef(a int:) int =&gt; a:get()
+
+expectsRef(12)//12 is automatically converted into a ref, i.e. expectsRef(12:)
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="ref-variable-dereferencing">Ref variable dereferencing<a class="headerlink" href="#ref-variable-dereferencing" title="Permalink to this headline" id="ref-variable-dereferencing">?</a></h4>
+<p>When we wish to perform an operation on a ref variable, or pass a ref to a function which is not expecting a ref - the ref will be automatically unassigned. If no value has yet been assigned to the ref further execution will be blocked until a value has been assigned.</p>
+<p>Type wise, when unassigning a ref with type <code class="lang-conc">X:</code>, the type of the value returned will be <code class="lang-conc">X</code>. For <code class="lang-conc">int:</code> this is <code class="lang-conc">int</code>. For example:</p>
+<pre><code class="lang-conc">a int:
+
+{a = 99}!//execute our ref assignment in a separate isolate
+
+b int = a//a is unassigned when our isolate spawned above complete's execution
+</code></pre>
+<p>refs are dereferenced not just on variable assignment, but at any place where they are used. For example on function invocation:</p>
+<pre><code class="lang-conc">def takesInt(a int) =&gt; a
+
+res = {a = 99}!
+
+takesInt(res)//res is dereferenced
+</code></pre>
+<p>If we wish to prevent this unassignment we can use the <code class="lang-conc">:</code> operator when referencing the variable. For example:</p>
+<pre><code class="lang-conc">a int: = 12
+b = a:
+c := a
+
+//the &amp;== operator tests for equality by object reference and not by object value as the == operator does
+assert b: &amp;== a: //a and b are references to the same ref
+assert c: &amp;== a: //a and c are references to the same ref
+</code></pre>
+<p>The <code class="lang-conc">:</code> operator may also be used in order to access methods on the ref itself. For instance the <code class="lang-conc">hasException</code> method will return true if an exception has been set on the ref:</p>
+<pre><code class="lang-conc">aref = 12:
+aref:setException(new Exception("uh oh"))
+
+hase = aref:hasException() //returns true, an exception has beenset
+</code></pre>
+</div>
+</div>
+<h3 id="notable-methods-on-refs">Notable methods on refs<a class="headerlink" href="#notable-methods-on-refs" title="Permalink to this headline" id="notable-methods-on-refs">?</a></h3>
+<p>All refs are subtypes of the class: <code class="lang-conc">com.concurnas.bootstrap.runtime.ref.Ref</code>. This class exposes a number of occasionally useful methods of note that are accessible via the <code class="lang-conc">:</code> operator:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">def isSet() boolean</code> - returns true if a ref has been closed, an initial value or an exception set (non blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">def waitUntilSet() void</code> - returns when a ref has been closed, an initial value or an exception set (blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">def close() void</code> - close a ref, no further values may be assigned.</p>
+</li>
+  <li><p><code class="lang-conc">def isClosed() boolean</code> - returns true if a ref has been closed (non blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">def setException(e Throwable) boolean</code> - set an exception on a ref.</p>
+</li>
+  <li><p><code class="lang-conc">def hasException() boolean</code> - returns true if a ref has been closed (non blocking method).</p>
+</li>
+</ul class="simple">
+<p>When creating a ref via the aforementioned methods one is creating a ref of type: <code class="lang-conc">com.concurnas.runtime.ref.Local&lt;X&gt;</code> where X is the reified type of the ref. In other words:</p>
+<pre><code class="lang-conc">aref1 int:
+//is equvilent to:
+bref1 com.concurnas.runtime.ref.Local&lt;int&gt;
+</code></pre>
+<p>Instances of <code class="lang-conc">Local&lt;X&gt;</code> provide the following additional methods:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">set(x X) void</code> - set the latest value of the ref. (equivalent to assignment)</p>
+</li>
+  <li><p><code class="lang-conc">get() X</code> - get the latest value of the ref. (blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">getNoWait() X?</code> - get the latest value of the ref. Value will be returned as <code class="lang-conc">null</code> if no initial value has been set (non blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">get(withNoWait boolean) X?</code> - get the latest value of the ref. May return <code class="lang-conc">null</code>. (optionally blocking method).</p>
+</li>
+</ul class="simple">
+</div>
+<div class="section">
+<h3 id="arrays-of-refs">Arrays of refs<a class="headerlink" href="#arrays-of-refs" title="Permalink to this headline" id="arrays-of-refs">?</a></h3>
+<p>Arrays of refs may be created in the usual manner:</p>
+<pre><code class="lang-conc">arrayofrefs1 = [1: 2: 3:]
+arrayofrefs2 = new Integer:[10]
+arrayofrefs3 = new Integer:[2, 2](1)//with array initalizer
+</code></pre>
+<p>Arrays of refs are of type: <code class="lang-conc">com.concurnas.runtime.ref.LocalArray&lt;X&gt;</code> where <code class="lang-conc">X</code> is the ref type (<code class="lang-conc">Integer:</code> above).</p>
+</div>
+<div class="section">
+<h3 id="ref-variable-reassignment">Ref variable reassignment<a class="headerlink" href="#ref-variable-reassignment" title="Permalink to this headline" id="ref-variable-reassignment">?</a></h3>
+<p>The ref variables themselves may be reassigned by ensuring that the assignment operator is prefixed with <code class="lang-conc">:</code>, for example:</p>
+<pre><code class="lang-conc">aref int: = 100
+bref int: = 200
+assert aref &lt;&gt; bref  //values not equal
+assert aref: &lt;&gt; bref://refs not equal
+
+aref = bref //assign the value of bref to aref
+assert aref == bref  //values equal!
+assert aref: &lt;&gt; bref://refs not equal
+
+
+aref := bref //assign the ref itself: bref to aref
+assert aref == bref  //values equal!
+assert aref: == bref://refs equal!
+</code></pre>
+</div>
+<div class="section">
+<h3 id="refs-are-reified-types">Refs are reified types<a class="headerlink" href="#refs-are-reified-types" title="Permalink to this headline" id="refs-are-reified-types">?</a></h3>
+<p>refs are reified types hence Concurnas knows what type a ref is holding at runtime. This allows us to safely write code such as the following:</p>
+<pre><code class="lang-conc">def checkIfIntRef(something Object) boolean =&gt; something is int:
+</code></pre>
+</div>
+<div class="section">
+<h3 id="closing-refs">Closing refs<a class="headerlink" href="#closing-refs" title="Permalink to this headline" id="closing-refs">?</a></h3>
+<p>refs can be put into a closed state, after which no further values may be assigned to them, and any reactive components which use them will no longer consider them to be something to watch for changes to react to after notification.</p>
+<pre><code class="lang-conc">aref = 10:
+aref:close()
+assert aref:isClosed()//aref is now closed
+</code></pre>
+<p>Any reactive components that are registered to watch for changes to a ref will be invoked upon said ref being closed, for example:</p>
+<pre><code class="lang-conc">aref := 10
+
+isclosed boolean:
+onchange(aref){
+  if(aref:isClosed()){
+    isclosed = true
+  }
+}
+aref:close()
+
+await(isclosed)
+</code></pre>
+<p>Above, we create a ref <code class="lang-conc">isclosed</code> which is only set by our <code class="lang-conc">onchange</code> block after <code class="lang-conc">aref</code> has been closed.</p>
+</div>
+<div class="section">
+<h3 id="custom-refs">Custom refs<a class="headerlink" href="#custom-refs" title="Permalink to this headline" id="custom-refs">?</a></h3>
+<p>In 99% of situations the built in ref types are all we need to solve problems. But sometimes it can be useful to define our own custom refs (e.g the <code class="lang-conc">gpus.GPURef</code> ref type). To do this all we need to is subclass the <code class="lang-conc">com.concurnas.runtime.ref.Local</code> class. However, there are a few caveats to be remembered when building custom refs which we shall explore here.</p>
+<p>Refs, being reified types, require an additional initial argument, of type <code class="lang-conc">Class&lt;?&gt;[]</code>, be added to all defined constructors to hold the reified type information generated seamlessly by Concurnas at compilation time. When constructing refs this extra argument does not need to be populated. For example:</p>
+<pre><code class="lang-conc">class CustomRef&lt;X&gt;(type Class&lt;?&gt;[], ~extraArg int) &lt; com.concurnas.runtime.ref.Local&lt;X&gt;(type){
+  this(type Class&lt;?&gt;[]) =&gt; this(type, 99)
+}
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="no-argument-constructor">No argument constructor<a class="headerlink" href="#no-argument-constructor" title="Permalink to this headline" id="no-argument-constructor">?</a></h4>
+<p>Additionally, in order for custom refs to be implicitly creatable, they should specify a no argument constructor. Failure to do so will result in a runtime exception if an implicit creation is attempted.</p>
+<pre><code class="lang-conc">class CustomRef&lt;X&gt;(type Class&lt;?&gt;[], ~event int) &lt; com.concurnas.runtime.ref.Local&lt;X&gt;(type)
+class CustomRefWithNoArg&lt;X&gt;(type Class&lt;?&gt;[], ~event int) &lt; com.concurnas.runtime.ref.Local&lt;X&gt;(type){
+  this(type Class&lt;?&gt;[]) =&gt; this(type, 12)
+}
+
+def fail(a Object) Object:CustomRef{
+  return null//implicitly create a CustomRef to hold null - which will fail
+}
+def ok(a Object) Object:CustomRefWithNoArg {
+  return null//implicitly create a CustomRefWithNoArg
+}
+
+ok("123")//this will return a Object:CustomRefWithNoArg object
+fail("123")//this will throw a runtime exception because there is no no argument constructor defined for CustomRef
+</code></pre>
+</div>
+<div class="section">
+<h4 id="using-custom-refs">Using custom refs<a class="headerlink" href="#using-custom-refs" title="Permalink to this headline" id="using-custom-refs">?</a></h4>
+<p>Custom refs may be created by appending the desired custom ref constructor (without the initial, additional, reified type array) after the <code class="lang-conc">:</code> operator. For example:</p>
+<pre><code class="lang-conc">class CustomRef&lt;X&gt;(type Class&lt;?&gt;[], ~extraArg int) &lt; com.concurnas.runtime.ref.Local&lt;X&gt;(type){
+  this(type Class&lt;?&gt;[]) =&gt; this(type, 99)
+}
+
+inst1 = int:CustomRef(12)//insatnce of our CustomRef
+inst2 = int:CustomRef()//insatnce of our CustomRef
+</code></pre>
+<p>Alternatively, when we are using the declaration with assignment form of variable declaration, a custom ref may be implicitly constructed and the appropriate set method matching the assignment value called. For example:</p>
+<pre><code class="lang-conc">inst1 int:CustomRef = 12//insatnce of our CustomRef with implicit contruction
+
+//above is equivilent to:
+inst2 int:CustomRef; inst2 = 12
+</code></pre>
+<p>The above is equivalent to:</p>
+<pre><code class="lang-conc">inst1 int:CustomRef; 
+inst1 = 12
+</code></pre>
+</div>
+<div class="section">
+<h4 id="refarrays">RefArrays<a class="headerlink" href="#refarrays" title="Permalink to this headline" id="refarrays">?</a></h4>
+<p>Ref arrays: <code class="lang-conc">com.concurnas.runtime.ref.RefArray&lt;X&gt;</code> are a handy custom ref type included in the Concurnas runtime. RefArrays provide an efficient means of providing ref like behaviour on arrays via a fixed length array like structure.</p>
+<p>Notable methods on <code class="lang-conc">RefArray&lt;X&gt;</code> are:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">get() X[]</code> - get the latest value of the ref. (blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">get(withNoWait boolean) X[]</code> - get the latest value of the ref. May return <code class="lang-conc">null</code>. (optionally blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">getNoWait() X[]?</code> - get the latest value of the ref. <code class="lang-conc">null</code> if unset. (non blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">set(x X[]) void</code> - set the latest value of the ref.</p>
+</li>
+  <li><p><code class="lang-conc">get(i int) X</code> - get the latest value of the ref at index i. (blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">get(i int, withNoWait boolean) X?</code> - get the latest value of the ref at index i. May return <code class="lang-conc">null</code>. (optionally blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">getNoWait(i int) X?</code> - get the latest value of the ref at index i. <code class="lang-conc">null</code> if unset. (non blocking method).</p>
+</li>
+  <li><p><code class="lang-conc">put(i int, x X) void</code> - set the latest value of the ref at index i.</p>
+</li>
+  <li><p><code class="lang-conc">getSize() int</code> - Returns the size of the <code class="lang-conc">RefArray</code>.</p>
+</li>
+  <li><p><code class="lang-conc">modified() List&lt;Integer&gt;</code> - Returns a non empty list of indexes corresponding to the most recently changed elements of the <code class="lang-conc">RefArray</code> in a transaction only if called within the context of a reactive component: <code class="lang-conc">every</code>, <code class="lang-conc">onchange</code>, <code class="lang-conc">await</code>, <code class="lang-conc">async</code>.</p>
+</li>
+</ul class="simple">
+<p>Example usage:</p>
+<pre><code class="lang-conc">import com.concurnas.runtime.ref.RefArray 
+
+xx int:RefArray = [Integer(1) 2 3 4]
+xx[0] := 99
+elm = xx[3]
+	
+//xx == [99 2 3 4]
+//elm == 4
+</code></pre>
+<p>An alternative to RefArrays are arrays of refs.</p>
+</div>
+</div>
+<h3 id="nested-refs">Nested refs<a class="headerlink" href="#nested-refs" title="Permalink to this headline" id="nested-refs">?</a></h3>
+<p>The Concurnas ref syntax supports nesting, i.e. refs of refs. Though this feature is of limited usability there are occasions where it can be incredibly useful. The principles are straightforward. Let's look at some examples:</p>
+<pre><code class="lang-conc">aref1 int:: //declare a ref of a ref
+aref2 int:: = 53 //declare and assign a value to the ref of a ref
+aref3 = 53:: //infer type as ref of ref: int::
+
+anint1 int = aref2 //extract value helf by ref of ref
+anint2 int = aref2::get() //extract value helf by ref of ref
+nestedref int: = aref2:get()//extract ref held by ref
+</code></pre>
+<p>Above we can see that when we declare nested refs we need only append the ref operator to the element we are nesting. In the case of a type this is: <code class="lang-conc">int::</code> and when calling methods on nested refs: <code class="lang-conc">aref2:get()</code>. Concurnas will automatically ref/unref a value to the appropriate level of nesting in cases where possible:</p>
+<pre><code class="lang-conc">def expectsRefOfRef(arefofref int::) =&gt; arefofref
+
+aref1 = 12:
+expectsRefOfRef(aref1)//equvilent to: aref1: (which is of type int::)
+</code></pre>
+<p>Refs of custom refs, and vice verse may be created and used in a similar manner:</p>
+<pre><code class="lang-conc">class CustomRef&lt;X&gt;(type Class&lt;?&gt;[], ~extraArg int) &lt; com.concurnas.runtime.ref.Local&lt;X&gt;(type)
+
+custRefOfRef int::CustomRef = 16//CustomRef holding a ref of type int
+</code></pre>
+</div>
+</div>
+<h2 id="reactive-programming">Reactive programming<a class="headerlink" href="#reactive-programming" title="Permalink to this headline" id="reactive-programming">?</a></h2>
+<p>Concurnas provides four major components for supporting reactive programming. The reactive elements are defined as: <code class="lang-conc">await</code>, <code class="lang-conc">every</code>, <code class="lang-conc">onchange</code> and <code class="lang-conc">async</code>. These elements allow us to write code in a natural reactive style and allows our programs to perform operations contingent upon a change to one or more monitored refs.</p>
+<div class="section">
+<div class="section">
+<h3 id="await">await<a class="headerlink" href="#await" title="Permalink to this headline" id="await">?</a></h3>
+<p>The <code class="lang-conc">await</code> keyword takes a series of expressions evaluating to one or more references and will block execution until at least one of those references has been set. For example:</p>
+<pre><code class="lang-conc">complete boolean:
+{
+  //some complex calculation..
+  complete = true
+}!//spawn an isolate to execute the above concurrently.
+
+await(complete)//pause further execution until complete is set
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="await-guards">await guards<a class="headerlink" href="#await-guards" title="Permalink to this headline" id="await-guards">?</a></h4>
+<p>An optional guard condition may be included within the <code class="lang-conc">await</code> statement. If so the <code class="lang-conc">await</code> statement behaves as before but will only return true when the guard condition resolves to true:</p>
+<p>can be declared within the <code class="lang-conc">every</code> or <code class="lang-conc">onchange</code> block</p>
+<pre><code class="lang-conc">execount int: = 0
+for(a in 1 to 10){
+  //some complex calculation..
+  execount++
+}!//spawn an isolate to execute the above concurrently.
+
+await(execount; execount==10)//pause further execution until execount == 10
+</code></pre>
+<p>The execution of the <code class="lang-conc">await</code> statement (including guard expression) takes place within its own isolate.</p>
+</div>
+</div>
+<h3 id="every-and-onchange">every and onchange<a class="headerlink" href="#every-and-onchange" title="Permalink to this headline" id="every-and-onchange">?</a></h3>
+<p>Concurnas provides two reactive blocks which are central to most reactive programs. These are the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks. They both take a ref (or group of refs) and will monitor this ref(s) for changes. Upon a notification of a change occuring the body of the block shall be executed.</p>
+<p>Like the <code class="lang-conc">await</code> statement, <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks persist within their own isolate, when they react to changes to refs they execute their code body within that isolate. Hence upon their successful initialization they immediately return the flow control to the invoking isolate.</p>
+<p>The difference between the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks is that the <code class="lang-conc">every</code> block will be initially triggered upon initialization of the block if any of the monitored refs has an initial value set. The <code class="lang-conc">onchange</code> block on the other and will only be triggered if a change is made to a ref post initialization.</p>
+<p>Here is an example of a <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> block:</p>
+<pre><code class="lang-conc">lhs int:
+rhs int:
+result1 int:
+result2 int:
+every(lhs, rhs){}
+  result = lhs + rhs
+}
+
+onchange(lhs, rhs){}
+  result2 = lhs + rhs
+}
+</code></pre>
+<p><code class="lang-conc">every</code> and <code class="lang-conc">onchange</code>, just like all blocks in Concurnas, supports the single line block syntax, i.e.:</p>
+<pre><code class="lang-conc">lhs int:
+rhs int:
+result1 int:
+every(lhs, rhs){}
+  result1 = lhs + rhs
+}
+//can be written as:
+plusop2 = every(lhs, rhs) {lhs + rhs}
+</code></pre>
+<p><code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks will be triggered every time a change is made to a monitored ref. Code executed within their body which references the ref(s) that were changed in the transaction which caused that trigger with have their values locked at the value which was written in the transaction, other refs (which may or may not be monitored) will reflect the latest state of the ref in question as normal. An example:</p>
+<pre><code class="lang-conc">
+aref int:
+onchange(aref){
+  System.out.println("latest value of aref: {aref:get()}")
+}
+
+aref=1
+aref=2
+aref=3
+
+//will output to System.out:
+//1
+//2
+//3
+</code></pre>
+<p><code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks will cease to monitor refs or be executable (and hence become eligible for garbage collection) when all of their monitored refs are in a closed state or are otherwise out of scope. Additionally if the block is explicitly returned from via the <code class="lang-conc">return</code> keyword, then it will also cease to be executable - see the <a href="concurrentProgramming.html#returning-from-every-and-onchange">Returning from \lstinline!every! and \lstinline!onchange!</a> section for more details.</p>
+<div class="section">
+<div class="section">
+<h4 id="declarations-within-every-and-onchange-blocks">Declarations within every and onchange blocks<a class="headerlink" href="#declarations-within-every-and-onchange-blocks" title="Permalink to this headline" id="declarations-within-every-and-onchange-blocks">?</a></h4>
+<p>It is possible to assign and declare a ref within a <code class="lang-conc">every</code> or <code class="lang-conc">onchange</code> block as follows:</p>
+<pre><code class="lang-conc">def retRef() int: =&gt; 12
+itmchanged = onchange(watch = retRef()) { watch }
+</code></pre>
+</div>
+<div class="section">
+<h4 id="returning-from-every-and-onchange">Returning from every and onchange<a class="headerlink" href="#returning-from-every-and-onchange" title="Permalink to this headline" id="returning-from-every-and-onchange">?</a></h4>
+<p><code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks may return values, for example:</p>
+<pre><code class="lang-conc">lhs int:
+rhs int:
+plusop2 = every(lhs, rhs){lhs + rhs}
+</code></pre>
+<p>Since <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks operate within their own isolate if an exception is thrown and left uncaught within that block, the exception will be set on the return value. In the above example <code class="lang-conc">plusop2</code>. After this exception has occurred no further execution of the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> block will take place. The effect is the same in cases where there is no return value, the difference being that the exception will be handled by the isolate default exception handler - which will simple output a stack trace to the <code class="lang-conc">System.err</code> console output stream.</p>
+<p>If the <code class="lang-conc">return</code> keyword is explicitly used in order to return from a <code class="lang-conc">every</code> or <code class="lang-conc">onchange</code> block then this has the additional side effect of terminating future execution of the <code class="lang-conc">every</code> or <code class="lang-conc">onchange</code> block.</p>
+</div>
+<div class="section">
+<h4 id="every-and-onchange-parameters">every and onchange parameters<a class="headerlink" href="#every-and-onchange-parameters" title="Permalink to this headline" id="every-and-onchange-parameters">?</a></h4>
+<p><code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks may have the following optional parameters attached to them by specifying one post <code class="lang-conc">;</code> after the refs to be monitored:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">onlyclose</code> - <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks tagged with this parameter will only react to refs being closed.</p>
+</li>
+</ul class="simple">
+<p>Example:</p>
+<pre><code class="lang-conc">lhs int:
+rhs int:
+howmanyclosed = every(lhs, rhs; onlyclose){changed.getChanged().length}
+</code></pre>
+</div>
+<div class="section">
+<h4 id="implicit-ref-monitoring">Implicit ref monitoring<a class="headerlink" href="#implicit-ref-monitoring" title="Permalink to this headline" id="implicit-ref-monitoring">?</a></h4>
+<p>Concurnas will automatically infer which refs to monitor for an <code class="lang-conc">every</code> or <code class="lang-conc">onchange</code> block if none are provided in the definition:</p>
+<pre><code class="lang-conc">x := 10
+y := 5
+
+result = onchange { x + y } //x and y will automatically be monitored for changes
+</code></pre>
+<p>Concurnas will monitor only those refs defined outside the scope of the onchange/every block. Refs referred to indirectly within the body of methods/functions will not be monitored. For example:</p>
+<pre><code class="lang-conc">x := 10
+def xSquared() =&gt; x ** 2
+
+result = onchange{ xSquared()}//x will NOT be automatically monitored
+</code></pre>
+<p>In fact, in the above example, this will not compile because no refs to monitor have been specified (nor can be inferred) in the onchange definition.</p>
+</div>
+</div>
+<h3 id="compact-every-and-onchange">Compact every and onchange<a class="headerlink" href="#compact-every-and-onchange" title="Permalink to this headline" id="compact-every-and-onchange">?</a></h3>
+<p>Concurnas provides a more compact way to define <code class="lang-conc">onchange</code> and <code class="lang-conc">every</code> blocks when they are used on the right hand side of an assignment. In essence, one can replace <code class="lang-conc">onchange</code> with <code class="lang-conc">&lt;-</code> and <code class="lang-conc">every</code> with <code class="lang-conc">&lt;=</code>.</p>
+<pre><code class="lang-conc">x := 10
+y := 5
+
+res1 &lt;-(x, y) x + y //onchange with dependencies explicitly defined
+res2 &lt;=(x, y) x + y //every with dependencies explicitly defined
+
+res3 &lt;- x + y //onchange with dependencies implicitly defined
+res4 &lt;= x + y //every with dependencies implicitly defined
+</code></pre>
+<p>This compact syntax in particular makes performing reactive computing with refs very convenient.</p>
+</div>
+<div class="section">
+<h3 id="async">Async<a class="headerlink" href="#async" title="Permalink to this headline" id="async">?</a></h3>
+<p>The <code class="lang-conc">async</code> block enables us to define a collection of related <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks with an optional <code class="lang-conc">pre</code> and <code class="lang-conc">post</code> block. <code class="lang-conc">async</code> blocks perform execution within one dedicated isolate for all <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks. Like <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks, <code class="lang-conc">async</code> blocks will permit the initializing isolate to continue with execution post initialization.</p>
+<p>The optional <code class="lang-conc">pre</code> block enables us to define and initialize state which is accessible only to the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks of the <code class="lang-conc">async</code> block. The optional <code class="lang-conc">post</code> block enables us to execute code when the monitored refs of all the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks are in a closed state and the <code class="lang-conc">async</code> block terminated.</p>
+<p>Example:</p>
+<pre><code class="lang-conc">finalCount int:
+tally1 = 2:
+tally2 = 2:
+
+async{
+  pre{
+    count = 0
+  }
+	
+  every(tally1){
+    count += tally1	
+  }		
+	
+  onchange(tally2){
+    count += tally2		
+  }
+	
+  post{
+    finalCount = count
+  }
+}
+
+tally1 = 9; tally1 = 10; tally1 = 10
+tally2 = 45; tally2 = 3; tally2 = 53
+
+tally1:close(); tally2:close()
+
+await(finalCount)
+
+//finalCount == 132
+</code></pre>
+<div class="section">
+<div class="section">
+<h4 id="async-returning-values">Async returning values<a class="headerlink" href="#async-returning-values" title="Permalink to this headline" id="async-returning-values">?</a></h4>
+<p>Like single <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code>, <code class="lang-conc">async</code> blocks may return values. Either all of the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks must return a value or one value must be returned from the optional <code class="lang-conc">post</code> block.</p>
+<p>Example of all the <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> blocks returning values:</p>
+<pre><code class="lang-conc">finalCount int:
+tally1 = 2:
+tally2 = 2:
+
+lastproc = async{
+  pre{
+    count = 0
+  }
+
+  every(tally1){
+    count += tally1
+    count//return this value
+  }		
+
+  onchange(tally2){
+    count += tally2		
+    count//return this value
+  }
+
+  post{
+    finalCount = count
+  }
+}
+
+tally1 = 9; tally1 = 10; tally1 = 10
+tally2 = 45; tally2 = 3; tally2 = 53
+
+tally1:close(); tally2:close()
+
+await(finalCount)
+
+//finalCount == 132
+</code></pre>
+<p>Example of the <code class="lang-conc">post</code> block returning a value:</p>
+<pre><code class="lang-conc">tally1 = 2:
+tally2 = 2:
+
+finalCount = async{
+  pre{
+    count = 0
+  }
+
+  every(tally1){
+    count += tally1
+  }		
+
+  onchange(tally2){
+    count += tally2		
+  }
+
+  post{
+    count//return this value
+  }
+}
+
+tally1 = 9; tally1 = 10; tally1 = 10
+tally2 = 45; tally2 = 3; tally2 = 53
+
+tally1:close(); tally2:close()
+
+await(finalCount)
+//finalCount == 132
+</code></pre>
+</div>
+</div>
+<h3 id="reacting-to-multiple-refs">Reacting to multiple refs<a class="headerlink" href="#reacting-to-multiple-refs" title="Permalink to this headline" id="reacting-to-multiple-refs">?</a></h3>
+<p>In the previously examined examples of reactive programming we have only considered the case of monitoring individual refs for changes. However, Concurnas supports monitoring of multiple refs at the same time. The following groupings of refs may be monitored in any of the reactive elements: <code class="lang-conc">await</code>, <code class="lang-conc">every</code>, <code class="lang-conc">onchange</code> and <code class="lang-conc">async</code>:</p>
+<ul class="simple">
+  <li><p><b>Individual refs</b> - Multiple individual refs may be referenced in a comma separated list:</p>
+<pre><code class="lang-conc">  lhs int:
+  rhs int:
+  plusop = every(lhs, rhs){ lhs + rhs	}
+</code></pre>
+<p>Multiple refs may be declared and assigned within the reactive element provided that the are in the comma seperated list, for example:</p>
+<pre><code class="lang-conc">  lhs int:
+  rhs int:
+  plusop = every(a = lhs, b = rhs) { a + b}
+</code></pre>
+</li>
+  <li><p><b>Arrays of refs</b> - Multiple individual refs may be referenced in a array of refs:</p>
+<pre><code class="lang-conc">  lhs int:
+  rhs int:
+  watchAr = [lhs rhs]
+  plusop = every(watchAr){ lhs + rhs}
+</code></pre>
+<p>The refs monitored are those present within the array upon creation of the reactive element in question. If the contents of the array changes post element creation these changes will not be included in the set of refs to be monitored. For monitoring of a dynamic set of refs, a <code class="lang-conc">ReferenceSet</code> object is more appropriate.</p>
+</li>
+  <li><p><b>Lists, maps or sets of refs</b> - Multiple individual refs may be referenced in a list or set of refs or the key set of a map:</p>
+<pre><code class="lang-conc">  lhs int:
+  rhs int:
+  watchAr list&lt;int:&gt; = [lhs, rhs]
+  plusop = every(watchAr) { lhs + rhs}
+</code></pre>
+<p>As with likes of arrays of refs, only the refs present within lists, maps or sets of refs at the point of element creation will be included for monitoring. For monitoring of a dynamic set of refs, a <code class="lang-conc">ReferenceSet</code> object is more appropriate.</p>
+</li>
+  <li><p><b>ReferenceSets</b> - Instances of <code class="lang-conc">com.concurnas.runtime.cps.ReferenceSet</code> can be used in order to monitor a dynamically changeable set of refs:</p>
+<pre><code class="lang-conc">  from com.concurnas.runtime.cps import ReferenceSet
+  lhs int:
+  rhs int:
+	
+  liveSet = new ReferenceSet()
+  liveSet.add(lhs)
+  liveSet.add(rhs)
+		
+  numChanged = every(liveSet) { changed.getChanged().length }
+	
+  liveSet.remove(lhs)
+  //our every expression will continue to monitor only 'rhs' for changes...
+</code></pre>
+<p>Either closing or removing a ref from the monitored <code class="lang-conc">ReferenceSet</code> will result in it being no longer being monitored by the reactive element.</p>
+</li>
+  <li><p><b>A mixture of the above</b> - Multiple instances of the aforementioned groupings of refs may be used in a reactive element provided that they are presented as a comma separated list:</p>
+<pre><code class="lang-conc">  lhs int:
+  rhs int:
+  another1 int:
+  another2 int:
+  another3 int:
+  watchAr = [another1 another2 another3]
+  numChanged = onchange(lhs, rhs, watchAr) { changed.getChanged().length }
+</code></pre>
+</li>
+</ul class="simple">
+<p>A reactive element listening to more than one ref will be awoken for execution if any of refs it monitors is changed.</p>
+<p>There are some special considerations and tools to bear in mind when working with reactive elements monitoring more than one ref:</p>
+<div class="section">
+<div class="section">
+<h4 id="changed">changed<a class="headerlink" href="#changed" title="Permalink to this headline" id="changed">?</a></h4>
+<p>The <code class="lang-conc">changed</code> keyword can be used in order to obtain the set of refs which have been changed as part of the transaction which has caused the reactive element to be activated. All changes to refs, even to a single ref outside of a transaction will result in a transaction being created. The changed keyword itself will return the transaction object (of type <code class="lang-conc">com.concurnas.bootstrap.runtime.transactions.Transaction</code>) holding the changed set of refs, accessible by calling the <code class="lang-conc">getChanged() com.concurnas.runtime.ref.LocalArray&lt;com.concurnas.runtime.ref.Ref&lt;?&gt;&gt;</code> method.</p>
+<pre><code class="lang-conc">lhs int:
+rhs int:
+numChanged = onchange(lhs, rhs) { changed.getChanged().length }
+//numChanged is a ref containing the number of refs changed in a transaction causing onchange to be triggered
+</code></pre>
+</div>
+<div class="section">
+<h4 id="reactive-element-termination">Reactive Element termination<a class="headerlink" href="#reactive-element-termination" title="Permalink to this headline" id="reactive-element-termination">?</a></h4>
+<p>When a reactive element is monitoring more than one ref for changes it will be terminated when all of those refs are closed. This can be problematic when one is using a <code class="lang-conc">com.concurnas.runtime.cps.ReferenceSet</code> in order to dynamically react to changes in refs since when they happen to be all closed and/or removed from the monitored <code class="lang-conc">ReferenceSet</code> instance the reactive element will be closed for future execution. We must be mindful of this behaviour and if our use case dictates that there are cases where we must remove or close all refs being monitored in a <code class="lang-conc">ReferenceSet</code> then we must be careful to recreate a new reactive element if we later come to have more refs which need to be dynamically monitored.</p>
+</div>
+</div>
+</div>
+<h2 id="transactions">Transactions<a class="headerlink" href="#transactions" title="Permalink to this headline" id="transactions">?</a></h2>
+<p>Concurnas supports software transactional memory via the <code class="lang-conc">trans</code> block keyword. This allows us to make changes to one or more refs and have those changes visible outside of our transaction on an atomic basis. <code class="lang-conc">trans</code> blocks behave like normal blocks in so much as they operate within the same isolate as the invoker.</p>
+<p>Recall that a reactive element listening to more than one ref will be awoken for execution if any of refs it monitors is changed in a transaction. For this reason the following code will result in our <code class="lang-conc">onchange</code> block being invoked twice:</p>
+<pre><code class="lang-conc">lhs int: = 100
+rhs int: = 100
+onchange(lhs, rhs) {//onchange will always act on the latest known value
+  System.out.println("sum: {lhs + rhs}")
+}
+
+lhs -= 10
+rhs += 10
+
+//will output:
+//sum: 200 or 190
+//sum: 200
+</code></pre>
+<p>Further more, there is some non determinism here in that the first value output may or may not include the change which is made to the <code class="lang-conc">rhs</code> ref since this may not have have occurred yet when the <code class="lang-conc">onchange</code> is triggered</p>
+<p>We can change this behaviour by combining our changes to <code class="lang-conc">lhs</code> and <code class="lang-conc">rhs</code> in one transaction, in a <code class="lang-conc">trans</code> block:</p>
+<pre><code class="lang-conc">lhs int: = 100
+rhs int: = 100
+onchange(lhs, rhs) {
+  System.out.println("sum: {lhs + rhs}")
+}
+
+trans{
+  lhs -= 10
+  rhs += 10
+}
+
+//will output:
+//sum: 200
+</code></pre>
+<p>The above will always provide a consistent result of a single output value from our <code class="lang-conc">onchange</code> block.</p>
+<div class="section">
+<div class="section">
+<h3 id="transaction-execution">Transaction execution<a class="headerlink" href="#transaction-execution" title="Permalink to this headline" id="transaction-execution">?</a></h3>
+<p>Transactions are guaranteed to complete execution atomically or throw an exception. Changes occurring within an exception are not visible outside of that transaction until the entire transaction has completed execution.</p>
+<p>Transactions operate on an optimistic basis in assuming that ref contention, where a ref is changed by a different entity other than the transaction, is an unlikely occurrence. Should it occur however, the transaction will internally 'roll back' all the refs which it has changed and try execution again and again until it succeeds.</p>
+<p>It's for this reason that non mutable non-ref changing operations such as i/o, calling methods on mutable objects or changing variables from outside the transaction should be avoided, since these are not rolled back should ref contention occur (and are sometimes, such as in the case of i/o, impossible to roll back anyway). If we do need to perform non-ref related operations within a transaction we need to ensure that they are idempotent operations.</p>
+</div>
+<div class="section">
+<h3 id="returning-from-transactions">Returning from transactions<a class="headerlink" href="#returning-from-transactions" title="Permalink to this headline" id="returning-from-transactions">?</a></h3>
+<p>Transactions, like any other block in Concurnas, may return a value:</p>
+<pre><code class="lang-conc">account1 int: = 1000
+account2 int: = 120
+
+takeoff = 10
+
+prevBal = trans{
+  prev = account1
+  account1 -= takeoff
+  account2 += takeoff
+  prev
+}
+//prevBal == 1000
+</code></pre>
+</div>
+<div class="section">
+<h3 id="nested-transactions">Nested Transactions<a class="headerlink" href="#nested-transactions" title="Permalink to this headline" id="nested-transactions">?</a></h3>
+<p>Transactions may be nested. Any changes to refs taking place within an inner nested transactions will be visible to any outer nesting transactions upon completion, and those changes, along with those made in any nesting transactions will also be visible outside the transaction once the outermost layer of transaction has been completed. For example:</p>
+<pre><code class="lang-conc">acc1 = 10000:
+acc2 = 10000:
+acc3 = 999:
+
+trans{
+  trans{
+    acc3++
+  }
+//change to acc3 is visible below but at this point not outside the trans
+  acc1 -= acc3
+  acc2 += acc3
+}
+//now all changes to acc1, acc2 and acc3 are visible
+//acc3 == 1000, acc1 == 9000, acc2 == 11000
+</code></pre>
+</div>
+<div class="section">
+<h3 id="change-sets">Change sets<a class="headerlink" href="#change-sets" title="Permalink to this headline" id="change-sets">?</a></h3>
+<p>As we have already seen when it comes to reactive elements, they will be triggered upon any of their monitored refs being changed. However, as a result of a transaction, from the perspective of the reactive element, it is possible for the change set to include rfs which are not monitored as part of the reactive elements group of interest. This should be borne in mind when building algorithms which inspect the <code class="lang-conc">changed</code> set of a reactive element. For example:</p>
+<pre><code class="lang-conc">acc1 = 10000:
+acc2 = 10000:
+
+whatchanged = onchange(acc1) { changed.getChanged().length }
+
+trans{
+  acc1 -= 10
+  acc2 += 10
+}
+//whatchanged == 2
+</code></pre>
+<p>Above, we see that <code class="lang-conc">whatchanged</code> will be set to <code class="lang-conc">2</code>. This may seen like a bug at first because the <code class="lang-conc">onchange</code> block is only monitoring one element, but this is expected as the changed set includes changes to two refs within the transaction changing them.</p>
+</div>
+</div>
+<h2 id="temporal-computing">Temporal Computing<a class="headerlink" href="#temporal-computing" title="Permalink to this headline" id="temporal-computing">?</a></h2>
+<p>A common pattern in concurrent systems engineering is to want to have some for of time based trigger, "wait 10 seconds then do x" or "do y every 3 seconds etc" or "perform this action at this certain time". At Concurnas we refer to this as temporal computing.</p>
+<p>Temporal computing is supported via the Pulsar library found at: <code class="lang-conc">com.concurnas.lang.pulsar</code>. This library allows us to schedule activities to take place in the future after a certain amount of time has elapsed. It also allows us to schedule tasks for repetition.</p>
+<p>The pulsar provides two implementations of the <code class="lang-conc">com.concurnas.lang.pulsar.Pulsar</code> trait which presents five methods. These all return a ref which will be updated with the current time at the point of event trigger:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">after(after java.time.Duration) java.time.LocalDateTime:</code> - Fire off after the specified duration.</p>
+</li>
+  <li><p><code class="lang-conc">schedule(when LocalDateTime) OffsetDateTime:</code> - Fire off at a certain date time in the future.</p>
+</li>
+  <li><p><code class="lang-conc">repeat(after Duration) LocalDateTime:</code> - Trigger with a certain degree of frequency.</p>
+</li>
+  <li><p><code class="lang-conc">repeat(after Duration, until LocalDateTime) LocalDateTime:</code> - Trigger with a certain degree of frequency until a point in time in the future.</p>
+</li>
+  <li><p><code class="lang-conc">repeat(after Duration, times long) LocalDateTime:</code> - Trigger with a certain degree of frequency for a fixed number of times.</p>
+</li>
+  <li><p><code class="lang-conc">getCurrentTime() LocalDateTime</code> - the current time as far as the Pulsar is concerned. This may not correspond to real time for the purposes of testing etc.</p>
+</li>
+</ul class="simple">
+<p>It is intended that the returned ref be listened to for triggers via an <code class="lang-conc">every</code> block. We'd recommend using an <code class="lang-conc">every</code> block instead of <code class="lang-conc">onchange</code> to cater for the chance that event has triggered before the triggered block has yet been created for execution.</p>
+<p>Once the stream of events returned has reached a state where by it can no longer be updated the ref will be closed. This will occur after the first trigger for the <code class="lang-conc">after</code> and <code class="lang-conc">schedule</code> cases, and after the repetition conditions have been met for the <code class="lang-conc">repeat</code> cases. For the <code class="lang-conc">repeat</code> forever instance, the ref will have to be closed manually by calling <code class="lang-conc">:close()</code> or by going out of scope.</p>
+<p>Repetition intervals may not be negative. Events scheduled for future execution, via the <code class="lang-conc">after</code> and <code class="lang-conc">schedule</code> methods, may be in the past, in which case they will be triggered immediately.</p>
+<p>The two provided implementations of the <code class="lang-conc">com.concurnas.lang.pulsar.Pulsar</code> trait are as follows:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">actor com.concurnas.lang.pulsar.RealtimePulsar</code> - Uses the realtime system clock upon which our program is executing for event scheduling.</p>
+</li>
+  <li><p><code class="lang-conc">actor com.concurnas.lang.pulsar.FrozenPulsar</code> - Supports injecting of time as a controllable variable. This is aimed at testing of Pulsar based solutions.</p>
+</li>
+</ul class="simple">
+<p>Both implementations above are actors, this is handy because they can be shared between isolates.</p>
+<div class="section">
+<div class="section">
+<h3 id="developing-temporal-applications">Developing temporal applications<a class="headerlink" href="#developing-temporal-applications" title="Permalink to this headline" id="developing-temporal-applications">?</a></h3>
+<p>Lets look at an example of a temporal 'hello world' application:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.pulsar import Pulsar, RealtimePulsar
+from java.time import Duration
+
+trait TaskToDo{
+  def doTask() void
+}
+
+inject class EventScheduler(pulsar Pulsar, task TaskToDo){
+  def scheduleEvent(){
+    tigger := pulsar.after(Duration.ofSeconds(10))//schedule event for 10 seconds time...
+    every(tigger){
+      task.doTask()
+    }
+  }
+}
+
+class HelloWorldTask ~ TaskToDo{
+  def doTask(){
+    System out println "Hello world!"
+  }
+}
+
+provider Temporal{
+  provide EventScheduler
+  single Pulsar =&gt; new RealtimePulsar()//single as we wish use the same instance for all provided EventScheduler's
+  TaskToDo =&gt; new HelloWorldTask()
+}
+
+
+schduler = new Temporal().EventScheduler()
+schduler.scheduleEvent()
+
+</code></pre>
+<p>Above we are using the ref returned from a call to the <code class="lang-conc">after</code> method of our injected <code class="lang-conc">Pulsar</code> instance to call the <code class="lang-conc">doTask</code> method of our injected <code class="lang-conc">HelloWorldTask</code> instance. Our <code class="lang-conc">tigger</code> ref will have a value set to it after 10 seconds and then it will be closed. The other scheduling methods exposed by the <code class="lang-conc">Pulsar</code> instance may be used in a similar fashion to the above.</p>
+<div class="section">
+<div class="section">
+<h4 id="testing-temporal-applications">Testing temporal applications<a class="headerlink" href="#testing-temporal-applications" title="Permalink to this headline" id="testing-temporal-applications">?</a></h4>
+<p>Like concurrent computing, applications making use of temporal computing can be difficult to test, especially for tasks which are scheduled to occur infrequently, irregularly or a long way in the future. The naive way to test this sort of application this is to do so in real-time, and have to wait for however long is required for a scheduled event to occur in the future. With Concurnas however, we can use the <code class="lang-conc">FrozenPulsar</code> implementation in order to speed up this process. For example:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.pulsar import Pulsar, FrozenPulsar
+from java.time import Duration
+
+trait TaskToDo{
+  def doTask() void
+}
+
+inject class EventScheduler(pulsar Pulsar, task TaskToDo){
+  def scheduleEvent(){
+    tigger := pulsar.after(Duration.ofSeconds(10))//schedule event for 10 seconds time...
+    every(tigger){
+      task.doTask()
+    }
+  }
+}
+
+class TestTask() ~ TaskToDo{
+  -taskRun boolean:
+  def doTask(){
+    taskRun = true
+  }
+}
+
+provider TemporalTest{
+  provide EventScheduler
+  single provide FrozenPulsar =&gt; new FrozenPulsar()//single as we wish use the same instance for all provided EventScheduler's
+  single provide TaskToDo =&gt; new TestTask()//single for same reasons as above
+}
+
+
+tempoTest = new TemporalTest()
+scheduler = tempoTest.EventScheduler()
+scheduler.scheduleEvent()
+task = tempoTest.TaskToDo() as TestTask
+
+pulsar = tempoTest.Pulsar() as FrozenPulsar
+
+//now we inject the current to our pulsar...
+pulsar.currentTime = pulsar.currentTime + Duration.ofSeconds(10)
+await(task.taskRun)//wait for task to be run and for this ref to be set with a value
+</code></pre>
+<p>Above we are progressing time by 10 seconds<sup><a href="#fn1">1</a></sup> and injecting it into our <code class="lang-conc">FrozenPulsar</code> instance. We then wait for our taskRun to be set in our <code class="lang-conc">TestTask</code> instance as expected.</p>
+<p>A point to bear in mind when using the <code class="lang-conc">FrozenPulsar</code> implementation, say when testing an application making use of a repeatable event, is that progressing time to an infinite period in the future will not result in an infinite number of events being fired off, rather only one event will be triggered as a consequence of the injecting of current time once.</p>
+</div>
+</div>
+</div>
+<h2 id="parfor">Parfor<a class="headerlink" href="#parfor" title="Permalink to this headline" id="parfor">?</a></h2>
+<p>Concurnas has support for parallel for loops in the form of a <code class="lang-conc">parfor</code> loop. These are a convenient and intuitive mechanism for performing task based operations in the context of a loop, in parallel. The syntax of the <code class="lang-conc">parfor</code> loop is the same as a regular <a href="controlStatements.html#c-style-for">C style for</a> or <a href="controlStatements.html#iterator-style-for">Iterator style for</a> except that the <code class="lang-conc">parfor</code> keyword is used. <code class="lang-conc">parfor</code> loop's may use <a href="controlStatements.html#the-index-variable">index variable's</a> but may not use may use <a href="controlStatements.html#else-block">else block's</a>. <code class="lang-conc">parfor</code> loop's may return values, the returned value shall be of type <code class="lang-conc">java.util.List&lt;X:&gt;</code> where <code class="lang-conc">X</code> is the ordinary type returned from the <code class="lang-conc">parfor</code> block.</p>
+<p>For example:</p>
+<pre><code class="lang-conc">def gcd(x int, y int){//greatest common divisor of two integers
+  while(y){
+    x, y = y, x mod y
+  }
+  x
+}
+
+res1 = parfor(b in 0 to 10){
+  gcd(b, 10-b)
+}
+
+res2 = parfor(b =0; b &lt; 10; b++){
+  gcd(b, 10-b)
+}
+//res1 == res2 == [10:, 1:, 2:, 1:, 2:, 5:, 2:, 1:, 2:, 1:, 10:]
+</code></pre>
+<p>The <code class="lang-conc">parfor</code> loop operates by creating an isolate for each iteration upon which it's operating and adding it to a returned list of refs (if a return value is expected).</p>
+<div class="section">
+<div class="section">
+<h3 id="parforsync1">Parforsync<a class="headerlink" href="#parforsync1" title="Permalink to this headline" id="parforsync1">?</a></h3>
+<p>In addition to <code class="lang-conc">parfor</code>, Concurnas provides <code class="lang-conc">parforsync</code>. This is functionally the same as <code class="lang-conc">parfor</code> except it ensures that all spawned isolates have completed execution before returning control to the caller and permitting execution past the <code class="lang-conc">parforsync</code> block.</p>
+<pre><code class="lang-conc">res1 = parforsync(b in 0 to 10){
+  gcd(b, 10-b)
+}
+//exeuction of code below this point contingent on all isolates completed
+
+//res1 == [10:, 1:, 2:, 1:, 2:, 5:, 2:, 1:, 2:, 1:, 10:]
+</code></pre>
+</div>
+<div class="section">
+<h3 id="parfor-list-comprehension">Parfor list comprehension<a class="headerlink" href="#parfor-list-comprehension" title="Permalink to this headline" id="parfor-list-comprehension">?</a></h3>
+<p>Both <code class="lang-conc">parfor</code> and <code class="lang-conc">parforsync</code> may be used in order to perform list comprehension:</p>
+<pre><code class="lang-conc">res1 = gcd(b, 10-b) parfor b in 0 to 10
+res2 = gcd(b, 10-b) parforsync b in 0 to 10
+</code></pre>
+<p>Filter expressions may not be applied to the list comprehension expression where <code class="lang-conc">parfor</code> and <code class="lang-conc">parforsync</code> are used.</p>
+<p>More details of list comprehensions can be found in the <a href="listComprehensions.html#list-comprehensions">List Comprehensions chapter</a>.</p>
+</div>
+</div>
+<h2 id="which-solution-to-use">Which solution to use<a class="headerlink" href="#which-solution-to-use" title="Permalink to this headline" id="which-solution-to-use">?</a></h2>
+<p>Concurnas, being a language designed from the beginning for building reliable, scalable, high performance concurrent, distributed and parallel systems presents a wealth of different options regarding computation. Here we present a brief summary of the different options available in Concurnas and what sorts of problems they are best and least (where appropriate) well suited to solving.</p>
+<p>One important consideration to bear in mind with any Isolate based concurrency solution in Concurnas (parfor, isolates, actors and reactive programming) is that the cost(both in terms of programming effort and actual computational resources) of creating an isolate is non epsilon. Sometimes problems are of a degree of complexity that, even though they can be solved in a concurrent manner, they would be best suited to a single threaded solution for the cost of solving them in a concurrent manner would be greater, this is particularly acute for simple operations and/or small amounts of data. The effect is magnified when one introduces distributed computing - where we also need to consider a wider array of failure cases.</p>
+<ul class="simple">
+  <li><p><b>For comprehensions</b></p>
+<p>For comprehensions are great in instances where we need a quick one line solution for iterating over elements of an iterable object with the potential for filtering. However, for comprehensions are not concurrent operations and so do not scale with processor cores even if our input data size to iterate over is large.</p>
+</li>
+  <li><p><b>Vectorization</b></p>
+<p>Vectorization is a nice convenient way of working with array like data in a very concise manner. Vectorization does not take advantage of the multi-core nature of modern CPUs and so on its own has the same disadvantages as for comprehensions. GPU computing is often a better alternative to numerical computing with vectorization, though the programming model can be more work up front.</p>
+</li>
+  <li><p><b>Java [parallel] streams</b></p>
+<p>Java streams present a large and very capable API for working with data. They even provide a parallel computation implementation which is based on traditional Thread based execution and hence does not take advantage of the Concurnas model of concurrent execution. Again, for CPU based problems GPU computing is often a better solution.</p>
+</li>
+  <li><p><b>Parfor</b></p>
+<p>Parfor is a great solution for when we need to implement an operation on each element of an iterable data structure and those instances do not need to interact with one another. They are a good solution for task based parallel problems - where lot of i/o, interaction with main memory, etc much take place. But for CPU based problems where much calculation is required, GPU programming is usually a better solution.</p>
+</li>
+  <li><p><b>Refs</b></p>
+<p>Refs are an integral part of, and help us utilize, other concurrent programming solutions in Concurnas. Refs are built around the concept of optimistic shared state. All writes and reads to refs are atomic, but their state is changeable and often nondeterministic. The optimistic model of computation breaks down somewhat where there is a large degree of contention on a shared ref. For this reason actors are often a better alternative where a ref is shared and contended between a number of isolates.</p>
+</li>
+  <li><p><b>Isolates</b></p>
+<p>Isolates, like refs form the basis of many of the concurrency primitives in Concurnas. On their own they are ideally suited to implementing task based solutions to problems.</p>
+</li>
+  <li><p><b>Actors</b></p>
+<p>Actors are ideal for cases where we need to implement controlled complex shared mutable state wrapped up within an object. If ever we find ourselves needing to share an object between isolates, then an actor is our answer. Since they effectively turn all requests of them into a single threaded execution chain, if we are not careful they can become bottlenecks in our applications. They are best suited to providing task based, discrete services for instance to i/o and/or controlled access to state.</p>
+</li>
+  <li><p><b>Reactive programming: await, onchange, every, async</b></p>
+<p>The reactive programming constructs offered by Concurnas are an excellent way of working with refs in order to solve reactive and temporal logic based problems in an intuitive and natural manner. Like most of the concurrency solutions in Concurnas they can be used for both task based and CPU based computation, though are better suited to solving task based problems.</p>
+</li>
+  <li><p><b>Transactions</b></p>
+<p>Transactions enable us to modify more than one ref in an atomic fashion. Care should be taken to make transactions as simple as possible and to avoid non idempotent side effects in their execution for they can be repeated as many times as necessary in order to complete a transaction. Transactions on high contention refs should be avoided, here actors are often a better choice.</p>
+</li>
+  <li><p><b>GPU computing</b></p>
+<p>GPU computing is ideal for CPU based execution where we must perform lots of the same operations upon a large data set. Compared to single core execution (e.g. using vectorization or for comprehensions) a speed up of 100x (two orders of magnitude) is often achievable when switching execution to the GPU! Though some extra engineering work is required in order to unlock this. Considerations to bear in mind when using GPU computing are that data transference to and from the GPU can be the bottleneck of many GPU based algorithms. The setup and clean up work required in order to utilize the GPU does require some attention. GPU computing is not appropriate for task based execution.</p>
+</li>
+  <li><p><b>Distributed computing</b></p>
+<p>Distributed computing is often the final step on the scalability path for our algorithms. Distributed computing allows our programs to run across hundreds of even thousands of computers. Concurnas makes distributed computing easy by virtue of its first class citizen support for this form of computing. Distributed computing is especially useful when accessing remote or shared resources (e.g. databases, high powered GPUS etc). Some additional engineering work is required over localized computing in that the failure landscape for distributed solutions to problems is larger.</p>
+</li>
+</ul class="simple">
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>We are able to use the <code class="lang-conc">+</code> operator as it is overloaded in the <code class="lang-conc">LocalDateTime</code> class which defines a method plus taking a <code class="lang-conc">Duration</code> object as a parameter</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul class="current">
+ <li class="toctree-l1 current"><a class="reference internal current" href="concurrentProgramming.html">Concurrent Programming</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#isolates">Isolates</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#isolate-dependencies">Isolate dependencies</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#module-level-state">Module level state</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#values-returned-from-isolates">Values returned from isolates</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#exceptions-in-isolates">Exceptions in isolates</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#default-exception-handler">Default exception handler</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#isolate-executors">Isolate Executors</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#dedicated-thread">Dedicated Thread</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#dedicated-thread-worker-pool">Dedicated Thread Worker Pool</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#sync-blocks">Sync blocks</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#returning-values-from-sync">Returning values from sync</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#shared-variables-and-classes">Shared variables and classes</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#caveats">Caveats</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#shared-classes1">Shared Classes</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#actors1">Actors</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#untyped-actors">Untyped Actors</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#typed-actors">Typed Actors</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#the-of-keyword">The of keyword</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#calling-actor-methods">Calling actor methods</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#default-actors">Default Actors</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#instances-of-and-casting-actors">Instances of and casting actors</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#shared-variables-and-classes1">Shared variables and classes</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#shared-method-parameters-for-actors">Shared Method Parameters for Actors</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#actor-gotcha's">Actor gotcha's</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#spawning-isolates-directly-within-actors">Spawning isolates directly within actors</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#refs1">Refs</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-refs">Creating refs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#using-refs">Using refs</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#ref-variable-dereferencing">Ref variable dereferencing</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#notable-methods-on-refs">Notable methods on refs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#arrays-of-refs">Arrays of refs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#ref-variable-reassignment">Ref variable reassignment</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#refs-are-reified-types">Refs are reified types</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#closing-refs">Closing refs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#custom-refs">Custom refs</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#no-argument-constructor">No argument constructor</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#using-custom-refs">Using custom refs</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#refarrays">RefArrays</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#nested-refs">Nested refs</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#reactive-programming">Reactive programming</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#await">await</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#await-guards">await guards</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#every-and-onchange">every and onchange</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#declarations-within-every-and-onchange-blocks">Declarations within every and onchange blocks</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#returning-from-every-and-onchange">Returning from every and onchange</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#every-and-onchange-parameters">every and onchange parameters</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#implicit-ref-monitoring">Implicit ref monitoring</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#compact-every-and-onchange">Compact every and onchange</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#async">Async</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#async-returning-values">Async returning values</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#reacting-to-multiple-refs">Reacting to multiple refs</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#changed">changed</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#reactive-element-termination">Reactive Element termination</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#transactions">Transactions</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#transaction-execution">Transaction execution</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#returning-from-transactions">Returning from transactions</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#nested-transactions">Nested Transactions</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#change-sets">Change sets</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#temporal-computing">Temporal Computing</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#developing-temporal-applications">Developing temporal applications</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#testing-temporal-applications">Testing temporal applications</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#parfor">Parfor</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#parforsync1">Parforsync</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#parfor-list-comprehension">Parfor list comprehension</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#which-solution-to-use">Which solution to use</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

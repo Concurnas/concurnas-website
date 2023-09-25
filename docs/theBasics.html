@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Overview</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Overview"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Overview"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Overview"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/theBasics.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permalink to this headline" id="overview">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#overview">Overview</a>
+   <ul>
+   <li><a class="reference internal" href="#coding-with-concurnas">Coding with Concurnas</a>   </li>
+   <li><a class="reference internal" href="#requirements">Requirements</a>   </li>
+   <li><a class="reference internal" href="#compatibility">Compatibility</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>Terannia sent him books about mathematics and electrical circuits when she could, but they were all mimeographed copies of originals and didn’t tell him what he really needed to know. But they gave him the fundamentals, so code could be written to solve the problems. Code could do anything. Code could save the world.</p><footer>- Peter F. Hamilton. (2016) Night Without Stars. Pan Books.</footer></blockquote>
+<p>This is a high level introductory overview of the Concurnas syntax written to give the reader a basic understanding of the core structure of code which can be written in Concurnas.</p>
+<p>Broadly speaking, a Concurnas program consists of one or more <code class="lang-conc">.conc</code> source files expressed in a directory structure (the organization of which denotes the 'package' structure of the code). The source code within these source files may be in Unicode format (i.e. permitting non-English/mathematical variable and method names) and consist of the following sorts of entities:</p>
+<ul class="simple">
+  <li><p><b>Functions and methods:</b></p>
+<pre><code class="lang-conc">def sum(a int, b int){
+  return a+b
+}
+
+@Annotated(param=2)
+def plusTwo(a int) =&gt; sum(a, 2)
+</code></pre>
+</li>
+  <li><p><b>Unicode:</b></p>
+<pre><code class="lang-conc">  &pi; = Math.PI
+  &pi;Str = "&pi;=" + &pi;//&pi;=3.141592653589793 
+</code></pre>
+</li>
+  <li><p><b>Expressions:</b></p>
+<pre><code class="lang-conc">callAFunction()
+[1 2 3 4] //an integer array
+[1 2 ; 3 4] //an integer matrix definition
+[1, 2, 3, 4]//an integer list
+2+2
+2 if eval() else 15
+n+1 for n in [1 2 3]//list comprehension
+</code></pre>
+</li>
+  <li><p><b>Statements.</b> Such as assignments:</p>
+<pre><code class="lang-conc">a = 8
+anint int = 99
+var reassignOk = 12//new variable
+val nonReassign = 99//new variable cannot reassign
+</code></pre>
+</li>
+  <li><p><b>Control flow statements:</b></p>
+<pre><code class="lang-conc">for(a in [1 2 3]){
+    processIt(a)
+}
+
+while(xyz()){ 
+  doSomething() 
+} 
+
+if(a){
+  doThis()
+} elif(b){
+  doAnother()
+} else {
+  another() 
+}
+</code></pre>
+</li>
+  <li><p><b>Long lines.</b> Code which would otherwise make for a very wide line of code may be split up for aesthetic purposes using a backslash, <code class="lang-conc">\</code>:</p>
+<pre><code class="lang-conc">a = 8 \
+  + \
+  10
+</code></pre>
+</li>
+  <li><p><b>Blocks.</b> A series of entities as par above surrounded by curly braces {}</p>
+<pre><code class="lang-conc">{
+//many lines of code go here...
+}	
+</code></pre>
+</li>
+  <li><p><b>Exceptions:</b></p>
+<pre><code class="lang-conc">try{
+    something()
+}catch(e AnException){
+    //react as appropriate...
+}catch(all){
+    //catchall
+}
+</code></pre>
+</li>
+  <li><p><b>Core object oriented components:</b></p>
+<pre><code class="lang-conc">class MyClass
+trait MyTrait
+annotation MyAnnotation
+actor MyActor
+actor AnotherActor of MyClass
+enum MyEnum{ONE, TWO, THREE}
+</code></pre>
+</li>
+  <li><p><b>Isolates and refs:</b></p>
+<pre><code class="lang-conc">aref := 21 //a reference
+res = { 'hello' + ' world' }!
+//^ string concatenation performed in dedicated thread like isolate, returns ref
+res int: = myfunc(12)!
+//^ myfunc called in dedicated thread like isolate, returns ref
+res = myfunc(12)!//same as above with return type inferred
+</code></pre>
+</li>
+  <li><p><b>Reactive concurrent statements:</b></p>
+<pre><code class="lang-conc">onchange(x){ doSomething()}//on change of x, perform an action
+every(x){ doSomething(x)}//as above but including initial value
+await(x; x &gt; 2)//pause execution until the condition is met
+trans{//a transaction acting upon two references
+  a -= 10
+  b += 10
+}
+z &lt;= a+b//shorthand for every
+z &lt;- a+b//shorthand for onchange
+</code></pre>
+</li>
+  <li><p><b>Object providers:</b></p>
+<pre><code class="lang-conc">provider TestTweeterClient{
+  provide TweeterClient
+  Shortener =&gt; new TestShortner()
+  Tweeter =&gt; new MockTweeter()
+}
+</code></pre>
+</li>
+  <li><p><b>GPU computing:</b></p>
+<pre><code class="lang-conc">//a simple kernel for performing matrix multiplication...
+gpukernel 2 matMult(wA int, wB int, global in matA float[2], global in matB float[2], global out result float[2]) {
+  globalRow = get_global_id(0) // Row ID
+  globalCol = get_global_id(1) // Col ID
+	
+  value = 0f;
+  for (k = 0; k &lt; wA; ++k) {
+    value += matA[globalCol * wA + k] * matB[k * wB + globalRow];
+  }
+	
+  // Write element to output matrix
+  result[globalCol * wA + globalRow] = value;
+}
+</code></pre>
+</li>
+  <li><p><b>Comments and documentation blocks:</b></p>
+<pre><code class="lang-conc">//This is a one line comment
+
+/* This is a multi-
+line Comment */
+
+/** 
+A documentation block 
+*/
+
+/*
+Comment here
+/*
+A nested comment
+*/
+*/	
+</code></pre>
+</li>
+</ul class="simple">
+<p>Concurnas is an optionally semicolon terminated/separated language. The newline character operates to signify the end of a line of code. For example, the following function definitions are identical:</p>
+<pre><code class="lang-conc">def helloWorld1(){
+  ret = "hello World";
+  return ret
+}
+
+def helloWorld2(){
+  ret = "hello World"
+  return ret
+}
+
+def helloWorld3(){	
+   ret = "hello World"; return ret 
+}
+</code></pre>
+<p>Concurnas usually offers a compact version of syntax in cases where it would otherwise be unnecessarily verbose to write (as often seen in older programming languages) for instance, for our hello world example above we could write:</p>
+<pre><code class="lang-conc">def helloWorld4() =&gt; "hello World"
+</code></pre>
+<p>Concurnas runs on the JVM and thus gains access two both the high performance runtime of the JVM as well as the JDK standard library.</p>
+<div class="section">
+<div class="section">
+<h2 id="coding-with-concurnas">Coding with Concurnas<a class="headerlink" href="#coding-with-concurnas" title="Permalink to this headline" id="coding-with-concurnas">?</a></h2>
+<p>The ordinary workflow when building and running programs written in Concurnas is as follows:</p>
+<ol class="arabic">
+  <li><p>Setup a project using an IDE - currently Concurnas has support for Atom, Sublime Text and VS Code  <i>(coming soon!)</i></p>
+</li>
+  <li><p>Write code as appropriate saved into .conc files within a directory structure appropriately reflective of our desired packaged hierarchy.</p>
+</li>
+  <li><p>Debug said code if a debugger is provided in our chosen IDE. (optional step)</p>
+</li>
+  <li><p>Compile using the Concurnas command line compiler: <a href="concc.html#compiling-concurnas-code">concc</a>, or via our IDE if it is integrated as such.</p>
+</li>
+  <li><p>Execute the program using the Concurnas command line: conc.</p>
+</li>
+</ol class="arabic">
+<p>Concurnas also offers the following 'lightweight' approaches.</p>
+<ul class="simple">
+  <li><p>Concurnas REPL. The <code class="lang-conc">conc</code> program can will spawn an interactive shell. This is discussed in <a href="replIde.html#the-concurnas-repl">the REPL chapter</a>.</p>
+</li>
+  <li><p>Jupyter notebooks. Concurnas integrates well with Jupyter<i> (coming soon!)</i></p>
+</li>
+</ul class="simple">
+<p>Both of the lightweight approaches above are great for trying out features of Concurnas in a scriptable manner, and also writing real software.</p>
+</div>
+<div class="section">
+<h2 id="requirements">Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline" id="requirements">?</a></h2>
+<p>Concurnas is a JVM language, as such it requires at least Java 1.8 to be accessible.</p>
+</div>
+<div class="section">
+<h2 id="compatibility">Compatibility<a class="headerlink" href="#compatibility" title="Permalink to this headline" id="compatibility">?</a></h2>
+<p>Concurnas has been verified as compatible with Java 1.8 to 14. Any system upon which these versions of Java runs on,  Concurnas can also run on (i.e. Windows and Linux)</p>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1 current"><a class="reference internal current" href="theBasics.html">Overview</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#coding-with-concurnas">Coding with Concurnas</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#requirements">Requirements</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#compatibility">Compatibility</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Generics</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Generics"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Generics"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Generics"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/generics.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="generics">Generics<a class="headerlink" href="#generics" title="Permalink to this headline" id="generics">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#generics">Generics</a>
+   <ul>
+   <li><a class="reference internal" href="#generic-qualifications-for-super-classes">Generic qualifications for super classes</a>   </li>
+   <li><a class="reference internal" href="#inference-of-generic-types">Inference of generic types</a>   <ul>
+   <li><a class="reference internal" href="#constructor-argument-qualification">Constructor argument qualification</a>   </li>
+   <li><a class="reference internal" href="#via-usage-qualification">Via usage qualification</a>   <ul>
+   <li><a class="reference internal" href="#partial-inference">Partial inference</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#generics-for-methods">Generics for Methods</a>   <ul>
+   <li><a class="reference internal" href="#inference-of-generics-for-methods">Inference of Generics for Methods</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#generic-lambdas">Generic lambdas</a>   </li>
+   <li><a class="reference internal" href="#generic-method-references">Generic Method References</a>   </li>
+   <li><a class="reference internal" href="#generic-type-restrictions">Generic type restrictions</a>   </li>
+   <li><a class="reference internal" href="#bounded-generics">Bounded generics</a>   </li>
+   <li><a class="reference internal" href="#in-out-generics">In out Generics</a>   <ul>
+   <li><a class="reference internal" href="#use-site-variance">Use-site variance</a>   <ul>
+   <li><a class="reference internal" href="#covariance-in:">covariance in:</a>   </li>
+   <li><a class="reference internal" href="#contravariance-out:">contravariance out:</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#wildcards">Wildcards</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Generics are an extremely useful part of modern object oriented programming. They allows us to create 'generic' data structures and work with data in a 'generic' fashion, that is to say, they allow us to write code (only once) to work with different classes of instance objects in a type safe manner. Let's look at an example from the pre generic programming days:</p>
+<pre><code class="lang-conc">class Holder(~holds Object)
+</code></pre>
+<p>Above we have defined a <code class="lang-conc">Holder</code> class which holds just one value. So that we can hold instance objects of any type of class, we declared the <code class="lang-conc">holds</code> field (accessible via an auto generated getter and setter) to be of type Object. Now let's use it:</p>
+<pre><code class="lang-conc">holder = new Holder("hi there")
+got String = holder.getHolds() as String
+</code></pre>
+<p>Because <code class="lang-conc">getHolds</code> returns a type Object, we must always cast the return value back to the type which we stored in the Holder. Note that we must remember what the type is, this is not automatic, this code is not type safe. The following would be perfectly valid code at compile time, but would throw a case exception at runtime:</p>
+<pre><code class="lang-conc">holder = new Holder("hi there")
+
+holder.setHolds(new Integer(123))//this is ok, Integer is a subtype of Object
+
+got String = holder.getHolds() as String //this will throw a cast exception at runtime because the held value is an integer and not a String thanks to the previous setter call
+</code></pre>
+<p>Surely, there is a better way to do this. Enter generic programming which provides a typesafe mechanism to achieve this.</p>
+<p>First we redefine our Holder class with a generic parameter <code class="lang-conc">X</code> which is used in place of all instances of the type of our generic parameter:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(holds X){
+  def getHolds() X {
+    return holds
+  }
+	
+  def setHolds(newHolds X) void {
+    this.holds = newHolds
+  }
+}
+</code></pre>
+<p>When defining generic types the diamonds <code class="lang-conc">&lt;&gt;</code> are used and a comma separated list of generic type parameters are specified.</p>
+<p>When specifying generic types it has become customary to use a single uppercase letter to denote the generic type. Not that this is not a requirement, the name used can any valid identifier - but watch out for clashes.</p>
+<p>We shall now use the holder in a type safe manner:</p>
+<pre><code class="lang-conc">holder = new Holder&lt;String&gt;("hi there")
+
+holder.setHolds(123)//this now results in a compile time error!
+
+held String = holder.getHolds() //no cast required
+
+holder.setHolds("new value") //this is ok
+</code></pre>
+<p>Above we can see that we are creating a generic instance of <code class="lang-conc">Holder</code> with the <code class="lang-conc">new</code> operator by qualifying the generic parameters as a comma separated list inside a diamond pair <code class="lang-conc">&lt;&gt;</code>.</p>
+<p>We can use any object type and even primitive types as qualifiers for generic types. For instance the following are all valid variable declarations of the generic type <code class="lang-conc">Holder</code>:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(holds X)
+
+inst1 Holder&lt;String&gt;
+inst2 Holder&lt;Object&gt;
+inst3 Holder&lt;Integer&gt;
+inst4 Holder&lt;int&gt;
+inst5 Holder&lt;java.util.ArrayList&lt;String&gt;&gt;
+</code></pre>
+<p>If a class has generic parameters, these must be defined when creating instance objects of them (unless the qualification is inferable, see below) and when referring the type. So for example, the below is not valid:</p>
+<pre><code class="lang-conc">class Holder2&lt;X&gt;{
+  ~holds X
+}
+
+aholder Holder2 //invalid as we are missing a generic type qualification
+another = new Holder2()//also invalid as the generic type qualification is missing and it's not infereable from the constructor (since there are no arguments referencing the generic type)
+</code></pre>
+<div class="section">
+<div class="section">
+<h2 id="generic-qualifications-for-super-classes">Generic qualifications for super classes<a class="headerlink" href="#generic-qualifications-for-super-classes" title="Permalink to this headline" id="generic-qualifications-for-super-classes">?</a></h2>
+<p>Where a super class specifies generic types these can be qualified by using the diamond symbols <code class="lang-conc">&lt;&gt;</code> with either another generic type or a concrete type. For example, the following are all valid:</p>
+<pre><code class="lang-conc">open class SuperClass&lt;X, Y&gt;
+
+class Child1 &lt; SuperClass&lt;String, Integer&gt;//supertype qualified with concrete types
+
+class Child2&lt;A, B, C&gt; &lt; SuperClass&lt;String, Integer&gt;//generic types defined for subclass, unused as far as the superclass qualification is concerned
+
+class Child3&lt;A&gt; &lt; SuperClass&lt;A, Integer&gt;//we use a generic type from the definition of the sub class.
+
+class Child4&lt;A, B&gt; &lt; SuperClass&lt;B, A&gt;//all superclass generic parameters are taken from the subclass
+
+class Child5&lt;A, B&gt; &lt; SuperClass&lt;java.util.HashSet&lt;B&gt;, java.util.HashMap&lt;B, A&gt;&gt;//Here we are using the generic classes from the subclass within concrete classes qualifying the superclass generic types
+
+typedef MyMap&lt;X&gt; = java.util.HashMap&lt;String, X&gt;
+class Child6&lt;A, B&gt; &lt; SuperClass&lt;int, MyMap&lt;A&gt;&gt;//now we are referring to a typedef. This code is equivalent to writing: class Child6&lt;A, B&gt; &lt; SuperClass&lt;int, java.util.HashMap&lt;String, A&gt;&gt;
+</code></pre>
+</div>
+<div class="section">
+<h2 id="inference-of-generic-types">Inference of generic types<a class="headerlink" href="#inference-of-generic-types" title="Permalink to this headline" id="inference-of-generic-types">?</a></h2>
+<p>Concurnas is able to infer the generic type qualification of a generic type parameter in a generic class via two mechanisms. Constructor argument qualification and Via usage qualification:</p>
+<div class="section">
+<div class="section">
+<h3 id="constructor-argument-qualification">Constructor argument qualification<a class="headerlink" href="#constructor-argument-qualification" title="Permalink to this headline" id="constructor-argument-qualification">?</a></h3>
+<p>The generic types of an instance of a generic class type can be inferred provided that they are referenced in a constructor creating an instance of the generic class type by examining the type of the arguments passed to that constructor. For example:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(~holds X)
+
+inferred = new Holder("hi there")
+</code></pre>
+<p>Above, <code class="lang-conc">inferred</code> is inferred as being of type Holder&lt;String&gt;.</p>
+<p>In the case where there are multiple potential types which could quality the generic type, the most specific one is used. For example:</p>
+<pre><code class="lang-conc">class PairHolder&lt;X&gt;(a X, b X)
+
+infered = new PairHolder(12, 56.22)
+</code></pre>
+<p>Above, <code class="lang-conc">inferred</code> is inferred as being of type <code class="lang-conc">PairHolder&lt;Number&gt;</code>, as the two arguments satisfying <code class="lang-conc">X</code> are both subtypes of type <code class="lang-conc">Number</code>.</p>
+</div>
+<div class="section">
+<h3 id="via-usage-qualification">Via usage qualification<a class="headerlink" href="#via-usage-qualification" title="Permalink to this headline" id="via-usage-qualification">?</a></h3>
+<p>Concurnas is able to infer generic types based on their localized usage, post construction in a local variable, a top level variable or class field. This is a really powerful mechanism and saves us lots of time when writing code which uses generics, especially when we are not initially calling a constructor which Concurnas can use as par above ("Constructor argument qualification"), in order to infer the constructed object's generic qualification(s). For a variable or field that is missing generic qualification(s) Concurnas is able to infer those generics based on (amongst other things) what methods are called on the variable, what method references are created based on the variable, what values it is later assigned, methods it is passed to as an argument, what generic fields are directly set etc. Here is an example:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;{
+  ~holds X
+}
+
+holder = new Holder()//holder instance is inferred to be of type Holder&lt;String&gt; based on usesage below
+holder.holds("hi there")
+</code></pre>
+<p>Above we see that the <code class="lang-conc">holder</code> variable, when declared, it omitting its single genetic type qualification of <code class="lang-conc">X</code>. Concurnas is able to infer the type of this though via the usage of <code class="lang-conc">holder</code> - the <code class="lang-conc">holds</code>'s method method is called upon it and this information is used to qualify the generic parameter <code class="lang-conc">X</code> to <code class="lang-conc">String</code>.</p>
+<p>This is an especially useful feature which allows us to define and use some of the Concurnas built in (and auto included) functions as follows:</p>
+<pre><code class="lang-conc">typedef set = java.util.HashSet
+
+myset = set()//based on the usage below myset is inferred to be java.util.HashSet&lt;Integer&gt;
+
+myset.add(1)
+myset.add(2)
+myset.add(3)
+</code></pre>
+<p>We see above that <code class="lang-conc">myset</code> is inferred to be of generic type <code class="lang-conc">java.util.HashSet&lt;Integer&gt;</code> based on the fact that calls to the <code class="lang-conc">add</code> method pass in a value of (boxed object) type <code class="lang-conc">Integer</code> which qualifies the <code class="lang-conc">java.util.HashSet</code>'s single declared genetic type.</p>
+<div class="section">
+<div class="section">
+<h4 id="partial-inference">Partial inference<a class="headerlink" href="#partial-inference" title="Permalink to this headline" id="partial-inference">?</a></h4>
+<p>Concurnas is able to infer the full generic type qualification for multiple generic types in the case where one or more is qualified via a constructor, and one of more is qualified via usage like so:</p>
+<pre><code class="lang-conc">class Both&lt;X, Y&gt;(x X){
+  def takesOne(b Y){}
+}
+
+both = new Both(12)//based on constructor and usage below Both&lt;X, Y&gt; is inferrred to: Both&lt;Integer, String&gt;
+both.takesOne("ok")
+</code></pre>
+<p>Above we see that the generic qualifiers for the <code class="lang-conc">Both</code> instance is inferable from the constructor call and subsequent usage of the object <code class="lang-conc">bot</code> to be: <code class="lang-conc">Integer, String</code></p>
+</div>
+</div>
+</div>
+<h2 id="generics-for-methods">Generics for Methods<a class="headerlink" href="#generics-for-methods" title="Permalink to this headline" id="generics-for-methods">?</a></h2>
+<p>So far we have seen generics being used in the context of classes to make generic classes. But we can also make generic methods and functions. Here are some examples:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(~held X)
+
+def extractFromHolder&lt;X&gt;(holder Holder&lt;X&gt;) X {
+  return holder.getHeld()
+}
+
+def swap&lt;X&gt;(h1 Holder&lt;X&gt;, h2 Holder&lt;X&gt;) void {
+  tmp = h1.held
+  h1.held = h2.held
+  h2.held = tmp
+}
+
+def duplicator&lt;X&gt;(todup X) X[]{
+  return [todup todup]
+}
+</code></pre>
+<p>We can call the above functions in just the same way as we ordinarily invoke functions:</p>
+<pre><code class="lang-conc">res = duplicator&lt;String&gt;("x")//we must qulify the generic parameter type
+//res =&gt; ["x" "x"]
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="inference-of-generics-for-methods">Inference of Generics for Methods<a class="headerlink" href="#inference-of-generics-for-methods" title="Permalink to this headline" id="inference-of-generics-for-methods">?</a></h3>
+<p>Concurnas is able to infer the generic types at invocation point for a method having generic types defined. Carrying on from our previous example:</p>
+<pre><code class="lang-conc">res1 = duplicator(12) //allow Concurnas to infer the generic type
+//res =&gt; [12 12]
+</code></pre>
+<p>Nested methods/functions may also have generic types.</p>
+</div>
+</div>
+<h2 id="generic-lambdas">Generic lambdas<a class="headerlink" href="#generic-lambdas" title="Permalink to this headline" id="generic-lambdas">?</a></h2>
+<p>Generic Lambdas may be declared and used in the following manner:</p>
+<pre><code class="lang-conc">lam = def &lt;X&gt;(inst X) X[] { [inst inst]}
+res = lam(12)
+//res == [12 12]
+</code></pre>
+<p>Concurnas is able to infer the generic types based upon usage of any objects returned from an object having otherwise unqualified local generic types provided that those types are referenced in the returned object:</p>
+<pre><code class="lang-conc">def meMap&lt;X, Y&gt;() =&gt; new java.util.HashMap&lt;X, Y&gt;()
+
+counter = meMap()//created without local generics
+counter[0] = "val"
+</code></pre>
+<p>Above, the invocation of <code class="lang-conc">meMap</code> can have its local generic types inferred as <code class="lang-conc">&lt;Integer, String&gt;</code> based on the usage of the returned type of <code class="lang-conc">java.util.HashMap&lt;X, Y&gt;</code> assigned to variable <code class="lang-conc">counter</code>.</p>
+</div>
+<div class="section">
+<h2 id="generic-method-references">Generic Method References<a class="headerlink" href="#generic-method-references" title="Permalink to this headline" id="generic-method-references">?</a></h2>
+<p>Method references may be specified with generic type qualifications in a relatively unobtrusive manner. Where generic types are involved in method references they can be either qualified at reference creation time, or at invocation time:</p>
+<pre><code class="lang-conc">def doubler&lt;X&gt;(x X) =&gt; [x x]
+
+qualified = doubler&lt;int&gt;&amp;
+differed = doubler&amp;
+
+res1 = qualified(12)
+res2 = differed('hi')//generic type qualification is infered
+}
+//res1 =&gt; [12 12]
+//res2 =&gt; ['hi' 'hi']
+</code></pre>
+</div>
+<div class="section">
+<h2 id="generic-type-restrictions">Generic type restrictions<a class="headerlink" href="#generic-type-restrictions" title="Permalink to this headline" id="generic-type-restrictions">?</a></h2>
+<p>The following code is not valid:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(~holds X)
+
+myHolder Holder&lt;Object&gt; = new Holder&lt;String&gt;("something") //this is not valid code
+</code></pre>
+<p>When it comes to generic type qualification, the types must match on a 1:1 basis. Hence only the following is valid:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(~holds X)
+
+myHolder Holder&lt;String&gt; = new Holder&lt;String&gt;("something")
+</code></pre>
+<p>In Concurnas, as with most other languages which run on the JVM, generic types are by default, erased at runtime. That is to say that they are not available for reference at runtime. It is for this reason that the following code is not valid:</p>
+<pre><code class="lang-conc">class Holder&lt;X&gt;(~holds X)
+
+inst Object = new Holder&lt;String&gt;("")
+
+check = inst is Holder&lt;String&gt;//we cannot check the generic qualification
+</code></pre>
+<p>This also means that we cannot overload methods with a type signature differing in generic type qualification only:</p>
+<pre><code class="lang-conc">def aFunction(op1 java.util.ArrayList&lt;String&gt;){
+  //do something
+}
+
+def aFunction(op1 java.util.ArrayList&lt;Integer&gt;){//this won't work!
+  //do something else
+}
+</code></pre>
+<p>The above will fail as the two functions are treated as: <code class="lang-conc">def aFunction(op1 java.util.ArrayList) {} def aFunction(op1 java.util.ArrayList) {}</code> which is the same.</p>
+<p>However, none of these disadvantages are major and there are some workarounds which we can use to make generic types even more useful. We shall explore some of these next...</p>
+</div>
+<div class="section">
+<h2 id="bounded-generics">Bounded generics<a class="headerlink" href="#bounded-generics" title="Permalink to this headline" id="bounded-generics">?</a></h2>
+<p>Concurnas permits generic type definitions to be bounded such that all qualifications of generic types must be equal to or a subtype of the specified bound. This applies to both class level and method level generic definitions. In fact all generic type definitions in Concurnas are bounded implicitly to Object by default.</p>
+<p>This is a useful technique for cases where one wants to have some additional control over the types which are applicable for use within a class or method using a generic type. When defining a generic type one we need to add the type after the parameter name, For example:</p>
+<pre><code class="lang-conc">class MyClass&lt;T Number&gt;(t T){
+  def doPlus(arg T) =&gt; t.doubleValue() + arg.doubleValue()
+}
+
+mc = new MyClass(12.)
+result = mc.doPLus(13)
+
+//result == 25.
+</code></pre>
+<p>The above code is possible even though the <code class="lang-conc">T</code> type is generic since it is bounded by Number, thus we know that instances of T must be a subtype of Number.</p>
+</div>
+<div class="section">
+<h2 id="in-out-generics">In out Generics<a class="headerlink" href="#in-out-generics" title="Permalink to this headline" id="in-out-generics">?</a></h2>
+<p>Generic types on the JVM are invariant, that is to say, <code class="lang-conc">list&lt;Object&gt;</code> is not a supertype of <code class="lang-conc">list&lt;String&gt;</code>. This can be a problem if we want to write code like the following:</p>
+<pre><code class="lang-conc">strList = list&lt;String&gt;()
+objList list&lt;Object&gt; = strList//this is not permitted
+</code></pre>
+<p>We cannot assign a variable declared as type <code class="lang-conc">list&lt;Object&gt;</code> a value of type <code class="lang-conc">list&lt;String&gt;</code><sup><a href="#fn1">1</a></sup> as it would cause us problems later on when using said lists:</p>
+<pre><code class="lang-conc">objs.add(1) //totally acceptable, as Integer is a subtype of Object
+s = strList.get(0) //This now fails with a ClassCastException!
+</code></pre>
+<p>Above we are adding an <code class="lang-conc">Integer</code> into an <code class="lang-conc">Object</code> list which is actually a <code class="lang-conc">String</code> list. When we come to obtain said value from the list, when it's referenced as a String list we end up with a <code class="lang-conc">ClassCastException</code> as the previously added <code class="lang-conc">Integer</code> is in our <code class="lang-conc">String</code> list (and we expect there to be only objects of type <code class="lang-conc">String</code>).</p>
+<p>We can largely solve this problem though the use of in/out generics. These provide for a facility known as co- (<code class="lang-conc">out</code>) and contra- (<code class="lang-conc">in</code>) variance. A neat way to think about this is that <code class="lang-conc">in</code> generic parameters may only be consumed by an object (used as inputs to methods), whereas <code class="lang-conc">out</code> generic parameters may only be produced by an object (used in return values from methods).</p>
+<div class="section">
+<div class="section">
+<h3 id="use-site-variance">Use-site variance<a class="headerlink" href="#use-site-variance" title="Permalink to this headline" id="use-site-variance">?</a></h3>
+<p>Concurnas supports use site variance, this enables us to qualify individual generic parameters when declaring variables of generic types as being either <code class="lang-conc">in</code> or <code class="lang-conc">out</code>. This enables us to write code such as the following:</p>
+<div class="section">
+<div class="section">
+<h4 id="covariance-in:">covariance in:<a class="headerlink" href="#covariance-in:" title="Permalink to this headline" id="covariance-in:">?</a></h4>
+<pre><code class="lang-conc">strList = list&lt;String&gt;()
+objList list&lt;out Object&gt; = strList//objList may not have anyting added to it
+</code></pre>
+</div>
+<div class="section">
+<h4 id="contravariance-out:">contravariance out:<a class="headerlink" href="#contravariance-out:" title="Permalink to this headline" id="contravariance-out:">?</a></h4>
+<pre><code class="lang-conc">strList list&lt;in String&gt; = list&lt;String&gt;()//strList may only have elements added to it 
+objList list&lt;out Object&gt; = strList
+</code></pre>
+<p>And so via both these methods we are able to assign our <code class="lang-conc">strList</code> to our <code class="lang-conc">objList</code>. We could use this technique to say pass a <code class="lang-conc">list&lt;String&gt;</code> instance object to a method expecting a <code class="lang-conc">list&lt;out Object&gt;</code> type. Note that this all comes at the price of limiting what we can do with our generic objects.</p>
+</div>
+</div>
+</div>
+<h2 id="wildcards">Wildcards<a class="headerlink" href="#wildcards" title="Permalink to this headline" id="wildcards">?</a></h2>
+<p>As we have already seen, in Concurnas, where classes or methods require generic types, these must be qualified (or at least be inferable at compile time). However, sometimes if we want to write code which is agnostic to the type of the generic parameter is then using <code class="lang-conc">?</code> to qualify the type will allow us do this:</p>
+<pre><code class="lang-conc">from java.util import List, ArrayList
+
+def stringMaker(anyItems List&lt;?&gt;) String {
+  ret = ""
+  for( x Object in anyItems){
+    ret += "" + x
+  }
+  ret
+}
+</code></pre>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>Of course we can use naughty code like: <code class="lang-conc">objList list&lt;Object&gt; = strList as Object as list&lt;Object&gt;</code> to achieve this but it would be inadvisable to do so.</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="generics.html">Generics</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-qualifications-for-super-classes">Generic qualifications for super classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#inference-of-generic-types">Inference of generic types</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#constructor-argument-qualification">Constructor argument qualification</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#via-usage-qualification">Via usage qualification</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#partial-inference">Partial inference</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generics-for-methods">Generics for Methods</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#inference-of-generics-for-methods">Inference of Generics for Methods</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-lambdas">Generic lambdas</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-method-references">Generic Method References</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-type-restrictions">Generic type restrictions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#bounded-generics">Bounded generics</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#in-out-generics">In out Generics</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#use-site-variance">Use-site variance</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#covariance-in:">covariance in:</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#contravariance-out:">contravariance out:</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#wildcards">Wildcards</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

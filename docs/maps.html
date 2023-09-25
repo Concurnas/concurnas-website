@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Maps</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Maps"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Maps"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Maps"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/maps.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="maps">Maps<a class="headerlink" href="#maps" title="Permalink to this headline" id="maps">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#maps">Maps</a>
+   <ul>
+   <li><a class="reference internal" href="#creating-maps">Creating maps</a>   <ul>
+   <li><a class="reference internal" href="#creating-maps-with-initial-values">Creating maps with initial values</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#operations-on-maps">Operations on maps</a>   <ul>
+   <li><a class="reference internal" href="#putting-values">Putting values</a>   </li>
+   <li><a class="reference internal" href="#getting-values">Getting values</a>   </li>
+   <li><a class="reference internal" href="#checking-the-presence-of-keys">Checking the presence of keys</a>   </li>
+   <li><a class="reference internal" href="#removing-values">Removing values</a>   </li>
+   <li><a class="reference internal" href="#iteration1">Iteration</a>   </li>
+   <li><a class="reference internal" href="#more-operations">More operations</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#default-maps">Default maps</a>   <ul>
+   <li><a class="reference internal" href="#creating-default-maps">Creating default maps</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#string-maps">String maps</a>   <ul>
+   <li><a class="reference internal" href="#dot-operator-on-keys">dot operator on keys</a>   </li>
+   <li><a class="reference internal" href="#identifiers-as-string-keys-and-values">Identifiers as string keys and values</a>   </li>
+   <li><a class="reference internal" href="#object-hashcode-and-equality">Object hashCode and equality</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#map-gotchas">Map Gotchas</a>   <ul>
+   <li><a class="reference internal" href="#objects-with-non-fixed-hashcodes">Objects with non fixed hashcodes</a>   </li>
+   <li><a class="reference internal" href="#implicit-cast-of-map-keys">Implicit cast of map keys</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Concurnas has first class citizen support for creating and working with maps. Maps are an extremely useful data structure which enable us to map from one value to another in a generally very efficient manner. First class citizen support for maps in Concurnas utilizes instances of <code class="lang-conc">java.util.HashMap&lt;Key, Value&gt;</code> - they take advantage of generics in order to provide one uniform, efficient, implementation.</p>
+<div class="section">
+<div class="section">
+<h2 id="creating-maps">Creating maps<a class="headerlink" href="#creating-maps" title="Permalink to this headline" id="creating-maps">?</a></h2>
+<p>Concurnas offers a number of convenient mechanisms for creating maps. Starting with the most verbose:</p>
+<pre><code class="lang-conc">mymap = new HashMap&lt;String, int&gt;()
+</code></pre>
+<p>Above, we have created a HashMap instance which maps from elements of type String to Integer (the primitive type int is auto boxed to be of object type Integer).</p>
+<p>Concurnas comes pre packaged with an auto included map typedef which can be used in order to create a map in a more concise manner:</p>
+<pre><code class="lang-conc">mymap = map&lt;String, int&gt;()
+</code></pre>
+<p>We can take advantage of Concurnas's usage based generic type inference mechanism in order to qualify the generic parameters of the map, saving us the need to define them when constructing the map initially:</p>
+<pre><code class="lang-conc">mymap = map()
+</code></pre>
+<p>Then, based on usage of <code class="lang-conc">mymap</code> (e.g. putting items into the map) Concurnas will infer the generic types, i.e. what type is the key and what type is the value.</p>
+<div class="section">
+<div class="section">
+<h3 id="creating-maps-with-initial-values">Creating maps with initial values<a class="headerlink" href="#creating-maps-with-initial-values" title="Permalink to this headline" id="creating-maps-with-initial-values">?</a></h3>
+<p>In the case where we need to create a map having an initial set of key value associations, then the following syntax (similar to that used for lists and arrays) comes in handy:</p>
+<pre><code class="lang-conc">mymap = {'taste' -&gt; 10, 'colour' -&gt; 4+1,'shape' -&gt; 8}
+</code></pre>
+<p>Above we are defining a map as a comma separated list of key value pair maps via <code class="lang-conc">-&gt;</code>. The individual keys and values are expressions. The generic Key type of the map is taken to be the most specific type of all the keys, and the generic Value type is taken as the most specific catch all type of the values. In this case the map is a mapping between Strings to Integers.</p>
+</div>
+</div>
+<h2 id="operations-on-maps">Operations on maps<a class="headerlink" href="#operations-on-maps" title="Permalink to this headline" id="operations-on-maps">?</a></h2>
+<p>Concurnas has first class citizen support for five key operations on maps: putting values, getting values, checking the presence of keys, removing values and iterating over keys:</p>
+<div class="section">
+<div class="section">
+<h3 id="putting-values">Putting values<a class="headerlink" href="#putting-values" title="Permalink to this headline" id="putting-values">?</a></h3>
+<p>Values can be added to a map one at a time as follows:</p>
+<pre><code class="lang-conc">mymap = map()
+mymap['taste'] = 10
+mymap['colour'] = 5
+mymap['shape'] = 8
+</code></pre>
+<p>The above support allows us to avoid having to call the <code class="lang-conc">put</code> method on the map in this way: <code class="lang-conc">mymap.put('taste', 10) </code></p>
+</div>
+<div class="section">
+<h3 id="getting-values">Getting values<a class="headerlink" href="#getting-values" title="Permalink to this headline" id="getting-values">?</a></h3>
+<p>Values can be obtained from a map:</p>
+<pre><code class="lang-conc">mymap = map()
+mymap['taste'] = 10
+
+got = mymap['taste']//got now equals 10
+</code></pre>
+<p>The above support allows us to avoid having to call the <code class="lang-conc">get</code> method on the map in this way: <code class="lang-conc">got = mymap.get('taste')</code></p>
+</div>
+<div class="section">
+<h3 id="checking-the-presence-of-keys">Checking the presence of keys<a class="headerlink" href="#checking-the-presence-of-keys" title="Permalink to this headline" id="checking-the-presence-of-keys">?</a></h3>
+<p>We can test to see if a particular key is present within a map via the <code class="lang-conc">in</code>, <code class="lang-conc">not in</code> keywords:</p>
+<pre><code class="lang-conc">mymap = {'taste' -&gt; 10, 'colour' -&gt; 5,'shape' -&gt; 8}
+assert 'taste' in mymap
+assert 'weight' not in mymap//'weight' is not present in the map
+</code></pre>
+</div>
+<div class="section">
+<h3 id="removing-values">Removing values<a class="headerlink" href="#removing-values" title="Permalink to this headline" id="removing-values">?</a></h3>
+<p>Values can be removed from a map using the <code class="lang-conc">del</code> keyword</p>
+<pre><code class="lang-conc">mymap = map()
+mymap['taste'] = 10
+
+del mymap['taste']//value corresponding to 'taste' no longer exists
+</code></pre>
+<p>This saves us from having to write: <code class="lang-conc">mymap.remove('taste')</code></p>
+</div>
+<div class="section">
+<h3 id="iteration1">Iteration<a class="headerlink" href="#iteration1" title="Permalink to this headline" id="iteration1">?</a></h3>
+<p>We can iterate over the keys of a map as follows:</p>
+<pre><code class="lang-conc">mymap = {'taste' -&gt; 10, 'colour' -&gt; 5,'shape' -&gt; 8}
+
+for(key in mymap){//iterate over the keys
+  value = mymap[key]
+}
+</code></pre>
+<p>The order of map keys is not guaranteed between differing iterations over them.</p>
+</div>
+<div class="section">
+<h3 id="more-operations">More operations<a class="headerlink" href="#more-operations" title="Permalink to this headline" id="more-operations">?</a></h3>
+<p>Maps in Concurnas are instances of HashMaps. As such they have access to all of the methods provided by the JDK on which you're running your Concurnas session.For example:</p>
+<pre><code class="lang-conc">mymap1 = {'taste' -&gt; 10, 'colour' -&gt; 5,'shape' -&gt; 8}
+
+mymap2 = map()
+mymap2.putAll(mymap1)//copy contents to new instance
+
+assert mymap1 == mymap2
+</code></pre>
+<p>For an exhaustive list of methods which are invocable on instances of HashMaps for your JDK (e.g. Java 9 ) see here: <a href="https://docs.oracle.com/javase/9/docs/api/index.html?overview-summary.html">JDK docs</a>.</p>
+</div>
+</div>
+<h2 id="default-maps">Default maps<a class="headerlink" href="#default-maps" title="Permalink to this headline" id="default-maps">?</a></h2>
+<p>When using maps there is often a need to have an initial default value returned for a key in the absence of one in cases where one is extracting a value from a map. Let's say we are creating a count all instances of a number. Normally we'd have to write something like this:</p>
+<pre><code class="lang-conc">inputdata = [1,2,4,3,2,1,2,3,4,2,2,3,4,3,2,1]
+
+counter = map()
+for(x in inputdata){
+  if(x not in counter){
+    counter[x] = 0
+  }
+  counter[x]++
+}
+
+//counter now resolves to:
+//{1-&gt;3, 2-&gt;6, 3-&gt;4, 4-&gt;3}
+</code></pre>
+<p>The above is quite verbose. When defining a map, one can use the default keyword mapped to a function which will be called in instances where a value for a requested key is not present within the map. This allows us to solve our previous problem in a far more elegant manner:</p>
+<pre><code class="lang-conc">counter = {default -&gt; def (a int) { 0 }}
+counter[x]++ for x in inputdata
+</code></pre>
+<p>The default value output from the function above will be persisted within the map at the point of initial use.</p>
+<div class="section">
+<div class="section">
+<h3 id="creating-default-maps">Creating default maps<a class="headerlink" href="#creating-default-maps" title="Permalink to this headline" id="creating-default-maps">?</a></h3>
+<p>Default maps in Concurnas are instances of class: <code class="lang-conc">concurnas.lang.DefaultMap&lt;Key, Value&gt;</code>. As with conventional maps there are a few ways in which they can be created, the first of which we have already seen above, where we pass a lambda taking one argument (the Key) and returning one default value (the Value):</p>
+<pre><code class="lang-conc">counter = {default -&gt; def (a int) { 0 }}
+</code></pre>
+<p>The above is useful in cases where one wishes to use the passed key in some manner so as to derive an appropriate default value for that key.</p>
+<p>An alternative way to create a default map is to use a single expression as follows:</p>
+<pre><code class="lang-conc">counter = {1-&gt;"value", default -&gt; 0}
+</code></pre>
+<p>The above is useful in cases where the Key of the map derivable since there exists a non default mapping, above it is since we have a key value mapping from an Integer to a String.</p>
+<p>A more verbose mechanism to create a default map, bypassing the first class citizen on creation support, can be achieved as follows:</p>
+<pre><code class="lang-conc">counter = new concurnas.lang.DefaultMap&lt;int, int&gt;(def (a int) { 0 })
+</code></pre>
+<p>One can use the auto imported <code class="lang-conc">map</code> function, with a lambda passed in order to create a default map like so:</p>
+<pre><code class="lang-conc">counter = map(def (a int) { 0 })
+</code></pre>
+<p>Using the <code class="lang-conc">map</code> function, along with Concurnas's support for anonymous lambda function definitions, and usage based generic type inference allows us to write some very succinct code:</p>
+<pre><code class="lang-conc">counter = map(a =&gt; 0)
+counter[0]++
+</code></pre>
+</div>
+</div>
+<h2 id="string-maps">String maps<a class="headerlink" href="#string-maps" title="Permalink to this headline" id="string-maps">?</a></h2>
+<p>Concurnas has special support for 'string maps'<sup><a href="#fn1">1</a></sup>. All maps in Concurnas have this support. This allows us to do two convenient things:</p>
+<div class="section">
+<div class="section">
+<h3 id="dot-operator-on-keys">dot operator on keys<a class="headerlink" href="#dot-operator-on-keys" title="Permalink to this headline" id="dot-operator-on-keys">?</a></h3>
+<p>In the case where our maps keys are of type String (or originate from 'identifiers' as par above), we can use it in the following way:</p>
+<pre><code class="lang-conc">mymap = {'akey' -&gt; 12, 'another' =&gt; 14}
+
+what = mymap.akey
+//what now resolves to 12
+</code></pre>
+<p>In fact, we can chain maps together in a nested fashion:</p>
+<pre><code class="lang-conc">mymap = {'another' -&gt; {'thing' -&gt; 'nested value'}}
+what = mymap.another.thing
+//what now resolves to 'nested value'
+</code></pre>
+</div>
+<div class="section">
+<h3 id="identifiers-as-string-keys-and-values">Identifiers as string keys and values<a class="headerlink" href="#identifiers-as-string-keys-and-values" title="Permalink to this headline" id="identifiers-as-string-keys-and-values">?</a></h3>
+<p>Concurnas will recognise identifiers defined in maps with initial values that do not otherwise refer to an identifiable element in scope such as a variable name, method name etc, as being strings. This allows us to easily make single word string value/key maps without having to use the <code class="lang-conc">''</code> or <code class="lang-conc">""</code> notation:</p>
+<pre><code class="lang-conc">mymap = {akey -&gt; 12}
+
+what = myma.akey
+//what now resolves to 12
+</code></pre>
+<p>Of course we may also to use the <code class="lang-conc">''</code> or <code class="lang-conc">""</code> notation for strings mixed with 'identifier' strings:</p>
+<pre><code class="lang-conc">mymap = {akey -&gt; 12, 'another' -&gt; 1}
+
+what = mymap.another
+//what now resolves to 1
+</code></pre>
+</div>
+<div class="section">
+<h3 id="object-hashcode-and-equality">Object hashCode and equality<a class="headerlink" href="#object-hashcode-and-equality" title="Permalink to this headline" id="object-hashcode-and-equality">?</a></h3>
+<p>Most of the time we need not concern ourselves with the internals regarding how maps operate. But sometimes it is appropriate to understand this. Internal to a the maps described here are a set of key buckets into which keys are mapped to, this mapping is achieved by generating a hash code (a 32 bit integer) for the key object, this is then used to set the key value association into an appropriate bucket. Since more than one key object can have the same hash code<sup><a href="#fn2">2</a></sup> clashes can occur. When this occurs on extraction of a value from the map say, then values within the bucket are examined one by one to find the first match. This is achieved by checking the key object equality. Thus in the best case the computational complexity of our map when extracting a value is \(O(1)\), however, in the worst case where all the key objects in our environment reside within the same bucket (perhaps due to an error in the hash code generation algorithm), then our computational complexity drops down to \(O(n)\)</p>
+<p>When designing hash code generation algorithms it's important to ensure that the set of unique objects of one's class which are expected to be created and stored in a map have hashcodes that are as spread out as much as possible within the 32 bit integer space of the hashcode return value. This is to avoid clustering of values within a map bucket leading to our detrimental \(O(n)\) worst case described above.</p>
+<p>All objects in Concurnas are required to have a hashCode and equals method defined. By default Concurnas will automatically generate a <code class="lang-conc">hashCode</code> and <code class="lang-conc">equals</code> method for all classes. These methods will ensure that equality is implemented by value. These override the default provided by the JVM which provide referential equality.</p>
+<p>For more details of the nature of the default auto generated <code class="lang-conc">hashCode</code> and <code class="lang-conc">equals</code> methods see <a href="classes.html#automatically-generated-equals-and-hashcode-methods">"Automatically generated equals and hashcode methods"</a>.</p>
+</div>
+</div>
+<h2 id="map-gotchas">Map Gotchas<a class="headerlink" href="#map-gotchas" title="Permalink to this headline" id="map-gotchas">?</a></h2>
+<p>There are a few gotcha's associated with maps in Concurnas and maps in general which often catch out even seasoned pros.</p>
+<div class="section">
+<div class="section">
+<h3 id="objects-with-non-fixed-hashcodes">Objects with non fixed hashcodes<a class="headerlink" href="#objects-with-non-fixed-hashcodes" title="Permalink to this headline" id="objects-with-non-fixed-hashcodes">?</a></h3>
+<p>Objects with non fixed hashcodes that are used as keys can be problematic. The main source of error stems from the fact that as the mutable state of an object used as a key changes the hashcode of said object, more of than not (depending upon the implementation) will change as well. This means that a key which previously mapped to one internal map bucket is very likely (but not 100% certain which can lead to false positives) to map to a different bucket post state mutation. This can lead to the following sorts of errors:</p>
+<pre><code class="lang-conc">class Person(-name String, ~age int)
+
+
+fred = Person('fred', 21)
+mymap = {fred -&gt; 9}
+
+res1 = mymap[fred]
+fred.age++
+res2 = mymap[fred]
+
+//res1 == 9, but res2 is null!
+</code></pre>
+<p>We can see above that we are using the same object as a key, yet in the second instance, post object mutation, when extracting a value nothing is found and we obtain null. There are two mitigations for this sort of problem, the first to use either a <code class="lang-conc">java.util.IdentityHashMap</code> or to use only objects with immutable state as keys.</p>
+</div>
+<div class="section">
+<h3 id="implicit-cast-of-map-keys">Implicit cast of map keys<a class="headerlink" href="#implicit-cast-of-map-keys" title="Permalink to this headline" id="implicit-cast-of-map-keys">?</a></h3>
+<p>Some care must be applied when one is using keys of a boxed primitive type. Since the <code class="lang-conc">java.util.Map</code> specification defines the <code class="lang-conc">get, put, remove</code> etc methods as taking a key argument of type object, when boxing a primitive type key element this boxing will be of the primitive types natural boxed counterpart (<code class="lang-conc">Integer</code> for <code class="lang-conc">int</code>, <code class="lang-conc">Character</code> for <code class="lang-conc">char</code> etc) - this is after all an Object type, but it may not be of the Generic key type defined for the map.</p>
+<p>Hence for maps of a boxed primitive type we can end up with some surprising behaviour when auto casting and auto boxing primitive types:</p>
+<pre><code class="lang-conc">mymap = map&lt;Character, String&gt;()
+achar = 'g'
+charAsInt = achar as int
+
+mymap[achar] = "value"
+
+res = mymap[charAsInt]//res is null!
+</code></pre>
+<p>Above, <code class="lang-conc">res</code> resolves to <code class="lang-conc">null</code> as when the <code class="lang-conc">int</code><code class="lang-conc">charAsInt</code> is boxed to an <code class="lang-conc">Object</code>, it is boxed to an <code class="lang-conc">Integer</code> and not a <code class="lang-conc">Character</code>.</p>
+<p>The solution is to always explicitly cast into the primitive type which we have stored keys in:</p>
+<pre><code class="lang-conc">mymap = map&lt;Character, String&gt;()
+achar = 'g'
+charAsInt = achar as int
+
+mymap[achar] = "value"
+
+res = mymap[charAsInt as char]//res is value as expected
+</code></pre>
+<p>Above, <code class="lang-conc">charAsInt</code> resolves to <code class="lang-conc">"value"</code> as expected.</p>
+</div>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>Inspired by javascript</p>
+<p><sup><a id="fn2"></a>2</sup>32 bits of information is not enough to enumerate the entirety of existence!</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="maps.html">Maps</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-maps">Creating maps</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-maps-with-initial-values">Creating maps with initial values</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#operations-on-maps">Operations on maps</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#putting-values">Putting values</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#getting-values">Getting values</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#checking-the-presence-of-keys">Checking the presence of keys</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#removing-values">Removing values</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#iteration1">Iteration</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#more-operations">More operations</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#default-maps">Default maps</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-default-maps">Creating default maps</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#string-maps">String maps</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#dot-operator-on-keys">dot operator on keys</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#identifiers-as-string-keys-and-values">Identifiers as string keys and values</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#object-hashcode-and-equality">Object hashCode and equality</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#map-gotchas">Map Gotchas</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#objects-with-non-fixed-hashcodes">Objects with non fixed hashcodes</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#implicit-cast-of-map-keys">Implicit cast of map keys</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Method References</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Method References"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Method References"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Method References"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/methodReferences.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="method-references1">Method References<a class="headerlink" href="#method-references1" title="Permalink to this headline" id="method-references1">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#method-references1">Method References</a>
+   <ul>
+   <li><a class="reference internal" href="#basic-method-references">Basic Method References</a>   </li>
+   <li><a class="reference internal" href="#method-references-for-instance-objects">Method references for instance objects</a>   </li>
+   <li><a class="reference internal" href="#references-to-constructors">References to Constructors</a>   </li>
+   <li><a class="reference internal" href="#lambdas">Lambdas</a>   <ul>
+   <li><a class="reference internal" href="#zero-argument-lambdas">Zero argument lambdas</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#anonymous-lambdas">Anonymous lambdas</a>   <ul>
+   <li><a class="reference internal" href="#sam-types">SAM types</a>   </li>
+   <li><a class="reference internal" href="#sam-types-with-a-zero-argument-abstract-method">SAM types with a zero argument abstract method</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Method references are an extremely useful part of functional programming which are included in Concurnas. They allow one to pass a reference to a method around one's program in the same way that one would pass data via objects or primitive types. Note that in this section we use the terms 'function' and 'method' interchangeably as for the most part function and method references behave identically.</p>
+<div class="section">
+<div class="section">
+<h2 id="basic-method-references">Basic Method References<a class="headerlink" href="#basic-method-references" title="Permalink to this headline" id="basic-method-references">?</a></h2>
+<p>We create a function or method reference by using the <code class="lang-conc">&amp;</code> operator:</p>
+<pre><code class="lang-conc">def myfunction(an int, bn int) =&gt; an + bn
+
+funcRef1 (int, int) int = myfunction&amp;(int, int)
+</code></pre>
+<p>Above, <code class="lang-conc">funcRef1</code> is a method reference type <code class="lang-conc">(int, int) int</code> because we have chosen to not bind either of the two input arguments to the function when making our reference. We can call the method reference, like a normal function:</p>
+<pre><code class="lang-conc">result = funcRef1(1, 2)
+
+//result == 3
+</code></pre>
+<p>We can even make method references to method references:</p>
+<pre><code class="lang-conc">frefTofref = funcRef1&amp;(int, int)
+</code></pre>
+<p>We can choose to bind any or all of the inputs arguments to the function as follows:</p>
+<pre><code class="lang-conc">partial (int) int = myfunction&amp;(int, 10)
+full () int = myfunction&amp;(2, 2)
+
+//now lets use them...
+result = [partial(10), full()]
+
+//result == [20 4]
+</code></pre>
+<p>Notice how above the type returned from <code class="lang-conc">&amp;</code> is contingent on which input arguments have been bound. Bounded input arguments do not show up in the method reference type.</p>
+<p>If there exists only one function matching the name of the function we're trying to make a method reference for in scope, and we wish to not bind any input arguments (if there are any), then we can forgo having to specify the types to leave unbound and simply create our method reference as follows:</p>
+<pre><code class="lang-conc">funcRef (int, int) int = myfunction&amp;
+</code></pre>
+<p>Sometimes there is ambiguity in terms of type names and variable names. Though this is bad practice one can resolve this ambiguity by using an <code class="lang-conc">?</code> to indicate that we wish to leave the argument with matching typename unbounded:</p>
+<pre><code class="lang-conc">class MyClass()
+
+def bounce(an MyClass) =&gt; an
+def bounce(an int) =&gt; an
+
+MyClass = 99
+
+ref = bounce(? MyClass)//directed call to first version of function
+</code></pre>
+<p>If we hadn't used the <code class="lang-conc">?</code> above then the variable <code class="lang-conc">MyClass</code> would have attempted to have been passed to the function reference.</p>
+<p>Another neat approach we can take when defining method references (particularly for overloaded method definitions differing only in the number of arguments they have) is to simply use a comma to indicate that we wish a parameter to remain unbounded:</p>
+<pre><code class="lang-conc">def myFunction(a int, b int, c int) =&gt; a+b*c
+
+fref (int, int) int = myFunction&amp;(, 45, )
+
+call = fref(1, 3)//equvilent to calling: myFunction(1, 45, 3)
+</code></pre>
+</div>
+<div class="section">
+<h2 id="method-references-for-instance-objects">Method references for instance objects<a class="headerlink" href="#method-references-for-instance-objects" title="Permalink to this headline" id="method-references-for-instance-objects">?</a></h2>
+<p>Things become slightly more complex when we are dealing with method references on instance objects. We must decide if we wish to bind the method reference to a specific instance object at the point of definition of the method reference or not. We call these two forms, bounded and unbounded method references. The key difference is that only bounded method references may be invoked. Say we have the following class:</p>
+<pre><code class="lang-conc">class MyClass(cnt int){
+  def incMany(bywhat int){
+    cnt += bywhat
+  }
+}
+</code></pre>
+<p>Let's create a bounded method reference:</p>
+<pre><code class="lang-conc">instObj = new MyClass(10)
+boundedMethodRef = instObj.incMany&amp;
+</code></pre>
+<p>We can see above that when creating <code class="lang-conc">boundedMethodRef</code> we are referencing an instance object <code class="lang-conc">instObj</code> of <code class="lang-conc">MyClass</code> - as such the method reference held by variable <code class="lang-conc">boundedMethodRef</code> is said to be bound to object <code class="lang-conc">instObj</code>. When we call <code class="lang-conc">boundedMethodRef</code> it is though we are calling <code class="lang-conc">incMany</code> on <code class="lang-conc">instObj</code>.</p>
+<p>We can create an unbounded method reference in the following way:</p>
+<pre><code class="lang-conc">methodRef = MyClass.incMany&amp;
+</code></pre>
+<p>The above method reference <code class="lang-conc">methodRef</code> cannot be called by itself as it is not bound to an instance object of type <code class="lang-conc">MyClass</code>. Attempting to invoke <code class="lang-conc">methodRef</code> in its unbound state will result in an <code class="lang-conc">com.concurnas.bootstrap.lang.LambdaException</code> exception being thrown.</p>
+<p>In order render <code class="lang-conc">methodRef</code> callable, it first needs to be transformed into a bounded method reference. This is achieved by calling <code class="lang-conc">bind</code> on the method reference:</p>
+<pre><code class="lang-conc">instObj = new MyClass(10)
+methodRef.bind(instObj)
+</code></pre>
+<p>Now we can invoke <code class="lang-conc">methodRef</code>.</p>
+</div>
+<div class="section">
+<h2 id="references-to-constructors">References to Constructors<a class="headerlink" href="#references-to-constructors" title="Permalink to this headline" id="references-to-constructors">?</a></h2>
+<p>In Concurnas, method references are not limited to just methods, but they can be applied to constructors as well. Let's take a class:</p>
+<pre><code class="lang-conc">class MyClass(cnt int){
+  this(an int, ab int){
+    this(an + ab)
+  }
+  def incMany(bywhat int){
+    cnt += bywhat
+  }
+  override toString() =&gt; "MyClass({cnt})"
+}
+</code></pre>
+<p>We can create a constructor reference, which looks very much like a method reference, in the normal manner as follows:</p>
+<pre><code class="lang-conc">refToCon = MyClass&amp;(int, int)
+instanceObj MyClass = refToCon(12, 13)
+</code></pre>
+<p>But, what if we wish to defer the choice of constructor called to the caller of the reference? In this case we can use the following syntax in order to create a constructor reference, with special type: <code class="lang-conc">(*) X</code> where <code class="lang-conc">X</code> is the type of the instance object being created. Example:</p>
+<pre><code class="lang-conc">refToCon ( * ) MyClass = MyClass&amp; //this will defer the choice of constructor to call until later
+"result: " + refToCon(12, 13)//at this point the constructor to call is determined
+</code></pre>
+<p>This may seem to be of little use, since in the example above one could just call <code class="lang-conc">new MyClass(12, 13)</code> to have the same effect. But consider the application with locally defined classes - which by nature cannot have instance objects of them created via the new operator outside of their defined scope. We can use this feature of Concurnas to create instance objects of locally defined classes outside of their defined scope:</p>
+<pre><code class="lang-conc">def creator(){
+  class MiniClass (a String){
+    this(a int) { this(""+a) }
+    override toString() =&gt; "MiniClass: " + a
+  }
+	
+  //MiniClass cannot be created outside of the scope of creator, unless we use a constructor reference as par below...
+  return MiniClass&amp;
+}
+
+miniCRef = creator()
+
+istObj = miniCRef('hi')
+</code></pre>
+</div>
+<div class="section">
+<h2 id="lambdas">Lambdas<a class="headerlink" href="#lambdas" title="Permalink to this headline" id="lambdas">?</a></h2>
+<p>Lambdas are a nice feature of Concurnas from functional programming which allow us to create functions which do not have identifiers. When a lambda is created its type is that of a Method reference. Lambdas are created in the same way as functions but they have no identifier (no name). For example:</p>
+<pre><code class="lang-conc">plusOne (int) int = def (a int) int { return a + 1 }
+</code></pre>
+<p>They can be invoked just like normal method references:</p>
+<pre><code class="lang-conc">res = plusOne(2)
+
+//res == 3
+</code></pre>
+<p>We can compact the lambda definitions in the normal manner, the following are all equivalent:</p>
+<pre><code class="lang-conc">plusOne (int) int = def (a int) int { return a + 1 }
+plusOne = def (a int){ return a + 1 }
+plusOne = def (a int){ a + 1 }
+plusOne = def (a int) =&gt; a + 1
+</code></pre>
+<p>To see how these are useful, lets define our own map function operating on an array of integers:</p>
+<pre><code class="lang-conc">def myMap(opOn int[], func (int) int) =&gt; 	func(opOn^)
+
+data = [1 2 3 4]
+res = myMap(data, def (a int) =&gt; a+1)
+
+//res == [2 3 4 5]
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="zero-argument-lambdas">Zero argument lambdas<a class="headerlink" href="#zero-argument-lambdas" title="Permalink to this headline" id="zero-argument-lambdas">?</a></h3>
+<p>Concurnas has special additional support for zero argument lambdas. An expression which evaluates to the return type of a zero argument lambda may be used in place of a lambda definition. For example, this is perfectly valid code:</p>
+<pre><code class="lang-conc">athing () int = {5**2}
+
+res = [athing(), athing(), athing()]
+
+//res == [25, 25, 25]
+</code></pre>
+<p>In the above case the <code class="lang-conc">5**2</code> expression block will be automatically "upgraded" to a lambda, taking no arguments and returning an <code class="lang-conc">int</code> so as to match the left hand side assignment type. Note that the expression will be fully evaluated on every call to the lambda. To see this in action see the following example:</p>
+<pre><code class="lang-conc">counter = 0
+athing () int = 5**counter++	
+res = [counter, athing(), athing(), athing(), counter]
+
+//res == [0, 1, 5, 25, 3]
+</code></pre>
+<p>Here we see that the counter is incremented on every call.</p>
+<p>The above automatic "upgrading" may occur at any point where the zero argument lambda is required. For instance, in a function call:</p>
+<pre><code class="lang-conc">counter = 0
+def perform(athing () int) =&gt; [counter, athing(), athing(), athing(), counter]
+
+res = perform(5**counter++)
+
+//res == [0, 1, 5, 25, 3]
+</code></pre>
+</div>
+</div>
+<h2 id="anonymous-lambdas">Anonymous lambdas<a class="headerlink" href="#anonymous-lambdas" title="Permalink to this headline" id="anonymous-lambdas">?</a></h2>
+<p>Anonymous lambdas provide a convenient shorthand for defining lambdas. The following definitions are functionally identical:</p>
+<pre><code class="lang-conc">mul2v1 = def (a int) int =&gt; a*2   //expanded 'normal' lambda definition
+mul2v2 (int) int = (a int) =&gt; a*2 //compact lambda definition with return type inference
+
+mul2v3 (int) int = a =&gt; a*2       //fully compact lambda definition with return and argument type inference
+</code></pre>
+<p>With <code class="lang-conc">mul2v2</code> we see a more compact form of the same lambda definition as <code class="lang-conc">mul2v1</code>.</p>
+<p>The final definition <code class="lang-conc">mul2v3</code> is most interesting as only the input variable names to the lambda are defined. Their types, along with the return type, are left to be inferred based on the context in which the lambda is defined, which, in this case is on the right hand side of an assignment statement for a function type taking one integer and returning another.</p>
+<p>Another common context in which anonymous lambdas are defined are in arguments to function invocations:</p>
+<pre><code class="lang-conc">class MyNumberHolder(~a int){
+  def apply(operation (int) int) =&gt; operation(a)//apply takes a lambda and applies to to the held value of a
+}
+
+mnh = MyNumberHolder(12)
+res = mnh.apply(a =&gt; a+100)//we define a lambda in compact form
+
+//res == 112
+</code></pre>
+<p>Note that we must be able to infer the type of the lambda in order to be able to use the compact form. The following will resolve in a compile time error since we don't know what they type of <code class="lang-conc">mul</code> is:</p>
+<pre><code class="lang-conc">mul = a =&gt; a.operation(5, "n")
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="sam-types">SAM types<a class="headerlink" href="#sam-types" title="Permalink to this headline" id="sam-types">?</a></h3>
+<p>SAM types, or Single Abstract Method types are abstract classes, traits or interfaces (if referencing Java code) that define only one single abstract method. Concurnas performs a neat trick where we can map a lambda we have created, in compact form, to an instance of a SAM type. Some alternative methods to using a lambda are to implement our solution as either an instance object, or an anonymous class, but as you will see, the lambda is the preferred approach for its compactness.</p>
+<pre><code class="lang-conc">trait Operator{//This is a SAM type as there is only one method defined which is abstract 
+  def perform(arg int, arg2 int) int
+}
+
+class MyNumberHolder(~a int){
+  def apply(b int, operator Operator) =&gt; operator.perform(a, b)
+}
+
+mnh = MyNumberHolder(12)
+
+res = mnh.apply(50, a, b =&gt; a + b)// second parameter is used to generate an Operator instance
+
+//res == 62
+</code></pre>
+<p>In the above example, an instance of the Operator mixin is generated from the addition lambda defined in order to satisfy the second argument of the apply method. Note that we don't have to use the compact lambda form, the full form is acceptable for this purpose as well.</p>
+<p>This makes using the Java sdk stream library possible in Concurnas. For example:</p>
+<pre><code class="lang-conc">mylist = [1, 2, 3, 4, 5, 6, 7, 8]
+
+res = mylist.stream().map(a =&gt;a+10).collect(java.util.stream.Collectors.toList())
+
+//res == [11, 12, 13, 14, 15, 16, 17, 18]
+</code></pre>
+<p>Without the compact syntax and SAM type support we would have to write code like the following:</p>
+<pre><code class="lang-conc">mixin Operator{//This is a SAM type as there is only one method defined which is abstract 
+  def perform(arg int, arg2 int) int
+}
+
+class MyNumberHolder(~a int){
+  def apply(b int, operator Operator) =&gt; operator.perform(a, b)
+}
+
+mnh = MyNumberHolder(12)
+
+myOperator = class ~ Operator{//define a class implementing the mixin Operator
+  def perform(arg int, arg2 int) int = &gt;arg + arg2 
+}
+
+res = mnh.apply(50, new myOperator())
+
+//res == 62
+</code></pre>
+<p>The compact lambda definition is far more convenient than this alternative, and the compact form comes with no performance penalty!</p>
+</div>
+<div class="section">
+<h3 id="sam-types-with-a-zero-argument-abstract-method">SAM types with a zero argument abstract method<a class="headerlink" href="#sam-types-with-a-zero-argument-abstract-method" title="Permalink to this headline" id="sam-types-with-a-zero-argument-abstract-method">?</a></h3>
+<p>Just as with zero argument lambdas Concurnas have special additional support for SAM types whose single abstract method takes no arguments. An expression which evaluates to the return type of method can be used in place of a lambda definition as above. As such we are able to write code such as the following:</p>
+<pre><code class="lang-conc">trait ExeCounter{//this is a SAM type
+  counter int
+  def toexe() int//zero arg abstract method
+  public def invoke() int[] =&gt; [counter++ toexe()]
+}
+
+athing ExeCounter = 5
+res = [athing(), athing(), athing()]
+
+//res == [[0 5], [1 5], [2 5]]
+</code></pre>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="methodReferences.html">Method References</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#basic-method-references">Basic Method References</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#method-references-for-instance-objects">Method references for instance objects</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#references-to-constructors">References to Constructors</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#lambdas">Lambdas</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#zero-argument-lambdas">Zero argument lambdas</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#anonymous-lambdas">Anonymous lambdas</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#sam-types">SAM types</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#sam-types-with-a-zero-argument-abstract-method">SAM types with a zero argument abstract method</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Annotations</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Annotations"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Annotations"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Annotations"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/annotations.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline" id="annotations">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#annotations">Annotations</a>
+   <ul>
+   <li><a class="reference internal" href="#using-annotations">Using Annotations</a>   </li>
+   <li><a class="reference internal" href="#defining-annotations">Defining Annotations</a>   </li>
+   <li><a class="reference internal" href="#annotation-retention">Annotation Retention</a>   </li>
+   <li><a class="reference internal" href="#restricting-annotation-use">Restricting Annotation Use</a>   </li>
+   <li><a class="reference internal" href="#accessing-annotations-via-reflection">Accessing annotations via reflection</a>   </li>
+   <li><a class="reference internal" href="#annotations-to-class-fields-with-getters-and-setters">Annotations to class fields with getters and setters</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>The Rhyming Rabbit was sitting with his family in a grassy field.</p>
+<p>All the other rabbits were eating the grass but the Rhyming Rabbit was making up a poem about it</p><footer>- Donaldson, Julia and Monks, Lydia. (2011). The Rhyming Rabbit. Macmillan Publishers Limited</footer></blockquote>
+<p>Concurnas has support for annotations. They are a handy mechanism by which metadata can be attached to code to be interpreted either at compilation time or at runtime (or both). They are analogous to comments, but designed for our compiler and runtime to understand and act upon.</p>
+<div class="section">
+<div class="section">
+<h2 id="using-annotations">Using Annotations<a class="headerlink" href="#using-annotations" title="Permalink to this headline" id="using-annotations">?</a></h2>
+<p>Let's look at a simple example of a built in annotation for reference during and pre compilation and for documentation generation, <code class="lang-conc">@Deprecated</code>:</p>
+<p>This particular annotation is used to denote when a method of a class is deprecated and support for which is likely to be removed in future versions of said class. The annotation may be attached to a method by referencing it before the def keyword as follows. Note that <code class="lang-conc">@Deprecated</code> it is an auto imported type.</p>
+<pre><code class="lang-conc">class MyClass{
+  @Deprecated
+  def myMethod(){
+		
+  }
+}
+</code></pre>
+<p>Annotations may be attached to the following items in Concurnas: classes, fields, functions, methods, parameters, annotations. For example:</p>
+<pre><code class="lang-conc">annotation AnAnnotation
+
+@AnAnnotation
+def afunction() =&gt; 12
+
+@AnAnnotation
+class AClass(@AnAnnotation cdf int){
+	
+  @AnAnnotation
+  def aMethod(@AnAnnotation arg int) =&gt; 44
+	
+  @AnAnnotation
+  afield int = 99
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="defining-annotations">Defining Annotations<a class="headerlink" href="#defining-annotations" title="Permalink to this headline" id="defining-annotations">?</a></h2>
+<p>Annotations may be defined in much the same way as classes, but since they represent static/constant data, they may not express methods and the types which they reference as fields may be of the following types only: primitive types (<code class="lang-conc">int, long, float</code> etc), Class, String, enums, annotation or arrays of the aforementioned types. We create an annotation using the <code class="lang-conc">annotation</code> keyword, the name of the annotation and an optional attached block containing any fields (defined in the same way as class fields):</p>
+<pre><code class="lang-conc">annotation MapsTo{
+  name String
+  mapTo String
+  repeat = 1
+}
+</code></pre>
+<p>When defining fields we can choose to specify a default value for the field - such as in the case of the <code class="lang-conc">repeat</code> field. If this is done then users of the annotation do not need to specify a value for <code class="lang-conc">repeat</code>. On the other hand because the fields <code class="lang-conc">name</code> and <code class="lang-conc">mapTo</code> have no default value, they have to be specified by any users of the annotation.</p>
+<p>We can use the above declared annotation by using the annotation symbol <code class="lang-conc">@</code> and specifying any fields as a comma separated list of name and assignment as follows:</p>
+<pre><code class="lang-conc">class MyClass{
+  @MapsTo(name = "mappingName", mapTo = "anotherName")
+  afield int =99
+}
+</code></pre>
+<p>As with classes, we can also define annotations using annotation declaration arguments (aka the 'one liner' syntax). For example, the above annotation <code class="lang-conc">MapsTo</code> can be more concisely declared as:</p>
+<pre><code class="lang-conc">annotation MapsTo(name String, mapTo String, repeat = 1)
+</code></pre>
+<p>We can apply more than one annotation at an annotate-able location by separating them with a comma:</p>
+<pre><code class="lang-conc">annotation Annot1
+annotation Annot2
+
+@Annot1, @Annot2
+class MyClass
+</code></pre>
+<p>For annotations which have only one non-default field, we can omit the field name from the parameter declaration when we use it as follows:</p>
+<pre><code class="lang-conc">annotation NameCount(name String, count = 0)
+
+@NameCount("aName")//we don't have to write this as: @NameCount(name = "aName")
+def myFunction() =&gt; 16
+</code></pre>
+<p>For annotations which have fields of type array, we do not have to specify the array declaration if we only wish to pass an array with a single value. For example:</p>
+<pre><code class="lang-conc">annotation Ports(instances int[])
+
+@Ports(8080) //only one value for field instances. This use call is translated into: @Ports(instances=[8080])
+class HttpServer{
+  a =2
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="annotation-retention">Annotation Retention<a class="headerlink" href="#annotation-retention" title="Permalink to this headline" id="annotation-retention">?</a></h2>
+<p>The retention policy of an annotation denotes how accessible it is to different parts of the compilation/runtime process. There are 3 retention policies dictating how visible an annotation is when it's used:</p>
+<ul class="simple">
+  <li><p>SOURCE - The annotation is visible to the reader of the source file only, it's not accessible to the compiler or at runtime.</p>
+</li>
+  <li><p>CLASS - The annotation is visible to the reader and it is also accessible to the compiler. It's not accessible at runtime.</p>
+</li>
+  <li><p>RUNTIME - the annotation is visible to the reader, the compiler and is accessible at runtime.</p>
+</li>
+</ul class="simple">
+<p>If no retention policy is specified then it will be implicitly defaulted to Runtime. Only one policy may be specified. Most annotations are most sensibly marked with policy of either SOURCE or RUNTIME.</p>
+<p>We can specify the retention policy as follows:</p>
+<pre><code class="lang-conc">from java.lang.\annotation import Retention, RetentionPolicy
+//note that annotation is a keyword and therefore must be escaped
+
+@Retention(RetentionPolicy.SOURCE)
+annotation MYAnnotation1(a=1)
+
+@Retention(RetentionPolicy.CLASS)
+annotation MYAnnotation2(a=1)
+
+@Retention(RetentionPolicy.RUNTIME)
+annotation MYAnnotation3(a=1)
+
+@MYAnnotation1
+@MYAnnotation2
+@MYAnnotation3
+class SpecialClass
+</code></pre>
+</div>
+<div class="section">
+<h2 id="restricting-annotation-use">Restricting Annotation Use<a class="headerlink" href="#restricting-annotation-use" title="Permalink to this headline" id="restricting-annotation-use">?</a></h2>
+<p>By default, a declared annotation can be used at any annotate-able location (classes, fields, functions, methods, parameters, annotations). To restrict this a 'Target' may be specified for the use of the annotation. These are the valid targets and the restrict usage of the declared annotation to:</p>
+<ul class="simple">
+  <li><p>ANNOTATION_TYPE - Other annotations</p>
+</li>
+  <li><p>CONSTRUCTOR - Constructors</p>
+</li>
+  <li><p>FIELD - Class Fields</p>
+</li>
+  <li><p>METHOD - Methods or functions</p>
+</li>
+  <li><p>PARAMETER - Method or function parameters</p>
+</li>
+  <li><p>TYPE - Classes</p>
+</li>
+</ul class="simple">
+<p>Target's can be specified as follows:</p>
+<pre><code class="lang-conc">@Target(ElementType.ANNOTATION_TYPE)
+annotation ForAnAnnotation
+
+@Target(ElementType.TYPE)
+annotation ForClasses
+</code></pre>
+<p>More than one target may be specified by listing the targets as an array:</p>
+<pre><code class="lang-conc">@Target([ElementType.TYPE ElementType.FIELD])
+annotation MultiUse
+</code></pre>
+</div>
+<div class="section">
+<h2 id="accessing-annotations-via-reflection">Accessing annotations via reflection<a class="headerlink" href="#accessing-annotations-via-reflection" title="Permalink to this headline" id="accessing-annotations-via-reflection">?</a></h2>
+<p>Annotations marked with retention policy RUNTIME (the default if none is specified) may be accessed at runtime via reflection. For example:</p>
+<pre><code class="lang-conc">annotation Ports(instances int[])
+
+@Ports(8080)
+class HttpServer{
+  a =2
+}
+
+res = HttpServer.class.getAnnotations()
+//res == [@Ports(instances = [8080])]
+</code></pre>
+<p>Many JVM annotation frameworks use this mechanism (reflection) to implement functionality operating on annotations.</p>
+</div>
+<div class="section">
+<h2 id="annotations-to-class-fields-with-getters-and-setters">Annotations to class fields with getters and setters<a class="headerlink" href="#annotations-to-class-fields-with-getters-and-setters" title="Permalink to this headline" id="annotations-to-class-fields-with-getters-and-setters">?</a></h2>
+<p>If one is annotating a class field which has getters/setters automatically generated (denoted via use of a <code class="lang-conc">-</code>, <code class="lang-conc">+</code> or <code class="lang-conc">~</code> prefix) we can use a special qualified form of the annotation symbol <code class="lang-conc">@</code> to denote where we would like our annotation to be placed (either on the constructor parameter, the auto generated getter, setter or field itself or a multiple number of these locations). To use the qualified annotation symbol we use the following syntax <code class="lang-conc">@[X]</code> where <code class="lang-conc">X</code> is one or many of a comma separated list of: param, setter, getter or field. For example:</p>
+<pre><code class="lang-conc">annotation MyAnnotation
+
+class MyClass(
+@MyAnnotation ~field0 int //no qualifier -&gt; the annotation will be attached to the constructor parameter by default
+@[param]MyAnnotation ~field1 int
+@[setter]MyAnnotation ~field2 int
+@[getter]MyAnnotation ~field3 int
+@[field]MyAnnotation ~field3 int
+@[setter, getter]MyAnnotation ~field3 int //attach the annotation to the setter and getter methods
+){
+  @MyAnnotation ~defaultedField1 = 100 //no qualifier -&gt; the annotation will be attached to the field by default
+  @[setter, getter]MyAnnotation ~defaultedField2 = 200 
+}
+</code></pre>
+<p>If no qualifier is used then the annotation will be attached in one of two ways:</p>
+<ol class="arabic">
+  <li><p>If the location is a parameter as part of a class definition argument list, then the annotation will be attached to the constructor argument only.</p>
+</li>
+  <li><p>If the location is a field in a class, then the annotation will be attached to that field definition only.</p>
+</li>
+</ol class="arabic">
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="annotations.html">Annotations</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#using-annotations">Using Annotations</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#defining-annotations">Defining Annotations</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#annotation-retention">Annotation Retention</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#restricting-annotation-use">Restricting Annotation Use</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#accessing-annotations-via-reflection">Accessing annotations via reflection</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#annotations-to-class-fields-with-getters-and-setters">Annotations to class fields with getters and setters</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Pattern Matching</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Pattern Matching"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Pattern Matching"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Pattern Matching"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/patternMatching.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="pattern-matching">Pattern Matching<a class="headerlink" href="#pattern-matching" title="Permalink to this headline" id="pattern-matching">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#pattern-matching">Pattern Matching</a>
+   <ul>
+   <li><a class="reference internal" href="#syntax">Syntax</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-on-types">Pattern case on types</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-with-variable-assignment">Pattern case with variable assignment</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-conditions-for-objects">Pattern case conditions for objects</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-conditions">Pattern case conditions</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-conditions-with-type-check">Pattern case conditions with type check</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-conditions-with-type-check-and-assignment">Pattern case conditions with type check and assignment</a>   </li>
+   <li><a class="reference internal" href="#pattern-case-conditions-with-additional-checks">Pattern case conditions with additional checks</a>   </li>
+   <li><a class="reference internal" href="#bypassing-pattern-case-conditions">Bypassing pattern case conditions</a>   </li>
+   <li><a class="reference internal" href="#match-with-variable-assignment">Match with variable assignment</a>   </li>
+   <li><a class="reference internal" href="#match-against-enum-elements">Match against enum elements</a>   </li>
+   <li><a class="reference internal" href="#match-against-tuples">Match against tuples</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Concurnas has support for pattern matching. Through the use of pattern matching one can check a value against series of patterns, expressed as <code class="lang-conc">case</code>'s. The functionality found in Concurnas is similar to, and inspired by, that found in the likes of the purely functional languages such as Haskell . Use of patterns generally results in a considerable saving in terms of quantity of code, and increased readability relative to the next best alternative, which would be in writing very long and terse blocks of if then else statements.</p>
+<div class="section">
+<div class="section">
+<h2 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline" id="syntax">?</a></h2>
+<p>The pattern matching expression has the keyword <code class="lang-conc">match</code> to which a value is passed at at least one case statement with attached block</p>
+<pre><code class="lang-conc">def matcher(n int){
+  result = "unknown"
+  match(n){
+    1 =&gt;  result = "one" 
+    2 =&gt;  result = "two" 
+    3 =&gt;  result = "three" 
+  }
+  result
+}
+
+matcher(1) // -&gt; returns "one"
+matcher(2) // -&gt; returns "two"
+matcher(3) // -&gt; returns "three"
+matcher(4) // -&gt; returns "unknown"
+</code></pre>
+<p>Optionally, an else statement may be used:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  result = "unknown"
+  match(n){
+    1 =&gt; result = "one" 
+    2 =&gt; result = "two" 
+    3 =&gt; result = "three" 
+    else =&gt; result = "got value: {n}" 
+  }
+  result
+}
+
+matcher(1) // -&gt; returns "one"
+matcher(2) // -&gt; returns "two"
+matcher(3) // -&gt; returns "three"
+matcher(4) // -&gt; returns "got value 4"
+</code></pre>
+<p>The following slightly more verbose syntax, with the full block statement form, is equivalent to the above:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  result = "unknown"
+  match(n){
+    case(1){ result = "one" }
+    case(2){ result = "two" }
+    case(3){ result = "three" }
+    else{ result = "got value: {n}" }
+  }
+  result
+}
+
+matcher(1) // -&gt; returns "one"
+matcher(2) // -&gt; returns "two"
+matcher(3) // -&gt; returns "three"
+matcher(4) // -&gt; returns "got value 4"
+</code></pre>
+<p>We shall stick to the abbreviated block statement from now on...</p>
+<p>The else statement may also take the form of a catch all case statement:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  result = "unknown"
+  match(n){
+    1 =&gt; result = "one" 
+    2 =&gt; result = "two" 
+    3 =&gt; result = "three" 
+    x =&gt; result = "got value: {x}" 
+  }
+  result
+}
+
+matcher(1) // -&gt; returns "one"
+matcher(2) // -&gt; returns "two"
+matcher(3) // -&gt; returns "three"
+matcher(4) // -&gt; returns "got value 4"
+</code></pre>
+<p>As with all other control flow expression and blocks in Concurnas, they may return values. Note that in this case, where we wish to return a value, an else or catch all case must be provided.</p>
+<pre><code class="lang-conc">def matcher(n int){
+  result  = match(n){
+    1 =&gt; "one" 
+    2 =&gt; "two" 
+    3 =&gt; "three" 
+    x =&gt; "got value: {x}" 
+  }
+  result
+}
+
+matcher(1) // -&gt; returns "one"
+matcher(2) // -&gt; returns "two"
+matcher(3) // -&gt; returns "three"
+matcher(4) // -&gt; returns "got value 4"
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-on-types">Pattern case on types<a class="headerlink" href="#pattern-case-on-types" title="Permalink to this headline" id="pattern-case-on-types">?</a></h2>
+<p>We can pattern match against types. The match value is cast to the type it is matched against for the bounds of the attached case block. This is analogous to an <code class="lang-conc">isas</code> type check</p>
+<pre><code class="lang-conc">def matcher(obj Object){
+  result  = match(obj){
+    String    =&gt;   "a String of length: {a.length();}" 
+    int 	    =&gt;"an int" 
+    Object    =&gt; "something else: {obj}" //a catch all
+  }
+  result
+}
+
+matcher(1) 	    // -&gt; returns "an int"
+matcher("string") // -&gt; returns "a String of length: 6"
+matcher(23.34f)  // -&gt; returns "something else: 23.34f"
+</code></pre>
+<p>We can match against multiple types:</p>
+<pre><code class="lang-conc">def matcher(obj Object){
+  result  = match(obj){
+    String or int =&gt;   "a String or int" 
+    Object =&gt;  "something else: {obj}" //a catch all
+  }
+  result
+}
+
+matcher(1)	     // -&gt; returns "a String or int"
+matcher("string")  // -&gt; returns "a String or int"
+matcher(23.34f)   // -&gt; returns "something else: 23.34f"
+</code></pre>
+<p>Note that within the case block for the individual match instances, the value will automatically be cast to the type of interest, making this sort of code easy to write:</p>
+<pre><code class="lang-conc">class Person(-yearOfBirth int, -name String)
+
+def matcher(an Object){
+  match(an){
+    Person =&gt; "Person. Born: {an.yearOfBirth}"//as is treated cast to Person
+    x =&gt; "unknown input"
+  }
+}
+
+matcher(Person(1945, "dave"))
+//returns: person born: 1945
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-with-variable-assignment">Pattern case with variable assignment<a class="headerlink" href="#pattern-case-with-variable-assignment" title="Permalink to this headline" id="pattern-case-with-variable-assignment">?</a></h2>
+<p>We can assign to a case variable. The variable will be scoped to exist within the bounds of the attached case block.</p>
+<pre><code class="lang-conc">def matcher(obj Object){
+  match(obj){
+    str String =&gt;  "a String with length: {str.length()}" 
+    x Object   =&gt;  "something else: {x.getClass()}" //a catch all
+  }
+}
+
+matcher("string") // -&gt; returns "a String with length: 6"
+matcher(23.34f)  // -&gt; returns "something else: Float.class"
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-conditions-for-objects">Pattern case conditions for objects<a class="headerlink" href="#pattern-case-conditions-for-objects" title="Permalink to this headline" id="pattern-case-conditions-for-objects">?</a></h2>
+<p>We can go one step beyond pattern cases on types and examine the contents of those types by expressing match conditions on the fields of the object type being matched, within the type pattern case declaration. These conditions must resolve to type boolean, and act upon accessible fields (either direct or via a getter method) and be separated by commas:</p>
+<pre><code class="lang-conc">class Person(-yearOfBirth int, -name String)
+
+def matcher(an Object){
+  match(an){
+    person Person(yearOfBirth &lt; 1970) =&gt; "Person. Born: {person.yearOfBirth}"
+    x =&gt; "unknown input"
+  }
+}
+
+[matcher(Person(1945, "dave")), matcher(Person(1982, "freddie"))]
+//returns: [Person. Born: 1945, unknown input]
+</code></pre>
+<p>Note that we may choose to omit the 'person' variable declaration above as an will be automatically cast to type Person within the body of the catch block:</p>
+<pre><code class="lang-conc">class Person(-yearOfBirth int, -name String)
+
+def matcher(an Object){
+  match(an){
+    Person(yearOfBirth &lt; 1970) =&gt; "Person. Born: {an.yearOfBirth}"
+    x =&gt; "unknown input"
+  }
+}
+
+[matcher(Person(1945, "dave")), matcher(Person(1982, "freddie"))]
+
+//=&gt; [Person. Born: 1945, unknown input]
+</code></pre>
+<p>These types of object field content matches can be applied on a recursive basis to fields of objects as follows:</p>
+<pre><code class="lang-conc">class Favourites(-number int, -word String)
+
+class Person(-yearOfBirth int, -name String, -favs Favourites)
+
+def matcher(an Object){
+  match(an){
+    person Person(yearOfBirth &lt; 1970, favs(number == 12)) =&gt; "Person, born: {person.yearOfBirth}. Favourite word: {person.favs.word}"
+    x =&gt; "unknown input"
+  }
+}
+
+matcher(Person(1945, "dave", Favourites(12, "Panda")))
+
+//=&gt; Person, born: 1945. Favourite word: Panda
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-conditions">Pattern case conditions<a class="headerlink" href="#pattern-case-conditions" title="Permalink to this headline" id="pattern-case-conditions">?</a></h2>
+<p>We can apply expressions resulting in boolean results in order to attach conditions to case's. The operator implicitly takes the matched value as input.</p>
+<pre><code class="lang-conc">def matcher(n int){
+  match(n){
+    &lt;10 =&gt;    "less than 10" 
+    else =&gt; "more than or equal to 10" 
+  }
+}
+
+matcher(2) // -&gt; returns "less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+<p><code class="lang-conc">and</code> and <code class="lang-conc">or</code> may also be used:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  match(n){
+    &gt;5 and &lt;10 =&gt;    "greater than 5 but less than 10" 
+    &lt;10 =&gt;    "less than 10" 
+    else =&gt; "more than or equal to 10" 
+  }
+}
+
+matcher(2) // -&gt; returns "less than 10"
+matcher(8) // -&gt; returns "greater than 5 but less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+<p>The full list of compatible operators which can be used in this manner is as follows:</p>
+<p><code class="lang-conc">and, or, ==, &lt;, &lt;&gt;, &amp;==, &amp;&lt;&gt;, &gt;, &gt;, &lt;==, in, not, not in</code></p>
+<p>Where an expression element is provided without an open attached operator, the matched value is compared for equality against it</p>
+<pre><code class="lang-conc">def resolvesTrue() = true
+def matcher(n int){
+  x=4
+  match(n){
+    x =&gt;"special value "  //implicit equality comparison, equivalent to /n==x/
+    &gt;5 and &lt;10=&gt;    "greater than 5 but less than 10" 
+    &lt;10 =&gt;    "less than 10" 
+    else =&gt; "more than or equal to 10" 
+  }
+}
+
+matcher(4) // -&gt; returns "less than 10"
+matcher(2) // -&gt; returns "special value"
+matcher(8) // -&gt; returns "greater than 5 but less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+<p>Note that any normal expression element is appropriate for a case pattern, all will be checked for equality</p>
+<pre><code class="lang-conc">def resolvesTrue() = true
+def matcher(n int){
+  x=4
+  y=100
+  match(n){
+    x if resolvesTrue() else y =&gt; "special value "  //implicit equality comparison, equivalent to /n==(x if resolvesTrue() else y)/
+    &gt;5 and &lt;10 =&gt;    "greater than 5 but less than 10" 
+    &lt;10 =&gt;    "less than 10" 
+    else =&gt; "more than or equal to 10" 
+  }
+}
+
+matcher(4) // -&gt; returns "less than 10"
+matcher(2) // -&gt; returns "special value"
+matcher(8) // -&gt; returns "greater than 5 but less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+<p>Case patterns are checked in a serial manner. Thus one can expect the following behaviour:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  match(n){
+    &lt;10 =&gt;    "less than 10" }
+    &gt;5 and &lt;10 =&gt;    "greater than 5 but less than 10" }//will never be returned
+    else =&gt; "more than or equal to 10"
+  }
+}
+
+matcher(2) // -&gt; returns "less than 10"
+matcher(8) // -&gt; returns "less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+<p>We can also make use of normal expressions for our case condition:</p>
+<pre><code class="lang-conc">def matcher(n int){
+  match(n){
+    n&lt;10 =&gt;    "less than 10" 
+    else =&gt; "more than or equal to 10" 
+  }
+}
+
+matcher(2) // -&gt; returns "less than 10"
+matcher(99)  // -&gt; returns "more than or equal to 10"
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-conditions-with-type-check">Pattern case conditions with type check<a class="headerlink" href="#pattern-case-conditions-with-type-check" title="Permalink to this headline" id="pattern-case-conditions-with-type-check">?</a></h2>
+<p>We can apply pattern case conditions to values which have first been type checked by separating the assignment and type check from the conditions with a <code class="lang-conc">;</code>:</p>
+<pre><code class="lang-conc">def matcher(a Object) {
+  match(a){
+    int; ==1 or ==2 =&gt; "first case"
+    else =&gt; "other case"
+  }
+}
+
+matcher(1) // -&gt; returns "first case"
+matcher(2)  // -&gt; returns "first case"
+matcher(3)  // -&gt; returns "other case"
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pattern-case-conditions-with-type-check-and-assignment">Pattern case conditions with type check and assignment<a class="headerlink" href="#pattern-case-conditions-with-type-check-and-assignment" title="Permalink to this headline" id="pattern-case-conditions-with-type-check-and-assignment">?</a></h2>
+<p>As above if we perform an assignment in addition to a case type check then we can apply pattern conditions as follows</p>
+<pre><code class="lang-conc">def matcher(a Object) {
+  match(a){
+    n int; n==1 or n==2 =&gt; "first case"
+    else =&gt; "other case"
+  }
+}
+
+matcher(1) // -&gt; returns "first case"
+matcher(2)  // -&gt; returns "first case"
+matcher(3)  // -&gt; returns "other case"
+</code></pre>
+<p>Note that the expressions post the <code class="lang-conc">;</code> must be fully formed expressions, the value being matched will not be checked for equality against the resulting value.</p>
+</div>
+<div class="section">
+<h2 id="pattern-case-conditions-with-additional-checks">Pattern case conditions with additional checks<a class="headerlink" href="#pattern-case-conditions-with-additional-checks" title="Permalink to this headline" id="pattern-case-conditions-with-additional-checks">?</a></h2>
+<p>Sometimes it may be necessary to perform additional checks using expressions which we do not want to check against the value being matched. In this case, the <code class="lang-conc">also</code> keyword can be used:</p>
+<pre><code class="lang-conc">class Grouper(size int, avoid int[]){
+collector = java.util.ArrayList&lt;int&gt;()
+
+private result = ""
+
+  def getResult(){
+    if(not collector.isEmpty()){
+      result += ""+collector 
+    }
+    result
+  }
+
+  def addItem(a int){
+    match(a){
+      not in avoid also collector.size()&gt;==size {
+        //cluster our elements together when we hit the size except for when == to something in avoid
+        result += ""+collector
+        collector.clear()
+      }
+    }
+    collector.add(a)
+  }
+}
+
+
+grp = Grouper(3, [4])
+for(a in [1,2,3,4,5,6,7,8,9, 10]){
+  grp.addItem(a)
+}
+grp.result //resolves to: [1, 2, 3, 4][5, 6, 7][8, 9, 10]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="bypassing-pattern-case-conditions">Bypassing pattern case conditions<a class="headerlink" href="#bypassing-pattern-case-conditions" title="Permalink to this headline" id="bypassing-pattern-case-conditions">?</a></h2>
+<p>If one doesn't want to make use of pattern cases, but still needs to check for conditions on a match value, the also syntax in isolation may be used:</p>
+<pre><code class="lang-conc">def isPalendrome(a String){
+  upp = a.toUpperCase()
+  upp == ""+StringBuilder(upp).reverse()//reverse used to return AbstractStringBuilder
+}
+	
+def matcher(inp String){
+  match(inp){
+    also isPalendrome(inp) =&gt;  "is" 
+    else =&gt; "is not" 
+  } + " a Palindrome"
+}
+
+matcher('ava') //returns 'is a Palindrome'
+matcher('dave') //returns 'is not a Palindrome'
+</code></pre>
+</div>
+<div class="section">
+<h2 id="match-with-variable-assignment">Match with variable assignment<a class="headerlink" href="#match-with-variable-assignment" title="Permalink to this headline" id="match-with-variable-assignment">?</a></h2>
+<p>Similar to try with resources, we can assign a local variable, scope bound to the attached set of case blocks.</p>
+<pre><code class="lang-conc">def reverse(a String) = new StringBuffer(string).reverse().toString()
+
+def matcher(str String){
+  result  = match(rev = reverse(str)){
+    rev.length() &gt; 3 =&gt;   result = "input string: '{str}' reversed string: '{rev}'" 
+    else =&gt;  result = "too short to be reversed!: '{str}'" //a catch all
+  }
+  result
+}
+
+matcher("stressed") // -&gt; returns "input string: 'stressed' reversed string: 'desserts'"
+matcher("an")  // -&gt; returns "too short to be reversed!: 'an'"
+</code></pre>
+<p>The assignment within the match block may be declared <code class="lang-conc">val</code> or <code class="lang-conc">var</code>.</p>
+</div>
+<div class="section">
+<h2 id="match-against-enum-elements">Match against enum elements<a class="headerlink" href="#match-against-enum-elements" title="Permalink to this headline" id="match-against-enum-elements">?</a></h2>
+<p>When matching a value known to be of an enum type, it is not necessary to specify the entire enum name qualifier. The short name of the enum elements may be matched against.</p>
+<pre><code class="lang-conc">enum MyEnum{ CASE1, CASE2, CASE3, CASE4, CASE5 }
+
+def matcher(a MyEnum) {
+  match(a){
+    MyEnum.CASE1 =&gt; "case 1"//use the full name of the enum element
+    CASE2 =&gt; "case 2"//use the short name of the enum element
+    CASE3 or MyEnum.CASE4 =&gt; "case 3 or 4"//use both the short and long names
+    else =&gt; "another case: {a} " 
+  }
+}
+
+matcher(MyEnum.CASE1)//returns "case 1"
+matcher(MyEnum.CASE2)//returns ""case 2""
+matcher(MyEnum.CASE3)//returns "case 3 or 4"
+matcher(MyEnum.CASE4)//returns "case 3 or 4"
+matcher(MyEnum.CASE5)//returns "another case: CASE5"
+</code></pre>
+</div>
+<div class="section">
+<h2 id="match-against-tuples">Match against tuples<a class="headerlink" href="#match-against-tuples" title="Permalink to this headline" id="match-against-tuples">?</a></h2>
+<p>Concurnas has special support for performing matches against tuples.</p>
+<p>Firstly if we don't already know our input matched against to be of type tuple we can test it as a tuple type and access the dereferenced inner elements as follows:</p>
+<pre><code class="lang-conc">def matcher(n Object){
+  match(n){
+    case( (a int, b int, c int) ) { "tuple of 3: {a}, {b}, {c}"}
+    case( (a int, b int); a &gt; b ) { 'tuple 2: {a}&gt;{b}'}//with a test
+    case( (a int, b int); a &lt; b ) { 'tuple 2: {a}&lt;{b}'}//with a test
+    case( (int, int, int, int) ) { "4 item int tuple"}
+    case( (int, int, double, int) ) { "4 item int tuple with a double"}
+    case( (a , b, c, d, e) ) { "5 item tuple with Object type"}
+    x =&gt; 'catch all: x'
+  }
+}
+</code></pre>
+<p>If we know the type being matched against is a tuple, then the syntax is more succinct as follows:</p>
+<pre><code class="lang-conc">def matcher(n (int, int)){
+  match(n){
+    (0, 0) =&gt; 'both zero'//test against both elements
+    (0, )  =&gt; 'first zero'//test only one element
+    (, &gt;2) =&gt; 'second above 2'//perform a test against second tuple element
+    (a, 1) =&gt; 'second is 1, first is: {a}'//extract an element
+    (a, b); a&gt;b =&gt; '{a} &gt; {b}'//extract both elements and perform a test on them
+    (a, b) =&gt; 'all others: {a}, {b}'
+  }
+}
+</code></pre>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="patternMatching.html">Pattern Matching</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#syntax">Syntax</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-on-types">Pattern case on types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-with-variable-assignment">Pattern case with variable assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-conditions-for-objects">Pattern case conditions for objects</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-conditions">Pattern case conditions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-conditions-with-type-check">Pattern case conditions with type check</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-conditions-with-type-check-and-assignment">Pattern case conditions with type check and assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pattern-case-conditions-with-additional-checks">Pattern case conditions with additional checks</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#bypassing-pattern-case-conditions">Bypassing pattern case conditions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#match-with-variable-assignment">Match with variable assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#match-against-enum-elements">Match against enum elements</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#match-against-tuples">Match against tuples</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

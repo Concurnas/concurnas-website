@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Concurnas vs Java - Part 2</title>
+
+ 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="../css/conc.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/social.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+	<!-- Google -->
+	<meta name="description" content="An overview of the differences between Java and Concurnas and why Concurnas is recommended for modern software development on the JVM -  Part 2	"/>
+
+	<!-- OpenGraph -->
+	<meta property="og:title" content="Concurnas vs Java - Part 2"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:image" content="https://concurnas.com/img/articles/concVsJava.jpeg"/>
+	<meta property="og:description" content="An overview of the differences between Java and Concurnas and why Concurnas is recommended for modern software development on the JVM -  Part 2	"/>
+	<meta property="og:site_name" content="The Concurnas Programming Language"/>
+	<meta property="og:url" content="http://concurnas.com/learnmore/concVsJava2.html"/>
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+	
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="page-wrap">
+<div class="section site-content">			
+	<div class="container">	
+		<div class="row">
+			<div class="col-lg-2 tree-nav">
+			<ul>
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="overview.html">Overview</a></li>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava1.html">Concurnas vs</a></li>
+	<ul>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava1.html">Java pt.1</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava2.html">Java pt.2</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava3.html">Java pt.3</a></li>
+	</ul>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="usecases.html">Use cases</a></li>
+	<ul>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="finance.html">Finance</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="sciComp.html">Science</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="startups.html">Startups</a></li>
+	</ul>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="mailinglist.html">Mailing List</a></li>
+	
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="contribute.html">Contribute</a></li>
+</ul>
+			</div>
+			<div class="col-lg-10"><p align="center">
+  <img width="75%" src="../img/articles/concVsJava.jpeg">
+</p>
+
+<hr />
+<h1 id="concurnas-vs-java-part-2">Concurnas vs Java - Part 2</h1>
+<hr />
+<p><div class="sshare__cont" align="right">
+
+<!-- Sharingbutton Facebook -->
+<a class="sshare__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html" target="_blank" rel="noopener" aria-label="Facebook">
+  <div class="sshare sshare--facebook sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg></div>Facebook</div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="sshare__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html&amp;title=Concurnas%20vs%20Java%20-%20Part%202&amp;summary=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%202%09&amp;source=http%3A%2F%2Fconcurnas.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <div class="sshare sshare--linkedin sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg></div>LinkedIn</div>
+</a>
+
+<!-- Sharingbutton Twitter -->
+<a class="sshare__link" href="https://twitter.com/intent/tweet/?text=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%202%09&amp;url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html" target="_blank" rel="noopener" aria-label="Twitter">
+  <div class="sshare sshare--twitter sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg></div>Twitter</div>
+</a>
+
+<!-- Sharingbutton Reddit -->
+<a class="sshare__link" href="https://reddit.com/submit/?url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html&amp;resubmit=true&amp;title=Concurnas%20vs%20Java%20-%20Part%202" target="_blank" rel="noopener" aria-label="Reddit">
+  <div class="sshare sshare--reddit sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg></div>Reddit</div>
+</a>
+
+<!-- Sharingbutton Hacker News -->
+<a class="sshare__link" href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html&amp;t=Concurnas%20vs%20Java%20-%20Part%202" target="_blank" rel="noopener" aria-label="Hacker News">
+  <div class="sshare sshare--hackernews sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg></div>Hacker News</div>
+</a>
+
+<!-- Sharingbutton WhatsApp -->
+<a class="sshare__link" href="whatsapp://send?text=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%202%09%20http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="sshare sshare--whatsapp sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg></div>WhatsApp</div>
+</a>
+
+<!-- Sharingbutton E-Mail -->
+<!--<a class="sshare__link" href="mailto:?subject=Concurnas%20vs%20Java%20-%20Part%202&amp;body=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%202%09%20http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava2.html" target="_self" rel="noopener" aria-label="E-Mail">
+  <div class="sshare sshare--email sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg></div>E-Mail</div>
+</a>-->
+
+</div></p>
+<p>In this article we continue to examine the differences between Concurnas and Java.</p>
+<p>This article carries on from the <a href="concVsJava1.html">first article (part 1)</a> in the series. There is one more <a href="concVsJava3.html">article (part 3)</a> next.</p>
+<div class="toc">
+<ul>
+<li><a href="#concurnas-vs-java-part-2">Concurnas vs Java - Part 2</a><ul>
+<li><a href="#functional-programming">Functional Programming</a><ul>
+<li><a href="#function-references">Function references</a></li>
+<li><a href="#lambdas">Lambdas</a></li>
+<li><a href="#pattern-matching">Pattern matching</a></li>
+<li><a href="#lazy-evaluation">Lazy evaluation</a></li>
+</ul>
+</li>
+<li><a href="#object-orientation">Object Orientation:</a><ul>
+<li><a href="#creating-classes">Creating classes</a></li>
+<li><a href="#using-classes">Using classes</a></li>
+<li><a href="#equality-and-hashing">Equality and Hashing</a></li>
+<li><a href="#copying-data">Copying data</a></li>
+<li><a href="#smart-casts">Smart casts</a></li>
+<li><a href="#traits">Traits</a><ul>
+<li><a href="#local-classes-trait-composition">Local classes trait composition</a></li>
+<li><a href="#the-diamond-pattern">The diamond pattern</a></li>
+<li><a href="#trait-inheritance-and-stacking">Trait inheritance and stacking</a></li>
+</ul>
+</li>
+<li><a href="#null-safety">Null safety</a></li>
+<li><a href="#double-dot">Double Dot</a></li>
+<li><a href="#with-statement">With statement</a></li>
+<li><a href="#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li><a href="#strings">Strings</a><ul>
+<li><a href="#creating-strings">Creating Strings</a></li>
+<li><a href="#operations-on-strings">Operations on Strings</a></li>
+<li><a href="#working-with-regex">Working with regex</a></li>
+</ul>
+</li>
+<li><a href="#whats-next">What's next?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="functional-programming">Functional Programming</h2>
+<p>More and more developers are starting to realize the expressive power of utilizing aspects of functional programming. Whilst pure functional programming languages may not always be the best fit for all problems, most problems can benefit from some aspects of functional programming. Concurnas presents some of the most commonly used aspects of functional programming. More recent versions of Java have also started to embrace functional programming.</p>
+<h3 id="function-references">Function references</h3>
+<p>Both Java and Concurnas have support for method references:</p>
+<pre><code class="language-java">interface Operation{//som boilerplate code to assist
+    int doOp(int a, int b);
+}
+
+public class InstanceMethodReference{
+    public static int plus(int a, int b){
+        return a + b;
+    }
+}
+
+public static void main() {
+    Operation op = InstanceMethodReference::plus;
+    int result = op.doOp(12, 1);
+}
+</code></pre>
+
+<p>The support for <a href="../docs/methodReferences.html#method-references1">method references</a> exposed within Concurnas is much simpler and requires no boilerplate code:</p>
+<pre><code class="language-conc">def plus(a int, b int) =&gt; a + b
+op = plus&amp; //op is of type (int, int) int
+result = op(12, 1)
+</code></pre>
+
+<p>Java provides support for partial functions via code such as the following:</p>
+<pre><code class="language-java">public static int add(int a, int b) {
+    return a + b;
+}
+
+public static Function&lt;Integer, Function&lt;Integer, Integer&gt;&gt; add() {
+    return new Function&lt;Integer, Function&lt;Integer, Integer&gt;&gt;() {
+        @Override
+        public Function&lt;Integer, Integer&gt; apply(final Integer x) {
+            return new Function&lt;Integer, Integer&gt;() {
+                @Override
+                public Integer apply(Integer y) {
+                    return x + y;
+                }
+            };
+        }
+    };
+}
+
+Function&lt;Integer, Function&lt;Integer, Integer&gt;&gt; l1call = add();
+Function&lt;Integer, Integer&gt; l2call = l1call.apply(12);//partial function
+Integer result = l2call.apply(1);   
+</code></pre>
+
+<p>Partial functions are a much simpler affair in Concurnas:</p>
+<pre><code class="language-conc">def plus(a int, b int) =&gt; a + b
+op = plus&amp;(12, int)//partial function of type: (int) int
+result = op(1)
+</code></pre>
+
+<p>Currying is also doable through code such as the following:</p>
+<pre><code class="language-conc">def partialPlus(a int){//returns type (int) int
+    def plus(b int) =&gt; a + b
+    plus&amp;
+}
+
+op (int) int = partialPlus(12)//curried function
+result = op(1)
+</code></pre>
+
+<p>Concurnas was designed from the ground up to support <a href="../docs/methodReferences.html">function, method and constructor references</a>. As such it is not surprising that the support for function references is much better in Concurnas than that achievable with Java.</p>
+<h3 id="lambdas">Lambdas</h3>
+<p>Both Java and Concurnas provide <a href="../docs/methodReferences.html#anonymous-lambdas">lambdas</a>. For example in Java:</p>
+<pre><code class="language-java">java.util.ArrayList&lt;Integer&gt; mylist = new java.util.ArrayList&lt;Integer&gt;();
+mylist.add(1);mylist.add(2);mylist.add(3);mylist.add(4);
+
+//a -&gt; a+10 is a lambda
+java.util.List&lt;Integer&gt; result = mylist.stream().map(a -&gt; a+10).collect(java.util.stream.Collectors.toList());
+</code></pre>
+
+<p>And the same in Concurnas, using a <a href="../docs/methodReferences.html#sam-types">SAM type</a>:</p>
+<pre><code class="language-conc">trait Operator{//This is a SAM type as there is only one method defined which is abstract 
+    def perform(arg int, arg2 int) int
+}
+
+class MyNumberHolder(~a int){
+    def apply(b int, operator Operator) =&gt; operator.perform(a, b)
+}
+
+mnh = MyNumberHolder(12)
+res = mnh.apply(50, a, b =&gt; a + b)//here is a lambda!
+</code></pre>
+
+<p>And here is a Concurnas lambda defined on its own:</p>
+<pre><code class="language-conc">//and here is a lambda on its own...
+power2 (int) int = a =&gt; a*2
+</code></pre>
+
+<h3 id="pattern-matching">Pattern matching</h3>
+<p>Concurnas has good <a href="../docs/patternMatching.html">pattern matching</a> support, inspired by languages such as <a href="https://www.scala-lang.org/">Scala</a> and <a href="https://www.haskell.org/">Haskell</a>. Consider the following in Java:</p>
+<pre><code class="language-java">public static String matcher(Object an) {
+    if(an instanceof Person) {
+        Person p = (Person)an;
+        if(p.yearOfBirth &lt; 1970) {
+            return &quot;Person. Born: &quot; + p.yearOfBirth;
+        }else {
+            return &quot;A Person&quot;;
+        }
+    }else if(an instanceof Integer) {
+        int value = (Integer)an;
+        if(value &lt; 10){
+            return &quot;small number&quot;;
+        }else {
+            return &quot;another number&quot;;
+        }
+    }else {
+        return &quot;unknown input&quot;;
+    }
+}
+</code></pre>
+
+<p>And here is the same in Concurnas:</p>
+<pre><code class="language-conc">class Person(-yearOfBirth int)
+
+def matcher(an Object){
+    match(an){
+        Person(yearOfBirth &lt; 1970) =&gt; &quot;Person. Born: {an.yearOfBirth}&quot;
+        Person =&gt; &quot;A Person&quot;
+        int; &lt; 10 =&gt; &quot;small number&quot;
+        int =&gt; &quot;another number&quot;
+        x =&gt; &quot;unknown input&quot;
+    }
+}
+
+res = matcher(x) for x in [Person(1829), Person(2010), &quot;oops&quot;, 43, 5]
+//res == [Person. Born: 1829, A Person, unknown input, another number, small number]
+</code></pre>
+
+<p>The Concurnas implementation is much easier to understand and maintain.</p>
+<h3 id="lazy-evaluation">Lazy evaluation</h3>
+<p>Concurnas has support for <a href="../docs/variableAssignment.html#lazy-variables">lazy variables</a>. Java does not. Here is an example:</p>
+<pre><code class="language-conc">a = 100
+lazy myvar = {a=400; 22}//assign, with side effect of re-assigning a
+res = [a myvar a] //lets create an array holding the value of a, the evaluated myvar and a again
+//res == [100 22 400]
+</code></pre>
+
+<p>As a function argument:</p>
+<pre><code class="language-conc">a = 100
+lazy myvar = {a=400; 22}//assign, with side effect of re-assigning a
+def makeArray(lazy operate int) =&gt; [a operate a]
+res = makeArray(myvar:)
+//res == [100 22 400]
+</code></pre>
+
+<h2 id="object-orientation">Object Orientation:</h2>
+<p>Besides the concurrency model exposed within Concurnas one of the most noticeable differences compared to Java is its concise model of <a href="../docs/classes.html">class definition</a>.</p>
+<h3 id="creating-classes">Creating classes</h3>
+<p>Let's look at a typical data oriented class in Java, we will define a <code>equals</code> and <code>hashCode</code> method so that we can use any instance objects in <code>HashMap</code> objects etc:</p>
+<pre><code class="language-java">public class UniversityMember{
+    private boolean enrolled;
+    public UniversityMember(boolean enrolled){
+        this.enrolled = enrolled;
+    }
+
+    public boolean getEnrolled(){
+        return this.enrolled;
+    }
+
+    public void setEnrolled(boolean enrolled){
+        this.enrolled = enrolled;
+    }
+
+    @Override
+    public int hashCode(){
+        if(enrolled){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    @Override
+    public boolean equals(Object an){
+        if(an instanceof UniversityMember){
+            UniversityMember um = (UniversityMember)an;
+            return um.enrolled == this.enrolled;
+        }
+        return false;
+    }
+}
+
+public class Person extends UniversityMember{
+    private String firstname;
+    private String sirname;
+    private short yob;
+    public Person(String firstname, String sirname, short yob, boolean enrolled){
+        super(enrolled);
+        this.firstname = firstname;
+        this.sirname = sirname;
+        this.yob = yob;
+    }
+
+    public Person(String firstname, String sirname, short yob){
+        this(firstname, sirname, yob, false);
+    }
+
+    public boolean getFirstname(){
+        return this.firstname;
+    }
+
+    public void setFirstname(String firstname){
+        this.firstname = firstname;
+    }
+
+    public boolean getSirname(){
+        return this.sirname;
+    }
+
+    public void setSirname(boolean sirname){
+        this.sirname = sirname;
+    }
+
+    public short getYob(){
+        return this.yob;
+    }
+
+    public void setYob(short yob){
+        this.yob = yob;
+    }
+
+
+    @Override
+    public int hashCode(){
+        int hc = super.hashCode() + this.yob;
+        if(this.firstname != null){
+            hc += this.firstname.hashCode()
+        }
+        if(this.sirname != null){
+            hc += this.sirname.hashCode()
+        }
+        return hc;
+    }
+
+    @Override
+    public boolean equals(Object an){
+        if(an instanceof Person &amp;&amp; super.equals(an)){
+            Person pers = (Person)an;
+            if(Objects.equal(pers.sirname, this.sirname) &amp;&amp; Objects.equal(pers.firstname, this.firstname) &amp;&amp; pers.yob == this.yob){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+</code></pre>
+
+<p>And the same in Concurnas:</p>
+<pre><code class="language-conc">class UniversityMember(~enrolled boolean)//~indicates we wish to generate a setter and a getter
+class Person(~firstname String, ~sirname String, ~yob short, enrolled = false) &lt; UniversityMember(enrolled)
+</code></pre>
+
+<p>The difference is quite dramatic! 100 lines of code to 2, a 50:1 improvement! Not only does Concurnas generate all the necessary constructors (with appropriate wiring to super constructors), <a href="../docs/classes.html#setters-and-getters">setters and getters</a> for us, but it has also <a href="../docs/classes.html#automatically-generated-equals-and-hashcode-methods">automatically generated</a> a reliable cycle free <code>hashCode</code> and <code>equality</code> implementation as well as a deep copy implementation (explored later).</p>
+<h3 id="using-classes">Using classes</h3>
+<p>We can invoke getters and setters on instance objects in Java as follows:</p>
+<pre><code class="language-java">Person p1 = new Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970);
+String name = p1.getFirstname();
+p1.setSirname(&quot;Brown&quot;);
+</code></pre>
+
+<p>And in Concurnas:</p>
+<pre><code class="language-conc">p1 = Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970)//new is optional
+name = p1.firstname
+p1.sirname = &quot;Brown&quot;
+</code></pre>
+
+<p>Concurnas will automatically map to getters and setters using the above field access style notation.</p>
+<h3 id="equality-and-hashing">Equality and Hashing</h3>
+<p>Luckily for us, in our Java implementation above we have put the extra work in to manually create <code>hashCode</code> and <code>equality</code> implementations, this allowing us to perform equality by value and hashing by value thus enabling the following code:</p>
+<pre><code class="language-java">Person p1 = new Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970);
+Person p2 = new Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970);
+
+boolean eq = Objects.equal(p1, p2);//Objects implementation deals with the case where p1 or p2 is null
+
+java.util.HashSet&lt;Person&gt; mySet = new java.util.HashSet&lt;Person&gt;();
+mySet.add(p1);
+mySet.add(p2);
+
+int sz = mySet.size();//sz == 1
+</code></pre>
+
+<p>Equality in Concurnas is easier, equality does what one would expect:</p>
+<pre><code class="language-conc">p1 = Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970)
+p2 = Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970)
+
+eq = p1 == p2//true!
+req = p1 &amp;== p2//not true, p1 and p2 are different objects
+
+mySet = set()
+mySet.add(p1)
+mySet.add(p2)
+
+sz = mySet.size()//sz == 1
+</code></pre>
+
+<h3 id="copying-data">Copying data</h3>
+<p>Copying data has always been problematic in Java. Here is a typical example carrying on from our previous instance:</p>
+<pre><code class="language-java">Person p1 = new Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970);
+Person p2 = new Person(p1.getFirstname(), p1.getSirname(), p1.getYob(), p1.getEnrolled());
+</code></pre>
+
+<p>Luckily we exposed all state of our <code>Person</code> class so the above code works. This is never an issue for Concurnas. As previously mentioned, with Concurnas a safe deep copy implementation is provided:</p>
+<pre><code class="language-conc">p1 = Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970)
+p2 = p1@//copy!
+</code></pre>
+
+<p>The <a href="../docs/copy.html">copy operator</a> has a few other tricks we can make use of as follows:</p>
+<pre><code class="language-conc">p1 = Person(&quot;Dave&quot;, &quot;Smith&quot;, 1970)
+p2 = p1@(sirname=&quot;Taylor&quot;)//copy! with specific field overwrite
+</code></pre>
+
+<p>This works for all instance objects running in a Concurnas program, including instance objects of Java classes.</p>
+<h3 id="smart-casts">Smart casts</h3>
+<p>The following pattern of code, when casting objects, is common in Java:</p>
+<pre><code class="language-java">if(anObject instanceof Something){
+    Something asSomething = (Something)anObject;
+    //now we can use anObject as asSomething
+}
+</code></pre>
+
+<p>Concurnas presents a more concise way of solving this problem with <a href="../docs/castingAndCheckingTypes.html#is-with-automatic-cast">smart casts</a>:</p>
+<pre><code class="language-conc">if(anObject is Something){
+    //now we can use anObject as a Something instance - no cast needed!
+}
+</code></pre>
+
+<h3 id="traits">Traits</h3>
+<p><a href="../docs/traits.html">Traits</a> in Concurnas are extremely powerful and on a par with those found in Scala. They enable us to create classes via composition as opposed to exclusively via inheritance. Java has interfaces but interfaces are limited to abstract method declarations or default methods, interfaces may not contain state. This is different with Concurnas where state may be abstract or concrete within a trait:</p>
+<pre><code class="language-conc">trait IndAncDec{
+    -count int//abstract state needing provision within implementing class
+    -countdown int =0
+    def inc() =&gt; ++count + countdown
+    def dec() =&gt; --countdown + count
+}
+
+class HasIncAndDec ~ IndAncDec{
+    override count = 0
+}
+
+with(HasIncAndDec()){ inc(), inc(), dec(), count, countdown }
+//returns: (1, 2, 1, 2, -1)
+</code></pre>
+
+<p>Overall the implementation of traits is far superior to Java interfaces.</p>
+<h4 id="local-classes-trait-composition">Local classes trait composition</h4>
+<p>Local classes are a feature of Concurnas. We can compose classes using traits at their point of localized declaration as follows:</p>
+<pre><code class="language-conc">def foo(){
+    AnotherCounty = class ~ IndAncDec{
+        override count = 0
+    }
+
+    new AnotherCounty()
+}
+</code></pre>
+
+<h4 id="the-diamond-pattern">The diamond pattern</h4>
+<p>Concurnas also solves the diamond pattern by permitting multiple traits to be implemented by a class and requiring disambiguation at the concrete (non abstract) class level where appropriate:</p>
+<pre><code class="language-conc">abstract class AbstractFooClass{
+    def foo() =&gt; &quot;version AbstractFooClass&quot;
+}
+
+trait A{
+    def foo() =&gt; &quot;version A&quot;
+}
+trait B{
+    def foo() =&gt; &quot;version B&quot;
+}
+
+class FooClass &lt; AbstractFooClass with B, A{
+    override def foo() =&gt; &quot;&quot; + [super[AbstractFooClass].foo(), super[A].foo(), super[B].foo()]
+}
+
+FooClass().foo()
+</code></pre>
+
+<p>In the above example we override the <code>foo</code> method in <code>FooClass</code> - as this is required in order to <a href="../docs/traits.html#resolving-ambiguous-trait-method-definitions">resolve the ambiguity</a> in the inherited versions of <code>foo</code>. We then choose to call, via the qualified <code>super</code> keyword, a few different implementations of <code>foo</code>.</p>
+<h4 id="trait-inheritance-and-stacking">Trait inheritance and stacking</h4>
+<p>Traits may inherit from one another:</p>
+<pre><code class="language-conc">trait SuperTrait{
+    def foo() String =&gt; &quot;superTrait method called&quot;
+}
+
+trait ATrait &lt; SuperTrait{
+    override def foo() =&gt; &quot;trait method called &quot; + super.foo()
+}//override keyword must be used since we are overriding the definition from the super trait: SuperTrait
+
+class AClass with ATrait
+
+AClass().foo()
+//returns: trait method called, superTrait method called
+</code></pre>
+
+<p>The hierarchy of trait inheritance may be differed until the point of declaration of a class. This has the effect of changing the meaning of what <code>super</code> refers to for each trait contingent upon their order in said class declaration. Thus <a href="../docs/traits.html#stacking-traits">stacking is possible</a>:</p>
+<pre><code class="language-conc">abstract class Operator{
+    def operate(a int) int =&gt; a
+}
+
+open class ID &lt; Operator{
+    override def operate(a int) =&gt; a
+}
+
+trait PlusOne  &lt; Operator{ override def operate(a int) =&gt; super.operate(a)+1  }
+trait Square   &lt; Operator{ override def operate(a int) =&gt; super.operate(a)**2 }
+trait MinusOne &lt; Operator{ override def operate(a int) =&gt; super.operate(a)-1  }
+trait DivTwo   &lt; Operator{ override def operate(a int) =&gt; super.operate(a)/2  }
+
+x = new ID ~ PlusOne, Square, MinusOne, DivTwo // (((x/2) - 1) ** 2) + 1
+y = new ID ~ DivTwo, MinusOne, Square, PlusOne //reverse operator application
+z = new ID ~ DivTwo, MinusOne, Square, PlusOne{
+    override def operate(a int) =&gt; super.operate(a)+1000
+}//reverse operator application with additional operation
+
+inst.operate(10) for inst in [x y z]
+//returns: [60, 17, 1017]
+</code></pre>
+
+<h3 id="null-safety">Null safety</h3>
+<p>Null has been described as a <a href="https://www.infoq.com/presentations/Null-References-The-Billion-Dollar-Mistake-Tony-Hoare/">billion dollar mistake</a>. In Java, since it's valid for any variable reference at any point in a programs execution to be null, to write null safe programs we are obliged to persistently test for nullability. Here is an example:</p>
+<pre><code class="language-java">public static int plusOneLength(String something){
+    return something.length();
+}
+
+plusOneLength(null);//this causes a null pointer exception to be thrown
+</code></pre>
+
+<p>To be safe we really should write the following, but doing so consistently is time consuming, easy to get wrong and tedious so most developers don't bother:</p>
+<pre><code class="language-java">public static int plusOneLength(String something){
+    if(null == something){//handle null
+        return 0;
+    }
+    return something.length();
+}
+
+plusOneLength(null);//this is ok now, null is handled
+</code></pre>
+
+<p>Concurnas, like <a href="https://kotlinlang.org/">Kotlin</a> and <a href="https://swift.org/">Swift</a> is a <a href="../docs/nullsafe.html">null safe language</a>, nullability is built into its type system. Concurnas requires that a variable's type be explicitly declared as being nullable in order for it to be assigned null or a potentially null value. This restriction allows us to largely eliminate the risk of <code>NullPointerException</code>, empowering us to write more concise, safe code:</p>
+<pre><code class="language-conc">aString String = &quot;something&quot;
+aString = null //compilation error, aString is not of a nullable type.
+</code></pre>
+
+<p>Of course there are some instances where using null is of value/unavoidable (say when using libraries written in Java or other JVM languages which do not offer null safety). To this effect Concurnas offers a number of mechanism by which <code>null</code> can be factored for. We can append a <code>?</code> to the type in order to declare a nullable type:</p>
+<pre><code class="language-conc">aString String? = &quot;something&quot;
+aString = null //this is ok
+</code></pre>
+
+<p>And we can implement our nullable <code>plusOneLength</code> function as follows:</p>
+<pre><code class="language-conc">def plusOneLength(something String?) =&gt; something?.length()
+
+plusOneLength(null)//this is ok now, null is handled
+</code></pre>
+
+<p>Alternatively Concurnas offers null scope analysis, thus we can write the following:</p>
+<pre><code class="language-conc">def plusOneLength(something String?){
+    if(null == something){
+        0
+    }else{//'something' is provably non null at this point...
+        something.length()//... so this code is null safe
+    }
+} 
+
+plusOneLength(null)//this is ok now, null is handled
+</code></pre>
+
+<p>Concurnas also offers the <a href="../docs/nullsafe.html#elvis-operator">elvis operator</a> and <a href="../docs/nullsafe.html#no-null-assertion">no null assertion</a></p>
+<h3 id="double-dot">Double Dot</h3>
+<p>Often when we are applying the builder pattern, or otherwise calling a lot of methods on an object as a chained method call, it's more convenient for those methods to return a reference to their host instance object to make the following code possible:</p>
+<pre><code class="language-java">class Accumilator{
+    private int state = 0;
+    public Accumilator(int state) {
+        this.state = state;
+    }
+
+    public Accumilator add(int e) {
+        state += e;
+        return this;
+    }
+
+    public Accumilator minus(int e) {
+        state -= e;
+        return this;
+    }
+
+    public Accumilator mul(int e) {
+        state *= e;
+        return this;
+    }
+
+    public int getState() {
+        return this.state;
+    }
+}
+
+int res = new Accumilator(2).add(23).mul(8).minus(12).getState();//188
+</code></pre>
+
+<p>Effectively we have had to change the definition of our <code>Accumilator</code> in order to suit the usage of said class. With Concurnas it is not necessary for any changes like this to be made in order to support chained method calls, as we may use the <a href="../docs/functions.html#calling-functions-and-methods">double dot</a> <code>..</code> syntax. The double dot simply returns the object upon which a method was invoked rather than its return type (if there is one):</p>
+<pre><code class="language-conc">class Accumilator(-state int){
+    def add(e int)   =&gt; state += e;;
+    def minus(e int) =&gt; state -= e;;
+    def mul(e int)   =&gt; state *= e;;
+}
+
+Accumilator(2)..add(23)..mul(8)..minus(12).state
+</code></pre>
+
+<p>Lovely!</p>
+<h3 id="with-statement">With statement</h3>
+<p>The <code>with</code> statement is often used in similar situations as when chained method calls are required. Consider the following (carrying on from our previous example) in Java:</p>
+<pre><code class="language-java">Accumilator acc = new Accumilator(2);
+{
+    acc.add(23);
+    if(acc.getState() &gt; 16) {
+        acc.minus(16);
+    }else {
+        acc.mul(8);
+        acc.mul(2);
+    }
+}
+
+int res = acc.getState();
+</code></pre>
+
+<p>This can be achieved in Concurnas using a <a href="../docs/controlStatements.html#with-statement">with statement</a> as follows:</p>
+<pre><code class="language-conc">res = with(Accumilator(2)){
+    add(23)//maps to accumilator add(23)
+    if(state &gt; 16){//maps to accumilator getState()... etc
+        minus(16)
+    }else{
+        mul(8)
+        mul(2)
+    }
+    state
+}//res == 9
+</code></pre>
+
+<h3 id="typedefs">Typedefs</h3>
+<p>Often when writing code in Java that makes use of generics types we find ourselves writing very long definitions such as the following:</p>
+<pre><code class="language-java">ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;Integer&gt;&gt;&gt;&gt; myDataStructureInstance = new ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;Integer&gt;&gt;&gt;&gt;(10)
+public static ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;Integer&gt;&gt;&gt;&gt; processStruct(ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;Integer&gt;&gt;&gt;&gt; myDataStructureInstance){
+    //operation here
+    return null
+}
+//a slight variant of the above structure...
+ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;String&gt;&gt;&gt;&gt; strucutreVariant = new ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;String&gt;&gt;&gt;&gt;(10)
+</code></pre>
+
+<p>Not only is this hard to read but hard to maintain as simple changes in the data structure require changes in a lot of places. We also end up with cut-and-paste code where, as for our <code>strucutreVariant</code> type, there are small changes in the type definition required.</p>
+<p>With Concurnas we need only define the following <a href="../docs/typedefs.html"><code>typedef</code></a> in order to express the type of our <code>myDataStructureInstance</code> variable, we can then use this as a macro when working with this type elsewhere in our code:</p>
+<pre><code class="language-conc">typedef DataStructure = ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;String&gt;, Set&lt;Integer&gt;&gt;&gt;&gt;
+myDataStructureInstance = new DataStructure(10)
+</code></pre>
+
+<p>In fact, we can even take this one step further and define a generic typedef as follows (and use it to create our <code>DataStructure</code> type):</p>
+<pre><code class="language-conc">typedef DataStructure&lt;X, Y&gt; = ArrayList&lt;Set&lt;HashMap&lt;ArrayList&lt;X&gt;, Set&lt;Y&gt;&gt;&gt;&gt;
+typedef DataStructure = DataStructure&lt;String, Integer&gt;
+</code></pre>
+
+<p>We can use this within the main body of our code as follows:</p>
+<pre><code class="language-conc">myDataStructureInstance = new DataStructure(10)
+def processStruct(myDataStructureInstance DataStructure) DataStructure?{//operation here
+    null
+}
+//a slight variant of the above structure...
+strucutreVariant = DataStructure&lt;String, String&gt;(10)
+</code></pre>
+
+<p><a href="../docs/typedefs.html">Typedefs</a> offer a much better solution than what we see in the Java case.</p>
+<h2 id="strings">Strings</h2>
+<h3 id="creating-strings">Creating Strings</h3>
+<p>With Java we can create Strings as follows:</p>
+<pre><code class="language-java">String myString = &quot;hello \&quot;world\&quot;&quot;;//String with escape character
+String formatString = String.format(&quot;xyz: %s %s&quot;, 12, 13)// =&gt; formatString = xyz: 12 13
+String concat = &quot;hey: &quot; + 12;
+</code></pre>
+
+<p>Concurnas offers similar capabilities for <a href="../docs/types.html#strings">Strings</a> with some additional convenience:</p>
+<pre><code class="language-conc">myString = 'hello &quot;world&quot;';//escape character's not needed
+myString2 = &quot;hello 'world'&quot;;//escape character's not needed
+formatString = String.format(&quot;xyz: %s %s&quot;, 12, 13)// =&gt; formatString = xyz: 12 13
+concat = &quot;hey: {12}&quot;//code may be embedded within a String
+</code></pre>
+
+<h3 id="operations-on-strings">Operations on Strings</h3>
+<p>Concurnas supports (via implicit operator overloading) a number of operations on Strings:</p>
+<pre><code class="language-conc">myString = &quot;abcdefg&quot;
+
+cont   = &quot;de&quot; in myString
+aChar  = myString[2]         //==c
+substr = myString[2 ... 4]   //==cd
+substr = myString[4 ... ]    //efg
+substr = myString[ ... 4]    //abcd
+elms   = x for x in myString //[a, b, c, d, e, f, g]
+</code></pre>
+
+<p>This is nice and easy to read and work with. In contrast this is the same code in Java:</p>
+<pre><code class="language-java">String myString = &quot;abcdefg&quot;;
+
+char aChar  = myString.charAt(2);
+String substr = myString.substring(2, 4);
+String substr = myString.substring(4);
+String substr = myString.substring(0, 4);
+java.util.ArrayList&lt;Character&gt; elms = new java.util.ArrayList&lt;Character&gt;();
+{
+    for(int n = 0; n &lt; myString.length(); n++){
+        elms.add(myString.charAt(n));
+    }
+}
+</code></pre>
+
+<h3 id="working-with-regex">Working with regex</h3>
+<p>Concurnas has first class citizen support for <a href="../docs/types.html#regex">regex</a>. Compare the following in Java:</p>
+<pre><code class="language-java">Pattern p = Pattern.compile(&quot;a*b&quot;);
+</code></pre>
+
+<p>vs Concurnas:</p>
+<pre><code class="language-conc">pat = r&quot;a*b&quot;
+</code></pre>
+
+<p>A small but handy feature.</p>
+<h2 id="whats-next">What's next?</h2>
+<p>Checkout the <a href="concVsJava3.html">third and final article</a> in the series for more differences between Concurnas and Java.</p>			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+<footer class="footer dark site-footer">
+	<div class="container">
+		<div class="sitemap clearfix">
+			<ul>
+	<li class="column">		
+			<h5><a href="../index.html">Home</a></h5>		
+			<h5><a href="../download.html">Download</a></h5>
+			<h5><a href="../docs/manual.html">Documentation</a></h5>	
+			<h5><a href="../video/index.html">Video</a></h5>		
+	</li>
+	
+	
+	<li class="column">
+		<h5><a href="../learnmore/overview.html">Learn More</a></h5>
+			<ul>
+				<li><a href="../learnmore/overview.html">Language Overview</a></li>	
+				<li><a href="../learnmore/concVsJava1.html">Concurnas vs Java</a></li>	
+				<li><a href="../learnmore/usecases.html">Use cases:</a></li>			
+				<li><a href="../learnmore/finance.html">&bull; Finance</a></li>			
+				<li><a href="../learnmore/sciComp.html">&bull; Scientific Computing</a></li>			
+				<li><a href="../learnmore/startups.html">&bull; Startups</a></li>	
+				<li><a href="../learnmore/mailinglist.html">Mailing List</a></li>
+				<li><a href="../learnmore/contribute.html">Contribute</a></li>			
+			</ul>
+	</li>	
+	
+	<li class="column">
+		<h5><a href="../docs/manual.html">Documentation</a></h5>
+		<ul>
+			<li><a href="../docs/manual.html">Reference Manual</a></li>
+			<li><a href="../video/index.html">Video</a></li>	
+			<li><a href="../docs/communitySupport.html">Community Support</a></li>
+		</ul>
+	</li>
+
+
+	<li class="column">
+		<h5><a href="../concurnasltd/introduction.html">Concurnas Ltd</a></h5>
+			<ul>
+				<li><a href="../concurnasltd/leadership.html">Leadership</a></li>		
+				<li><a href="../concurnasltd/careers.html">Careers</a></li>			
+				<li><a href="../concurnasltd/open-source.html">Open Source</a></li>			
+				<li><a href="../concurnasltd/support.html">Support</a></li>				
+				<li><a href="../concurnasltd/consulting.html">Consulting</a></li>
+				<li><a href="../concurnasltd/sponsorship.html">Sponsorship</a></li>		
+				<li><a href="../concurnasltd/contact.html">Contact</a></li>
+			</ul>
+	</li>
+
+	<li class="column">
+		<h5><a href="../news.html">News</a></h5>
+		<ul>
+			<li><a href="../news.html">Latest News</a></li>	
+			<li><a href="../newsletters/march2020.html">Newsletters</a></li>		
+			<li><a href="../rss.xml"><img src="../img/rss.gif" alt="rss"></li>	
+		</ul>
+	</li>
+
+
+	
+</ul>
+
+		</div>
+		<div class="copyright">
+			<small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/bootstrap-toc.min.js"></script>
+
+<script type="text/javascript" src="../js/prism.js"></script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="../js/client.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126537021-1');
+</script>
+
+
+
+
+
+<!--<script async src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+
+</body>
+</html>

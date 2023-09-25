@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Off Heap Memory</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Off Heap Memory"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Off Heap Memory"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Off Heap Memory"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/offHeap.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="off-heap-memory">Off Heap Memory<a class="headerlink" href="#off-heap-memory" title="Permalink to this headline" id="off-heap-memory">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#off-heap-memory">Off Heap Memory</a>
+   <ul>
+   <li><a class="reference internal" href="#overview1">Overview</a>   </li>
+   <li><a class="reference internal" href="#serialization-of-objects">Serialization of objects</a>   <ul>
+   <li><a class="reference internal" href="#sizeof1">sizeof</a>   </li>
+   <li><a class="reference internal" href="#custom-serialization">Custom Serialization</a>   <ul>
+   <li><a class="reference internal" href="#implementing-the-serializable-interface">Implementing the Serializable interface</a>   </li>
+   <li><a class="reference internal" href="#implementing-the-externalizable-interface">Implementing the Externalizable interface</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#unserializable-objects">Unserializable Objects</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#transient-fields">Transient fields</a>   <ul>
+   <li><a class="reference internal" href="#default-transient-fields">Default Transient fields</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#off-heap-stores">Off Heap Stores</a>   <ul>
+   <li><a class="reference internal" href="#creating-off-heap-ram-stores">Creating Off Heap RAM Stores</a>   <ul>
+   <li><a class="reference internal" href="#using-offheapobject's">Using OffHeapObject's</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#creating-off-heap-disk-stores">Creating Off Heap Disk Stores</a>   </li>
+   <li><a class="reference internal" href="#managing-off-heap-stores">Managing Off Heap Stores</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#off-heap-map">Off Heap Map</a>   <ul>
+   <li><a class="reference internal" href="#creating-off-heap-ram-maps">Creating Off Heap RAM Maps</a>   </li>
+   <li><a class="reference internal" href="#using-off-heap-disk-maps">Using Off Heap Disk Maps</a>   </li>
+   <li><a class="reference internal" href="#off-heap-map-management">Off heap map management</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#schema-evolution">Schema evolution</a>   <ul>
+   <li><a class="reference internal" href="#supported-evolutions">Supported evolutions</a>   <ul>
+   <li><a class="reference internal" href="#removing-a-field">Removing a field</a>   </li>
+   <li><a class="reference internal" href="#adding-a-field">Adding a field</a>   </li>
+   <li><a class="reference internal" href="#changing-the-type-of-a-field">Changing the type of a field</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Concurnas provides support for managing data off heap. Since Concurnas is an Object oriented garbage collected language, data, in the form of Objects, is managed in a subsection of the RAM of the machine upon which it's operating called the heap. This is generally only a portion of the RAM available to and a fraction of the persistable storage available (SSD's, disk drives etc) to the machine.</p>
+<div class="section">
+<div class="section">
+<h2 id="overview1">Overview<a class="headerlink" href="#overview1" title="Permalink to this headline" id="overview1">?</a></h2>
+<p>The off heap memory management functionality provided by Concurnas affords us three key advantages:</p>
+<ul class="simple">
+  <li><p>We are able to work with datasets which are significantly larger than what is possible to store on heap. For instance, we may be running our program with a with a 8GB heap, 128GB of RAM and many terabytes of physical disk based storage - with off heap memory management we can reside and work with our data in this RAM and physical disk seamlessly.</p>
+</li>
+  <li><p>We can perform our own memory management. This is often preferable in cases where we are working with large datasets which are resident in memory for large durations of time and/or have access patterns which we are aware of and in control of ahead of runtime. This frees up our garbage collector to focus on other areas of our program's operation.</p>
+</li>
+</ul class="simple">
+<p>This functionality is provided in the form of off heap stores and key value pair maps which can be backed in either RAM or disk. These are intuitive and easy to use data structures and are already a very popular industry approved means of working with large datasets.</p>
+</div>
+<div class="section">
+<h2 id="serialization-of-objects">Serialization of objects<a class="headerlink" href="#serialization-of-objects" title="Permalink to this headline" id="serialization-of-objects">?</a></h2>
+<p>All objects in Concurnas are sterilizable to and from binary format - this extends naturally to object graphs (i.e. the total data structure referenced by an object and all its fields, and it's fields fields etc). Concurnas is even able to cater for cycles in serialized object graphs by default. It is through this mechanism of serialization that objects are able to be managed off heap, being marshalled back into an object form when they are required in heap memory, and marshalled into binary form for storage/persistence off heap.</p>
+<p>This default serialization scheme is added to all classes executed by Concurnas at runtime.</p>
+<div class="section">
+<div class="section">
+<h3 id="sizeof1">sizeof<a class="headerlink" href="#sizeof1" title="Permalink to this headline" id="sizeof1">?</a></h3>
+<p>We can make use of the <code class="lang-conc">sizeof</code> keyword in order to determine the amount of bytes a serialized object graph will consume off heap:</p>
+<pre><code class="lang-conc">anArray = [1 2 3 4]
+
+sz = sizeof anArray //sz == 37
+</code></pre>
+<p>This can be useful for when when working with large objects in an environment where we have a limited amount of off heap memory.</p>
+</div>
+<div class="section">
+<h3 id="custom-serialization">Custom Serialization<a class="headerlink" href="#custom-serialization" title="Permalink to this headline" id="custom-serialization">?</a></h3>
+<p>Sometimes the default serialization mechanism is not adequate. In these instances a custom user defined serialization mechanism may be defined. This may take the form of either implementing the <code class="lang-conc">Serializable</code> interface or <code class="lang-conc">Externalizable</code> interface.</p>
+<div class="section">
+<div class="section">
+<h4 id="implementing-the-serializable-interface">Implementing the Serializable interface<a class="headerlink" href="#implementing-the-serializable-interface" title="Permalink to this headline" id="implementing-the-serializable-interface">?</a></h4>
+<p>A class may implement the <code class="lang-conc">java.io.Serializable</code> interface, in doing so it will use the default serialization strategy employed by Java in order to serialize its graph. For example:</p>
+<pre><code class="lang-conc">class MyClass(firstName String, secondName String) ~ java.io.Serializable
+</code></pre>
+<p>Optionally, as par <a href="https://docs.oracle.com/javase/9/docs/api/java/io/Serializable.html">Serializable</a> one may define a pair of <code class="lang-conc">writeObject</code> and <code class="lang-conc">readObject</code> methods in order to perform the serialization. For example, on a custom ArrayList:</p>
+<pre><code class="lang-conc">class MyArrayList ~ java.io.Serializable{
+  items String[]
+  highwatermark = 0
+	
+  this(){
+    items = new String[10]
+  }
+	
+  this(startsize int){
+    items = new String[startsize]
+  }
+	
+  def add(what String){
+    if(highwatermark &gt;== items.length){
+      newitems = new String[Math.ceil(items.length * 1.2)as int]
+      System.arraycopy(items, 0, newitems, 0, items.length)
+      items = newitems
+    }
+    items[highwatermark++] = what
+  }
+	
+  private def substr(){
+    items[0 ... highwatermark] if items  &lt;&gt; null else 'its null'
+  }
+	
+  override toString() =&gt; "" + substr()
+	
+  private def writeObject(s java.io.ObjectOutputStream) void{
+    s.defaultWriteObject()
+    s.writeInt(highwatermark)
+    for (i=0; i&lt;highwatermark; i++) {
+      s.writeObject(items[i])
+    }
+  }
+	
+  private def readObject(s java.io.ObjectInputStream) void {
+    s.defaultReadObject()
+    highwatermark = s.readInt()
+    items = new String[highwatermark] 
+		
+    for (i=0; i&lt;highwatermark; i++) {
+      items[i] = s.readObject() as String
+    }
+  }	
+}
+</code></pre>
+</div>
+<div class="section">
+<h4 id="implementing-the-externalizable-interface">Implementing the Externalizable interface<a class="headerlink" href="#implementing-the-externalizable-interface" title="Permalink to this headline" id="implementing-the-externalizable-interface">?</a></h4>
+<p>A class may implement the <code class="lang-conc">java.io.Externalizable</code> interface, in doing so we are obliged to define a pair of <code class="lang-conc">writeExternal(outx java.io.ObjectOutput)</code> and <code class="lang-conc">readExternal(inx java.io.ObjectInput)</code> methods which perform our serialization and deserialization. For example, on a custom ArrayList:</p>
+<pre><code class="lang-conc">class MyArrayList ~ java.io.Externalizable{
+  items String[]
+  highwatermark = 0
+	
+  this(){
+    items = new String[10]
+  }
+	
+  this(startsize int){
+    items = new String[startsize]
+  }
+	
+  def add(what String){
+    if(highwatermark &gt;== items.length){
+      newitems = new String[Math.ceil(items.length * 1.2)as int]
+      System.arraycopy(items, 0, newitems, 0, items.length)
+      items = newitems
+    }
+    items[highwatermark++] = what
+  }
+	
+  private def substr(){
+    items[0 ... highwatermark] if items  &lt;&gt; null else 'its null'
+  }
+	
+  override toString() =&gt; "" + substr()
+	
+  public def writeExternal(outx java.io.ObjectOutput){
+    outx.writeInt(highwatermark)
+    for(n=0; n &lt; highwatermark; n++){
+      outx.writeUTF(items[n])
+    }
+  }
+	
+	
+  public def readExternal(inx java.io.ObjectInput){
+    highwatermark = inx.readInt()
+    items = new String[highwatermark]
+		
+    for(n=0; n &lt; highwatermark; n++){
+      items[n] = inx.readUTF()
+    }
+  }
+}
+</code></pre>
+</div>
+</div>
+<h3 id="unserializable-objects">Unserializable Objects<a class="headerlink" href="#unserializable-objects" title="Permalink to this headline" id="unserializable-objects">?</a></h3>
+<p>All objects in Concurnas are serializable with exception of:</p>
+<ul class="simple">
+  <li><p>Actors.</p>
+</li>
+  <li><p>Any class marked as transient. See <a href="specialClasses.html#transient-classes">here</a> for more details.</p>
+</li>
+</ul class="simple">
+</div>
+</div>
+<h2 id="transient-fields">Transient fields<a class="headerlink" href="#transient-fields" title="Permalink to this headline" id="transient-fields">?</a></h2>
+<p>Classes may have transient fields declared within them. These behave like regular fields except that when serialized via the default strategy provided by Concurnas, or the default <code class="lang-conc">java.io.Serializable</code> strategy, they are not converted to/from binary format. A field may be declared transient by using the <code class="lang-conc">transient</code> keyword as follows:</p>
+<pre><code class="lang-conc">class MyClass(transient firstName String, secondName String){
+  transient yearOfBirth int
+}
+</code></pre>
+<p>Upon serialization and deserialization transient fields will not be populated, thus in a deserialized object any non primitive, non array type transient fields will have a default value of <code class="lang-conc">null</code> attributed to them, and primitive types the equivalent of <code class="lang-conc">0</code>. It is because of this behaviour that non primitive, non array type transient fields are always nullable.</p>
+<p>This can be useful in instances where a local resource is tied up to a Object which needs to be persisted or otherwise managed off heap, for instance a database connection. Note that excessive use of transient fields can be a <i>code smell</i> indicating unorthodox design.</p>
+<div class="section">
+<div class="section">
+<h3 id="default-transient-fields">Default Transient fields<a class="headerlink" href="#default-transient-fields" title="Permalink to this headline" id="default-transient-fields">?</a></h3>
+<p>When it comes to the Serialization of transient fields with default values the behaviour differs contingent upon the variant of serialization used. For example:</p>
+<pre><code class="lang-conc">class MyClass(transient firstName String = "dave", secondName String){
+  transient yearOfBirth int = 1970 //transient field with default value
+}
+</code></pre>
+<p>The fields <code class="lang-conc">firstName</code> and <code class="lang-conc">yearOfBirth</code> will be deserialized to their respective default values if either:</p>
+<ul class="simple">
+  <li><p>The default serialization strategy offered by Concurnas is used.</p>
+</li>
+  <li><p>Explicit defaulting of the fields is within the appropriate methods of a class extending either <code class="lang-conc">java.io.Externalizable</code> or <code class="lang-conc">java.io.Serializable</code></p>
+</li>
+</ul class="simple">
+</div>
+</div>
+<h2 id="off-heap-stores">Off Heap Stores<a class="headerlink" href="#off-heap-stores" title="Permalink to this headline" id="off-heap-stores">?</a></h2>
+<p>Concurnas offers Off Heap Stores, these may reside either in memory via the <code class="lang-conc">com.concurnas.lang.offheap.storage.OffHeapRAM</code> class or on disk via the <code class="lang-conc">com.concurnas.lang.offheap.storage.OffHeapDisk</code> class - these are subtypes of the <code class="lang-conc">com.concurnas.lang.offheap.storage.OffHeapPutGettable</code> class. They allow us to store object graphs off heap and provide us with objects we can use in order to interact with those off heap objects.</p>
+<div class="section">
+<div class="section">
+<h3 id="creating-off-heap-ram-stores">Creating Off Heap RAM Stores<a class="headerlink" href="#creating-off-heap-ram-stores" title="Permalink to this headline" id="creating-off-heap-ram-stores">?</a></h3>
+<p>In order to create an off heap RAM store we must specify the size of our off heap stores in bytes, for instance, 10MB is:</p>
+<pre><code class="lang-conc">10meg = 10 * (1024**2)
+</code></pre>
+<p>This can then be used within our <code class="lang-conc">OffHeapRAM</code> store, with generic qualification to store an array of Strings as follows:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.offheap.storage import OffHeapRAM
+from com.concurnas.lang.offheap import OffHeapObject
+
+msg1 = ["hello" "world"]
+msg2 = ["nice" "day"]
+
+10meg = 10 * (1024**2)
+
+offHeapRamStore = new OffHeapRAM&lt;String[]&gt;(10meg)
+offHeapRamStore.start()
+
+offHeapObj1 OffHeapObject&lt;String[]&gt; = offHeapRamStore.put(msg1)
+offHeapObj2 OffHeapObject&lt;String[]&gt; = offHeapRamStore.put(msg2)
+
+gotMsg1 = offHeapRamStore.get(offHeapObj1)
+gotMsg2 = offHeapRamStore.get(offHeapObj2)
+
+offHeapRamStore.close()
+
+assert gotMsg1 == msg1
+assert gotMsg2 == msg2//equal by value
+
+assert gotMsg1 &amp;&lt;&gt; msg1
+assert gotMsg2 &amp;&lt;&gt; msg2//different by reference
+</code></pre>
+<p>There are a few things going on with the <code class="lang-conc">OffHeapRAM</code> store above:</p>
+<ol class="arabic">
+  <li><p>The <code class="lang-conc">OffHeapRAM</code> store is explicitly started via a call to the <code class="lang-conc">start</code> method.</p>
+</li>
+  <li><p>Then we store objects within them via the <code class="lang-conc">put</code> method, this returns to us an object reference of type <code class="lang-conc">OffHeapObject</code> which we can use in order to obtain a copy of the object from the store.</p>
+</li>
+  <li><p>We then obtain a copy of the stored objects from the store using the <code class="lang-conc">get</code> method. Note that these objects are copies, so they are (by default) equal by value, but different by reference.</p>
+</li>
+  <li><p>We then shut down the <code class="lang-conc">OffHeapRAM</code> store using the <code class="lang-conc">close</code> method. It is important that this is done so as to avoid a memory/resource leak.</p>
+</li>
+</ol class="arabic">
+<div class="section">
+<div class="section">
+<h4 id="using-offheapobject's">Using OffHeapObject's<a class="headerlink" href="#using-offheapobject's" title="Permalink to this headline" id="using-offheapobject's">?</a></h4>
+<p>The returned <code class="lang-conc">OffHeapObject</code> object references from our object store can be passed around our program as par normal objects. They may be deleted by using the <code class="lang-conc">del</code> keyword or calling the <code class="lang-conc">delete</code> method - this will remove their referenced object from the object store. Similarly, when <code class="lang-conc">OffHeapObject</code> object references go out of scope and become garbage collected, the object to which they refer is removed from their host object store - however, it is still best practice to explicitly delete the object when it is known to not be of use. Here is an example:</p>
+<pre><code class="lang-conc">del offHeapObj1
+offHeapObj2.delete()
+</code></pre>
+<p>When working with <code class="lang-conc">OffHeapObject</code> objects it is not necessary to have immediate knowledge of the object store to which they reference, since they have a <code class="lang-conc">getManager</code> method which can provide this information, additionally, the <code class="lang-conc">get</code> method may be called in order to obtain a copy of the object to which the <code class="lang-conc">OffHeapObject</code> object refers, for example:</p>
+<pre><code class="lang-conc">gotMsg1a = offHeapObj1.getManager().get(offHeapObj1)
+gotMsg1b = offHeapObj1.get()
+
+assert gotMsg1a == gotMsg1b //equal by value
+assert gotMsg1a &amp;&lt;&gt; gotMsg1b//different by reference
+</code></pre>
+</div>
+</div>
+<h3 id="creating-off-heap-disk-stores">Creating Off Heap Disk Stores<a class="headerlink" href="#creating-off-heap-disk-stores" title="Permalink to this headline" id="creating-off-heap-disk-stores">?</a></h3>
+<p>The Off Heap Disk Store is a good mechanism for storing large amounts of temporary data off heap outside of RAM. The Off Heap Disk Store is backed by a memory mapped file which greatly enhances performance as spatially localized data is cached in memory.</p>
+<p>As with the <code class="lang-conc">OffHeapRAM</code> store, the <code class="lang-conc">OffHeapDisk</code> store must be provided with a store size. Additionally however, a file path may be provided. This file will be used to store the data held in the <code class="lang-conc">OffHeapDisk</code> store. If a file path is not provided, a temporary file will be created. If the file path exists already it will be erased, additionally, the file will be removed upon the <code class="lang-conc">close</code> method of the store being called.</p>
+<p>The <code class="lang-conc">OffHeapDisk</code> store exposes an additional method <code class="lang-conc">setPreallocate</code> which if called with <code class="lang-conc">true</code> before the store is started, will result in the temporary file used to back the data of the store being fully allocated on disk. If this is not set then the file will grow as required.</p>
+<p>Here is an example of the <code class="lang-conc">OffHeapDisk</code> store in action, it is very similar to the <code class="lang-conc">OffHeapRAM</code> store:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.offheap.storage import OffHeapDisk
+from com.concurnas.lang.offheap import OffHeapObject
+
+msg1 = ["hello" "world"]
+
+10meg = 10 * (1024**2)
+
+offHeapRamStore = new OffHeapDisk&lt;String[]&gt;(10meg)
+offHeapRamStore.start()
+
+offHeapObj1 OffHeapObject&lt;String[]&gt; = offHeapRamStore.put(msg1)
+
+gotMsg1 = offHeapRamStore.get(offHeapObj1)
+
+offHeapRamStore.close()
+
+assert gotMsg1 == msg1//equal by value
+
+assert gotMsg1 &amp;&lt;&gt; msg1//different by reference
+</code></pre>
+<p>The Off Heap Disk Store is not designed for permanent Object persistence since at the point of shutdown of a process with a <code class="lang-conc">OffHeapDisk</code> store the necessary handles (such as <code class="lang-conc">OffHeapObject</code> objects) are lost. For true persistence, an off Off Heap Disk Map is recommended, since they provide a key reference that can be used in order to refer to objects post process shutdown and resumption.</p>
+</div>
+<div class="section">
+<h3 id="managing-off-heap-stores">Managing Off Heap Stores<a class="headerlink" href="#managing-off-heap-stores" title="Permalink to this headline" id="managing-off-heap-stores">?</a></h3>
+<p>We can examine the amount of space we have allocated and have remaining in the store via the <code class="lang-conc">getCapacity</code> and <code class="lang-conc">getFreeSpace</code> methods respectfully.</p>
+<p>Over time an object store may become fragmented (see: <a href="https://en.wikipedia.org/wiki/Defragmentation">Defragmentation</a>). As such although there may appear to be plenty of space available for an object allocation, there in fact may not be due to fragmentation. In this situation Concurnas will automatically compact and defragment the store in order to free up space. This is a slow operation, for this reason it is recommended that stores be monitored for becoming close to capacity, a good rule of thumb is to over allocate space by 50% more than what is expected to be required.</p>
+<p>We can adjust the amount of space allocated to the store by calling the <code class="lang-conc">setCapacity(size long)</code> method. This method may be called on the store before or after it has been started via a call to the <code class="lang-conc">start</code> method. If it is called after the <code class="lang-conc">start</code> method, and the amount of space reduced, the store will be compacted and defragmented so as to ensure that it can fit into the newly allocated reduced space. If it cannot an exception will be thrown.</p>
+<p>If a <code class="lang-conc">OffHeapRAM</code> or <code class="lang-conc">OffHeapDisk</code> store is closed (by calling of the <code class="lang-conc">close</code> method) all outstanding <code class="lang-conc">OffHeapObject</code> objects are invalidated. Attempting to extract an object referenced by a <code class="lang-conc">OffHeapObject</code> will result in an exception. Additionally, Objects may not be persisted after the store has been closed.</p>
+<p>Off heap stores and <code class="lang-conc">OffHeapObject</code>'s cannot be shared between isolates. In cases where shared access to an off heap map is required, it is recommended that an actor be used in order to achieve this.</p>
+</div>
+</div>
+<h2 id="off-heap-map">Off Heap Map<a class="headerlink" href="#off-heap-map" title="Permalink to this headline" id="off-heap-map">?</a></h2>
+<p>Now let us examine the core of the off heap memory support in Concurnas, off heap key value pair maps. These may reside either in memory via the <code class="lang-conc">com.concurnas.lang.offheap.storage.OffHeapMapRAM</code> class or on disk via the <code class="lang-conc">com.concurnas.lang.offheap.storage.OffHeapMapDisk</code> class. Both of these implementations implement the <code class="lang-conc">java.util.Map</code> interface. They both behave in a very similar manner to the Off Heap stores we have previously explored.</p>
+<p>The <code class="lang-conc">OffHeapMapDisk</code> class offers all the same functionality as the <code class="lang-conc">OffHeapMapRAM</code> class but with the added benefit of being disk backed, enabling permanent persistence of off heap objects. Although the <code class="lang-conc">OffHeapMapDisk</code> implementation it is not as fast as the RAM based backing since it is disk backed, it does make use of memory mapped files in order to improve access times to data.</p>
+<div class="section">
+<div class="section">
+<h3 id="creating-off-heap-ram-maps">Creating Off Heap RAM Maps<a class="headerlink" href="#creating-off-heap-ram-maps" title="Permalink to this headline" id="creating-off-heap-ram-maps">?</a></h3>
+<p>In order to create an off heap map we must specify the size of our off heap structure in bytes, for instance, 100 MB is:</p>
+<pre><code class="lang-conc">100meg = 100 * (1024**2)
+</code></pre>
+<p>This can then be used within our <code class="lang-conc">OffHeapMapRAM</code> store, with generic qualification to map from a String as key to String[] as value as follows:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.offheap.storage import OffHeapMapRAM
+
+msg1 = ["hello" "world"]
+100meg = 100 * (1024**2)
+
+offHeapRamStore = new OffHeapMapRAM&lt;String, String[]&gt;(100meg)
+offHeapRamStore.start()
+
+offHeapRamStore.put('msg1', msg1)
+
+gotMsg1 = offHeapRamStore.get('msg1')
+
+offHeapRamStore.close()
+
+assert gotMsg1 == msg1//equal by value
+assert gotMsg1 &amp;&lt;&gt; msg1//different by reference
+</code></pre>
+<p>As with the Off heap stores there are a few things above going on:</p>
+<ol class="arabic">
+  <li><p>The <code class="lang-conc">OffHeapMapRAM</code> map is explicitly started via a call to the <code class="lang-conc">start</code> method.</p>
+</li>
+  <li><p>Then we store objects within the map via the <code class="lang-conc">put</code> method, this returns a copy of the previous object persisted if any.</p>
+</li>
+  <li><p>We then obtain a copy of the stored objects from the store using the <code class="lang-conc">get</code> method. Note that these objects are copies, so they are (by default) equal by value, but different by reference.</p>
+</li>
+  <li><p>We then shut down the <code class="lang-conc">OffHeapMapRAM</code> map using the <code class="lang-conc">close</code> method. It is important that this is done so as to avoid a memory/resource leak.</p>
+</li>
+</ol class="arabic">
+<p>Notice that, unlike off heap stores, <code class="lang-conc">OffHeapObject</code> objects are not returned from the <code class="lang-conc">put</code> method calls. We do not need <code class="lang-conc">OffHeapObject</code> objects because we can use the keys we have referenced.</p>
+</div>
+<div class="section">
+<h3 id="using-off-heap-disk-maps">Using Off Heap Disk Maps<a class="headerlink" href="#using-off-heap-disk-maps" title="Permalink to this headline" id="using-off-heap-disk-maps">?</a></h3>
+<p>The Off Heap Disk Map is a good mechanism for storing large amounts of temporary data off heap outside of RAM. The Off Heap Disk Map is backed by a memory mapped file which greatly enhances performance as spatially localized data is cached in memory.</p>
+<p>As with the <code class="lang-conc">OffHeapMapRAM</code> store, the <code class="lang-conc">OffHeapMapDisk</code> store must normally be provided with a map size. Additionally however, a file path may be provided. This file will be used to store the data held in the <code class="lang-conc">OffHeapMapDisk</code> store. If a file path is not provided, a temporary file will be created. If the file path is populated and points to a file which already exists, this file will be used as the backing store, any previously persisted mappings within the file will be accessible. It is through this means that persistence of data may be achieved.</p>
+<p>The <code class="lang-conc">OffHeapMapDisk</code> store exposes a number of additional methods:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">setPreallocate</code> - if called with <code class="lang-conc">true</code> before the store is started, will result in the temporary file used to back the data of the store being fully allocated on disk. If this is not set then the file will grow as required.</p>
+</li>
+  <li><p><code class="lang-conc">setRemoveOnClose</code> - if called with <code class="lang-conc">true</code>, will result in the backing file used for the map being removed upon the <code class="lang-conc">close</code> method being called on the map.</p>
+</li>
+  <li><p><code class="lang-conc">setCleanOnStart</code> - if called with <code class="lang-conc">true</code> before the store is started, will result in the file used to back the data of the store being erased when the map is started.</p>
+</li>
+</ul class="simple">
+<p>Here is an example of the <code class="lang-conc">OffHeapMapDisk</code> store in action, it is very similar to the <code class="lang-conc">OffHeapMapRAM</code> store:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.offheap.storage import OffHeapMapDisk
+
+msg1 = ["hello" "world"]
+100meg = 100 * (1024**2)
+
+offHeapRamStore = new OffHeapMapDisk&lt;String, String[]&gt;(100meg)
+offHeapRamStore.start()
+
+offHeapRamStore.put('msg1', msg1)
+
+gotMsg1 = offHeapRamStore.get('msg1')
+
+offHeapRamStore.close()
+
+assert gotMsg1 == msg1//equal by value
+assert gotMsg1 &amp;&lt;&gt; msg1//different by reference
+</code></pre>
+</div>
+<div class="section">
+<h3 id="off-heap-map-management">Off heap map management<a class="headerlink" href="#off-heap-map-management" title="Permalink to this headline" id="off-heap-map-management">?</a></h3>
+<p>As with off heap stores, the same points regarding management apply to  off heap maps...</p>
+<p>We can examine the amount of space we have allocated and have remaining in the map via the <code class="lang-conc">getCapacity</code> and <code class="lang-conc">getFreeSpace</code> methods respectfully.</p>
+<p>Over time an object map may become fragmented (see: <a href="https://en.wikipedia.org/wiki/Defragmentation">Defragmentation</a>). As such although there may appear to be plenty of space available for an object allocation, there in fact may not be due to fragmentation. In this situation Concurnas will automatically compact and defragment the map in order to free up space. This is a slow operation, for this reason it is recommended that maps be monitored for becoming close to capacity, a good rule of thumb is to over allocate space by 50% more than what is expected to be required.</p>
+<p>We can adjust the amount of space allocated to the map by calling the <code class="lang-conc">setCapacity(size long)</code> method. This method may be called on the map before or after it has been started via a call to the <code class="lang-conc">start</code> method. If it is called after the <code class="lang-conc">start</code> method, and the amount of space reduced, the map will be compacted and defragmented so as to ensure that it can fit into the newly allocated reduced space. If it cannot an exception will be thrown.</p>
+<p>Objects may not be persisted to a Off heap map after it has been closed.</p>
+<p>Off heap maps cannot be shared between isolates. In cases where shared access to an off heap map is required, it is recommended that an actor be used in order to achieve this.</p>
+</div>
+</div>
+<h2 id="schema-evolution">Schema evolution<a class="headerlink" href="#schema-evolution" title="Permalink to this headline" id="schema-evolution">?</a></h2>
+<p>One of the strongest points of the Concurnas off heap map implementation is its support for schema evolution. We term schema evolution as being changes to a class after it has been persisted. For instance, adding a new data field, changing a type etc. This turns out to be a surprisingly normal operation performed in enterprise computing and unfortunately the subsequent required data migration is something which consumes a lot of time and effort. Traditionally this would cause a problem for us upon deserialization since the persisted version of the class code would not match that of the current 'live' version, but Concurnas is largely able to account for these sorts of evolutionary changes.</p>
+<p>Additionally, Concurnas is able to store multiple evolved versions of the same class within an off heap data structure (either the map or store objects above). In this way Objects which have been serialized in a previous format usually do not require explicit migration to a new format.</p>
+<div class="section">
+<div class="section">
+<h3 id="supported-evolutions">Supported evolutions<a class="headerlink" href="#supported-evolutions" title="Permalink to this headline" id="supported-evolutions">?</a></h3>
+<p>Concurnas is able to support the following evolutions to Objects in isolation and in combination:</p>
+<div class="section">
+<div class="section">
+<h4 id="removing-a-field">Removing a field<a class="headerlink" href="#removing-a-field" title="Permalink to this headline" id="removing-a-field">?</a></h4>
+<pre><code class="lang-conc">class MyClass(firstName String, sirName String)
+//Later version:
+class MyClass(firstName String)
+</code></pre>
+<p>When we deserialize a class having an evolved definition with a removed field, this removed field will simply be ommitted from the deserialized object.</p>
+</div>
+<div class="section">
+<h4 id="adding-a-field">Adding a field<a class="headerlink" href="#adding-a-field" title="Permalink to this headline" id="adding-a-field">?</a></h4>
+<pre><code class="lang-conc">class MyClass(firstName String)
+//Later version:
+class MyClass(firstName String, sirName String)
+</code></pre>
+<p>When we deserialize a class having an evolved definition with an additional field, this additional field will be set to its default/initial value, the equivalent of <code class="lang-conc">0</code> for a non array primitive type, and <code class="lang-conc">null</code> otherwise.</p>
+<p>If a default value/initial value for the new field is specified then this value will be populated for the new field in deserialized objects.</p>
+</div>
+<div class="section">
+<h4 id="changing-the-type-of-a-field">Changing the type of a field<a class="headerlink" href="#changing-the-type-of-a-field" title="Permalink to this headline" id="changing-the-type-of-a-field">?</a></h4>
+<pre><code class="lang-conc">class MyClass(firstName String, sirName String, userid byte)
+//Later version:
+class MyClass(firstName String, sirName String, userid long)
+</code></pre>
+<p>When we deserialize a class having an evolved definition with a field with a different type from that of its persisted version the behaviour we encounter is contingent upon the variant of type evolution employed. This is summarized below:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Variant</p>
+</th class="head">
+<th class="head">
+<p>Example</p>
+</th class="head">
+<th class="head">
+<p>Behaviour</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p>Boxed? primitive to Boxed? primitive</p>
+</td>
+<td>
+<p><code class="lang-conc">int</code> -&gt; <code class="lang-conc">double</code></p>
+</td>
+<td>
+<p>Equivalent to a cast operation</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Boxed? primitive array to Boxed? primitive array</p>
+</td>
+<td>
+<p><code class="lang-conc">int[]</code> -&gt; <code class="lang-conc">Double[]</code></p>
+</td>
+<td>
+<p>Equivalent to a cast operation</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Any array to scalar</p>
+</td>
+<td>
+<p><code class="lang-conc">Integer[]</code> -&gt; <code class="lang-conc">Integer</code></p>
+</td>
+<td>
+<p>Cannot be converted</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Any scalar to array</p>
+</td>
+<td>
+<p><code class="lang-conc">Integer</code> -&gt; <code class="lang-conc">Double</code></p>
+</td>
+<td>
+<p>Cannot be converted</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Any type to String</p>
+</td>
+<td>
+<p><code class="lang-conc">MyClass</code> -&gt; <code class="lang-conc">String</code></p>
+</td>
+<td>
+<p>Equivalent to <code class="lang-conc">toString</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Any array to String array</p>
+</td>
+<td>
+<p><code class="lang-conc">MyClass[]</code> -&gt; <code class="lang-conc">String[]</code></p>
+</td>
+<td>
+<p>Equivalent to <code class="lang-conc">array^toString</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Class to trait</p>
+</td>
+<td>
+<p><code class="lang-conc">Child</code> -&gt; <code class="lang-conc">MyTrait</code></p>
+</td>
+<td>
+<p>Equivalent to a cast operation</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Subclass to superclass</p>
+</td>
+<td>
+<p><code class="lang-conc">Child</code> -&gt; <code class="lang-conc">Parent</code></p>
+</td>
+<td>
+<p>Equivalent to a cast operation</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Superclass to subclass</p>
+</td>
+<td>
+<p><code class="lang-conc">Parent</code> -&gt; <code class="lang-conc">Child</code></p>
+</td>
+<td>
+<p>Cannot be converted</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Unrelated classes</p>
+</td>
+<td>
+<p><code class="lang-conc">Myclass</code> -&gt; <code class="lang-conc">MyOtherClass</code></p>
+</td>
+<td>
+<p>Cannot be converted</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>In situations in which a value cannot be converted, the default value for the type (<code class="lang-conc">0</code> for a non array primitive type, and <code class="lang-conc">null</code> otherwise) will be used unless a default value/initial value for the field is specified.</p>
+</div>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="offHeap.html">Off Heap Memory</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#overview1">Overview</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#serialization-of-objects">Serialization of objects</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#sizeof1">sizeof</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#custom-serialization">Custom Serialization</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#implementing-the-serializable-interface">Implementing the Serializable interface</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#implementing-the-externalizable-interface">Implementing the Externalizable interface</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#unserializable-objects">Unserializable Objects</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#transient-fields">Transient fields</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#default-transient-fields">Default Transient fields</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#off-heap-stores">Off Heap Stores</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-off-heap-ram-stores">Creating Off Heap RAM Stores</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#using-offheapobject's">Using OffHeapObject's</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-off-heap-disk-stores">Creating Off Heap Disk Stores</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#managing-off-heap-stores">Managing Off Heap Stores</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#off-heap-map">Off Heap Map</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#creating-off-heap-ram-maps">Creating Off Heap RAM Maps</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#using-off-heap-disk-maps">Using Off Heap Disk Maps</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#off-heap-map-management">Off heap map management</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#schema-evolution">Schema evolution</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#supported-evolutions">Supported evolutions</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#removing-a-field">Removing a field</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#adding-a-field">Adding a field</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#changing-the-type-of-a-field">Changing the type of a field</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

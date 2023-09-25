@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Download Concurnas</title>
+
+ 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/conc.css"/>
+	<link rel="stylesheet" type="text/css" href="css/social.css"/>
+	<link rel="stylesheet" type="text/css" href="css/conc-nav.css"/>
+	<link rel="stylesheet" type="text/css" href="css/prism-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-toc.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+	<!-- Google -->
+	<meta name="description" content="Download and installation instructions for Concurnas"/>
+
+	<!-- OpenGraph -->
+	<meta property="og:title" content="Download Concurnas"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+	<meta property="og:description" content="Download and installation instructions for Concurnas"/>
+	<meta property="og:site_name" content="The Concurnas Programming Language"/>
+	<meta property="og:url" content="http://concurnas.com/download.html"/>
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+	
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;img/logo-on-dark.png&#039;" src="img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="page-wrap">
+<div class="section site-content">	
+	<div class="container narrowc">
+		<h1>Downloading and Installing Concurnas</h1>
+		
+		<div class="step">
+		  <div>
+		    <div class="circle">1</div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Ensure sure you have at least Java 1.8 JDK installed.</div>
+		    <p>To check, open the terminal and type:</p>
+		    <p><code>java -version</code><span>&nbsp;(Make sure you have version greater than or equal to 1.8.)</span></p>
+
+		    <i>(If you don't have it installed, <a href="https://www.oracle.com/java/technologies/javase-downloads.html">download Java here</a>)</i>
+		  </div>
+		</div>
+		<div class="step">
+		  <div>
+		    <div class="circle">2</div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Install Concurnas</div>
+
+
+			<div class="row">
+				<div class="col-sm">
+					<h1><center><i class="fab fa-windows"></i></center></h1>
+					<p>Download the Concurnas .msi installer for windows:</p>
+					<p style="margin-bottom: 0px;">
+						<a href="https://github.com/Concurnas/Concurnas/releases/download/1.14.020/Concurnas-1.14.020.msi" class="btn btn-concFromgithub" id="download-concurnas-link">
+			                <i class="fa fa-download"></i>
+			                <span>Windows Installer</span>
+			            </a>
+		        	</p>
+		        	<p><small><i><a href="https://github.com/Concurnas/Concurnas/releases/download/1.14.020/Concurnas-1.14.020.msi.zip">.msi.zip version</a> if you're behind a corporate firewall</i></small></p>
+				</div>
+				<div class="col-sm">
+					<h1><center><i class="fab fa-linux"></i></center></h1>
+
+					<p>Using <a href="https://sdkman.io/">SDKMAN!</a>, you can easily <a href="https://sdkman.io/sdks#concurnas">install Concurnas</a> with:</p>
+
+					<p><code class="halfpre nonecode">sdk install concurnas</code></p>
+
+				</div>
+			</div>
+
+			<p>Previous releases of Concurnas may be found on <a href="https://github.com/Concurnas/Concurnas/releases/latest">github</a></p>
+
+		  </div>
+		</div>
+		<div class="step">
+		 <div></div>
+		  <div class="step">
+			  <div>
+			    <div class="circle">...</div>
+			  </div>
+			  <div>
+			    <div class="steptitle">Other ways to install Concurnas</div>
+			    <p>Download the <a href="https://github.com/Concurnas/Concurnas/releases/download/1.14.020/Concurnas-1.14.020.zip">latest .zip release</a> of Concurnas</p>
+			    <p>Extract Concurnas.zip to your desired installation directory.</p>
+			    <p><i>Add the contents of <code>&lt;installDir&gt;/bin</code> to the system path (Optional but recommended step)</i></p>
+			  </div>
+			</div>
+		</div>
+
+		<div class="step">
+		  <div>
+		    <div class="circle">4</div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Getting started coding</div>
+		    <p>You're now ready to start programming with Concurnas!</p>
+		    <p>Start the Concurnas REPL:</p>
+
+<pre class="halfpre nonecode"><code>C:\concurnas-1.14.020>conc
+Welcome to Concurnas 1.14.020 (Java HotSpot(TM) 64-Bit Server VM, Java 11.0.5).
+Currently running in REPL mode. For help type: /help
+
+conc> </code></pre>
+
+		    <p><a href="docs/replIde.html">The Concurnas REPL</a> is a great tool for getting started with programming in Concurnas before moving on to implementing projects with it.</p>
+
+	    	<p><a href="video/index.html">VIDEO: Getting Started with Concurnas</a> is a nice introduction to the Concurnas REPL, concc and conc command line tools for compiling and executing code written in Concurnas</p>
+
+			<i>The first time Concurnas is executed, or when a new JVM environment upon which it's being executed is detected, an 'installation' will take place wherein Concurnas will set itself up to execute efficiently upon said JVM environment by caching a copy of the JDK. This can take up to a few minutes to complete.</i>
+		  </div>
+		</div>
+
+		<div class="step">
+		  <div>
+		    <div class="circle">5</div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Next steps</div>
+		    <p>Checkout the <a href="docs/manual.html">online documentation</a></p>
+		  </div>
+		</div>
+
+
+		<br>
+		<h2>Sign up and Star</h2>
+		<div class="step">
+		  <div>
+		    <div class="circle"><i class="fas fa-plus-circle"></i></div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Join the Concurnas Mailing List</div>
+		    <p class="signup-text">Sign up for updates, release information and news about Concurnas:</p>
+<input type="email" placeholder="E-Mail" class="signup-email" id="emailSignup"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-emailSignup" id="emailSignupBtn"><i class="fa fa-caret-right"></i></a>
+		  </div>
+		  <div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="mc_embed_signup">
+                    <form action="https://concurnas.us4.list-manage.com/subscribe/post?u=171fca0b73e36836226dba18f&amp;id=bd1cedadc6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <p>Sign up for updates, release information and news about Concurnas</p>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address</label>
+                                <input type="email" value="" name="EMAIL" class="required email signup-form-input" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name </label>
+                                <input type="text" value="" name="FNAME" class="required signup-form-input" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name </label>
+                                <input type="text" value="" name="LNAME" class="required signup-form-input" id="mce-LNAME">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="b_171fca0b73e36836226dba18f_bd1cedadc6" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" value="Sign Me Up" name="subscribe" id="mc-embedded-subscribe" class="btn btn-emailSignup">
+               					<button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close mailing list signup"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+		</div>
+
+		<div class="step">
+		  <div>
+		    <div class="circle"><i class="fas fa-plus-circle"></i></div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Star Concurnas on Github</div>
+		    <p>Like using Concurnas? Star Concurnas on Github: </p>
+		    <a class="github-button" href="https://github.com/Concurnas/Concurnas" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star Concurnas/Concurnas on GitHub">Star</a>
+		  </div>
+		</div>
+
+		<div class="step">
+		  <div>
+		    <div class="circle"><i class="fas fa-plus-circle"></i></div>
+		  </div>
+		  <div>
+		    <div class="steptitle">Join our Social Media</div>
+			<ul>
+			  <li>Discord: <a href="https://discord.gg/jFHfsqR">Join here</a></li>
+			  <li>Reddit: <a href="https://www.reddit.com/r/Concurnas/">r/Concurnas/</a></li>
+			</ul>
+		  </div>
+		</div>
+
+
+
+		<br>
+		<h2>Extras</h2>
+
+		<div class="step">
+		  <div>
+		    <div class="circle"><i class="fas fa-plus-circle"></i></div>
+		  </div>
+		  <div>
+		    <div class="steptitle">GPU Computing</div>
+		    <p>Concurnas offers first class citizen support for GPU programming.</p>
+		    <p>To take advantage of this support one requires access to a machine with a suitable GPU such as those produced by <a href="https://www.nvidia.com">NVIDIA</a> and <a href="https://www.amd.com">AMD</a>.</p>
+		  </div>
+		</div>
+
+
+		<div class="step">
+		    <div>
+		        <div class="circle"><i class="fas fa-plus-circle"></i></div>
+		    </div>
+		    <div>
+		        <div class="steptitle">IDE's</div>
+		        <p>Support for Concurnas exists in the following IDE's:</p>
+
+	  <div class="row">
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>Standalone</h4>
+	    <a href="docs/concc.html" class="editor-icon stretched-link">
+	      <img src="img/ides/cmdline.svg" />
+	    </a>
+	    <h6 >
+	      <a class="link extra-link stretched-link" href="docs/concc.html">Concc Compiler</a>
+	    </h6>
+	</div>
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>REPL</h4>
+	    <a href="docs/replIde.html" class="editor-icon stretched-link">
+	      <img src="img/ides/repl.png" />
+	    </a>
+	    <h6 >
+	      <a class="link extra-link stretched-link" href="docs/replIde.html">Conc REPL</a>
+	    </h6>
+	</div>
+
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>Jupyter</h4>
+	    <a  class="editor-icon stretched-link">
+	      <img src="img/ides/jupyter.svg" />
+	    </a>
+	    <h6 class="outer-link">
+	      <i>Coming soon!</i>
+	    </h6>
+	</div>
+
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+	  <h4>VS Code</h4>
+	    <div class="editor-icon stretched-link">
+	      <img src="img/ides/vscode.png" />
+	    </div>
+	    <h6 class="outer-link">
+	      <i>Coming soon!</i>
+	    </h6>
+	</div>
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+
+	  <h4>Atom</h4>
+	    <a href="https://github.com/Concurnas/language-concurnas" class="editor-icon">
+	      <img src="img/ides/atom.png" />
+	    </a>
+	    <h6 class="outer-link">
+	      <a class="link extra-link stretched-link" href="https://github.com/Concurnas/language-concurnas">Atom Plugin</a>
+	    </h6>
+
+	</div>
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+	  <h4>Sublime Text</h4>
+	    <a href="https://github.com/Concurnas/Concurnas-SublimeText" class="editor-icon">
+	      <img src="img/ides/sublime.png" />
+	    </a>
+	    <h6 class="outer-link">
+	      <a class="link extra-link stretched-link" href="https://github.com/Concurnas/Concurnas-SublimeText">Sublime Text</a>
+	    </h6>
+
+	</div>
+</div>
+
+		    </div>
+		</div>
+				
+		<br>
+		<h2>Support</h2>
+		<p>In addition to free <a href="docs/communitySupport.html">Community Support</a>, Concurnas Ltd offers a number of <a href="concurnasltd/support.html">commercial support plans</a>. Our commercial support plans offer you both production support and development assistance.</p>
+
+		<br>
+		<h2>License</h2>
+		<p>Concurnas is released under the <a href="concurnasltd/open-source.html">MIT License</a>.</p>
+
+		<br>
+		<h2>Compatibility</h2>
+		<p>Concurnas has been verified as compatible with the following distributions of versions of Java<sup>*</sup>:</p>
+
+		<table border="1" class="nlt-table">
+			<tbody valign="top">
+				<tr>
+					<td><strong class="nlt-colored">Version</strong></td>
+					<td><p class="nlt-colored">1.8</p></td>
+					<td><p class="nlt-colored">9</p></td>
+					<td><p class="nlt-colored">10</p></td>
+					<td><p class="nlt-colored">11</p></td>
+					<td><p class="nlt-colored">12</p></td>
+					<td><p class="nlt-colored">13</p></td> 
+					<td><p class="nlt-colored">14</p></td> 
+					<td><p class="nlt-colored">15+</p></td> 
+				</tr>
+
+				<tr>
+					<td><strong class="nlt-colored"><a href="https://www.oracle.com/uk/java/technologies/javase-downloads.html">Oracle</a></strong></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-times"></i></td>
+				</tr>	
+
+				<tr>
+					<td><strong class="nlt-colored"><a href="https://openjdk.java.net/install/">OpenJDK</a></strong></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-times"></i></td>
+				</tr>
+
+				<tr>
+					<td><strong class="nlt-colored"><a href="https://aws.amazon.com/corretto/">Amazon Corretto</a></strong></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-minus"></i></td>
+					<td class="td-right"><i class="fas fa-minus"></i></td>
+					<td class="td-right"><i class="fas fa-check"></i></td>
+					<td class="td-right"><i class="fas fa-minus"></i></td>
+					<td class="td-right"><i class="fas fa-minus"></i></td>
+					<td class="td-right"><i class="fas fa-minus"></i></td>
+					<td class="td-right"><i class="fas fa-times"></i></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+		<p>Concurnas can run on any operating system (Windows, Linux, macOS) or architecture (x86, x64, ARM32, ARM64) upon which these versions of Java run</p>
+
+		<p><sup>*</sup>Concurnas Ltd. can provide for support for Java distributions which are not listed here. <a href="mailto:support@concurnas.com" title="Contact us">Contact us</a> for more details</p>
+		
+		<br>
+		<h2>Contributing</h2>
+		<p>Concurnas is an open source software project supported by the team at Concurnas Ltd. We are welcoming of public contributions. <a href="learnmore/contribute.html">Learn how to contribute here</a></p>
+	</div>
+</div>
+
+
+</div>
+
+<footer class="footer dark site-footer">
+	<div class="container">
+		<div class="sitemap clearfix">
+			<ul>
+	<li class="column">		
+			<h5><a href="index.html">Home</a></h5>		
+			<h5><a href="download.html">Download</a></h5>
+			<h5><a href="docs/manual.html">Documentation</a></h5>	
+			<h5><a href="video/index.html">Video</a></h5>		
+	</li>
+	
+	
+	<li class="column">
+		<h5><a href="learnmore/overview.html">Learn More</a></h5>
+			<ul>
+				<li><a href="learnmore/overview.html">Language Overview</a></li>	
+				<li><a href="learnmore/concVsJava1.html">Concurnas vs Java</a></li>	
+				<li><a href="learnmore/usecases.html">Use cases:</a></li>			
+				<li><a href="learnmore/finance.html">&bull; Finance</a></li>			
+				<li><a href="learnmore/sciComp.html">&bull; Scientific Computing</a></li>			
+				<li><a href="learnmore/startups.html">&bull; Startups</a></li>	
+				<li><a href="learnmore/mailinglist.html">Mailing List</a></li>
+				<li><a href="learnmore/contribute.html">Contribute</a></li>			
+			</ul>
+	</li>	
+	
+	<li class="column">
+		<h5><a href="docs/manual.html">Documentation</a></h5>
+		<ul>
+			<li><a href="docs/manual.html">Reference Manual</a></li>
+			<li><a href="video/index.html">Video</a></li>	
+			<li><a href="docs/communitySupport.html">Community Support</a></li>
+		</ul>
+	</li>
+
+
+	<li class="column">
+		<h5><a href="concurnasltd/introduction.html">Concurnas Ltd</a></h5>
+			<ul>
+				<li><a href="concurnasltd/leadership.html">Leadership</a></li>		
+				<li><a href="concurnasltd/careers.html">Careers</a></li>			
+				<li><a href="concurnasltd/open-source.html">Open Source</a></li>			
+				<li><a href="concurnasltd/support.html">Support</a></li>				
+				<li><a href="concurnasltd/consulting.html">Consulting</a></li>
+				<li><a href="concurnasltd/sponsorship.html">Sponsorship</a></li>		
+				<li><a href="concurnasltd/contact.html">Contact</a></li>
+			</ul>
+	</li>
+
+	<li class="column">
+		<h5><a href="news.html">News</a></h5>
+		<ul>
+			<li><a href="news.html">Latest News</a></li>	
+			<li><a href="newsletters/march2020.html">Newsletters</a></li>		
+			<li><a href="rss.xml"><img src="img/rss.gif" alt="rss"></li>	
+		</ul>
+	</li>
+
+
+	
+</ul>
+
+		</div>
+		<div class="copyright">
+			<small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="legal/tos.html">Terms of Service</a> | <a href="legal/privacy.html">Privacy Policy</a> | <a href="legal/cookies.html">Cookie Policy</a></small>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/bootstrap-toc.min.js"></script>
+
+<script type="text/javascript" src="js/prism.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="js/client.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126537021-1');
+</script>
+
+
+
+
+<script type="text/javascript" src="js/emailSignup.js"></script>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<!--<script async src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+
+</body>
+</html>

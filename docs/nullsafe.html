@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Null Safety</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Null Safety"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Null Safety"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Null Safety"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/nullsafe.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="null-safety">Null Safety<a class="headerlink" href="#null-safety" title="Permalink to this headline" id="null-safety">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#null-safety">Null Safety</a>
+   <ul>
+   <li><a class="reference internal" href="#type-system-nullability">Type system nullability</a>   </li>
+   <li><a class="reference internal" href="#smart-null-checking">Smart null checking</a>   </li>
+   <li><a class="reference internal" href="#safe-calls">Safe calls</a>   <ul>
+   <li><a class="reference internal" href="#array-reference-safe-calls-">Array reference safe calls </a>   </li>
+   <li><a class="reference internal" href="#chained-safe-calls">Chained safe calls</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#elvis-operator">Elvis operator</a>   </li>
+   <li><a class="reference internal" href="#no-null-assertion">No null assertion</a>   </li>
+   <li><a class="reference internal" href="#nullable-generics">Nullable generics</a>   </li>
+   <li><a class="reference internal" href="#class-field-initialization">Class field initialization</a>   </li>
+   <li><a class="reference internal" href="#using-non-concurnas-types">Using non-Concurnas types</a>   <ul>
+   <li><a class="reference internal" href="#annotating-non-concurnas-code">Annotating non-Concurnas code</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#nullable-wrapper">Nullable wrapper</a>   </li>
+   <li><a class="reference internal" href="#nullable-method-references">Nullable method references</a>   </li>
+   <li><a class="reference internal" href="#where-can-nullpointerexception's-still-occur">Where can NullPointerException's still occur</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>Nothing's gonna harm you</p>
+<p>Not while I'm around</p>
+<p>Nothing's gonna harm you</p>
+<p>No sir, not while I'm around</p><footer>- Not While I'm Around from The Broadway Album by Barbra Streisand (1985)</footer></blockquote>
+<p>Concurnas, like most modern programming languages, has support within its type system for <code class="lang-conc">null</code>, this is useful but comes with one specific danger... In conventional programming languages supporting <code class="lang-conc">null</code>, since <b>any</b> object reference can be of type <code class="lang-conc">null</code>, then there is the potential for error if a field access or method invocation is attempted on that null instance. In Java this manifests itself via the dreaded and ubiquitous <code class="lang-conc">NullPointerException</code>. Given that any object can be null, at any point of execution, this error can occur anywhere. Thus, in order to write strictly safe code one is forced to validate one's object references as not being null on a persistent basis to be really sure that this potential for error is eradicated. This time consuming and labour intensive process is often either skipped entirely or only partially completed in most projects. Leading for the potential for error. In fact this problem is considered so severe that it's often referred to as the <a href="https://en.wikipedia.org/wiki/Tony_Hoare#Apologies_and_retractions">Billion Dollar Mistake</a>.</p>
+<p>So why not remove <code class="lang-conc">null</code> from the type system entirely? Well, it turns out that for some algorithms having null is incredibly useful for representing uninitialized state. So we need to keep <code class="lang-conc">null</code>. But we can manage its negative aspects.</p>
+<p>Concurnas, like other modern programming languages such as <a href="https://kotlinlang.org/">Kotlin</a> and <a href="https://developer.apple.com/swift/">Swift</a>, makes working with <code class="lang-conc">null</code> easy and safe by incorporating nullability a part of the type system, and by providing a range of null safety operators to assist in those instances where null is a desired object state. This allows us to write safe code in Concurnas which is largely free of <code class="lang-conc">NullPointerException</code> exceptions.</p>
+<div class="section">
+<div class="section">
+<h2 id="type-system-nullability">Type system nullability<a class="headerlink" href="#type-system-nullability" title="Permalink to this headline" id="type-system-nullability">?</a></h2>
+<p>All non-primitive types in Concurnas are non-nullable at the point of declaration by default. Thus, attempting to assign a null value to a variable having a non-nullable type (or anywhere else where a non-nullable type is expected, for instance in a method argument etc) will result in a compile time error:</p>
+<pre><code class="lang-conc">aVariable String = "a String"
+aVariable = null//this is a compile time error!
+</code></pre>
+<p>If one wishes for a variable to be able to hold a value of null, a nullable type must be declared, this can be achieved for a non-primitive type by appending a <code class="lang-conc">?</code> to the end of the type declaration. As per our previous example:</p>
+<pre><code class="lang-conc">nullableVar String? = "a String"//nullableVar can hold a null value
+nullableVar = null//this is acceptable
+</code></pre>
+<p>With nullability as part of the type system we are able to write code such as the following safe in the knowledge that there is no possibility for a <code class="lang-conc">NullPointerException</code> exception to be thrown:</p>
+<pre><code class="lang-conc">len = aVariable.length()
+</code></pre>
+<p>Attempting the same method call on <code class="lang-conc">nullableVar</code> results in a compile time error, as <code class="lang-conc">nullableVar</code> might be null:</p>
+<pre><code class="lang-conc">len = nullableVar.length()//compile time error!
+</code></pre>
+<p>But of course not all instances of <code class="lang-conc">nullableVar</code> are null (otherwise there is no value to the code above), so how can we call the <code class="lang-conc">length</code> method? Lucky for us Concurnas has some clever logic to support working with nullable types and a a number of useful operators...</p>
+</div>
+<div class="section">
+<h2 id="smart-null-checking">Smart null checking<a class="headerlink" href="#smart-null-checking" title="Permalink to this headline" id="smart-null-checking">?</a></h2>
+<p>If a nullable variable is checked for nullability within a branching logic block, i.e. an if statement, then the fact that it has been established as being not null will be incorporated to any usage of said variable within the body of the if statement. So the following is valid code:</p>
+<pre><code class="lang-conc">res = if(nullableVar &lt;&gt; null){
+  nullableVar.length()//we've already established that nullableVar is not null
+}else{
+  -1
+}
+</code></pre>
+<p>This logic is reasonably comprehensive and can cater for complex cases such as the below, where we establish that a lambda is null in one if statement branch, and so can conclude that is must be non-null within another:</p>
+<pre><code class="lang-conc">alambda ((int) int)? = def (a int) =&gt; a+10
+
+res = if(alambda == null){
+    0
+  }else{//we've established that alambda is not null
+  alambda(1)
+}
+</code></pre>
+<p>This logic applies on an incorporated running basis within the if test, thus the following code is valid:</p>
+<pre><code class="lang-conc">res = if(nullableVar &lt;&gt; null and nullableVar.length() &gt; 2){
+    "ok"
+  }else{
+    "fail"
+}
+</code></pre>
+<p>Furthermore, in cases where a nullable variable is assigned a non-nullable value, we know with certainty that said variable is now not nullable, Concurnas is able to make use of this information thus enabling the following code to be valid:</p>
+<pre><code class="lang-conc">nullable String? = "not null"
+//... potentially other code...
+ok = nullable.length() //ok as we know at this point nullable isn't nullable
+</code></pre>
+<p>This logic is applied to branching control flow:</p>
+<pre><code class="lang-conc">a=2; b=10
+nullable  String?  = null
+if(a &gt; b){
+  nullable = "ok"
+}else{
+  nullable = "also ok"
+}
+ok = nullable.length() //ok as we know at this point nullable isn't nullable
+</code></pre>
+<p>This inference logic extends to class fields with the caveat that calls to methods after the determination of non nullability will invalidate that inference (since it's possible such a method call may set our field in question to null). Thus the following holds:</p>
+<pre><code class="lang-conc">class MyClass{
+  aString String?
+
+  def foo(){ 
+    aString = null
+  }
+	
+  def inferNonNull(){
+    aString = "ok"
+    len = aString.length() //ok aString is not nullable
+    foo()//foo may set aString to null
+    len = aString.length() //error aString might be nullable
+  }
+}
+</code></pre>
+<p>This logic does not apply to shared nullable variables since they can be set to null by any isolate having access to them.</p>
+</div>
+<div class="section">
+<h2 id="safe-calls">Safe calls<a class="headerlink" href="#safe-calls" title="Permalink to this headline" id="safe-calls">?</a></h2>
+<p>The safe call dot operator, <code class="lang-conc">?.</code> allows us to execute the method or field access on the right hand side of a dot for a nullable entity if it is not null. If it is null, then null is returned. This the type returned from any call of this nature will always be nullable.</p>
+<pre><code class="lang-conc">nullableVar String? = "a String"
+len = nullableVar?.length() //len is of type Integer? (nullable Integer)
+</code></pre>
+<p>The safe call dot operator may only be applied to nullable entities, applying it to a non-nullable type results in a compilation error:</p>
+<pre><code class="lang-conc">normalString String = "a String"
+len = normalString?.length() //compilaton error
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="array-reference-safe-calls-">Array reference safe calls <a class="headerlink" href="#array-reference-safe-calls-" title="Permalink to this headline" id="array-reference-safe-calls-">?</a></h3>
+<p>Safe calls can be applied to array reference calls by inserting a <code class="lang-conc">?</code> between the expression and array reference brackets <code class="lang-conc">[]</code> as follows:</p>
+<pre><code class="lang-conc">maybeNull int[]? = [1 2 3 4] if condition() else null //maybe null
+got = maybeNull?[0] //got is of type Integer?
+"" + got
+</code></pre>
+</div>
+<div class="section">
+<h3 id="chained-safe-calls">Chained safe calls<a class="headerlink" href="#chained-safe-calls" title="Permalink to this headline" id="chained-safe-calls">?</a></h3>
+<p>Safe calls can be chained together, this is quite a common usage pattern:</p>
+<pre><code class="lang-conc">enum Color{BLUE, GREEN, RED}
+class Child(-favColour Color)
+class Parent(-children Child...)
+
+parent Parent? = Parent(Child(Color.GREEN), Child(Color.RED))
+
+firstChildColor = parent?.children?[0]?.favColour //chained safe calls
+</code></pre>
+</div>
+</div>
+<h2 id="elvis-operator">Elvis operator<a class="headerlink" href="#elvis-operator" title="Permalink to this headline" id="elvis-operator">?</a></h2>
+<p>The Elvis operator<sup><a href="#fn1">1</a></sup>, <code class="lang-conc">?:</code> in Concurnas serves a similar purpose to the safe dot operator above in that it allows us to react appropriately to the case where the expression on the left hand side of the operator resolves to <code class="lang-conc">null</code>. The difference with the Elvis operator is that when <code class="lang-conc">null</code> is found, the expression on the right hand side is evaluated and returned:</p>
+<pre><code class="lang-conc">nullableVar String? = null
+len int = (nullableVar?: "").length()
+</code></pre>
+</div>
+<div class="section">
+<h2 id="no-null-assertion">No null assertion<a class="headerlink" href="#no-null-assertion" title="Permalink to this headline" id="no-null-assertion">?</a></h2>
+<p>The final option for working with nullable types in Concurnas is the no null assertion operator, <code class="lang-conc">??</code>. This simply will throw a <code class="lang-conc">NullPointerException</code> if <code class="lang-conc">null</code> is found on the left hand side, otherwise it will return the value (which is guaranteed to be not nullable) of the left hand side. For example:</p>
+<pre><code class="lang-conc">nullableString String? = "value"
+//...
+notNull String = nullableString?? //throws a NullPointerException if nullableString is null
+</code></pre>
+<p>The operator may be used on its own in order to test for nullness without returning a value:</p>
+<pre><code class="lang-conc">nullableString String? = "value"
+//...
+nullableString?? //throws a NullPointerException if nullableString is null
+</code></pre>
+<p>The no null assertion, like many other operators, may be used preceding a dot operator:</p>
+<pre><code class="lang-conc">nullableString String? = "value"
+//...
+length int = nullableString??.length() //throws a NullPointerException if nullableString is null
+</code></pre>
+</div>
+<div class="section">
+<h2 id="nullable-generics">Nullable generics<a class="headerlink" href="#nullable-generics" title="Permalink to this headline" id="nullable-generics">?</a></h2>
+<p>When it comes to generic types, at the point of declaration by default the are non-nullable, that is to say, the default upper bound of a generic type declaration is <code class="lang-conc">Object</code> - which is not nullable. i.e. Below the <code class="lang-conc">X</code> generic types of our <code class="lang-conc">TakesGeneric1</code> and <code class="lang-conc">TakesGeneric2</code> classes are the same:</p>
+<pre><code class="lang-conc">class TakesGeneric1&lt;X&gt;
+class TakesGeneric2&lt;X Object&gt; //Object is non-nullable
+</code></pre>
+<p>Since we have declared <code class="lang-conc">X</code> above as being non-nullable the following code is not compilable:</p>
+<pre><code class="lang-conc">inst = TakesGeneric1&lt;String?&gt;() //compile time error
+</code></pre>
+<p>We could however redefine <code class="lang-conc">TakesGeneric1</code> in order to achieve this:</p>
+<pre><code class="lang-conc">class TakesGeneric1&lt;X?&gt;
+inst = TakesGeneric1&lt;String?&gt;() //this is ok
+</code></pre>
+<p>Classes having non-nullable generic types may still define nullable instances of those generic types as follows:</p>
+<pre><code class="lang-conc">class TakesGeneric1&lt;X&gt;{
+~x X?
+}
+inst = TakesGeneric1&lt;String&gt;()
+inst.x = null //this is ok
+</code></pre>
+</div>
+<div class="section">
+<h2 id="class-field-initialization">Class field initialization<a class="headerlink" href="#class-field-initialization" title="Permalink to this headline" id="class-field-initialization">?</a></h2>
+<p>Class fields if not initialized at point of declaration or via the constructor invocation chain will default to null. Class fields like this must be declared as being nullable otherwise they will be flagged up as an error at compilation time. For example:</p>
+<pre><code class="lang-conc">class UninitNonNullables&lt;X&gt;{
+  aString String //initially set to null, but type not nullable - hence error!
+  anArray int[]  //initially set to null, but type not nullable - hence error!
+}
+</code></pre>
+<p>This can be solved by either declaring the variables as being of a nullable type or initializing them:</p>
+<pre><code class="lang-conc">class UninitNonNullables&lt;X&gt;(anArray int[]){ //initialized in default constructor
+  aString String? //nullable
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="using-non-concurnas-types">Using non-Concurnas types<a class="headerlink" href="#using-non-concurnas-types" title="Permalink to this headline" id="using-non-concurnas-types">?</a></h2>
+<p>Code written outside of Concurnas, for instance in Java, may not have any null safety. As such, by default Concurnas is somewhat conservative when it comes to invoking methods originating from languages other than Concurnas. Though this does not come at a sacrifice to what code can be used, it does come with some caveats.</p>
+<p>Essentially, unless otherwise annotated (see <a href="nullsafe.html#annotating-non-concurnas-code">Annotating non-Concurnas code</a> below), the methods of non-Concurnas types are assumed to consume and return values of unknown nullability. That is to say, they are assumed to be nullable but can be used as if they were both nullable and non-nullable. For example, a list:</p>
+<pre><code class="lang-conc">alist = new list&lt;String&gt;() //generic param of java.util.ArrayList declared as a non-nullable type
+alist.add('inst')
+alist.add(null) //this is ok
+res1  = alist.get(0) //res1 is of nullable type: String?
+res2 String = alist.get(0)
+</code></pre>
+<p>The above would not be possible if the generic parameter of <code class="lang-conc">java.util.ArrayList</code> were to be known as either nullable or non-nullable - but it's unknown in this case. Let's look at what this causes in detail:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">alist.add(null)</code> - it is acceptable for null to be passed for a type of unknown nullability.</p>
+</li>
+  <li><p><code class="lang-conc">res1 = alist.get(0)</code> - <code class="lang-conc">res1</code> will be inferred to be a nullable type.</p>
+</li>
+  <li><p><code class="lang-conc">res2 String = alist.get(0)</code> - The value resulting from execution of the <code class="lang-conc">get</code> method call will be checked to ensure that it is not null before being assigned to <code class="lang-conc">res2</code> which has been declared as being non-nullable. This helps avoid "null pollution" - i.e. a <code class="lang-conc">null</code> value being inadvertently assigned to a non-nullable variable.</p>
+</li>
+</ul class="simple">
+<p>In the above code where Concurnas attempts to avoid "null pollution" - if an unknown nullability type resolves to a null value and is set to a non-nullable variable (or say passed as an argument to a method expecting a non-null parameter) then this will result in a <code class="lang-conc">NullPointerException</code>. If the <code class="lang-conc">alist</code> variable were to be created with a nullable generic type: <code class="lang-conc">alist = new list&lt;String?&gt;()</code> then this logic would not be required, though of course we'd be unable to assign the return value of <code class="lang-conc">alist.get(0)</code> to the non-nullable variable: <code class="lang-conc">res2 String</code>. Throwing a <code class="lang-conc">NullPointerException</code> in order to avoid "null pollution" is not desirable, but necessary - and is a beneficial approach where the alternative is permitting "null pollution" because at least the <code class="lang-conc">NullPointerException</code> is thrown at the point of assignment/usage.</p>
+<div class="section">
+<div class="section">
+<h3 id="annotating-non-concurnas-code">Annotating non-Concurnas code<a class="headerlink" href="#annotating-non-concurnas-code" title="Permalink to this headline" id="annotating-non-concurnas-code">?</a></h3>
+<p>non-Concurnas code may be decorated with the <code class="lang-conc">@com.concurnas.lang.NoNull</code> annotation in order to indicate a type is not nullable. Types may also be declared as being explicitly nullable. Here is an example of this in action for some Java code:</p>
+<pre><code class="lang-conc">import com.concurnas.lang.NoNull;
+import com.concurnas.lang.NoNull.When;
+import java.util.List;
+
+public static @NoNull List&lt;@NoNull String&gt; addToList(@NoNull List&lt;@NoNull String&gt; addTo, @NoNull String item ){
+  addTo.add(item);
+  return addTo;
+}
+
+public static @NoNull(when = When.NEVER) List&lt;@NoNull(when = When.NEVER) String&gt; addToListNULL(@NoNull(when = When.NEVER) List&lt;@NoNull(when = When.NEVER) String&gt; addTo, @NoNull(when = When.NEVER) String item ){
+  addTo.add(item);
+  return addTo;
+}
+</code></pre>
+<p>Above, for the <code class="lang-conc">addToList</code> method the following elements are tagged as non-null:</p>
+<ul class="simple">
+  <li><p>The return type: <code class="lang-conc">java.util.List</code></p>
+</li>
+  <li><p>The generic type qualification of the return type: <code class="lang-conc">String</code></p>
+</li>
+  <li><p>The first input argument of type: <code class="lang-conc">java.util.List</code></p>
+</li>
+  <li><p>The generic type qualification of the first input argument: <code class="lang-conc">String</code></p>
+</li>
+  <li><p>The second input argument of type: <code class="lang-conc">java.util.List</code></p>
+</li>
+</ul class="simple">
+<p>The same applies for the <code class="lang-conc">addToListNULL</code> except all the elements above are tagged as being nullable.</p>
+</div>
+</div>
+<h2 id="nullable-wrapper">Nullable wrapper<a class="headerlink" href="#nullable-wrapper" title="Permalink to this headline" id="nullable-wrapper">?</a></h2>
+<p>Sometimes when working with objects having generic type parameters, it is not possible to qualify those parameters in a nullable manner, for instance with refs. This presents a problem if we wish to store a nullable type within such a container object. Concurnas provides the <code class="lang-conc">com.concurnas.lang.nullable.Nullable</code> class, auto imported as <code class="lang-conc">Nullable</code> to wrap around such as nullable type:</p>
+<pre><code class="lang-conc">nullableinst = new Nullable&lt;String?&gt;():
+nullableinst.set("ok")
+maybenull String? = nullableinst.get()
+</code></pre>
+</div>
+<div class="section">
+<h2 id="nullable-method-references">Nullable method references<a class="headerlink" href="#nullable-method-references" title="Permalink to this headline" id="nullable-method-references">?</a></h2>
+<p>Method reference types can be declared nullable by nesting their declaration within parenthesis and affixing a <code class="lang-conc">?</code> as per normal. For example:</p>
+<pre><code class="lang-conc">nullLambda ((int) int)? //nullable method reference
+</code></pre>
+</div>
+<div class="section">
+<h2 id="where-can-nullpointerexception's-still-occur">Where can NullPointerException's still occur<a class="headerlink" href="#where-can-nullpointerexception's-still-occur" title="Permalink to this headline" id="where-can-nullpointerexception's-still-occur">?</a></h2>
+<p>There are some limited circumstances in which <code class="lang-conc">NullPointerException</code> may still occur:</p>
+<ul class="simple">
+  <li><p><b>When using non-Concurnas types or calling non-Concurnas code.</b> Covered above.</p>
+</li>
+  <li><p><b>When using the no null assertion.</b> Covered above.</p>
+</li>
+  <li><p><b>Values from non-Concurnas code.</b> Concurnas attempts to avoid "null pollution" - as such it's possible for a <code class="lang-conc">NullPointerException</code> exception to be thrown from checking that the return value of a unknown nullability type is non-null. This "null pollution" avoidance is not applied to the individual values of arrays as it would not be efficient to check every array in this manner. As such non-primitive arrays and n+1 dimensional arrays provided by non-Concurnas code should be used with care and attention to the possibility of null values being present within them.</p>
+</li>
+  <li><p><b>When using non-Concurnas code.</b> Concurnas has no control over code authored in other languages, so they may throw a <code class="lang-conc">NullPointerException</code>.</p>
+</li>
+</ul class="simple">
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>So called as the token looks like the emoticon for Elvis Presley</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="nullsafe.html">Null Safety</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#type-system-nullability">Type system nullability</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#smart-null-checking">Smart null checking</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#safe-calls">Safe calls</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#array-reference-safe-calls-">Array reference safe calls </a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#chained-safe-calls">Chained safe calls</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#elvis-operator">Elvis operator</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#no-null-assertion">No null assertion</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#nullable-generics">Nullable generics</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#class-field-initialization">Class field initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#using-non-concurnas-types">Using non-Concurnas types</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#annotating-non-concurnas-code">Annotating non-Concurnas code</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#nullable-wrapper">Nullable wrapper</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#nullable-method-references">Nullable method references</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#where-can-nullpointerexception's-still-occur">Where can NullPointerException's still occur</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

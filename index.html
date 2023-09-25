@@ -1,0 +1,2646 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>The Concurnas Programming Language</title>
+
+ 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/conc.css"/>
+	<link rel="stylesheet" type="text/css" href="css/social.css"/>
+	<link rel="stylesheet" type="text/css" href="css/conc-nav.css"/>
+	<link rel="stylesheet" type="text/css" href="css/prism-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-toc.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+
+	<!-- Google -->
+	<meta name="description" content="Concurnas is an open source JVM programming language designed for building reliable, scalable, high performance concurrent, distributed and parallel systems"/>
+
+	<!-- OpenGraph -->
+	<meta property="og:title" content="The Concurnas Programming Language"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+	<meta property="og:description" content="Concurnas is an open source JVM programming language designed for building reliable, scalable, high performance concurrent, distributed and parallel systems"/>
+	<meta property="og:site_name" content="The Concurnas Programming Language"/>
+	<meta property="og:url" content="http://concurnas.com/index.html"/>
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+	
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;img/logo-on-dark.png&#039;" src="img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="page-wrap">
+<div class="homepage">
+
+<!-- Head block -->
+<div class="section dark head">
+
+	<div class="container">
+
+		<div class="head">
+
+			<div class="head-content">
+				<br/>
+				<h1 >The Concurnas Programming Language</h1>
+				<p class="lead head-text">
+					Concurnas is an open source JVM programming language designed for building reliable, scalable, high performance concurrent, distributed and parallel systems
+				</p>
+			</div>
+			<div class="btn-toolbar">
+				<a href="download.html" class="download btn btn-conc">Download<i class="fa fa-caret-right"></i></a>
+				<img src="img/logo.svg" class="logo" onerror="this.src=&#039;img/logo.png&#039;"/>
+				<a href="docs/manual.html" class="learn-more btn btn-conc">Documentation<i class="fa fa-caret-right"></i></a>
+			</div>
+				<br/>
+				<br/>
+		</div>
+	</div>
+</div>
+<!-- Head block -->
+
+
+<!-- Concurnas Advantages -->
+<div class="section alt-color">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-9">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 language-features ">
+                        <hr/>
+                    </div>
+                    <div class="col-lg-4 col-md-6 language-features section-heading">
+                        <h2 class="lead secondary-heading">Introducing Concurnas</h2></div>
+                    <div class="col-lg-4 col-md-3 language-features">
+                        <hr/>
+                    </div>
+                    <div class="col-lg-12 col-md-12 lead">
+                    	<p>Using Concurnas helps organizations take full advantage of modern multi-core CPU and GPU hardware by making concurrent and parallel <strong>programming easier</strong>.</p>
+
+						<p>Concurnas is <strong>interoperable with Java</strong> (and other JVM languages) - organizations are able to leverage existing Java software in a concurrent environment.</p>
+
+						<p>Compared to other languages, with Concurnas <strong>developers need to write fewer lines of code</strong>. That code is safer and easier to test, increasing quality and boosting developer productivity.</p>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 language-features ">
+                        <hr/>
+                    </div>
+                    <div class="col-lg-4 col-md-6 language-features section-heading">
+                        <h2 class="lead secondary-heading">Concurnas Axioms</h2></div>
+                    <div class="col-lg-4 col-md-3 language-features">
+                        <hr/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <h4 class="section-header">Easy to learn</h4>
+                        <p>
+                            Inspired by languages such as <a href="https://www.python.org/">Python</a> and <a href="https://www.oracle.com/uk/java/">Java</a>, Concurnas is a statically typed, garbage collected language utilizing type inference with an easy to learn syntax.
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature">
+                        <h4 class="section-header">High performance</h4>
+                        <p>
+                            Concurnas is a compiled language which runs on the Java Virtual Machine and as such has access to the incredible performance offered by the JVM
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature">
+                        <h4 class="section-header">Easy to scale</h4>
+                        <p>
+                            Concurnas makes it possible to use the same code from a small research prototype to a planet scale distributed production solution
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 feature">
+                        <h4 class="section-header">Open Source</h4>
+                        <p>
+                            Concurnas is an open source technology, free to use and modify. With ongoing development and commercial support provided by <a href="concurnasltd/introduction.html">Concurnas Ltd</a>
+                        </p>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col-lg-3">
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-2 language-features ">
+                        <hr/>
+                    </div>
+                    <div class="col-lg-4 col-md-8 language-features section-heading">
+                        <h2 class="lead secondary-heading">News</h2></div>
+                    <div class="col-lg-4 col-md-2 language-features">
+                        <hr/>
+                    </div>
+                </div>
+
+                <div class="norm-color newp">
+                    <ul class="news">
+                        
+<li class="news-item"><small>2021-05-19</small> JAXLondon - Concurnas - a Modern JVM Language for Modern Software... <a href="video/index.html"> Watch it...</a></li>
+<li class="news-item"><small>2021-02-07</small> jokerconf - Back from the 70s - the Concurnas concurrency model!... <a href="video/index.html"> Watch it...</a></li>
+<li class="news-item"><small>2020-10-29</small> Concurnas at jokerconf this year... We're presenting Concurnas at <a href="https://jokerconf.com/en/2020/talks/5adlth7fgf7gkwl6p17fc4/">jokerconf</a> this year</li>
+<li class="news-item"><small>2020-06-22</small> Concurrent programming with Concurnas... <a href="https://blogs.oracle.com/javamagazine/concurrent-programming-with-concurnas">in Oracle Java magazine</a></li>
+<li class="news-item"><small>2020-05-29</small> The Concurnas Programming Language online talk... <a href="video/index.html"> Watch it...</a></li>
+<li class="news-item"><small>2020-05-26</small> Concurnas Q+A on InfoQ... <a href="https://www.infoq.com/news/2020/05/concurnas-jvm-gpu/">read it here...</a></li>
+                   		<small align="right"><a href="news.html">...More News...</a></small>
+                    </ul>
+                </div>
+                <div class="sshare__cont" align="right">
+
+<!-- Sharingbutton Facebook -->
+<a class="sshare__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fconcurnas.com%2Findex.html" target="_blank" rel="noopener" aria-label="Facebook">
+  <div class="sshare sshare--facebook sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg></div>Facebook</div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="sshare__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fconcurnas.com%2Findex.html&amp;title=The%20Concurnas%20Programming%20Language&amp;summary=Concurnas%20is%20an%20open%20source%20JVM%20programming%20language%20designed%20for%20building%20reliable%2C%20scalable%2C%20high%20performance%20concurrent%2C%20distributed%20and%20parallel%20systems&amp;source=http%3A%2F%2Fconcurnas.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <div class="sshare sshare--linkedin sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg></div>LinkedIn</div>
+</a>
+
+<!-- Sharingbutton Twitter -->
+<a class="sshare__link" href="https://twitter.com/intent/tweet/?text=Concurnas%20is%20an%20open%20source%20JVM%20programming%20language%20designed%20for%20building%20reliable%2C%20scalable%2C%20high%20performance%20concurrent%2C%20distributed%20and%20parallel%20systems&amp;url=http%3A%2F%2Fconcurnas.com%2Findex.html" target="_blank" rel="noopener" aria-label="Twitter">
+  <div class="sshare sshare--twitter sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg></div>Twitter</div>
+</a>
+
+<!-- Sharingbutton Reddit -->
+<a class="sshare__link" href="https://reddit.com/submit/?url=http%3A%2F%2Fconcurnas.com%2Findex.html&amp;resubmit=true&amp;title=The%20Concurnas%20Programming%20Language" target="_blank" rel="noopener" aria-label="Reddit">
+  <div class="sshare sshare--reddit sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg></div>Reddit</div>
+</a>
+
+<!-- Sharingbutton Hacker News -->
+<a class="sshare__link" href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fconcurnas.com%2Findex.html&amp;t=The%20Concurnas%20Programming%20Language" target="_blank" rel="noopener" aria-label="Hacker News">
+  <div class="sshare sshare--hackernews sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg></div>Hacker News</div>
+</a>
+
+<!-- Sharingbutton WhatsApp -->
+<a class="sshare__link" href="whatsapp://send?text=Concurnas%20is%20an%20open%20source%20JVM%20programming%20language%20designed%20for%20building%20reliable%2C%20scalable%2C%20high%20performance%20concurrent%2C%20distributed%20and%20parallel%20systems%20http%3A%2F%2Fconcurnas.com%2Findex.html" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="sshare sshare--whatsapp sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg></div>WhatsApp</div>
+</a>
+
+<!-- Sharingbutton E-Mail -->
+<!--<a class="sshare__link" href="mailto:?subject=The%20Concurnas%20Programming%20Language&amp;body=Concurnas%20is%20an%20open%20source%20JVM%20programming%20language%20designed%20for%20building%20reliable%2C%20scalable%2C%20high%20performance%20concurrent%2C%20distributed%20and%20parallel%20systems%20http%3A%2F%2Fconcurnas.com%2Findex.html" target="_self" rel="noopener" aria-label="E-Mail">
+  <div class="sshare sshare--email sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg></div>E-Mail</div>
+</a>-->
+
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Concurnas Advantages -->
+
+
+
+<!-- In a nutshell -->
+<div class="section ">
+	<div class="container">
+	  <div class="row">
+	    <div class="col-lg-4 col-md-3 language-features "><hr/></div>
+	    <div class="col-lg-4 col-md-6 language-features section-heading">
+	      <h2 class="lead secondary-heading">
+	        Concurnas in a Nutshell
+	      </h2>
+	    </div>
+	    <div class="col-lg-4 col-md-3 language-features"><hr/></div>
+	  </div>
+
+
+	  <div class="row">
+	    <div class="col-lg-3 col-md-6">
+	      <h4 class="section-header">Concurrent computing</h4>
+	      <p>
+	        Concurnas offers a simple but extremely powerful concurrency model which allows you to write concurrent code without having to write boilerplate code to manage threads, critical sections or locks!
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Distributed computing</h4>
+	      <p>
+	        Concurnas offers first class citizen support for distributed computing as a specialization of concurrent computing
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">GPU computing</h4>
+	      <p>
+	        Concurnas offers first class citizen support for GPU programming. You can write your code in idiomatic Concurnas code and run on the GPU without having to switch to C/C++!
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Off Heap Memory</h4>
+	      <p>
+	        Concurnas offers first class citizen support for interacting with non heap managed, non garbage collected memory. This makes working with GPUs, big data and custom databases a breeze.
+	      </p>
+	    </div>
+	  </div>
+	  <div class="row">
+	    <div class="col-lg-3 col-md-6">
+	      <h4 class="section-header">Imperative</h4>
+	      <p>
+	        Concurnas supports all the usual constructs used in modern imperative computing such as: if-elif-else, for, while loops, assertions, exceptions. Plus implicit returns from blocks, with statements, list comprehension, copiers and much much more!
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Object Oriented</h4>
+	      <p>
+	        Concurnas takes the hard work and boiler plate out of object oriented programming and makes it fun again. Concurnas has advanced support for
+			classes (concrete, abstract, inheritance), generics (in out, wild cards, bounded), enumerations, annotations. As well as new features such as traits, tuples, object providers, typedefs, usage based generic type inference, automatic generation/ redirection of class field getters/setters, class hashcodes and equalities.
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Functional</h4>
+	      <p>
+	      	The functional programming paradigm incorporates a set of tremendously useful approaches to solving problems, but pure functional programming is rarely seen in the wild. With Concurnas we've taken the most widely used elements of functional programming, and integrated them into Concurnas. With Concurnas you have access to method and function references, lambdas, partial function evaluation, lazy evaluation, pattern matching plus a whole lot more!
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Reactive</h4>
+	      <p>
+	        Concurnas has first class citizen support for the emerging reactive programming paradigm. With Concurnas you can write code which will react to changes in input parameters automatically - thus allowing you to create reactive pipelines. A very natural way of solving algorithmic problems.
+	      </p>
+	    </div>
+	  </div>
+
+	  <div class="row">
+	    <div class="col-lg-3 col-md-6">
+	      <h4 class="section-header">Data structures</h4>
+	      <p>
+	      	Concurnas has first class citizen support for core data structures including arrays, matrices, lists, maps, ranges and sets.
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Vectorization</h4>
+	      <p>
+	        A technique popular in the scientific computing community, Concurnas allows you to apply an operator to all elements of an array/matrix/list via a one character operator
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">IDE support</h4>
+	      <p>
+	        Concurnas offers a standalone compiler, an interactive REPL shell, Jupyter Notebook, VS Code, Atom and Sublime text support.
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Null safety</h4>
+	      <p>
+	        Concurnas is a null safe language, this helps to eliminate one of the most common sources of bugs in modern programming: the null pointer exception!
+	      </p>
+	    </div>
+	  </div>
+
+	  <div class="row">
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Java compatible</h4>
+	      <p>
+	        Concurnas runs on the Java Virtual Machine, which not only gives you access to the JDK and fantastic multi-platform performance offered by the JVM but also compatibility with other JVM languages such as <a href="https://www.oracle.com/uk/java/">Java</a>, <a href="https://www.scala-lang.org/">Scala</a>, <a href="https://kotlinlang.org/">Kotlin</a> and <a href=https://clojure.org/>Clojure</a> - plus you can easily integrate/use all your existing JVM code without modification.
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">Type inferred language</h4>
+	      <p>
+	        Concurnas is a statically typed language which uses type inference extensively to remove the burden of types. Often times Concurnas code is indistinguishable from Python code (widely recognized as one of the easiest languages to code in) but with the performance of <a href="https://www.oracle.com/uk/java/">Java</a>!
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6 feature">
+	      <h4 class="section-header">A Concise syntax</h4>
+	      <p>
+	        Programming languages are not just for machines - people need to read them too! Concurnas offers a concise syntax and many shortcuts to make writing easy to read and maintainable code the norm. Concurnas is also able to be verbose, for code which requires that extra bit of clarity.
+	      </p>
+	    </div>
+	    <div class="col-lg-3 col-md-6">
+	      <h4 class="section-header">Extensible and DSLs</h4>
+	      <p>
+	        Concurnas has extensive support for Domain Specific Languages via; expression lists, extension functions and operator overloading. Concurnas also supports language extensions, which allow you to directly embed segments of non Concurnas code into your Concurnas code files.
+	      </p>
+	    </div>
+	  </div>
+
+
+
+	</div>
+</div>
+<!-- In a nutshell -->
+
+<!-- A taste of Concurnas -->
+	<div class="section alt-color">
+		<div class="container ">
+
+
+			<div class="row">
+			    <div class="col-lg-4 col-md-3 language-features "><hr/></div>
+			    <div class="col-lg-4 col-md-6 language-features section-heading">
+			      <h2 class="lead secondary-heading">
+			        A taste of Concurnas
+			      </h2>
+			    </div>
+			    <div class="col-lg-4 col-md-3 language-features"><hr/></div>
+			</div>
+			<ul class="nav nav-tabs taste-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="modern-tab" data-toggle="tab" href="#modern" role="tab">Modern</a>
+			  </li>
+			  <li class="nav-item active">
+			    <a class="nav-link active" id="conc-tab" data-toggle="tab" href="#conc" role="tab">Concurrency</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="actors-tab" data-toggle="tab" href="#actors" role="tab">Actors</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="gpu-tab" data-toggle="tab" href="#gpu" role="tab">GPU</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="dist-tab" data-toggle="tab" href="#dist" role="tab">Distributed</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="offheap-tab" data-toggle="tab" href="#offheap" role="tab">Off Heap</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="datstructs-tab" data-toggle="tab" href="#datstructs" role="tab">Data Structures</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="vect-tab" data-toggle="tab" href="#vect" role="tab">Vectorization</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="objectOrientation-tab" data-toggle="tab" href="#objectOrientation" role="tab">Object Oriented</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="provider-tab" data-toggle="tab" href="#provider" role="tab">Object Providers</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="nullsafe-tab" data-toggle="tab" href="#nullsafe" role="tab">Null Safe</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="extensible-tab" data-toggle="tab" href="#extensible" role="tab">Extensible</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link taste-tab" id="dsls-tab" data-toggle="tab" href="#dsls" role="tab">DSLs</a>
+			  </li>
+			</ul>
+
+			<div class="tab-content codeTabs" id="myTabContent">
+			  <div class="tab-pane show active" id="conc">
+				
+				<div class="row"><h5 class="taste-subsection">Creating and using isolates</h5> </div>
+
+			  	<div class="row">
+
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">def gcd(x int, y int){//greatest common divisor of two integers
+  while(y){
+    x, y = y, x mod y
+  }
+  x
+}
+
+calc1 = gcd(8, 20)!//run this calculation in an isolate
+calc2 = gcd(6, 45)!//run this calculation in a separate isolate
+
+calc3 = calc1 if calc1 > calc2 else calc2
+//^^^ wait for the results of calc1 and calc2 before assigning calc3
+</code></pre>
+				  </div>
+				  <div class="col-sm-4 taste-text"> 
+				  	 <p>Concurnas allows you to easily execute computation, concurrently, in separate thread-like containers called <strong>isolates</strong> via use of the bang <code class="lang-conc">!</code> operator.</p>
+				  	 <p>Concurrent computation is often recognized as one of the most difficult aspects of modern software engineering</p>
+				 	 <p>Notice how concurrent computation is a one liner in Concurnas, there is no worry about creating/managing threads, thread pools, life-cycles, locks (or deadlocks!), critical sections, synchronization, wait, notifying threads etc. All this hard stuff is taken care of automatically - leaving you to focus on what's important.</p>
+				 	</div>
+				</div>
+
+
+			<div class="row"><h5 class="taste-subsection">Isolation of isolates</h5> </div>
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">n = 10
+
+nplusone  = { n += 1; n }!//perform this calculation in an isolate, a copy of n is made
+nminusone = { n -= 1; n }!//another isolate, on a separate copy of n
+//The above two isolates will never interfere with one another's copy of n
+
+//nplusone == 11
+//nminusone == 9
+</code></pre>
+
+				  	<pre ><code class="lang-conc">def complexFunc() {
+  System.out.println("Hello world!")
+}
+
+complexFunc()!//execute concurrently in seperate isolate
+</code></pre>
+
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>All code in Concurnas is executed in isolates. Isolates are mapped onto the underlying hardware threads of the machine upon which one is running one's code. Isolates operate within their own dedicated memory space.</p>
+					  	 <p>All state used in an isolate is copied with the exception of references, actors and some specially marked shareable classes. This isolation of state makes reasoning and designing concurrent algorithms easier since it reduces the need to code for synchronization and race conditions.</p>
+					 	 
+				 	</div>
+				</div>
+
+
+				<div class="row"><h5 class="taste-subsection">Refs and reactive computing</h5> </div>
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">aRef int://this is a ref of type int
+{//complex isolate executed concurrently eventually sets aRef...
+  //complex code here...
+  aRef = 10
+}!
+
+//aRef's current value is requested of it:
+result int = aRef//If no value has yet been set execution will pause
+
+System.out.println("The value of aRef is: " + result)
+</code></pre>
+
+				  	<pre ><code class="lang-conc">execount int: = 0
+for(a in 1 to 10){
+  //some complex calculation..
+  execount++
+}!//spawn an isolate to execute the above concurrently.
+
+await(execount; execount==10)//pause further execution until execount == 10
+</code></pre>
+
+				  	<pre ><code class="lang-conc">aval int://no initial value set
+bval int: = 22 //initial value known
+
+sumvals int: = every(aval, bval) { aval + bval }
+//after initializing above, execution is allowed to carry on...
+
+aval = 100
+bval = 200
+
+//every block above will run concurrently and eventually set sumvals to:
+await(sumvals; sumvals==300)
+</code></pre>
+
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Refs allow us to share state between isolates in a controlled manner.</p>
+					  	 <p>They are not copied between isolates, rather they are shared but provide controlled, atomic access to their changeable state. If a value is not yet set on a ref when it is requested, execution is paused and other isolates are allowed to execute until a value has been set, after which execution continues.</p>
+
+					  	 <p>We can react to changes to refs via the following reactive programming constructs provided by Concurnas:</p>
+					 	 
+						<ul>
+						  <li><code class="lang-conc">await</code>&nbsp;Will pause execution until a value has been set on a ref and an optional guard condition has been satisfied</li>
+						  <li><code class="lang-conc">onchange</code>&nbsp;Will trigger execution of its code block to occur concurrently upon any of its monitored refs being changed</li>
+						  <li><code class="lang-conc">every</code>&nbsp;Behaves as <code class="lang-conc">onchange</code> but will trigger if an initial value has been set on any monitored ref</li>
+						</ul>
+
+				 	</div>
+				</div>
+
+				<div class="row"><h5 class="taste-subsection">Compact reactive computing</h5> </div>
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">a int:
+b int:
+
+c <= a + b //same as: c int: = every(a, b) { a + b }
+d <- a + b //same as: d int: = onchange(a, b) { a + b }
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>As with most syntactical elements of Concurnas, a concise version of the reactive programming constructs <code class="lang-conc">every</code> and <code class="lang-conc">onchange</code> is provided. This effectively turns reactive computing into a one line operation.</p>
+				 	</div>
+				</div>
+
+				<div class="row"><h5 class="taste-subsection">Transactions</h5> </div>
+
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">account1 int: = 100
+account2 int: = 100
+onchange(account1, account2) {
+  System.out.println("sum: {account1 + account2}")
+}
+
+trans{
+  account1 -= 10
+  account2 += 10
+}
+
+//will output: "sum: 200"
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas supports software transactional memory via the trans block keyword. This allows us to make changes to one or more refs and have those changes visible outside of our transaction on an atomic basis.</p>
+				 	</div>
+				</div>
+
+
+				<div class="row"><h5 class="taste-subsection">Temporal programming</h5> </div>
+
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">from com.concurnas.lang.pulsar import Pulsar, RealtimePulsar
+from java.time import Duration
+
+pulsar = new RealtimePulsar()
+
+oneOffTrigger := pulsar.after(Duration.ofSeconds(10))//schedule event for 10 seconds time...
+every(oneOffTrigger){
+  System.out.println("Current time: " + oneOffTrigger)
+}
+//schedule event every 2 seconds 10 times...
+repeatingTrigger := pulsar.repeat(Duration.ofSeconds(2), 10)
+every(repeatingTrigger){
+  System.out.println("Current time: " + repeatingTrigger)
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>A common pattern in concurrent systems engineering is to want to have some form of time based trigger, "wait 10 seconds then do x" or "do y every 3 seconds etc" or "perform this action at this certain time". At Concurnas we refer to this as temporal computing.</p>
+
+						<p>Temporal computing is supported via the built in Pulsar library found at: com.concurnas.lang.pulsar. This library allows us to schedule activities to take place in the future after a certain amount of time has elapsed. It also allows us to schedule tasks for future repetition.</p>
+
+						<p>Concurnas offers both a realtime implementation of pulsars and a 'Frozen'-time implementation (designed primarily for testing temporal applications), which permits time to be injected as a controlled variable.</p>
+				 	</div>
+				</div>
+
+
+				<div class="row"><h5 class="taste-subsection">Parfor</h5> </div>
+
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">result = parfor(b in 0 to 10){
+  gcd(b, 10-b)
+}
+
+//result == [10:, 1:, 2:, 1:, 2:, 5:, 2:, 1:, 2:, 1:, 10:]
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has first class citizen support for parallel for loops. These are a convenient and intuitive mechanism for performing task based operations in the context of a loop, in parallel. They have the same syntax as conventional loops in Concurnas.</p>
+				 	</div>
+				</div>
+			  </div>
+
+			  <div class="tab-pane" id="actors">
+			  	
+		        <div class="row"><h5 class="taste-subsection">Actors</h5> </div>
+			  	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">actor MyActor{//lets define an actor
+  -count = 0
+  def increment(){
+    count++
+  }
+}
+
+//Use of the above actor:
+ma = new MyActor()
+
+ma.increment()//just like normal method call, will block until execution is complete
+
+sync{//sync - wait for all isolates created in the block to complete
+  {ma.increment()}!//called concurrently
+  {ma.increment()}!
+}
+
+count = ma.getCount()
+//count == 3, not possible with regular objects!
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Actors in Concurnas enable us to build micro-services. Each actor operates within its own dedicated isolate. Actors look and behave just like regular objects from the perspective of the calling code.</p>
+					  	 <p>Actors allow us to write service code in a single threaded style and be able to run them safely in a concurrent manner without having to concern ourselves with synchronization or race conditions as each call to an actor runs sequentially and has exclusive access to the sate of the actor until it completes. Naturally, because actors implement their own concurrency control they are safe to be shared without copying across multiple isolates.</p>
+				 	</div>
+				</div>
+
+
+
+		        <div class="row"><h5 class="taste-subsection">Typed Actors</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">class MyCounter(-count int){//ordinary class
+  def increment(){
+    count++
+  }
+}
+
+//We can now define and use our typed actor through the aid of the of keyword as follows:
+actor MyActor of MyCounter(0)
+
+
+//let's use our new typed actor:
+ma = new MyActor()
+
+ma.increment()
+
+sync{//sync - wait for all isolates created in the block to complete
+  ma.increment()!
+  ma.increment()!
+}
+
+count = ma.count//count == 3
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Sometimes we do not have the luxury of defining actors from scratch. This is particularly the case if we are working with pre existing code. To this end Concurnas provides typed actors. Typed actors construct their own and wrap around an instance of an ordinary object.</p>
+
+					  	 <p>Any constructor used to create an instance of the class or method being wrapped is also provided by the typed actor.</p>
+				 	</div>
+				</div>
+
+		        <div class="row"><h5 class="taste-subsection">Default Actors</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">class MyCounter(-count int){
+  def increment(){
+    count++
+  }
+}
+
+inst1 = actor MyCounter(0)      //create a new actor on MyCounter
+inst2 = new actor MyCounter(0)  //create a new actor on MyCounter
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Another way to create a typed actor is to simply use the actor keyword in place of or in addition to the new keyword when creating an instance of an object (now and actor!).</p>
+				 	</div>
+				</div>
+
+			  </div>
+
+			  <div class="tab-pane" id="gpu">
+
+
+			  	<div class="row"><h5 class="taste-subsection">Idiomatic Kernels</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//a simple kernel for performing matrix multiplication...
+gpukernel 2 matMult(M int, K int, 
+      global in A float[2], global in B float[2], global out resultMat float[2]) {
+  globalRow = get_global_id(0) 
+  globalCol = get_global_id(1) 
+  acc = 0.0f;
+  for (k=0; k&lt;K; k++) {
+    acc += A[k*M + globalRow] * B[globalCol*K + k]
+  }
+  resultMat[globalCol*M + globalRow] = acc;
+} 
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+				  		<p>Concurnas has first class citizen support for GPU computing. GPUs can be used like CPU co processors and through their use we're often able to improve the speed of computation for many compute bound problems by over 100x compared to conventional CPU based computation.</p>
+					  	<p>Central to GPU computing are kernels. These are executed on our GPUs in order to perform computation. Concurnas allows you to create kernels in a subset of the Concurnas programming language. This means we can write idiomatic Concurnas code with only slight modifications in order to perform computation on the GPU.</p>
+				 	</div>
+				</div>
+
+
+			  	<div class="row"><h5 class="taste-subsection">Moving Data</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//create an array buffer on a GPU device
+ar gpus.GPUBufferInput = device.makeOffHeapArrayMixed&lt;int[]&gt;(int[].class, 10)
+//copy data from the heap into the buffer...
+copyComplete boolean:gps.GPURef = ar.writeToBuffer([1 2 3 4 5 6 7 8 9 10])
+//perform other computation, possibly on the GPU, whilst we wait for the copy to complete...
+await(copyComplete)
+
+//an input only buffer
+ar gpus.GPUBufferInput = device.makeOffHeapArrayIn&lt;int[]&gt;(int[].class, 10)
+//a 2 by 4 output matrix
+mat gpus.GPUBufferOutput = device.makeOffHeapArrayOut&lt;int[2]&gt;(int[2].class, 2, 4)
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>When we examine algorithms to execute on the GPU, often a big factor in their design and usage concerns transference of data to and from the GPU. Concurnas offers dedicated support for this process.</p>
+
+					  	 <p>Some of the most efficient GPU algorithms achieve their efficiency by implementing pipelining of data transference and computation together so to always keep the GPU busy doing useful work. Concurnas makes this easy by virtue of its native support for non blocking GPU operations such as data transference via refs.</p>
+				 	</div>
+				</div>
+
+
+
+			  	<div class="row"><h5 class="taste-subsection">Using existing code</h5> </div>
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//defining raw C99 compliant OpenCL C code:
+@GPUStubFunction(source="float plus1(float a, float b){ return a + b;}")
+gpudef plus1(a float, b float) float
+
+//using existing C99 compliant OpenCL C code:
+@GPUStubFunction(sources=['./cpucode.cl', './gpuutilCode.cl'])
+gpudef plus2(a float, b float) float
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas implements GPU computing by using OpenCL. This is advantageous because in addition to its multi vendor support (mainly Intel, Nvidia and AMD) one has access to a whole host of existing library code for GPU computation.</p>
+					  	 <p>Concurnas allows for existing code to be used in one of two ways, either directly via a code string written in C99 compliant OpenCL C code or as a direct file reference in an annotation attached to a stub kernel.</p>
+				 	</div>
+				</div>
+
+			  	
+			  	<div class="row"><h5 class="taste-subsection">Working with local memory</h5> </div>
+					<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//a matrix multiplication algorithm leveraging GPU local memory
+gpukernel 2 matMultLocal(M int, N int, K int, 
+    constant A float[2], constant B float[2], global out result float[2]) {
+  row = get_local_id(0)
+  col = get_local_id(1)
+  globalRow = CacheSize*get_group_id(0) + row //row of result (0..M)
+  globalCol = CacheSize*get_group_id(1) + col //col of result (0..N)
+	
+  //local memory holding cache of CacheSize*CacheSize elements from A and B
+  local cacheA = float[CacheSize, CacheSize]
+  local cacheb = float[CacheSize, CacheSize]
+	
+  acc = 0.0f
+	
+  //loop over all tiles
+  cacheSize int = K/CacheSize
+  for (t=0; t&lt;cacheSize; t++) {
+    //cache a section of A and B from global memory
+    //into local memory tiledRow = CacheSize*t + row
+    tiledCol = CacheSize*t + col
+    cacheA[col][row] = A[tiledCol*M + globalRow]
+    cacheb[col][row] = B[globalCol*K + tiledRow]
+		
+    barrier(true)//ensure all work items finished caching
+		
+    for (k=0; k&lt;CacheSize; k++) {//accumulate result for matrix subsections
+      acc += cacheA[k][row] * cacheb[col][k]
+    }
+		
+    barrier(true)//ensure all work items finished before moving on to next cache section
+  }
+  
+  result[globalCol*M + globalRow] = acc
+}
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has native idiomatic support for local GPU memory and barriers. Often algorithms with a strong degree of spatial locality benefit hugely in terms of performance when they are implemented with local memory on a GPU</p>
+				 	</div>
+				</div>
+
+			  	<div class="row"><h5 class="taste-subsection">Profiling</h5> </div>
+		    	<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">c1 := inGPU1.writeToBuffer([ 1 2 3 4 ])
+copyduration = c1.getProfilingInfo().getWorkDuration()
+summary = c1.getProfilingInfo().toString()				  		
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>The Concurnas GPU implementation provides detailed profiling options. This is useful for both development, in enabling one to debug one's GPU code so as to determine how much time is spent performing certain operations, and for monitoring purposes</p>
+				 	</div>
+				</div>
+
+		     
+			  </div>
+			  <div class="tab-pane" id="dist">
+			  
+
+			  	<div class="row"><h5 class="taste-subsection">Remote computation</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//A remote server:
+remServer = new com.concurnas.lang.dist.RemoteServer(port = 42001)
+remServer.startServer()
+//wait until time to terminate
+remServer.close()
+</code></pre> 	
+
+<pre ><code class="lang-conc">//A client:
+rm = Remote('localhost', port = 42001)
+//execute code remotely, returning a ref:
+ans int: = {10+10}!(rm.onfailRetry())
+rm.close()
+//ans == 20
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas provides an easy to use, intuitive and non invasive solution for distributed computing which acts as an extension of the isolate model of concurrent computation. In this way we are able to use the concurrent computing model which we are used to/have already built our software using and can easily extend this to working on a remote basis. In this way as our computational requirements grow we can easily scale our solutions to accommodate.</p>
+
+					  	 <p>Concurnas abstracts away much of the hard work Concerning managing distributed computing, allowing us to focus on the more interesting problems which we are trying to solve. For instance, with Concurnas remote servers will cache results and wait for clients to reconnect in the event of network failure.</p>
+				 	</div>
+				</div>
+
+
+			  	<div class="row"><h5 class="taste-subsection">Automatic state and code distribution</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//A remote server:
+remServer = new com.concurnas.lang.dist.RemoteServer()//use default port 42000
+remServer.startServer()
+//wait until time to terminate
+remServer.close()
+</code></pre> 	
+
+				  	<pre ><code class="lang-conc">class MyCalculator{//dependent code
+  -callCounter = 0
+  //greatest common divisor of two integers...
+  def gcd(x int, y int){//+ counter and result
+    while(y){
+      (x, y) = (y, x mod y)
+    }
+    "count: {++callCounter}, result: {x}"
+  }
+}
+
+//connect and execute remotely
+rm = Remote('127.0.0.1')//use default port 42000
+result = try{
+  calc = MyCalculator()
+  calc.gcd(34, 4756)
+
+  //Dependant code (MyCalculator.class) and object state (callCounter) is also transmitted...
+  res String: = {calc.gcd(97, 7081)}!(rm.onfailRetry())
+  res:get()
+}finally{
+  rm.close()
+}
+//result == count: 2, result: 97
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>With Concurnas, remote servers are able to be configured such that they can run any code submit to them deemed safe for execution.</p>
+						 
+						 <p>The internal Concurnas distributed computing API includes a provision for dependency resolution which itself is quite sophisticated and in the interests of performance is able to perform static code dependency analysis in order to determine and preemptively provide upfront the code that is required in order to execute a request.</p>
+
+					  	 <p>In this way clients are able to submit any defined code and have this run on a remote machine with dependent code automatically distributed to the remote machine. This greatly simplifies the usually arduous process of remote code dependency distribution.</p>
+
+					  	 <p>Dependant object state is also distributed for use with remote execution, rendering the execution semantic between local and remote computation identical. This makes it very easy for us to start building a solution locally, and to then later scale that solution up on a distributed platform.</p>
+				 	</div>
+				</div>
+			   </div>
+
+			  <div class="tab-pane" id="offheap">
+
+			  	<div class="row"><h5 class="taste-subsection">Off Heap Stores</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">from com.concurnas.offheap.storage import OffHeapRAM
+from com.concurnas.offheap import OffHeapObject	
+msg = ["hello" "world"]//message to store
+
+10meg = 10 * (1024**2)
+//our off heap store:
+offHeapStore = new OffHeapRAM&lt;String[]&gt;(10meg)
+offHeapStore.start()
+
+offHeapObj OffHeapObject&lt;String[]&gt; = offHeapStore.put(msg)//add msg to the store
+gotMsg = offHeapObj.get()//extract a copy of the original message
+del offHeapObj//remove the object from the store
+
+offHeapStore.close()
+
+assert gotMsg == msg//equal by value
+assert gotMsg &amp;&lt;&gt; msg//different by reference	  
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has support for off heap memory in the form of stores and maps. These allow us to work with datasets which are far greater than that which can be held within the managed garbage collected portion of memory used by Concurnas termed the heap. Additionally by using off heap memory we gain a tremendous amount of control over how we manage memory and can reserve portions of memory separate from garbage collection which is incredibly useful for high performance computing.</p>
+
+					  	 <p>Objects are stored off heap in binary format. With Concurnas all objects are quickly serializable and deserializable to and from this format by default.</p>
+
+						 <p>Concurnas presents two variants of off heap storage, for RAM and disk - for use contingent on the amount of data one is working with. The off heap disk variant is backed by memory mapped files which greatly enhances performance as spatially localized data is cached in memory.</p>
+				 	</div>
+				</div>
+
+
+			  	<div class="row"><h5 class="taste-subsection">Off Heap Maps</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">from com.concurnas.offheap.storage import OffHeapMapDisk
+import java.io.File
+msg = ["hello" "world"]
+100meg = 100 * (1024**2)
+//our off heap store:
+offHeapStore = new OffHeapMapDisk&lt;String, String[]&gt;(100meg, new File('msgDatabase.db'))
+offHeapStore.start()
+
+offHeapStore.put('msg', msg)//add msg to the store
+gotMsg = offHeapStore.get('msg')//extract a copy of the original message
+offHeapStore.close()//msg is persisted to disk in 'msgDatabase.db'
+
+assert gotMsg == msg//equal by value
+assert gotMsg &amp;&lt;&gt; msg//different by reference			
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>The Key-Value pair map has become an industry standard too for persisting data. With Concurnas support is provided in the form of off heap maps. Both a RAM and disk backed variant of these maps is provided.</p>
+
+					  	 <p>The off heap map disk variant is backed by memory mapped files which greatly enhances performance as spatially localized data is cached in memory. Additionally, the disk based variant is capable of long term persistence of data.</p>
+				 	</div>
+				</div>
+
+			  	<div class="row"><h5 class="taste-subsection">Schema evolution</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+				  	<pre ><code class="lang-conc">//Removing a field:
+class MyClass(firstName String, sirName String)
+//Later version:
+class MyClass(firstName String)
+</code></pre> 	
+
+<pre ><code class="lang-conc">//Adding a field:
+class MyClass(firstName String)
+//Later version:
+class MyClass(firstName String, sirName String)
+</code></pre> 	
+
+<pre ><code class="lang-conc">//Changing the type of a field:
+class MyClass(firstName String, sirName String, userid byte)
+//Later version:
+class MyClass(firstName String, sirName String, userid long)
+</code></pre> 	
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>One of the strongest points of the Concurnas off heap map implementation is its support for schema evolution. We term schema evolution as changes to a classes fields after it has been persisted.</p>
+
+					  	 <p>Schema evolution turns out to be a surprisingly normal operation performed in enterprise computing. Traditionally this would cause a problem for us upon deserialization since the persisted version of the class code would not match that of the current 'live' version, but Concurnas is largely able to account for these sorts of evolutionary changes including:</p>
+						 <ul>
+						  <li>Removal of a field</li>
+						  <li>Adding a new field</li>
+						  <li>Changing the type of a field</li>
+						</ul>
+						 <p>Concurnas is able to account for the above changes to object schemas when serializing and deserializing data from persistent storage. This saves us the headache of explicit migration.</p>
+				 	</div>
+				</div>
+
+
+			  </div>
+			  <div class="tab-pane" id="datstructs">
+			  	<div class="row"><h5 class="taste-subsection">Arrays and Matrices</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">empty = new int[10]//empty array of zeros
+ones = new int[10](1)//array of ones
+
+matrix = new int[2, 2]
+ndim = new int[2, 2, 2]//a 2 x 2 x 2 3 dimensional array
+mones = new int[2, 2](1)//2 x 2 matrix of ones
+
+ar1 = [1 2 3 4 5]//in place array definition
+ar2 = ar1 + [ 6 7 8 ]//concatenation: ar2 ==  [1 2 3 4 5 6 7 8]
+
+m1 = [1 2; 3 4]//in place matrix definition
+
+//concatenation:
+m2 = m1 + [ 5 6] //m2 == [1 2; 3 4; 5 6]
+m3 = [m1 m1]     //m3 == [1 2 1 2 ; 3 4 3 4]
+
+//extracting values
+arraGot = ones[1]//getting the second value from an array
+got = m2[0,1]//got == 2
+got2 = m2[;,1]//taking a slice from a matrix: got2 == [2 4 6]
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has advanced first class citizen support for not just defining arrays and matrices but working with them to.</p>
+
+					  	 <p>A concatenation operator <code class="lang-conc">+</code> is provided to aid in joining of n dimensional arrays and matrices as well as various means to extract values.</p>
+
+					  	 <p>This functionality is particularly useful for scientists and engineers performing to numerical/scientific computing with matrices</p>
+				 	</div>
+				</div>
+
+
+			  	<div class="row"><h5 class="taste-subsection">Lists, maps and ranges</h5> </div>
+			  	
+<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//lists
+alist = [1, 2, 3, 4, 5, 6, 7, 8, 10]//a list of Integers
+objList = ['element', 2, 3.4]//a mixed list of Objects
+
+//operations on lists...
+element = alist[0]//get the first item
+del alist[0]//remove first item
+check = 3 in alist//check to see if a value is in a list
+sublist = alist[4 ... 8]//sublist
+sublists = alist[4 ... ], alist[ ... 4]//sublist from index 4 to end, and from start to 4
+
+if(alist){//checking for non emptyness
+  System.out.println('list is not null or empty!')
+}
+
+for(item in alist; idx){//iteration
+  System.out.println('item:{idx}={item}')
+}
+</code></pre>
+<pre ><code class="lang-conc">//maps
+amap = {12 -&gt; 'twelve', 1 -&gt; 'one'}
+defaultmap = {6 -&gt; 20, default -&gt; 0}
+got = amap[12]//get an item
+got2 = defaultmap[16]//an entry from 16 -&gt; 0 will be created by default
+del amap[12]//remove an item
+amap[99] ='big'//create a mapping
+check = 99 in amap//check for presence of key
+check = 23 not in amap//check for absence of key
+
+if(amap){//checking for non emptyness
+  System.out.println('map is not null or empty!')
+}
+
+for(key in amap; idx){//iteration over map keys
+  System.out.println('item:{key}={amap[key]}')
+}
+
+</code></pre>
+<pre ><code class="lang-conc">//sets
+aset = set()
+aset.add('item')
+aset.add('toremove')
+check = 'item' in aset
+
+if(aset){//checking for non emptyness
+	System.out.println('set is not null or empty!')
+}
+
+for(item in aset){//iteration
+	System.out.println('item:{item}')
+}
+</code></pre>
+<pre ><code class="lang-conc">//ranges
+numRange = 0 to 10           //a range of: [0, ..., 10]
+tepRange = 0 to 10 step 2    //a range of: [0, 2, ..., 10]
+revRange = tepRange reversed //a reversed range of: [10, 8, ..., 0]
+decRange = 10 to 0 step 2    //a range of: [10, 8, ..., 0]
+infRange = 0 to              //an infinite sequence [0,... ]
+steInfRa = 0 to step 2       //a stepped infinite sequence [0, 2,... ]
+decInfRa = 0 to step -1      //a stepped infinitely decreasing sequence [0, -1,... ]
+
+check = 2 in numRange //checking for presence
+for(x in 0 to 10){
+  System.out.println('sequence item:{x}')
+}
+
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Some of the most useful and commonly used data structures are lists, maps, sets and numerical ranges. Concurnas has built in first class citizen support for these essential data structures.</p>
+
+					  	 <p>With Concurnas you can define lists, maps and ranges in place with convenient, dedicated syntax.</p>
+
+					  	 <p>Concurnas supports the most commonly used operations on these data structures directly, such as adding, removing and checking for the presence of elements</p>
+				 	</div>
+				</div>
+			  	<div class="row"><h5 class="taste-subsection">Implied generic types</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//implied type lists
+mylist = list()//mylist is implied to be a String list based on usage
+mylist.add('element')
+
+//implied type map
+mymap = map()//implied to be a map of Integer to String
+mymap[1] = 'value'
+
+//implied type set
+aset = set()//implied to be a set of Integers
+aset.add(123)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>With Concurnas you can define lists, maps and sets with simple Python like compact syntax</p>
+
+					  	 <p>Concurnas leverages the Java JDK implementation of these data structures. They make use of generics in order to support convenient multi typing of structures. Where these generics types are unqualified like here, Concurnas employs usage based type inference in order to infer what these generic types should be qualified as at compilation time based on the usage of the data structure.</p>
+				 	</div>
+				</div>
+			  	<div class="row"><h5 class="taste-subsection">List comprehension</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">mylist = [1, 2, 5, 4, 3, 2]
+
+plusone = x+1 for x in mylist//list comprehension of a list
+plusoneEven = x+1 for x in mylist if x mod 2 == 0 //only even numbers!
+
+myeq = (x**2+1) for x in 0 to 10//list comprehension of a range
+
+mymap = {0 -&gt; 93, 1-&gt; 55, 4 -&gt; 34}
+lckeys = (key, mymap[keyfor]) for key in sorted(mymap)
+//iterate over our sorted map keys and produce a list of tuples 
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Iterations over lists, or in fact any iterable data structure, is a very common operation to perform when building both general systems and those which specifically work with data. As such Concurnas has first class citizen support by way of convenient syntax for performing these iterations termed: list comprehensions.</p>
+
+					  	 <p>List comprehension can be applied to any iterable object, matrix or array. This of course includes ranges and maps in addition to lists</p>
+				 	</div>
+				</div>
+
+			  </div>
+			  <div class="tab-pane" id="vect">
+
+
+			  <div class="row"><h5 class="taste-subsection">Vectorizable expressions</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">myArray1 = [1 2 3 4 5 6 7 8 9 10]
+myArray2 = [1 2 3 4 5 6 7 8 9 10]
+
+plus10 = myArray1^ + 10//create new array with 10 added to each element of myArray1
+myArray2^ += 10//add 10 to each element of the array in place
+
+assortment = ['aString' Integer(1) Float(22) 'anotherString']
+whichStr = assortment^ is String //type checking. whichStr == [true false false true]
+
+mymatrix = [1 2; 3 4]
+mymatrix^ **=2//mymatrix now == [1 4 ; 9 16]
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas offers syntax to support Vectorization. This allows us to succinctly and easily write code which will be applied to each element of an array, list, matrix or other n dimensional array.</p>
+
+					  	 <p>All major operators are supported.</p>
+				 	</div>
+				</div>
+
+
+			  <div class="row"><h5 class="taste-subsection">Element wise method invocation</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc"> class Inca(public value int){
+  def inc() =&gt; value++;;
+  override toString() =&gt; 'Inca({value})'
+}
+
+incs = [Inca(3) Inca(4) Inca(22)]
+incs^inc()//call inc on each element, incs now == [Inca(4) Inca(5) Inca(23)]
+values = incs^value//extract values from each object, values == [4 5 23]
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>In addition to operators, vectorization extends to method invocation and field access.</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Chained vectorization</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">from java.lang.Math import sin, toRadians
+mymat = [ 80 170; 260 350]
+sins = sin(toRadians((mymat^ + 10) mod 360))
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas allows vectorized elements to be chained together, enabling for some very elegant, intuitive solutions to common array/list/matrix problems</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Implicit vectorization</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">myArray1 = [1 2 3 4 5 6 7 8 9 10]
+myArray2 = myArray1 + 10//no ^ needed!
+
+from java.lang.Math import sin, toRadians
+mymat = [ 80 170; 260 350]
+sins = sin(toRadians((mymat + 10) mod 360))//no ^ needed!
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas is able to infer where vectorization is required to make sense of a program</p>
+				 	</div>
+				</div>
+
+			  </div>
+			  <div class="tab-pane" id="objectOrientation">
+
+				<div class="row"><h5 class="taste-subsection">Classes</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">open class Person(~name String, ~surname String){
+  //Concurnas automatically creates a this(name String, surname String) constructor
+  likes = java.util.HashSet&lt;Food&gt;()//field defaults to be accessible from within class only
+  def addLike(like Food) boolean =&gt; likes.add(like)//a public method
+}//open classes can be extended
+
+//an enumeration, a simple class structure for limited choices
+enum Food{Tomatoes, Beans, Bread, Grapes, Pizza}
+
+//an abstract class may define methods which need to be implicated by concrete classes
+//abstract classes themselves may not have instance objects created of them
+abstract class Validating(~name String, ~surname String) &lt; Person(name, surname){
+  def validateLike(like Food) boolean//abstract method to be defined by subclass
+
+  override addLike(like Food) boolean {//methods must be explicitly overridden
+    super.addLike(like) if validateLike(like) else false
+  }
+}
+
+//BornPerson extends Validating, pass relevant details to superclass...
+class BornPerson(name String, surname String, ~birthYear short) &lt; Validating(name, surname){
+  this(surname String, birthYear short){
+    this('unknown', surname, birthYear)//call default constructor
+  }
+
+  //those born after 1980 don't like fast food...
+  def validateLike(like Food) boolean {
+    like &lt;&gt; Food.FastFood if birthYear > 1980 else true
+  }
+}//this is a closed class which may not be extended
+
+//creating an instance object of a BornPerson...
+aperson = BornPerson('dave', 'jones', 1991)//new keyword is optional
+aperson.addLike(Food.Beans)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas takes the hard work and boiler plate out of object oriented programming and makes it fun again. It's easy to define classes in Concurnas as the syntax has been designed with speed of creation and readability in mind. Data centric classes can be defined in as little as one line of code.</p>
+					  	 <p>Classes in Concurnas support single inheritance. This is a really useful way of providing evermore specialist behavior within one's subclasses whilst inheriting the functionality of the extended super class.</p>
+					  	 <p>Concurnas offers support for abstract classes and methods. These are a really useful way of providing some common functionality across a set of related subclasses extending the abstract class, whilst also requiring the subclasses to have their own definitions of certain abstract methods</p>
+					  	 <p>Concurnas provides enumerations. These are really useful for representing variables which can only take one of a small range of pre-defined values</p>
+					  	 <p>Methods and fields in Concurnas have sensible default accessibilities. Unless otherwise defined, fields are protected (accessible by the defining class and any extending children classes), and methods are public (accessible anywhere). All classes in Concurnas are 'closed' by default, that is to say they do not permit extension unless explicitly declared as being 'open' classes. All abstract classes are open by default.</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Traits</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">trait Eater{
+  def eat() String =&gt; "eating {favouriteFood()}" //concrete method
+  def favouriteFood() String //abstract method to be implemented by composing class
+}
+
+trait Animal < Eater{
+  override def eat() String =&gt; "animal is " + super.eat()
+  def legCount() int//abstract
+}
+
+trait FourLegged ~ Animal{
+  def legCount() =&gt; 4
+  def favouriteFood() String
+}
+
+//~ indicates we're composting a class of the defined traits...
+class Dog ~ Animal, FourLegged {
+  def favouriteFood() =&gt; "sausages"
+}
+
+fido = new Dog()
+fido.eat()//eat returns: "animal is eating sausages"
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Traits allow us to define elements of reusable functionality (both methods and state) which can be mixed-in to classes. They are themselves not insatiable as, like abstract classes, they represent incomplete fragments of functionality. Unlike abstract classes however, a class may be composed of (aka mixed-in with) more than one trait. Traits are useful as they encourage and facilitate software creation via composition as opposed to inheritance, which is generally understood as best practice in modern object oriented programming.</p>
+
+					  	 <p>When composing classes with traits, multiple traits may be referenced, unlike inheritance.</p>					  	 
+				 	</div>
+				</div>
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">abstract class Operator{
+  def operate(a int) int
+}
+
+open class ID < Operator{
+  def operate(a int) =&gt; a
+}
+
+trait PlusOne   < Operator{  def operate(a int) =&gt; super.operate(a+1) }
+trait Square    < Operator{  def operate(a int) =&gt; super.operate(a**2) }
+trait MinusOne  < Operator{  def operate(a int) =&gt; super.operate(a-1) }
+trait DivTwo    < Operator{  def operate(a int) =&gt; super.operate(a/2) }
+
+//create a class composed of these stacked traits...
+class DMSP < ID ~ PlusOne, Square, MinusOne, DivTwo
+DMSP().operate(10)//returns: 17
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Traits may be stacked together. The structure of the super references is contingent on the composition order of our defined class (in this case <code class="lang-conc">DMSP</code> - divide by two, then take away one, multiply by itself and add one to the result). This is really neat as in one line of code, by switching around the composed traits here we have access to 4! (4*3*2) =&gt; 24 variants of our trait functionality.</p>
+					  	 
+				 	</div>
+				</div>
+
+
+				<div class="row"><h5 class="taste-subsection">Generics</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">open class Pair&lt;X, Y&gt;(-x X, -y Y)//generic class with two type parameters, X and Y
+
+//instances of our generic class
+pp1 = new Pair&lt;String, int&gt;("one", 1)
+pp2 = new Pair&lt;String, String&gt;("name", "another")
+
+//a generic function with one type parameter X:
+def addTwice&lt;X&gt;(addTo java.util.List&lt;X&gt;, what X){
+  addTo.add(what)
+  addTo.add(what)
+}
+
+//a class with upper bounded generic parameters
+class NumericalPair&lt;A Number, B Number&gt;(a A, b B) &lt; Pair&lt;A, B&gt;(a, b)
+np1 = new NumericalPair&lt;float, int&gt;(0.3f, 1)//A and B must be subtypes of Number
+
+//We can use the wildcard ? where we are not interested in the generic qualification
+ppAny = np1 as NumericalPair&lt;?, ?&gt;
+
+//in/out parameters allow us to support Contravariance and Covariance respectfully
+trait Source&lt;out T&gt;{//Contravariant generic parameter
+  def nextT() T
+}
+
+trait Comparable&lt;in T&gt;{//Covariant generic parameter
+  def compareTo(other T) int
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas supports generics. These are an extremely useful aspect of modern object oriented programming that enable types (classes and traits) to be parameters when defining classes, traits, methods and functions. They enables us to re-use code across different types, which greatly improves the speed at which we can write code, it's readability and innate safety.</p>
+
+					  	 <p>Classes, actors, traits, methods and functions can have generic parameters. These must be qualified when making use of these elements</p>
+
+						 <p>Languages which support Generics on their own can be quite limited, but Concurnas supports wild cards, in/out generics and bounded generics These features greatly improve the usability of generics</p>
+				 	</div>
+				</div>
+				
+
+				<div class="row">
+					<div class="col-sm-8">
+<pre ><code class="lang-conc">//pp1 is inferred to be of type: Pair&lt;String, int&gt;
+pp1 = new Pair("one", 1)
+
+//filenames is inferred to be of type: java.util.ArrayList&lt;String&gt;
+filenames = java.util.ArrayList()
+filenames.add("pic1.jpg")
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>In writing idiomatic Concurnas code, Concurnas is usually able to infer the qualification of generic types for a class, function etc having generic parameters.</p>
+
+					  	 <p>This is achieved examining both the passed parameters to a generic class constructor and also how an instance object is used with respect to those generic parameters.</p>
+				 	</div>
+				</div>
+			
+
+
+			  <div class="row"><h5 class="taste-subsection">Getters and setters</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Person(-name String)//- generate a getter for name only
+  ~petName String //generate a getter and setter
+  +age int//generate a setter only
+}
+
+//redirect field access to getters and setters
+p1 = new Person('dave')
+p1.petName = "lenin"//equivalent to p1.setPetName("lenin")
+petname = p1.petName//equivalent to petname = p1.getPetName()
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Getters and setters are an essential part of object orientation since they allow us to implementing encapsulation. Concurnas will automatically create setters and getters for all your class fields where designated. A field need only be prefixed with one of:
+						<ul>
+						  <li><code class="lang-conc">-</code>&nbsp;Generate a getter only</li>
+						  <li><code class="lang-conc">~</code>&nbsp;Generate a setter and a getter</li>
+						  <li><code class="lang-conc">+</code>&nbsp;Generate a setter only</li>
+						</ul>
+					  	 Furthermore, Concurnas will automatically redirect field access operations to getters and setters, whether they are created automatically or manually.</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Auto hashCode/equals</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Person(name String)
+p1 = Person('dave')
+p2 = Person('dave')
+
+assert p1 == p2//equivalent to; p1.equals(p2) - p1 and p2 have the same value
+assert p1 &&lt;&gt; p2//p1 and p2 are not the same object
+
+people = set()
+people.add(p1)
+people.add(p2)
+
+assert people.size() == 1//one item stored by value
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas will automatically generate a hashCode and equals method for every class. Further more, the default equality check in Concurnas, <code class="lang-conc">a==b</code> automatically resolves to <code class="lang-conc">a.equals(b)</code> for all objects. These two features allow us to easily implement equality by value, as opposed to equality by reference (which most languages provide).</p>
+
+					  	 <p>In providing a default hashCode method in addition to a default equals method we are able to store objects in sets and as keys in maps efficiently on a by value basis</p>
+
+					  	 <p>The automatically generated default hashCode and equals methods are able to cope with cycles in object graphs.</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Annotations</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class MyClass1{
+  @Deprecated def myOldMethod(){
+      //The Deprecated indicates that the method is deprecated
+  }
+}
+
+annotation MapsTo{//a custom annotation
+  name String
+  mapTo String
+  repeat = 1//annotation field default value
+}
+
+class MyClass2{
+  @MapsTo(name = "mappingName", mapTo = "anotherName")
+  afield int = 99//afield is annotated with MapsTo
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has extensive support for annotations. These are a cool mechanism by which one can augment code for the compiler or other code related tools to make use of.</p>
+				 	</div>
+				</div>
+
+
+
+			  <div class="row"><h5 class="taste-subsection">Chained method calls</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Robot{
+  -path = ""
+  private def add(dir String) => path +=dir
+  def up() 	=> add("U") 
+  def down()  => add("D") 
+  def left()  => add("L") 
+  def right() => add("R") 
+}
+
+robot = Robot()
+robot..up()..up()..left()..down()..right()//double dot .. returns the Robot object
+result = robot.path//UULDR
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas allows us to chain together series of method calls on objects which do not explicitly return references to themselves upon invocation through the use of the double dot <code class="lang-conc">..</code> operator.</p>
+				 	</div>
+				</div>
+
+
+
+			  <div class="row"><h5 class="taste-subsection">With blocks</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Robot{
+  -path = ""
+  private def add(dir String) => path +=dir
+  def up() 	=> add("U") 
+  def down()  => add("D") 
+  def left()  => add("L") 
+  def right() => add("R") 
+}
+
+
+result = with(Robot()){
+  up(); up(); left(); down(); right()
+  path
+}//result == UULDR
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p><code class="lang-conc">with</code> blocks in Concurnas enable us to define blocks of code in which all method calls and variable access is first attempted against an associated object</p>
+				 	</div>
+				</div>
+
+			</div>
+			  <div class="tab-pane" id="provider">
+
+<div class="row"><h5 class="taste-subsection">Dependency Injection</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">trait MessageGetter {public def getMessage() String}
+trait MessageSender{public def sendMessage(msg String) void}
+
+inject class MessageProcessor(obtainer MessageGetter, sender MessageSender){
+//the default constructor for MessageProcessor is marked as being injectable
+  public def processMessage(){
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+class SimpleMG ~ MessageGetter { 
+  def getMessage() String =&gt; 'A message'
+}
+class MessagePrinter ~ MessageSender{
+  def sendMessage(msg String) void =&gt; System.out.println(msg)
+}
+
+provider MPProvider{//
+  provide MessageProcessor //provide objects of this type
+  MessageGetter =&gt; new SimpleMG()//dependency satisfaction for MessageProcessor 
+  MessageSender =&gt; new MessagePrinter()//dependency satisfaction for MessageProcessor
+}
+
+//to be used as follows:
+mpProvider = new MPProvider()
+mp = mpProvider.MessageProcessor()
+//mp is a MessageProcessor instance with all dependencies satisfied
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas offers first class citizen support for dependency injection through Object Providers. Dependency Injection (DI) is a modern software engineering technique for building object oriented systems. The core principle of DI is to separate behavior from dependency resolution (the "plumbing"). In doing so one is obliged to compartmentalize one's software into core functionality, making dependent behavior injectable and thus separating that injectable code from the "plumbing". This has benefits of aiding:</p>
+					  	 <ul>
+						  <li><strong>Reasoning</strong> - By compartmentalizing one's software, it makes reasoning about code easier.</li>
+						  <li><strong>Testing</strong> - DI facilitates the use of mock implementations when we are testing software which allows that testing to take place in isolation, side effect free and with controlled inputs and outputs which we can validate against.</li>
+						  <li><strong>Re-usability</strong> - By reducing our software into core functionality we are generally more able to re use that functionality within and outside of the original systems we set out to build.</li>
+						</ul>
+						<p>For the above reasons and more it's clear why DI has become such a useful tool for modern software development. Concurnas object providers build upon the successes of the likes of <a href="https://spring.io/">Spring</a> and <a href="https://github.com/google/guice">Google Guice</a></p> 
+						<p>Concurnas object providers offer a non invasive and concise mechanism by which code may be both marked for dependency injection (via the <code class="lang-conc">inject</code> keyword), configured (via object <code class="lang-conc">provider</code>'s) and provided for further execution with all dependencies (including transitive) resolved. Best of all, this all happens in idiomatic Concurnas code and is validated at compile time!</p>
+				 	</div>
+				</div>
+
+
+
+<div class="row"><h5 class="taste-subsection">Scoped Providers</h5> </div>
+
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">inject class AgeHolder(age Integer)
+inject class User(name String, ah AgeHolder)
+
+provider UserProvider{
+  single provide User//we mark the provider as single
+  String =&gt; "freddie"
+  AgeHolder =&gt; new AgeHolder(22)
+}
+
+up = new UserProvider()
+inst1 = up.User()
+inst2 = up.User()
+
+//both User objects are the same across different calls to UserProvider.User:
+assert inst1 &== inst2
+</code></pre>
+
+<pre ><code class="lang-conc">class Bean{
+  count = 0
+  def increment() void =&gt; count++ 
+}
+
+inject class BeanCounter(-left Bean, -right Bean)
+
+provider CounterProvider{
+  provide BeanCounter
+  shared Bean =&gt; new Bean()//we mark the Bean dependency qualifier as being shared
+}
+
+bcProvider = new CounterProvider()
+bcInst1 = bcProvider.BeanCounter()
+bcInst2 = bcProvider.BeanCounter()
+
+//same bean for both dependencies of the provided object:
+assert bcInst1.left &== bcInst1.right
+//two beans from two separate invocations of the provider differ:
+assert bcInst2.left &&lt;&gt; bcInst1.left
+</code></pre>
+
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas offers three scopes for providing objects and satisfying dependencies.</p>
+
+						 <ul>
+						  <li>1). By default all provided objects/injected dependencies created by a provider are instance objects.</li>
+						  <li>2). The <code class="lang-conc">single</code> scope can be attached to a provide statement or dependency qualification in order to indicate that only one instance of said object should be created per object provider instance.</li>
+						  <li>3). The <code class="lang-conc">shared</code> scope can be attached to a provide statement or dependency qualification in order to indicate that only one instance of said object should be created per object provider invocation of a provide statement.</li>
+						</ul>
+
+				 	</div>
+				</div>
+
+
+
+
+<div class="row"><h5 class="taste-subsection">Named dependencies</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">inject class User(firstName String, sirName String)
+
+provider UserProvider{
+  provide User
+  'firstName' String =&gt; "Freddie"
+  'sirName' String =&gt; "Brown"
+}
+
+uprov = new UserProvider()
+user = uprov.User()
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Dependency qualifiers may specify a parameter name string to which they will bind their dependencies. This further specializes what dependency they qualify. This is particularly useful in instances where we need to qualify a dependency of the same type but used for different purposes.</p>
+				 	</div>
+				</div>
+
+
+
+			  </div>
+			  <div class="tab-pane" id="nullsafe">
+<div class="row"><h5 class="taste-subsection">Nullable Types</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">aVariable String = "a String"
+aVariable = null//this is a compile time error!
+
+nullableVar String? = "a String"//nullableVar can hold a null value
+nullableVar = null//this is now acceptable
+
+len = nullableVar.length()//compile time error! As nullableVar may be null
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas, like other modern programming languages such as <a href="https://kotlinlang.org/">Kotlin</a> and <a href="https://developer.apple.com/swift/">Swift</a> has null safety built into its type system. Concurnas requires that a variable's type be explicitly declared as being nullable in order for it to be assigned null, or potentially null value. When working with nullable types, Concurnas enforces a number of restrictions so as to avoid the risk of throwing a NullPointerException. In this way Concurnas enables us to write safe code which is guaranteed to be largely free of NullPointerException's (an unexpected NullPointerException being widely recognized as being one of the most common bugs in modern software engineering).</p>
+				 	</div>
+				</div>
+<div class="row"><h5 class="taste-subsection">Checking for null</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">nullableVar String? = "a String"//nullableVar can hold a null value
+//...
+res = if(nullableVar &lt;&gt; null){
+  nullableVar.length()//OK as we've already established that nullableVar is not null
+}else{
+  -1
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas includes sophisticated logic for working with nullable types to cater for situations in which they have already been established as being not null. This makes working with nullable types easy.</p>
+				 	</div>
+				</div>
+
+ <div class="row"><h5 class="taste-subsection">Null Safe Operators</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//Safe call operator:
+nullableVar String? = null
+len = nullableVar?.length()//len is of type Integer?
+</code></pre>
+<pre ><code class="lang-conc">//Elvis operator
+nullableVar String? = null
+len int = nullableVar?.length()?:-1//len is of type int
+</code></pre>
+<pre ><code class="lang-conc">//Not null assertion operator
+nullableString String? = null
+//throws a NullPointerException if nullableString is null:
+length int = nullableString??.length()
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas includes three useful built in operators that can be used when working with nullable types:</p>
+					  	 <p><strong>The safe call operator.</strong> This will execute normally as if it were applied to a non nullable type, except for when it's applied to null - in which case it shall return null.</p>
+					  	 <p><strong>The Elvis operator.</strong> This will execute normally as if it were applied to a non nullable type, except for when it's applied to null - in which case it shall execute and return the expression on the right hand side of the operator. Often used in conjunction with the safe call operator.</p>
+					  	 <p><strong>The not null assertion operator.</strong> This is our final and most dangerous tool for working with nullable types. This operator will deliberately throw a NullPointerException if it is applied to a nullable type of value null, otherwise shall execute normally.</p>
+				 	</div>
+				</div>
+<div class="row"><h5 class="taste-subsection">Nullable Generics</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class HolderNoNullGeneric&lt;X&gt;(~x X)
+class HolderNullGenericOK&lt;X?&gt;(~x X)
+
+nonNull = HolderNoNullGeneric&lt;String&gt;("not null")
+nullOK  = HolderNullGenericOK&lt;String?&gt;(null)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas allows generic type declarations to be declared as being nullable. By default all generic types are not nullable.</p>
+				 	</div>
+				</div>
+
+			  </div>
+			  <div class="tab-pane" id="modern">
+
+
+			  <div class="row"><h5 class="taste-subsection">Unicode</h5> </div>
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">π = Math.PI
+πStr = "π=" + π //πStr == "π=3.141592653589793"
+你好 = "Hello!"
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas is a Unicode language. As such variables, method names, Strings etc are expressible in Unicode.</p>
+						 <p>This can be particularly advantageous when working with mathematical constants. This helps to reduce the cognitive gap between the domain in which ones problem exists and the programming language used to instruct ones computer.</p>
+				 	</div>
+				</div>
+
+
+			  <div class="row"><h5 class="taste-subsection">All blocks can return</h5> </div>
+			  
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">res1 = {a = 12; b= 16
+a ** 2 + b}//anonymous block returns a value
+
+//branching if, elif, else blocks may return values
+res2 = if(someCondition()){ "value1"} else{"value2"}
+
+//loops return values
+fromLoop java.util.List&lt;int&gt; = for(a in 0 to 10){
+  a * 2 + 12
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>All code blocks in Concurnas have the capacity to return a value. This is an incredibly useful feature which allows us to write concise, easy to read programs.</p>
+						 <p>This functionality extends to looping control structures including the for and while loops.</p>
+				 	</div>
+				</div>
+
+			  <div class="row"><h5 class="taste-subsection">Compact classes and functions</h5> </div>	  
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//a data class in one line...
+class MyClass&lt;X&gt;(-x heldValue, public afield String, ~another int)
+
+//an ordinary function:
+def addfunc1(a int, b int) int {
+  return a + b
+}
+
+//we can use =&gt; to compact the function to:
+def addfunc2(a int, b int) int =&gt; return a + b
+
+//infer the return type:
+def addfunc3(a int, b int) =&gt; return a + b
+
+//implicit return expression:
+def addfunc4(a int, b int) =&gt; a + b//most compact form!
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Most data oriented classes, will fields, a default constructor and full getter and setter support can be created in as little as one line of code.</p>
+
+						  <p>When it comes to methods and functions, these two are often definable in one line of code.</p>
+
+						  <p>Concurnas offers two really useful features which make creating methods and functions an enjoyable experience: function return type inference means that we do not have to explicitly define what the return type of a function is, and implicit function returns mean that it's not necessary to explicitly use the return keyword to return a value from a function or method.</p>
+
+						  <p>This combined provides us with an incredible amount of flexibility in the way in which we defined code. For simple, obvious cases, we can use the succinct, compact syntax. For more complex cases where more elaboration for the sake of readability is required, a more terse definition can be applied. The decision is given to the programmer, as opposed to it being a language restriction.</p>
+				 	</div>
+				</div>
+			  
+
+
+			  <div class="row"><h5 class="taste-subsection">Method overloading, named Parameters, default values and varargs</h5> </div>	  
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//an overloaded function
+def adder(a int, b int) =&gt; a + b
+def adder(a int, b float) =&gt; adder(a, b as int)
+def adder(a int) =&gt; adder(a, 10)
+
+//a default value
+def powerPlus(a int, raiseTo = 2, c int) =&gt; a ** raiseTo + c
+
+//call our function with a default value
+res1 = powerPlus(4, 10)//second argument defaults to '2'
+res2 = powerPlus(4, 3, 10)//second argument provided
+
+//calling a function with named parameters:
+def powerAdder(a int, raiseATo = 2, b int, raiseBTo = 2) =&gt; a**raiseATo + b**raiseBTo
+res3 = powerAdder(2, 4, raiseATo=3)//equivalent to: powerAdder(2, 3, 4, 2)
+
+//varargs:
+def sum(elms int...) int {
+  res = 0
+  for(elm in elms){
+    res += elm
+  }
+  res
+}
+
+//call our function with a vararg
+thesum = sum(1, 2, 3, 4, 5)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas offers support for function/method overloading, invocation with name parameters, default values and varargs. Default values are a nice way to overload functions without needing explicitly overload them. Named parameters are a nice convenient way to invoke functions, particularly where many default parameters are involved. varargs are really handy for cases where you wish to support a non restricted number of input arguments to process</p>
+				 	</div>
+				</div>
+			  <div class="row"><h5 class="taste-subsection">Typedefs</h5> </div>	 
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//fully defined typedef
+typedef People = java.util.ArrayList&lt;String&gt;
+
+//partially defined typedef
+typedef NameMap&lt;X&gt; = java.util.ArrayList&lt;java.util.HashMap&lt;String, java.util.HashSet&lt;X&gt;&gt;&gt;
+
+//using typedefs...
+nm NameMap&lt;String&gt;= new NameMap&lt;String&gt;()
+//above is equivalent to:
+//nm java.util.ArrayList&lt;java.util.HashMap&lt;String, java.util.HashSet&lt;String&gt;&gt;&gt; = new java.util.ArrayList&lt;java.util.HashMap&lt;String, java.util.HashSet&lt;String&gt;&gt;&gt;()
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas provides typedefs which offer a convenient way of writing class names, when used as types or as constructors, in shorthand form. This is particularly helpful when one is working with fully or partially qualified generic types.</p>
+				 	</div>
+				</div> 
+			  			  
+			  <div class="row"><h5 class="taste-subsection">Tuples</h5> </div>
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">def returnPair(a int, b int) (int, int) =&gt; a*b, a+10
+
+obtained (int, int) = returnPair(10, 13)
+
+r1, r2 = obtained//tuple decomposition, r1 and r2 can be used as ordinary variables
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	<p>Concurnas supports tuples, these are a convenient way to move groups of data around a program and offer an alternative to defining classes specifically for fulfilling this purpose. Tuples have a fixed number of elements and are immutable.</p>
+				 	</div>
+				</div> 
+			  <div class="row"><h5 class="taste-subsection">Copying</h5> </div>
+			  
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class MyClass(a int, b int, c String){
+  override toString() =&gt; 'MyClass({a}, {b}, "{c}")'
+}
+
+mc1 = MyClass(12, 14, "hi there")
+mc2 = mc1@ //copy mc1
+
+assert mc1 == mc2//same values!
+assert mc1 &&lt;&gt; mc2//different objects!
+
+mc3 = mc1@(a = 100)//copy mc1 but overwrite value of a
+assert 'MyClass(100, 14, "hi there")' == mc3.toString()
+
+mc4 = mc1@(&lt;a, b&gt;)//copy mc1 but exclude a and b
+assert 'MyClass(0, 0, "hi there")' == mc4.toString()
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Copying objects in conventional languages can be a real chore, not so in Concurnas! Concurnas offers the copy operator <code class="lang-conc">@</code> in postfix position. This offers a convenient sub language for copying object hierarchies in an efficient way.</p>
+
+					  	 <p>All objects in Concurnas have, by default, a deep copier provided implicitly which will handle the copying of all elements of an Object's graph.</p>
+
+			  			<p>The copy operator even caters for cases where object graphs contain loops.</p>
+				 	</div>
+				</div>
+			  
+
+
+			  <div class="row"><h5 class="taste-subsection">Exceptions</h5> </div>
+			  
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class ArgumentException(msg String) < Exception(msg)
+
+def process(a int) int {
+  if(a < 2){
+    throw new ArgumentException("a is smaller than 2")
+  }
+  return a ** 2
+}
+
+result = try{
+  process(1)
+}catch(e ArgumentException){
+  //handle exception as appropriate
+  0 //return a default value
+}catch(e){
+  //unexpected exception, handle as appropriate
+  throw e//re-throw
+}
+
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	<p>Exceptions in Concurnas are unchecked exceptions - i.e. one does not have to catch them. The view being that exceptions are meant to be 'exceptional'. As such one is not obliged to catch exceptions, and one is discouraged from using exceptions in order to communicate the normal operational state of a program - alternative mechanism to indicate this, such as using return values are widely recognized as being best practice. However, for exceptional cases, exceptions are provided.</p>
+				 	</div>
+				</div>
+			  
+		   	  <div class="row"><h5 class="taste-subsection">Try with resources</h5> </div>	
+			  
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">def readFirstLineFromFile(path String)  {
+  from java.io import FileReader, BufferedReader
+  try ( br = new BufferedReader(new FileReader(path))) {
+    br.readLine();
+  }//br will now be closed automatically
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas supports try with resources, this enables us to automatically tidy up/close resources such as disk I/O files etc once we have finished using them, saving us the effort of having to tidy them up ourselves and potentially having a bug in forgetting to do so.</p>
+				 	</div>
+				</div>		  
+			  
+
+			  <div class="row"><h5 class="taste-subsection">Pattern matching</h5> </div>
+			  
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">//factorial
+def factorial(i int) int {
+    match(i){
+        0 => 1
+        n => n * factorial(n-1)
+    }
+}
+
+//a simple example
+def simpleMatcher(x int){	
+  match(x){
+    0 =&gt; "zero"
+    1 =&gt; "one"
+    2 =&gt; "two"
+    else =&gt; "other"
+  }
+}
+
+//matcher for numbers with complex conditions
+def advancedMatcher(a int){
+  match(a){
+    10 =&gt; "ten"
+    ==9 =&gt; "explicit 9"
+    2 or 3 =&gt; "or case"
+    &gt;2 and &gt;5 and &lt;==10 =&gt; "gt 5"
+    &gt;3 and &lt;==10 =&gt; "gt three not ten"
+    &gt;11 =&gt; "gt to 11"
+    else =&gt; "something else" + a
+  }
+}
+
+//match operating across differing types
+def machOnDifferingTypes(a Object){
+  match(a){
+    x int; x == 2 =&gt; "small"
+    x String; x == "hello" =&gt; "said hi"
+    else =&gt; "else: "+a
+  }
+}
+
+//match based on object contents...
+class Person(-yearOfBirth int, -name String)
+def objContentsMatch(an Object){
+  match(an){
+    person Person(yearOfBirth &lt; 1970) =&gt; "Person. Born: {person.yearOfBirth}"
+    x =&gt; "unknown input"
+  }
+}
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	<p>Concurnas has extensive support for pattern matching. Inspired by languages such as Haskel and Scala this feature of functional programming allows us to easily implement complex branching logic which otherwise would require a complex and difficult to maintain web of if-elif-else statements.</p>
+				 	</div>
+				</div>			 			  
+			  
+
+			  <div class="row"><h5 class="taste-subsection">Lambdas and method references</h5> </div>	
+			  
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">def powPlus(x int, r int, c int) =&gt; x**r + c //a normal function
+
+mref (int, int, int) int = powPlus&//create a method reference to powPlus
+
+def takesMethodRef(toCall (int, int, int) int) int{
+  toCall(2, 2, 3)//call a method reference
+}
+
+//partially evaluated method reference:
+partial (int) int = powPlus&(2, 2, int)
+
+//a lambda definition with fully defined arguments:
+alambda (int, int) int = def(a int, b int) int { a + b}
+
+//anonymous lambdas:
+//a function taking a function reference and applying it to each input argument
+def map&lt;X&gt;(inputs list&lt;X&gt;, func (X) X) {
+  func(x) for x in inputs
+}
+
+//we define a lambda as a =&gt; a+10 - this is equivalent to: def(a int) int { a + 10 }
+mapped = map([1, 2, 3], a =&gt; a+10)
+
+//We define a SAM (Single access method) type:
+trait Doer&lt;X&gt;{
+  def doOperation(a X) X
+}
+
+//a function taking the above SAM type and applying it to each input argument
+def SAMmap&lt;X&gt;(inputs list&lt;X&gt;, func Doer) {
+  func.doOperation(x) for x in inputs
+}
+
+//here our lambda a =&gt; a+10, gets converted into the SAM type: Doer
+mapped = SAMmap([1, 2, 3], a =&gt; a+10)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	<p>Another great feature of functional programming is lambdas, method references and partial evaluation. Concurnas offers support for all of these.</p>
+
+					  	<p>Method references and lambdas can be passed around like ordinary objects (because under the hood they are objects). They offer a handy way to pass around functionality as data in our programs.</p>
+
+					  	<p>Concurnas is able to perform type inference of lambda arguments and automatically map to SAM-types (Single Access Method types). This is really useful for being able to create concise programs for working with data.</p>
+				 	</div>
+				</div>	
+
+
+			  <div class="row"><h5 class="taste-subsection">Lazy variables</h5> </div>
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">lazy slowValue = {sum = 0L; for(x in (1 to 1000000)){ sum += x}; sum}//long time to calc
+
+result = slowValue if (java.util.Random().nextInt() < 0) else "not calculated"
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has first class citizen support for lazy evaluation of variables.</p>
+						 <p>Like most modern programming languages, Concurnas ordinarily supports eager evaluation of variable assignment. I.e the expression on the right hand size of an assignment is evaluated before its result is assigned to a variable. With lazy evaluation this evaluation is differed until the variable is accessed. After which the value is usable as with the usual eager evaluation</p>
+				 	</div>
+				</div>
+
+			  
+
+			  </div>
+			  <div class="tab-pane" id="extensible">
+
+
+
+
+			  <div class="row"><h5 class="taste-subsection">Easy to use</h5> </div>
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">from com.mycompany.myproduct.langs using mylisp, myFortran, myAPL
+
+calc = mylisp||(+ 1 2 (* 2 3))|| // == 9
+
+myFortran || program hello
+          		print *, "Hello World!"
+       		 end program hello|| //prints "Hello World!"
+
+lotto = myAPL || x[⍋x←6?40] || //6 unique random numbers from 1 to 40
+
+</code></pre> 
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has first class citizen support for language extensions.</p>
+
+						 <p>Language extensions are an incredibly powerful feature of Concurnas which enable guest code to be written in languages other than Concurnas. Language extensions reduce the amount of code one must write and reduce the distance between the problem domain one is operating in and Concurnas, by allowing us to use the most appropriate language for the task at hand.</p>
+
+						 <p>Concurnas language extensions operate entirely at compilation time and so have no negative impact upon performance, furthermore, as with Concurnas in general, compile time checking of code is employed, which greatly reduces the likelihood of an error at runtime, thus increasing the reliability of software written.</p>
+				 	</div>
+				</div>
+			  <div class="row"><h5 class="taste-subsection">Seamlessly integrate</h5> </div>
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">from com.mycompany.myproduct.langs using mylisp, mySQL, myAPL
+class Person(name String, yearOfBirth int)
+people list&lt;Person&gt;;
+//populate our list of people...
+
+//select from our list of people variable defined above...
+millennials = mySQL||select name from people where yearOfBirth between 1980 and 2000||
+
+//create a new function, fact for performing factorial
+myAPL||fact{×/⍳⍵}||
+fact(10)//use of function defined above. Returns: 3628800
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+						 <p>Concurnas Language extensions seamlessly integrate with idiomatic Concurnas code and may be used at any point in a Concurnas program.</p>
+						 <p>Language extensions may use and produce any component of Concurnas syntax, such as variables, methods, classes etc</p>
+				 	</div>
+				</div>
+			  <div class="row"><h5 class="taste-subsection">Easy to implement</h5> </div>
+
+
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">from com.mycompany.myproduct.langs using mylisp
+
+aString = "i'm a String!"
+invalidCode = mylisp||(+ 1 2 (* 2 aString))||
+//results in compilation time error: line 4:35 mylisp: Expected numerical type, not 'String'
+
+moreInvalidCode = mylisp||(+ 1 2 (* 2 3)|| //oops! Missing a closing ')'
+//results in compilation time error: line 7:41 mylisp: Parser error, expected ')' symbol
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+						 <p>Concurnas Language extensions are easy to create and greatly reduce the amount of work a language implementor must perform in order to bring a language into production.</p>
+
+						 <p>Concurnas Language extensions are required to output valid Concurnas code in the form of a String. This Concurnas code is then processed as par normal Concurnas code in subsequent compilation phases. One need focus only upon the 'front-end' aspects of language development, i.e. tokenization, parsing and semantic analysis (which tend to be where the most value add resides), leaving the hard work on code generation etc to the core Concurnas compiler.</p>
+
+						 <p>Concurnas Language extensions provide an elegant and concise API for language integration (to access variables in scope, types etc), which supports streamline interrogation of the core Concurnas compiler and a convenient mechanism for reporting errors back to the code author as par normal Concurnas compilation.</p>
+				 	</div>
+				</div>
+
+			  </div>
+			   <div class="tab-pane" id="dsls">
+
+			  <div class="row"><h5 class="taste-subsection">Operator overloading</h5> </div>	
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Complex(real double, imag double){
+  def +(other Complex) => new Complex(this.real + other.real, this.imag + other.imag)
+  def +=(other Complex) => this.real += other.real;  this.imag += other.imag
+  override toString() => "Complex({real}, {imag})"
+}
+
+c1 = Complex(2, 3)
+c2 = c1@//deep copy of c1
+c3 = Complex(3, 4)
+
+result1 = c1 + c3
+c2 += c3 //compound plus assignment
+
+//result1 == Complex(5.0, 7.0)
+//c2 == Complex(5.0, 7.0)
+</code></pre>
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas is the perfect language for building your next Domain Specific Language (DSL). Concurnas provides operator overloading which allows you to apply most of the operators provided by Concurnas to user defined types.</p>
+					  	 <p>Operator overloading reduces the amount of code one would otherwise be required to write and reduces the distance between the problem domain one is operating in, and the underlying language one is programming in.</p>
+				 	</div>
+				</div>		    
+
+			  <div class="row"><h5 class="taste-subsection">Extension functions</h5> </div>	
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">def String repeat(n int) String {//this is an extension function
+  return String.join(", ", java.util.Collections.nCopies(n, this))
+}
+
+res = "hi".repeat(2) //creates a reference
+</code></pre>
+
+<pre ><code class="lang-conc">def int meg() = this * 1024L * 1024L
+
+12.meg() //-> 12582912L
+</code></pre>
+
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas has support for extension functions. These allow for functionality to be added to classes without needing to interact with the class hierarchy (e.g.extending the class etc). They are a convenient alternative to having to use utility functions/methods/classes which take an instance of a class and often permit a more natural way of interacting with objects.</p>
+					  	 <p>Extension functions may be defined on any type including primitive types</p>
+				 	</div>
+				</div>
+
+
+
+			  <div class="row"><h5 class="taste-subsection">Expression lists</h5> </div>	
+
+				<div class="row">
+				  <div class="col-sm-8">
+<pre ><code class="lang-conc">class Myclass(b int){
+  def resolve(a int) => (a+b)*2
+}
+
+res = Myclass 4 resolve 4 //basic expression list, res == 16
+</code></pre>
+
+<pre ><code class="lang-conc">from java.time import Duration, LocalDateTime
+
+enum Currency{ GBP, USD, EUR, JPY }
+enum OrderType{Buy, Sell}
+
+class CcyAmount(amount long, ccy Currency){
+  override toString() => "{amount} {ccy}"
+}
+
+abstract class Order(type OrderType, ccyamount CcyAmount){
+  when LocalDateTime?
+		
+  def after(dur Duration){
+    when = LocalDateTime.now()+ dur
+  }
+	
+  override toString() => "{type} {ccyamount} at {when}"
+}
+class Buy(ccyamount CcyAmount) < Order(OrderType.Buy, ccyamount)
+class Sell(ccyamount CcyAmount) < Order(OrderType.Sell, ccyamount)
+//extension functions
+def long gbp() => CcyAmount(this, Currency.GBP)
+def int mil() => this*1000000L
+def int seconds() => Duration.ofSeconds(this)
+
+
+///////////Expression list:
+order = Buy 1 mil gbp after 10 seconds
+	
+orderStr = "" + order
+//orderStr == Buy 1000000 GBP at 2018-02-15T06:32:11.099
+</code></pre>
+
+				  </div>
+				  	<div class="col-sm-4 taste-text">
+					  	 <p>Concurnas provides expression lists, this is a neat feature which enables a more natural way of writing expression related code that would otherwise have to be written as a set of chained together calls using the dot operator and/or function invocation brackets.</p>
+					  	 <p>Expression lists may be combined with operator overloading and extension functions to achieve some very impressive results. Using this feature one can create very succinct and readable DSLs</p>
+				 	</div>
+				</div>
+
+			   </div>
+			</div>
+		</div>
+	</div>
+<!-- A taste of Concurnas -->
+
+<!-- IDE Support -->
+<div class="container-fluid">
+	<div class="container pt-sm-2 ">
+
+	  <div class="row">
+	    <div class="col-lg-4 col-md-3 language-features "><hr/></div>
+	    <div class="col-lg-4 col-md-6 language-features section-heading">
+	      <h2 class="lead secondary-heading">
+	        Supported IDE's
+	      </h2>
+	    </div>
+	    <div class="col-lg-4 col-md-3 language-features"><hr/></div>
+	  </div>
+
+<div class="row">
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>Standalone</h4>
+	    <a href="docs/concc.html" class="editor-icon stretched-link">
+	      <img src="img/ides/cmdline.svg" />
+	    </a>
+	    <h6 >
+	      <a class="link extra-link stretched-link" href="docs/concc.html">Concc Compiler</a>
+	    </h6>
+	</div>
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>REPL</h4>
+	    <a href="docs/replIde.html" class="editor-icon stretched-link">
+	      <img src="img/ides/repl.png" />
+	    </a>
+	    <h6 >
+	      <a class="link extra-link stretched-link" href="docs/replIde.html">Conc REPL</a>
+	    </h6>
+	</div>
+
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+		<h4>Jupyter</h4>
+	    <a  class="editor-icon stretched-link">
+	      <img src="img/ides/jupyter.svg" />
+	    </a>
+	    <h6 class="outer-link">
+	      <i>Coming soon!</i>
+	    </h6>
+	</div>
+
+
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+	  <h4>VS Code</h4>
+	    <div class="editor-icon stretched-link">
+	      <img src="img/ides/vscode.png" />
+	    </div>
+	    <h6 class="outer-link">
+	      <i>Coming soon!</i>
+	    </h6>
+	</div>
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+
+	  <h4>Atom</h4>
+	    <a href="https://github.com/Concurnas/language-concurnas" class="editor-icon">
+	      <img src="img/ides/atom.png" />
+	    </a>
+	    <h6 class="outer-link">
+	      <a class="link extra-link stretched-link" href="https://github.com/Concurnas/language-concurnas">Atom Plugin</a>
+	    </h6>
+
+	</div>
+	<div class="col-lg-2 col-md-6 ide ide-feature">
+	  <h4>Sublime Text</h4>
+	    <a href="https://github.com/Concurnas/Concurnas-SublimeText" class="editor-icon">
+	      <img src="img/ides/sublime.png" />
+	    </a>
+	    <h6 class="outer-link">
+	      <a class="link extra-link stretched-link" href="https://github.com/Concurnas/Concurnas-SublimeText">Sublime Text</a>
+	    </h6>
+
+	</div>
+</div>
+
+	</div>
+</div>
+<!-- Signup form -->
+<div class="container-fluid alt-color">
+	<div class="container pt-sm-2 ">
+
+	  <div class="row">
+	    <div class="col-lg-4 col-md-3 language-features "><hr/></div>
+	    <div class="col-lg-4 col-md-6 language-features section-heading">
+	      <h2 class="lead secondary-heading">
+	        Join our Mailing List
+	      </h2>
+	    </div>
+	    <div class="col-lg-4 col-md-3 language-features"><hr/></div>
+	  </div>
+
+	  <div class="row">
+	  	<p class="signup-text">Sign up for updates, release information and news about Concurnas:</p>
+<input type="email" placeholder="E-Mail" class="signup-email" id="emailSignup"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-emailSignup" id="emailSignupBtn"><i class="fa fa-caret-right"></i></a>
+	  </div>
+	  	<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="mc_embed_signup">
+                    <form action="https://concurnas.us4.list-manage.com/subscribe/post?u=171fca0b73e36836226dba18f&amp;id=bd1cedadc6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <p>Sign up for updates, release information and news about Concurnas</p>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address</label>
+                                <input type="email" value="" name="EMAIL" class="required email signup-form-input" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name </label>
+                                <input type="text" value="" name="FNAME" class="required signup-form-input" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name </label>
+                                <input type="text" value="" name="LNAME" class="required signup-form-input" id="mce-LNAME">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="b_171fca0b73e36836226dba18f_bd1cedadc6" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" value="Sign Me Up" name="subscribe" id="mc-embedded-subscribe" class="btn btn-emailSignup">
+               					<button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close mailing list signup"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	</div>
+</div>
+</div>
+</div>
+
+<footer class="footer dark site-footer">
+	<div class="container">
+		<div class="sitemap clearfix">
+			<ul>
+	<li class="column">		
+			<h5><a href="index.html">Home</a></h5>		
+			<h5><a href="download.html">Download</a></h5>
+			<h5><a href="docs/manual.html">Documentation</a></h5>	
+			<h5><a href="video/index.html">Video</a></h5>		
+	</li>
+	
+	
+	<li class="column">
+		<h5><a href="learnmore/overview.html">Learn More</a></h5>
+			<ul>
+				<li><a href="learnmore/overview.html">Language Overview</a></li>	
+				<li><a href="learnmore/concVsJava1.html">Concurnas vs Java</a></li>	
+				<li><a href="learnmore/usecases.html">Use cases:</a></li>			
+				<li><a href="learnmore/finance.html">&bull; Finance</a></li>			
+				<li><a href="learnmore/sciComp.html">&bull; Scientific Computing</a></li>			
+				<li><a href="learnmore/startups.html">&bull; Startups</a></li>	
+				<li><a href="learnmore/mailinglist.html">Mailing List</a></li>
+				<li><a href="learnmore/contribute.html">Contribute</a></li>			
+			</ul>
+	</li>	
+	
+	<li class="column">
+		<h5><a href="docs/manual.html">Documentation</a></h5>
+		<ul>
+			<li><a href="docs/manual.html">Reference Manual</a></li>
+			<li><a href="video/index.html">Video</a></li>	
+			<li><a href="docs/communitySupport.html">Community Support</a></li>
+		</ul>
+	</li>
+
+
+	<li class="column">
+		<h5><a href="concurnasltd/introduction.html">Concurnas Ltd</a></h5>
+			<ul>
+				<li><a href="concurnasltd/leadership.html">Leadership</a></li>		
+				<li><a href="concurnasltd/careers.html">Careers</a></li>			
+				<li><a href="concurnasltd/open-source.html">Open Source</a></li>			
+				<li><a href="concurnasltd/support.html">Support</a></li>				
+				<li><a href="concurnasltd/consulting.html">Consulting</a></li>
+				<li><a href="concurnasltd/sponsorship.html">Sponsorship</a></li>		
+				<li><a href="concurnasltd/contact.html">Contact</a></li>
+			</ul>
+	</li>
+
+	<li class="column">
+		<h5><a href="news.html">News</a></h5>
+		<ul>
+			<li><a href="news.html">Latest News</a></li>	
+			<li><a href="newsletters/march2020.html">Newsletters</a></li>		
+			<li><a href="rss.xml"><img src="img/rss.gif" alt="rss"></li>	
+		</ul>
+	</li>
+
+
+	
+</ul>
+
+		</div>
+		<div class="copyright">
+			<small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="legal/tos.html">Terms of Service</a> | <a href="legal/privacy.html">Privacy Policy</a> | <a href="legal/cookies.html">Cookie Policy</a></small>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/bootstrap-toc.min.js"></script>
+
+<script type="text/javascript" src="js/prism.js"></script>
+<script type="text/javascript" src="js/cookies.js"></script>
+<script type="text/javascript" src="js/client.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126537021-1');
+</script>
+
+
+
+
+<script type="text/javascript" src="js/emailSignup.js"></script>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<!--<script async src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+
+</body>
+</html>

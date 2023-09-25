@@ -1,0 +1,214 @@
+
+.sshare__link,
+.sshare__icon {
+  display: inline-block
+}
+
+.sshare__link {
+  text-decoration: none;
+  color: #fff;
+  margin: 0.5em
+}
+
+.sshare {
+  border-radius: 5px;
+  transition: 25ms ease-out;
+  padding: 0.5em 0.75em;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 70%;
+}
+
+.sshare__icon svg {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.4em;
+  vertical-align: top
+}
+
+.sshare--small svg {
+  margin: 0;
+  vertical-align: middle
+}
+
+/* Non solid icons get a stroke */
+.sshare__icon {
+  stroke: #fff;
+  fill: none
+}
+
+/* Solid icons get a fill */
+.sshare__icon--solid,
+.sshare__icon--solidcircle {
+  fill: #fff;
+  stroke: none
+}
+
+.sshare--twitter {
+  background-color: #55acee
+}
+
+.sshare--twitter:hover {
+  background-color: #2795e9
+}
+
+.sshare--pinterest {
+  background-color: #bd081c
+}
+
+.sshare--pinterest:hover {
+  background-color: #8c0615
+}
+
+.sshare--facebook {
+  background-color: #3b5998
+}
+
+.sshare--facebook:hover {
+  background-color: #2d4373
+}
+
+.sshare--tumblr {
+  background-color: #35465C
+}
+
+.sshare--tumblr:hover {
+  background-color: #222d3c
+}
+
+.sshare--reddit {
+  background-color: #5f99cf
+}
+
+.sshare--reddit:hover {
+  background-color: #3a80c1
+}
+
+.sshare--google {
+  background-color: #dd4b39
+}
+
+.sshare--google:hover {
+  background-color: #c23321
+}
+
+.sshare--linkedin {
+  background-color: #0077b5
+}
+
+.sshare--linkedin:hover {
+  background-color: #046293
+}
+
+.sshare--email {
+  background-color: #777
+}
+
+.sshare--email:hover {
+  background-color: #5e5e5e
+}
+
+.sshare--xing {
+  background-color: #1a7576
+}
+
+.sshare--xing:hover {
+  background-color: #114c4c
+}
+
+.sshare--whatsapp {
+  background-color: #25D366
+}
+
+.sshare--whatsapp:hover {
+  background-color: #1da851
+}
+
+.sshare--hackernews {
+background-color: #FF6600
+}
+.sshare--hackernews:hover, .sshare--hackernews:focus {   background-color: #FB6200 }
+
+.sshare--vk {
+  background-color: #507299
+}
+
+.sshare--vk:hover {
+  background-color: #43648c
+}
+
+.sshare--facebook {
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.sshare--facebook:hover,
+.sshare--facebook:active {
+  background-color: #2d4373;
+  border-color: #2d4373;
+}
+
+.sshare--twitter {
+  background-color: #55acee;
+  border-color: #55acee;
+}
+
+.sshare--twitter:hover,
+.sshare--twitter:active {
+  background-color: #2795e9;
+  border-color: #2795e9;
+}
+
+.sshare--email {
+  background-color: #777777;
+  border-color: #777777;
+}
+
+.sshare--email:hover,
+.sshare--email:active {
+  background-color: #5e5e5e;
+  border-color: #5e5e5e;
+}
+
+.sshare--linkedin {
+  background-color: #0077b5;
+  border-color: #0077b5;
+}
+
+.sshare--linkedin:hover,
+.sshare--linkedin:active {
+  background-color: #046293;
+  border-color: #046293;
+}
+
+.sshare--reddit {
+  background-color: #5f99cf;
+  border-color: #5f99cf;
+}
+
+.sshare--reddit:hover,
+.sshare--reddit:active {
+  background-color: #3a80c1;
+  border-color: #3a80c1;
+}
+
+.sshare--whatsapp {
+  background-color: #25D366;
+  border-color: #25D366;
+}
+
+.sshare--whatsapp:hover,
+.sshare--whatsapp:active {
+  background-color: #1DA851;
+  border-color: #1DA851;
+}
+
+.sshare--hackernews {
+  background-color: #FF6600;
+  border-color: #FF6600;
+}
+
+.sshare--hackernews:hover
+.sshare--hackernews:active {
+  background-color: #FB6200;
+  border-color: #FB6200;
+}

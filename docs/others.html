@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Other</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Other"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Other"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Other"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/others.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="other">Other<a class="headerlink" href="#other" title="Permalink to this headline" id="other">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#other">Other</a>
+   <ul>
+   <li><a class="reference internal" href="#assert">Assert</a>   </li>
+   <li><a class="reference internal" href="#shutdown-handlers">Shutdown handlers</a>   </li>
+   <li><a class="reference internal" href="#auto-imported-classes">Auto imported classes</a>   </li>
+   <li><a class="reference internal" href="#custom-classloaders">Custom classloaders</a>   </li>
+   <li><a class="reference internal" href="#security-managers1">Security Managers</a>   </li>
+   <li><a class="reference internal" href="#escaping-keywords">Escaping Keywords</a>   </li>
+   <li><a class="reference internal" href="#native-code-caveats">Native code caveats</a>   </li>
+   <li><a class="reference internal" href="#cobject">CObject</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>Life is just a lesson</p>
+<p>Time is a perception</p>
+<p>Love will kill depression</p>
+<p>This is my confession</p>
+<p>~</p>
+<p>You are my obsession</p><footer>- You Are My Obsession by Trevor Something (2020)</footer></blockquote>
+<div class="section">
+<div class="section">
+<h2 id="assert">Assert<a class="headerlink" href="#assert" title="Permalink to this headline" id="assert">?</a></h2>
+<p>The assert keyword is a nifty one liner which enables us to check that a condition is true, and throw an exception if it's not. It is commonly used to sanity check input variables to functions. Example:</p>
+<pre><code class="lang-conc">def afunction(a int){
+  assert a &gt; 1
+}
+</code></pre>
+<p>If the above assertion expression <code class="lang-conc">a &gt; 1</code> resolves to false then an exception of type <code class="lang-conc">java.lang.AssertionError</code> will be thrown with an error message including the offending line of code.</p>
+<p>We can provide a custom text string which will be used to populate the <code class="lang-conc">AssertionError</code> exception thrown in case of the assertion expression <code class="lang-conc">a &gt; 1</code> resolving to false as follows:</p>
+<pre><code class="lang-conc">def afunction(a int){
+  assert a &gt; 1 "a cannot be larger than 1"
+}
+</code></pre>
+<p>Now if the assertion expression <code class="lang-conc">a &gt; 1</code> resolves to false then an <code class="lang-conc">java.lang.AssertionError</code> exception will be thrown with message: "a cannot be larger than 1".</p>
+<p>Unlike languages such as Java, assertions are switched on in Concurnas by default and cannot be disabled.</p>
+</div>
+<div class="section">
+<h2 id="shutdown-handlers">Shutdown handlers<a class="headerlink" href="#shutdown-handlers" title="Permalink to this headline" id="shutdown-handlers">?</a></h2>
+<p>The <code class="lang-conc">com.concurnas.lang.concurrent</code> class includes a function: <code class="lang-conc">addShutdownHook(onShutdown () void)</code> which consumes a single method reference. If this function is called then the passed method reference will be invoked upon shutdown of the JVM process upon which the Concurnas program is running.</p>
+<p>Shutdown may occur for instance, in linux via a <code class="lang-conc">SIGTERM</code> being sent to the process, or via the program terminating <i>naturally</i> via a call to <code class="lang-conc">System.exit</code> etc.</p>
+<p>More than one shutdown hook may be registered though the call order is non deterministic. More information regarding shutdown hooks <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Runtime.html#addShutdownHook-java.lang.Thread-">at the JVM level may be found here</a>.</p>
+<p>The <code class="lang-conc">com.concurnas.lang.concurrent</code> class is auto imported thus we are able to write code such as the following:</p>
+<pre><code class="lang-conc">concurrent.addShutdownHook(def() void { System.out.println("System shutdown initiated") })
+</code></pre>
+<p>Note that the code associated with the method reference passed to <code class="lang-conc">addShutdownHook</code> may not create new isolates.</p>
+</div>
+<div class="section">
+<h2 id="auto-imported-classes">Auto imported classes<a class="headerlink" href="#auto-imported-classes" title="Permalink to this headline" id="auto-imported-classes">?</a></h2>
+<p>Concurnas automatically imports a number of commonly used classes. This saves us the effort of having to explicitly import the following. The import name and full paths auto imported are as follows:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">java.lang.*</code></p>
+</li>
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.*</code> Including:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.ranges</code></p>
+</li>
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.tuples</code></p>
+</li>
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.datautils</code></p>
+</li>
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.nullable</code></p>
+</li>
+  <li><p><code class="lang-conc">*</code> - <code class="lang-conc">com.concurnas.lang.concurrent</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p><code class="lang-conc">Remote</code> - <code class="lang-conc">com.concurnas.lang.dist.Remote</code></p>
+</li>
+</ul class="simple">
+</div>
+<div class="section">
+<h2 id="custom-classloaders">Custom classloaders<a class="headerlink" href="#custom-classloaders" title="Permalink to this headline" id="custom-classloaders">?</a></h2>
+<p>Sometimes it can be useful to define custom classloaders. This is supported in Concurnas with some minor caveats:</p>
+<ul class="simple">
+  <li><p>Custom classloaders defined for use with a Concurnas program must be subclasses of <code class="lang-conc">com.concurnas.ConcurnasClassLoader</code> - this classloader performs runtime class augmentation to permit the functionality of isolates and actors within the Concurnas runtime.</p>
+</li>
+  <li><p>Custom classloaders must define a method of signature: <code class="lang-conc">getBytecode(name String) byte[]</code> which should return the bytecode as a byte array of the requested class.</p>
+</li>
+  <li><p>Custom classloaders may not spawn isolates, but they can call methods on actors.</p>
+</li>
+</ul class="simple">
+<p>Here is an example of a custom classloader with a publicly accessible code store:</p>
+<pre><code class="lang-conc">from com.concurnas.runtime import ConcurnasClassLoader
+
+class MyClassLoader(parent ConcurnasClassLoader) &lt; ConcurnasClassLoader{
+  public classStore = new  map&lt;String, byte[]&gt;()
+	
+  override getBytecode(name String) byte[]{
+    got = parent.getBytecode(name)
+    if(got == null) {
+      got = classStore[name]
+    }
+    got
+  }
+	
+  override loadClass(name String) Class&lt;?&gt;{
+    ret Class&lt;?&gt; = parent.loadClass(name)
+    if(ret == null) {
+      if(name in classStore) {
+        return super.defineClass(name, classStore[name])
+      }
+    }
+		
+    return ret;
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="security-managers1">Security Managers<a class="headerlink" href="#security-managers1" title="Permalink to this headline" id="security-managers1">?</a></h2>
+<p>Concurnas has support for security managers. These enable you to run, in a controlled environment, code which you semi-trust or at least wish to exert some restrictions over.</p>
+<p>One security manager is defined per Concurnas program instance<sup><a href="#fn1">1</a></sup>. This is accessible via the following singleton call: <code class="lang-conc">com.concurnas.bootstrap.lang.ConcurnasSecurityManager.getInstance()</code>. This applies across the entire virtual machine, all isolates, actors etc.</p>
+<p>Security policies are definable on a per classloader basis. One must explicitly reference the classloader to which a security policy applies. This binding is achieved by calling the <code class="lang-conc">registerClassloader</code> method of <code class="lang-conc">ConcurnasSecurityManager</code> as follows:</p>
+<pre><code class="lang-conc">clsLoader java.lang.ClassLoader = //our classloader
+permissions java.security.PermissionCollection = //our security policy here
+
+ConcurnasSecurityManager.getInstance().registerClassloader(clsLoader, permissions)
+</code></pre>
+<p>With binding complete as above, every class loaded by the <code class="lang-conc">clsLoader</code> will be subject to the security policy which we have defined and registered for it. Two very simple example policies are defined below:</p>
+<pre><code class="lang-conc">from java.security import PermissionCollection, Permissions, AllPermission;
+
+allPerms PermissionCollection = new Permissions()
+allPerms.add(new AllPermission())//code can do anything! This is the default case
+
+restrictPerms PermissionCollection = new Permissions()//no permissions added
+</code></pre>
+<p>Real security policies are of course much more complex. More information on them can be found here: <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/spec/security-spec.doc3.html">Java Security</a></p>
+<p>It's worth remembering that although the security manager approach to managing code seen here is very effective, it's not bulletproof in the sense that even with a fully "locked down" classloader can run code which either accidentally or maliciously can cause a denial of service by say running a set of infinite loops or consuming a huge amount of ram. For this reason we'd never recommend running untrusted code in a Concurnas shared JVM environment along with other mission critical code. The recommended approach here would be a sandbox provided by the operating system upon which one's JVM operates, or even a dedicated virtual machine (this is the solution which many cloud providers use).</p>
+</div>
+<div class="section">
+<h2 id="escaping-keywords">Escaping Keywords<a class="headerlink" href="#escaping-keywords" title="Permalink to this headline" id="escaping-keywords">?</a></h2>
+<p>Keywords in Concurnas can be escaped, and therefore used as method names, variable names etc by simply prefixing them with a backslash, for example:</p>
+<pre><code class="lang-conc">\for = "a string"
+</code></pre>
+<p>This feature is useful in instances where one is using library code written in languages other than Concurnas which has assets (classes, variables, fields etc) with names that happen to be keywords in Concurnas.</p>
+</div>
+<div class="section">
+<h2 id="native-code-caveats">Native code caveats<a class="headerlink" href="#native-code-caveats" title="Permalink to this headline" id="native-code-caveats">?</a></h2>
+<p>Although Concurnas itself does not have direct support for native code, if calling Java code (or other JVM languages supporting native code), then native code may be callable. One caveat to bear in mind with native code concerns the mechanism by which Concurnas isolates operate.</p>
+<p>Behind the scenes, in order to facilitate the pausing of code at arbitrary points in program execution (e.g. when accessing a ref which has not yet a value set) Concurnas makes use of a 'fiber' Object attached to every method invocation. This causes a problem for native code since it does not capture this fiber upon execution. This means that it is not possible to call idiomatic concurrent Concurnas code (e.g. which uses actors and refs) as a callback from within native code.</p>
+<p>We must be cognizant of this limitation concerning callbacks when working with native code. In practice however this turns out something which is often easily worked around/not a critical issue.</p>
+</div>
+<div class="section">
+<h2 id="cobject">CObject<a class="headerlink" href="#cobject" title="Permalink to this headline" id="cobject">?</a></h2>
+<p>In Concurnas, all objects are subclasses of class <code class="lang-conc">java.lang.Object</code> and class <code class="lang-conc">com.concurnas.lang.CObject</code>. The <code class="lang-conc">CObject</code> class defines some useful methods such as <code class="lang-conc">toBoolean</code> which can be optionally overridden in order to support instance objects of a class being usable in branching tests:</p>
+<pre><code class="lang-conc">class MyHolder&lt;X&gt;(~held X?){
+  override toBoolean() =&gt; held &amp;&lt;&gt; null
+}
+
+//used as:
+
+inst = new MyHolder&lt;int&gt;(654)
+
+if(inst){
+  System.out.println("A value has been set")
+}
+
+</code></pre>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>This is a JVM restriction</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="others.html">Other</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#assert">Assert</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#shutdown-handlers">Shutdown handlers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#auto-imported-classes">Auto imported classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#custom-classloaders">Custom classloaders</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#security-managers1">Security Managers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#escaping-keywords">Escaping Keywords</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#native-code-caveats">Native code caveats</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#cobject">CObject</a>
+   </li>
+   </ul>
+</li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

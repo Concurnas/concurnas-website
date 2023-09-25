@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Classes</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Classes"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Classes"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Classes"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/classes.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="classes">Classes<a class="headerlink" href="#classes" title="Permalink to this headline" id="classes">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#classes">Classes</a>
+   <ul>
+   <li><a class="reference internal" href="#creating-objects-of-classes">Creating Objects of Classes</a>   </li>
+   <li><a class="reference internal" href="#creating-classes">Creating Classes</a>   </li>
+   <li><a class="reference internal" href="#fields">Fields</a>   </li>
+   <li><a class="reference internal" href="#overriding-fields">Overriding fields</a>   </li>
+   <li><a class="reference internal" href="#methods">Methods</a>   </li>
+   <li><a class="reference internal" href="#setters-and-getters">Setters and Getters</a>   </li>
+   <li><a class="reference internal" href="#constructors">Constructors</a>   </li>
+   <li><a class="reference internal" href="#class-declaration-arguments">Class Declaration Arguments</a>   </li>
+   <li><a class="reference internal" href="#inheritance">Inheritance</a>   </li>
+   <li><a class="reference internal" href="#the-super-keyword">The super keyword</a>   </li>
+   <li><a class="reference internal" href="#accessibility-modifiers1">Accessibility modifiers</a>   </li>
+   <li><a class="reference internal" href="#overriding-methods">Overriding methods</a>   </li>
+   <li><a class="reference internal" href="#abstract-classes">Abstract classes</a>   </li>
+   <li><a class="reference internal" href="#class-declaration-arguments-with-superclasses">Class Declaration Arguments with superclasses</a>   </li>
+   <li><a class="reference internal" href="#automatically-generated-equals-and-hashcode-methods">Automatically generated equals and hashcode methods</a>   </li>
+   <li><a class="reference internal" href="#init-block">init block</a>   </li>
+   <li><a class="reference internal" href="#nested-classes">Nested Classes</a>   </li>
+   <li><a class="reference internal" href="#local-classes">Local Classes</a>   </li>
+   <li><a class="reference internal" href="#anonymous-classes">Anonymous Classes</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>She says she's an 80's baby</p>
+<p>She goes for the bad boy type</p>
+<p>She says she's an 80's baby</p>
+<p>In the club she dance all night</p><footer>- All Night from Synthetic Love LP by Trevor Something (2013)</footer></blockquote>
+<p>Classes are the cornerstone of object oriented programming and are extensively supported within Concurnas. They are an extremely useful way of programming with data, and more specifically state, in an easily understandable way.</p>
+<p>In short they a mechanism by which data in the form of state expressed via fields, and functionality expressed via methods can be encapsulated together in the form of an object of which a class acts as a template. A class hierarchy may be established via inheritance and functionality may be 'composed into' classes via the use of traits.</p>
+<p>Object orientation helps reduce the gap between the way machines operate and humans think by allowing us to think about data/state manipulation using everyday concepts, or at least concepts which more closely map to our problem domain than the abstract terminology of a computers machine code. Consider the following two representations of data:</p>
+<pre><code class="lang-conc">peopleA Object[2] = [ ["dave" 45] ["freddy" 16] ["monica" 33]]
+
+class Person(name String, age int){
+  def incAge() =&gt; age++;;
+}
+peopleB = [Person("dave", 45) Person("freddy", 16) Person("monica", 33)]
+</code></pre>
+<p><code class="lang-conc">peopleA</code> is declared as a matrix, it's a perfectly adequate way of representing our people data, but it is quite abstract - we're not able to determine what <code class="lang-conc">peopleA</code> really is representing without additional context. On the other hand <code class="lang-conc">peopleB</code>, through its use of representing its individual elements via <code class="lang-conc">People</code> instance objects, makes it immediately clear what it's representing.</p>
+<p>The case for classes is further strengthened when we consider manipulation of the state of a person. Let's write some code to increment the age of each person by one:</p>
+<pre><code class="lang-conc">for(person Object[] in peopleA){//approach 1
+  person[1]++
+}
+
+for(person Person in peopleB){//approach 2
+  person.incAge()
+}
+</code></pre>
+<p>For 'approach 1', manipulating the internal state of people held in the <code class="lang-conc">peopleA</code> matrix is quite an abstract process. It's not clear from looking at the code alone that we are incrementing the age of each person. Also, a more major hidden problem is that in the future if we wish to capture more information about a person, we need to change the structure of the data in the matrix - this would have a knock on negative impact on all instance of the code seen above, would the element in slot '1' of the array be the age still? With 'approach 2' these problems are mitigated; we're able to see that we are calling a method which increments the age of a person <code class="lang-conc">incAge</code> by just looking at the code. Also, we're free to change the internal structure of the person state without fear of breaking dependant code like this.</p>
+<p>Object orientation does have some disadvantages. One major one being that it can be a very verbose process to write object oriented code (for legitimate reasons as we shall see here). Concurnas offers many useful syntactic and semantic tools for reducing this verbosity, which are described in detail later on. These include:</p>
+<ul class="simple">
+  <li><p>One line class and superclass arguments via class declaration arguments.</p>
+</li>
+  <li><p>Automatic generation of setters and getters.</p>
+</li>
+  <li><p>Automatic redirection to getters and setters.</p>
+</li>
+  <li><p>Automatic generation of <code class="lang-conc">hashCode</code> and <code class="lang-conc">equals</code> methods to provide equality by value.</p>
+</li>
+  <li><p>Sensible accessibility modifier defaults.</p>
+</li>
+</ul class="simple">
+<div class="section">
+<div class="section">
+<h2 id="creating-objects-of-classes">Creating Objects of Classes<a class="headerlink" href="#creating-objects-of-classes" title="Permalink to this headline" id="creating-objects-of-classes">?</a></h2>
+<p>We can create instance objects of classes using the new operator:</p>
+<pre><code class="lang-conc">class MyClass
+
+inst = new MyClass() //create a new instance object of class 'MyClass'
+</code></pre>
+<p>But we can also choose to omit the <code class="lang-conc">new</code> keyword all together:</p>
+<pre><code class="lang-conc">class MyClass
+
+inst = MyClass() //create a new instance object of class 'MyClass'
+</code></pre>
+<p>For classes which are defined in a separate source file from the one in which the new call is made (i.e. the case 90% of the time when programming in the wild) - the relevant class will need to be either referenced by its full class name, or imported and optionally given an associated name:</p>
+<pre><code class="lang-conc">from java.util import ArrayList
+from java.util import ArrayList as ARList
+
+ar1 = ArrayList&lt;String&gt;()
+ar2 = ARList&lt;String&gt;()
+ar3 = java.util.ArrayList&lt;String&gt;()
+</code></pre>
+<p>All three of the above are equivalent. Note that we use generics when creating the above ArrayList instance objects, this is covered in more detail later.</p>
+</div>
+<div class="section">
+<h2 id="creating-classes">Creating Classes<a class="headerlink" href="#creating-classes" title="Permalink to this headline" id="creating-classes">?</a></h2>
+<p>Classes are declared by use of the /class/ keyword followed by the name of the class. Usually one begins the name of a class with an Uppercase letter but this is not obligatory. The class may or may not have a block attached to it. For example:</p>
+<pre><code class="lang-conc">class MyClass1//class with no block
+
+class MyClass2{}//class with an empty block
+
+class MyClass3{//class with a method defined
+  def amethod() =&gt; 12
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="fields">Fields<a class="headerlink" href="#fields" title="Permalink to this headline" id="fields">?</a></h2>
+<p>Classes allow variables, to be defined within themselves such that instance objects of those classes can maintain state within themselves. Variables like this are called fields. Example:</p>
+<pre><code class="lang-conc">class MyClass{
+  count int = 0
+  name = "Fred"
+}
+</code></pre>
+<p>Fields can be declared without initial assignment since it is anticipated that they will be assigned a value within a constructor call chain. If they are not assigned a value within a constructor call chain then a default value will be assigned contingent on the type of the field as follows:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Type</p>
+</th class="head">
+<th class="head">
+<p>Value</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">int, long, short</code></p>
+</td>
+<td>
+<p>0</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">byte</code></p>
+</td>
+<td>
+<p>0b</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">char</code></p>
+</td>
+<td>
+<p>''</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">boolean</code></p>
+</td>
+<td>
+<p>false</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">double, float</code></p>
+</td>
+<td>
+<p>0.0</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">Object</code> or subclass of <code class="lang-conc">Object</code></p>
+</td>
+<td>
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>n dimensional array of any component type</p>
+</td>
+<td>
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>actors, tuples, etc</p>
+</td>
+<td>
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>refs</p>
+</td>
+<td>
+<p>a non-null instance of the ref type with no assigned initial value</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>By default fields are <code class="lang-conc">var</code>'s, meaning that they don't require initial assignment in a constructor and can be changed at any point (provided that the rules concerning accessibility of the field are respected). Declaring a field <code class="lang-conc">val</code> both enforces initial assignment of the field within a constructor call chain and prohibits subsequent reassignment:</p>
+<pre><code class="lang-conc">class Myclass{
+  val name = "dave"//this field cannot be reassigned
+  val age int//this field must be assigned a value in a constructor chain - otherwise it's a compilation error
+  this(age int){
+    this.age = age
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="overriding-fields">Overriding fields<a class="headerlink" href="#overriding-fields" title="Permalink to this headline" id="overriding-fields">?</a></h2>
+<p>If a field of the same name and supertype is defined in a superclass as that which we are defining in a subclass, then the subclass may optionally declare that field as being overridden by using the <code class="lang-conc">override</code> keyword. This will ensure that a 'new' field is not created at the subclass level. For example:</p>
+<pre><code class="lang-conc">open class SuperClass{
+  aField = "super"
+  anotherField = "super"
+}
+
+class Child &lt; SuperClass{
+  aField = "child"
+  override anotherField = "child"
+}
+
+child = new Child()
+asSuper = child as SuperClass
+[child.aField child.anotherField ; asSuper.aField asSuper.anotherField]
+
+//== [child child ; super child]
+</code></pre>
+<p>In the above example we see that when we override <code class="lang-conc">anotherField</code> we do not create a new field at the <code class="lang-conc">Child</code> class level, but in fact override the value of the field in the superclass. Note that the superclass field must be accessible to the subclass (i.e. not defined as private in the superclass).</p>
+<p>The override keyword may also be used in class definition argument lists as follows:</p>
+<pre><code class="lang-conc">open class SuperClass{
+  aField = "super"
+  anotherField = "super"
+}
+
+class Child(aField = "child", override anotherField = "child") &lt; SuperClass
+
+child = new Child()
+asSuper = child as SuperClass
+[child.aField child.anotherField ; asSuper.aField asSuper.anotherField]
+
+//== [child child ; super child]
+</code></pre>
+<p>The effect is the same as our previous example.</p>
+</div>
+<div class="section">
+<h2 id="methods">Methods<a class="headerlink" href="#methods" title="Permalink to this headline" id="methods">?</a></h2>
+<p>Methods are functions declared within classes. Methods have all the same capabilities as functions. Additionally, code defined within methods has access to the keyword <code class="lang-conc">this</code> which enables access their declaring classes internal state and all other accessible methods. For example:</p>
+<pre><code class="lang-conc">class Person(name String, age int){
+  def nameLength(){
+    this.name.length()
+  }
+	
+  def nameLengthandAge() (int, int) {
+    this.nameLength(), this.age
+  }
+}
+</code></pre>
+<p>Note that the this keyword can often be omitted and it left implicit in cases where the right hand side dot does not resolve to something else:</p>
+<pre><code class="lang-conc">class Person(name String, age int){
+  def nameLength(){
+    name.length()
+  }
+	
+  def nameLengthandAge() (int, int) {
+    nameLength(), age
+  }
+}
+</code></pre>
+<p>Code within methods also has access to the <code class="lang-conc">super</code> keyword, this is described later in the inheritance section.</p>
+</div>
+<div class="section">
+<h2 id="setters-and-getters">Setters and Getters<a class="headerlink" href="#setters-and-getters" title="Permalink to this headline" id="setters-and-getters">?</a></h2>
+<p>It turns out that one of the most popular uses of classes and object oriented programming in general is the concept of encapsulation of data within objects, and providing access to that data via means of access methods, which, via convention take the form of 'getters and setters'. The format is straight forward... To set a field in a class, a setter is used, with name <code class="lang-conc">setX</code> where <code class="lang-conc">X</code> is the name of the field being set with the first letter capitalized, and signature <code class="lang-conc">(Y) void</code> where <code class="lang-conc">Y</code> is the type of the field being set. To get a field in a class, a getter is used, with name <code class="lang-conc">getX</code> (or <code class="lang-conc">isX</code> if the type of the field is of type <code class="lang-conc">boolean</code> or <code class="lang-conc">Boolean</code>) where again <code class="lang-conc">X</code> is the name of the field being set with the first letter capitalized, and signature <code class="lang-conc">() Y</code> where <code class="lang-conc">Y</code> is the type of the field being got. For example:</p>
+<pre><code class="lang-conc">class Person(age int){
+  def setAge(newAge int) void {
+    this.age = newAge;
+  }
+	
+  def getAge() int{
+    return this.age
+  }
+}
+
+//client code calling these methods:
+person = new Person(20)
+age = person.getAge()
+person.setAge(23)
+</code></pre>
+<p>This approach is seen as being favourable to simply permitting direct access to the age variable because if in the future we wish to change the internal design of our <code class="lang-conc">Person</code> class so as to make age a derived piece of information, we can easily substitute that logic in place to the <code class="lang-conc">setAge</code> and <code class="lang-conc">getAge</code> methods without having to change all the individual parts of code directly accessing the age field (wherever they may be in our codebase...) to accommodate this logic. For example, let's make age derived:</p>
+<pre><code class="lang-conc">nowYear = java.time.Year.now().getValue()
+
+class Person(yearOfBirth int){
+  def setAge(newAge int) void {
+    this.yearOfBirth = nowYear - newAge;
+  }
+	
+  def getAge() int{
+    nowYear - this.yearOfBirth
+  }
+}
+
+//our client code calling these methods does not need to change...
+age = person.getAge()
+person.setAge(23)
+</code></pre>
+<p>It can sometimes feel very redundant to have to call <code class="lang-conc">getAge</code>/<code class="lang-conc">setAge</code> when all we are doing is getting or setting a field, using the standard assignment operator <code class="lang-conc">=</code> can feel more natural. For this reason, Concurnas will automatically map to the appropriate getter/setter method where necessary. For example:</p>
+<pre><code class="lang-conc">age = person.age
+person.age = 23
+
+//is internally mapped to and is is equivalent to...
+age = person.getAge()
+person.setAge(23)
+</code></pre>
+<p>Just as calling getters and setters can feel redundant/verbose, so to can writing them in the first place. In fact in languages such as Java, for data centric classes, it's not uncommon for the getter setter code to make up as much as 95% of the class body! To reduce verbosity here Concurnas provides a mechanism by which they can be automatically generated. Simply prefix the field with <code class="lang-conc">~</code>, <code class="lang-conc">-</code> or <code class="lang-conc">+</code><sup><a href="#fn1">1</a></sup> in order to generate the appropriate setters or getters. Which getters and setters are generated is below:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Prefix</p>
+</th class="head">
+<th class="head">
+<p>Generated Getter</p>
+</th class="head">
+<th class="head">
+<p>Generates Setter</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">~</code></p>
+</td>
+<td>
+<p>Y</p>
+</td>
+<td>
+<p>Y</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">-</code></p>
+</td>
+<td>
+<p>Y</p>
+</td>
+<td>
+<p></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">+</code></p>
+</td>
+<td>
+<p></p>
+</td>
+<td>
+<p>Y</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>These prefixes can be used as follows:</p>
+<pre><code class="lang-conc">class Person1(-name String){
+  ~age int
+}
+
+class Person2(name String){
+  age int
+	
+  def getName() String {
+    return this.name
+  } 
+	
+  def getAge() int {
+    return this.age
+  }
+	
+  def setAge(age int)void {
+    this.age = age
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="constructors">Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline" id="constructors">?</a></h2>
+<p>Constructors are used to create instance objects of classes. They are defined in the same way as methods (and so can have default and varag parameters) as follows:</p>
+<pre><code class="lang-conc">class Person{
+  name String
+  age int
+  this(name String, age int){
+    this.name = name
+    this.age = age
+  }
+}
+</code></pre>
+<p>Classes may define more than one constructor and constructors may call one another via use of the <code class="lang-conc">this</code> keyword as follows:</p>
+<pre><code class="lang-conc">class Person{
+  name String
+  age int
+  this(name String, age int){
+    this.name = name
+    this.age = age
+  }
+	
+  this(age int){
+    this("fred", age)//call another constructor
+  }
+}
+
+obj1 = new Person("dave", 23)
+obj2 = new Person(56)
+</code></pre>
+<p>If a constructor calls another constructor this call must be the first entry in the constructor. This arrangement of constructor calling another constructor is known as a constructor chain. The top level (of which there may be more than one) being the constructor which calls a super constructor (via the <code class="lang-conc">super</code> keyword seen later) or has no /this/ constructor call at all.</p>
+<p>All classes must have at least one constructor. This constructor does not have to be publicly accessible. If at least one constructor is not provided then a publicly accessible zero argument constructor will be generated for the class automatically - if this were not the case then it would render the class uninstantiable in any situation, which is not ever useful.</p>
+</div>
+<div class="section">
+<h2 id="class-declaration-arguments">Class Declaration Arguments<a class="headerlink" href="#class-declaration-arguments" title="Permalink to this headline" id="class-declaration-arguments">?</a></h2>
+<p>Often, particularly for data oriented classes with simple state and requiring only one or a straightforward set of constructors, having to declared a set of fields and constructors can lead to very verbose code. Concurnas has a remedy for this in the form of class declaration arguments. Here we combine both the field declaration and constructor set into one:</p>
+<pre><code class="lang-conc">class Person(forename String, surname String, age int)
+</code></pre>
+<p>The above declaration of /Person/ is equivalent to the more long winded version as follows:</p>
+<pre><code class="lang-conc">class Person2{
+  forename String
+  surname String
+  age int
+	
+  this(forename String, surname String, age int){
+    this.forename = forename
+    this.surname  = surname 
+    this.age = age
+  }
+}
+</code></pre>
+<p>In the above instance we have to write a tenth of the code in order to achieve the same effect (hence allowing us to be 10x more productive!).</p>
+</div>
+<div class="section">
+<h2 id="inheritance">Inheritance<a class="headerlink" href="#inheritance" title="Permalink to this headline" id="inheritance">?</a></h2>
+<p>When it comes to implementing class functionality and state it's often beneficial to to be able to establish a class hierarchy of sub and superclasses. Classes may subclass one another, and in doing so the superclass receives access to all the non private (and potentially package) fields and methods of the superclass. Classes may have only one superclass. The <code class="lang-conc">extends</code> or <code class="lang-conc">&lt;</code> keyword is used in order to define a superclass for a class:</p>
+<pre><code class="lang-conc">open class Animal{
+  def livingState() =&gt; "is alive"
+}
+
+class Dog &lt; Animal
+
+class Cat extends Animal
+</code></pre>
+<p>All classes are considered closed by default. This means that they cannot be extended with subclasses. The <code class="lang-conc">open</code> keyword must be used in order to denote that it's acceptable for a class to be subclassed.</p>
+<p>Instance objects of <code class="lang-conc">Dog</code> and <code class="lang-conc">Cat</code> can be treated as instances of <code class="lang-conc">Animal</code>. All of the accessible methods (and fields) of <code class="lang-conc">Animal</code> are accessible on instance objects of <code class="lang-conc">Dog</code> and <code class="lang-conc">Cat</code> for example:</p>
+<pre><code class="lang-conc">animals = [new Dog(), new Cat()]
+
+res = animals^livingState()
+
+//res == [is alive, is alive]
+</code></pre>
+<p>If a superclass has constructors then at least one must be invoked by the top level constructor chain of a subclass. Let's refine our previous example:</p>
+<pre><code class="lang-conc">open class Animal{
+  def livingState() =&gt; "is alive"
+}
+
+open class LeggedAnimal(legs int) &lt; Animal
+
+class Dog &lt; LeggedAnimal{
+  this(){
+    super(4)
+  }
+}
+
+class Bird &lt; LeggedAnimal{
+  this(){
+    super(2)
+  }
+}
+</code></pre>
+<p>If a superclass has only a zero argument constructor defined then it is not necessary for subclass constructors to call it explicitly as this will be added implicitly. So for example, both the following are acceptable:</p>
+<pre><code class="lang-conc">open class Animal{
+  def livingState() =&gt; "is alive"
+}
+
+class Dog &lt; Animal{
+  this(){
+    super()//this is ok, but unecsary
+  }
+}
+
+class Cat extends Animal{
+  int lives
+  this(lives int){
+    //super() is not called this is fine
+    this.lives = lives
+  }
+}
+</code></pre>
+<p>If there are no constructors declared for a class which is explicitly marked as being a subtype of another then its generated zero argument constructor will be generated to call the referenced superclasses zero argument constructor if there is one accessible.</p>
+<p>Where a superclass is undeclared, a class will implicitly be a subtype of <code class="lang-conc">java.lang.Object</code>, an implicit super constructor to <code class="lang-conc">Object</code> is added to all top level constructor chains. Both the following are equivalent:</p>
+<pre><code class="lang-conc">class MyClass1{
+  this(){
+    super()
+  }
+}
+
+class MyClass2
+</code></pre>
+</div>
+<div class="section">
+<h2 id="the-super-keyword">The super keyword<a class="headerlink" href="#the-super-keyword" title="Permalink to this headline" id="the-super-keyword">?</a></h2>
+<p>Similar to the <code class="lang-conc">this</code> keyword the <code class="lang-conc">super</code> keyword is used in two ways, 1). To enable a super constructor invocation (as we have already seen), 2). To allow a subclass method to access the fields and invocation of super class methods. Let's look at point 2...</p>
+<pre><code class="lang-conc">open class SuperClass{
+  def aMethod(a int) =&gt; a+1
+}
+
+class ChildClass &lt; SuperClass{
+  def anotherMethod(a int) =&gt; super.aMethod(a)
+  override aMethod(a int) =&gt; super.aMethod(a)+1//using 'super' here lets us call the superclass version of 'aMethod' and not this method
+}
+</code></pre>
+<p>Just like the <code class="lang-conc">this</code> keyword, <code class="lang-conc">super</code> may be omitted in instances where there is no other way to match what's on the right hand side of the dot. So we can write the above as:</p>
+<pre><code class="lang-conc">open class SuperClass{
+  def aMethod(a int) =&gt; a+1
+}
+
+class ChildClass &lt; SuperClass{
+  def anotherMethod(a int) =&gt; aMethod(a)
+  override aMethod(a int) =&gt; super.aMethod(a)+1 //we cannot omit super here as this would result in an infinite stack call loop to 'aMethod'
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="accessibility-modifiers1">Accessibility modifiers<a class="headerlink" href="#accessibility-modifiers1" title="Permalink to this headline" id="accessibility-modifiers1">?</a></h2>
+<p>Class methods and fields may be tagged with one of the following accessibility modifiers. These affect the way in which the field/method to which they are attached can be accessed/called/overridden:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Modifier</p>
+</th class="head">
+<th class="head">
+<p>Effect on the field/method</p>
+</th class="head">
+<th class="head">
+<p>Overridable</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">public</code></p>
+</td>
+<td>
+<p>Can be accessed/called on any instance object anywhere.</p>
+</td>
+<td>
+<p>Yes</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">protected</code></p>
+</td>
+<td>
+<p>Can only be accessed/called by subclass.</p>
+</td>
+<td>
+<p>Yes</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">package</code></p>
+</td>
+<td>
+<p>Can be accessed/called by member of same package.</p>
+</td>
+<td>
+<p>Yes</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">private</code></p>
+</td>
+<td>
+<p>Can only be accessed/called by the instance object itself.</p>
+</td>
+<td>
+<p>No</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>If no modifier is specified then the defaults are:</p>
+<ul class="simple">
+  <li><p>Fields - <code class="lang-conc">protected</code></p>
+</li>
+  <li><p>Methods - <code class="lang-conc">public</code></p>
+</li>
+</ul class="simple">
+<p>The modifiers can be used as follows:</p>
+<pre><code class="lang-conc">class MyClass{
+  private field1 int = 9
+  package field2 int = 9
+  protected field3 int = 9
+  public field4 int = 9
+  field5 int = 9//defaults to protected
+	
+  private def aMethod1() =&gt; 12
+  package def aMethod2() =&gt; 12
+  protected def aMethod3() =&gt; 12
+  public def aMethod4() =&gt; 12
+  def aMethod5() =&gt; 12//defaults to public
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="overriding-methods">Overriding methods<a class="headerlink" href="#overriding-methods" title="Permalink to this headline" id="overriding-methods">?</a></h2>
+<p>If we wish to override a method defined in a superclass we must use the <code class="lang-conc">override</code> keyword. The keyword must be used so as to prevent us from accidentally overriding a method defined in a superclass. For example:</p>
+<pre><code class="lang-conc">open class A{
+  def aMethod1() =&gt; 0
+  def aMethod2() =&gt; 0
+}
+
+class B &lt; A{
+  override def aMethod1() =&gt; 1000//we can choose to include the 'def' keyword or omit it
+  override aMethod2() =&gt; 1000
+}
+</code></pre>
+<p>If one wishes to prevent subclasses from overriding a method then postfixing its declared name with a dot <code class="lang-conc">.</code> will prevent this from being possible. For example:</p>
+<pre><code class="lang-conc">open class A{
+  def aMethod.() =&gt; 0 //this method is now final and cannot be overridden
+}
+
+class B &lt; A{
+  override aMethod() =&gt; 1000//this will throw a compilation error
+}
+</code></pre>
+<p>An overriding method may not narrow the accessibility of a method being overridden. So the following is not valid:</p>
+<pre><code class="lang-conc">open class Parent{
+  public def aMethod() =&gt; 12
+}
+
+class Child &lt; Parent{
+  private def aMethod() =&gt; 14//this is not permitted since the accessibility modifier is being narrowed.
+}
+</code></pre>
+<p>As above we cannot override a public method to be private, but it is ok to override a private method to be public in a subclass.</p>
+</div>
+<div class="section">
+<h2 id="abstract-classes">Abstract classes<a class="headerlink" href="#abstract-classes" title="Permalink to this headline" id="abstract-classes">?</a></h2>
+<p>Abstract classes allow us to define 'intermediate' or 'prototype' classes which are designed to be extended by 'concrete'/non-abstract classes. They are partially implemented classes and can have methods and state. Abstract classes cannot be directly instantiated to make instance objects, only their (non abstract) subclasses can. Abstract classes can extend any class including abstract classes.</p>
+<p>Since abstract classes cannot be instantiated, they cannot have constructors.</p>
+<p>A class can be made abstract via one of two methods:</p>
+<ol class="arabic">
+  <li><p>Using the <code class="lang-conc">abstract</code> keyword:</p>
+<pre><code class="lang-conc">  abstract class LeggedAnimal(legs int)
+</code></pre>
+<p>When a class is declared abstract it's not necessary to declared it being an <code class="lang-conc">open</code> class, as this is implicit (the purpose of abstract classes is to be extended).</p>
+</li>
+  <li><p>By having at least one abstract method defined. Abstract methods are defined in the same way as normal methods, but they do not have a body:</p>
+<pre><code class="lang-conc">  abstract class LeggedAnimal(legs int){
+    def howFeels() String //this is an abstract method
+  }
+</code></pre>
+<p>If an abstract class declares any abstract methods (which is the normal case), then these must be implemented in any concrete extending classes:</p>
+<pre><code class="lang-conc">  open class Animal{//implicitly an abstract class since we have an abstract method declared below
+    def reportFoodEaten() String //this method is abstract and must be implemented by all concrete sub classes of Animal
+  }
+	
+  class Panda &lt; Animal{
+    def reportFoodEaten() =&gt; "bamboo"
+  }
+</code></pre>
+</li>
+</ol class="arabic">
+<p>Note above that we do not need to use the <code class="lang-conc">override</code> keyword when we define <code class="lang-conc">reportFoodEaten</code>. This is because we are not overriding an existing implementation of <code class="lang-conc">reportFoodEaten</code>.</p>
+<p>Abstract methods may override concrete method implementations from super classes. The following is valid:</p>
+<pre><code class="lang-conc">open class A{
+  def aMethod() =&gt; 12
+}
+
+class AbstractClass &lt; A{
+  def aMethod() int
+}
+</code></pre>
+<p>In the case above subclasses of <code class="lang-conc">AbstractClass</code> must implement the <code class="lang-conc">aMethod</code>. Note, direct subclasses of class <code class="lang-conc">A</code> do not need to implement this method since it's already been implemented.</p>
+<p>An abstract class that extends an abstract class is not obliged to provide a concrete implementation of its abstract superclass's abstract methods. So the following is perfectly valid:</p>
+<pre><code class="lang-conc">abstract class Animal{
+  def reportFoodEaten() String
+}
+
+abstract class FurryAnimal &lt; Animal//not obliged to implement reportFoodEaten
+</code></pre>
+</div>
+<div class="section">
+<h2 id="class-declaration-arguments-with-superclasses">Class Declaration Arguments with superclasses<a class="headerlink" href="#class-declaration-arguments-with-superclasses" title="Permalink to this headline" id="class-declaration-arguments-with-superclasses">?</a></h2>
+<p>We can use our one line approach to class declaration with class declaration arguments when we need to call a super constructor as follows:</p>
+<pre><code class="lang-conc">open class Animal(favFood String, color String, age int)
+
+class Panda(page int) &lt; Animal('bamboo', 'blackAndWhite', page)
+</code></pre>
+<p>Above as we are implicitly creating the constructor for <code class="lang-conc">Panda</code>, we are instructing Concurnas to add a super constructor invocation to the <code class="lang-conc">Animal</code> superclass constructor with the body <code class="lang-conc">('bamboo', 'blackAndWhite', page)</code>. Any expression is permissible in the super constructor argument list. In cases where a field name from the main class declaration arguments is referenced as a superclass super constructor argument, then this argument is not translated into a field for the class being declared. So for <code class="lang-conc">Panda</code> above, field <code class="lang-conc">page</code> is not created - it would if <code class="lang-conc">page</code> were not referenced in the superclass super constructor argument list.</p>
+</div>
+<div class="section">
+<h2 id="automatically-generated-equals-and-hashcode-methods">Automatically generated equals and hashcode methods<a class="headerlink" href="#automatically-generated-equals-and-hashcode-methods" title="Permalink to this headline" id="automatically-generated-equals-and-hashcode-methods">?</a></h2>
+<p>Concurnas implements equality by value by default for instance objects. It achieves this by auto generating a method <code class="lang-conc">equals</code> with the following signature: <code class="lang-conc">equals(Object) boolean</code> for every class declared. This makes the following code possible:</p>
+<pre><code class="lang-conc">class Person(String name)
+
+p1 = Person("dave")
+p2 = Person("dave")
+
+assert p1 == p2
+</code></pre>
+<p>Equality is tested via use of the <code class="lang-conc">==</code> (and <code class="lang-conc">&lt;&gt;</code>) operator. We see above that although <code class="lang-conc">p1</code> and <code class="lang-conc">p2</code> are separate instances objects, their value is the same, therefore they are considered equal.</p>
+<p>Concurnas will also generate a <code class="lang-conc">hashCode</code> method with signature <code class="lang-conc">hashCode () int</code> which is unique per the value of the class. This is useful for data structures such as HashSet's and HashMaps. For example:</p>
+<pre><code class="lang-conc">class Person(String name)
+
+p1 = Person("dave")
+p2 = Person("dave")
+
+pset = new java.util.HashSet&lt;Person&gt;()
+pset.add(p1)
+pset.add(p2)//p2 will not be added as its value matches p1 which is already in the set
+
+assert p1.hashCode() == p2.hashCode()//hashcode's match
+assert pset.size() == 1
+</code></pre>
+<p>One is of course free to implement the <code class="lang-conc">equals</code> and <code class="lang-conc">hashCode</code> methods manually and override the automatically generated versions. For example here is and example of referential equality:</p>
+<pre><code class="lang-conc">class MyClass{
+  override hashCode() =&gt; System.identityHashCode(this)
+  override equals(an Object) =&gt; this &amp;== an
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="init-block">init block<a class="headerlink" href="#init-block" title="Permalink to this headline" id="init-block">?</a></h2>
+<p>Concurnas provides an <code class="lang-conc">init</code> block that can be useful in cases where one is using class definition arguments but needs to include extra code in the generated constructor. For example:</p>
+<pre><code class="lang-conc">pCount = 0
+
+class Person(String name){
+  init{
+    System out println "Created a Person with name {name}"
+    pCount++
+  }
+}
+</code></pre>
+<p>The code within the <code class="lang-conc">init</code> block is added to the end of any generated constructors, as such they have access to all the fields/methods of the class as par a normal method. More than one <code class="lang-conc">init</code> block may be specified and they are executed in the linear order in which they were defined.</p>
+</div>
+<div class="section">
+<h2 id="nested-classes">Nested Classes<a class="headerlink" href="#nested-classes" title="Permalink to this headline" id="nested-classes">?</a></h2>
+<p>Nested classes are classes defined within classes. They have access to all the methods and fields of their parent nestors scopes in which they are defined. For example:</p>
+<pre><code class="lang-conc">class Outerclass{
+  def outerMethod()=&gt; 11
+	
+  public class InnerClass{
+    def innerMethod(){
+      outerMethod() + 1
+    }
+  }
+}
+</code></pre>
+<p>If no accessibility modifier is provided when declaring a nested class then it will default to private (this is because most of the time nested classes are best suited for intra class algorithms which do not require exposure outside the parent nestor class).</p>
+<p>Nested classes require a reference to their parent nestor in order to create instances of them, we may optionally use the <code class="lang-conc">new</code> keyword:</p>
+<pre><code class="lang-conc">oc = new Outerclass()
+inst1 = oc.new InnerClass()
+inst2 = oc.InnerClass()
+</code></pre>
+<p>In cases of multiple levels of nesting, the qualified <code class="lang-conc">this</code> syntax is appropriate for dealing with situations in which we need an reference to a specific parent nestor. The qualified this syntax is as follows, <code class="lang-conc">this[X]</code> where <code class="lang-conc">X</code> is the class name for which we wish to obtain a reference to the corresponding parent nestor of, the return type will be of type <code class="lang-conc">X</code>. For example:</p>
+<pre><code class="lang-conc">class Outerclass{
+  private variable = 'outer variable'
+  def aMethod(){
+    "outer method"
+  }
+	
+  public class Innerclass{
+		
+    public class Innerclass2{ }
+    private variable = 'inner variable'
+		
+    def aMethod(){
+      "inner method"
+    }
+		
+    def work(){
+      outer = this[Outerclass] //here we use the qualified this syntax!
+      inner = this[Innerclass] //and here!
+      ""+[outer.aMethod(), outer.variable, inner.aMethod(), inner.variable]
+    }
+  }
+}
+
+outer = Outerclass()
+inst = outer.Innerclass()
+res = inst.work()
+
+//res == [outer method, outer variable, inner method, inner variable]
+</code></pre>
+<p>All the other normal operations on classes can be performed on inner classes provided that an instance of the outer class is specified:</p>
+<pre><code class="lang-conc">constructorRefernce  = outer.new Innerclass&amp;//constructor refence
+classRefernce  = outer.Innerclass&amp;//class refence
+actorInstance = outer.actor Innerclass()//actor of Innerclass
+</code></pre>
+</div>
+<div class="section">
+<h2 id="local-classes">Local Classes<a class="headerlink" href="#local-classes" title="Permalink to this headline" id="local-classes">?</a></h2>
+<p>Local classes are classes defined within functions or methods, they are declarable just like ordinary classes. They are limited in terms of instantiation by the scope in which they are declared.</p>
+<pre><code class="lang-conc">open class SuperClass
+
+def makeLocalClass() SuperClass {
+  class MyClass &lt; SuperClass
+  return new MyClass()
+}
+</code></pre>
+<p>We cannot make use of <code class="lang-conc">MyClass</code> directly (i.e. instantiate an instance of it via the <code class="lang-conc">new</code> operator) outside the scope of the method in which it is defined, hence the type returned in the above example has to be either a superclass or trait which it implements.</p>
+</div>
+<div class="section">
+<h2 id="anonymous-classes">Anonymous Classes<a class="headerlink" href="#anonymous-classes" title="Permalink to this headline" id="anonymous-classes">?</a></h2>
+<p>Anonymous classes provides a means by which classes can be both defined and instance objects derived from the in one relatively compact step. They are useful for implementing SAM types see here and when working with traits see here.</p>
+<p>Anonymous classes are easy to define, here is an example:</p>
+<pre><code class="lang-conc">class AbstractClass{
+  def operation(a int) int//child classes must implement this method or be declared abstract
+}
+
+instance AbstractClass = new AbstractClass{ def operation(a int) =&gt; a*2 }
+
+instance.operation(2)
+
+//== 4
+</code></pre>
+<p>Anonymous classes may be defined without bodies</p>
+<pre><code class="lang-conc">abstract class AbstractClass{
+  def operation(a int) int =&gt; a
+}
+
+instance = new AbstractClass
+
+instance.operation(2)
+
+//== 2
+</code></pre>
+<p>Anonymous classes can be used any place where an expression is required:</p>
+<pre><code class="lang-conc">class AbstractClass{
+  def operation(a int) int
+}
+
+def doOperation(apTo int, an AbstractClass) =&gt; an.operation(apTo)
+
+doOperation(2, new AbstractClass{ def operation(a int) int =&gt; a*2 })
+
+//== 4
+</code></pre>
+<p>Anonymous classes may refer to variables and methods defined outside of the scope of the class:</p>
+<pre><code class="lang-conc">class AbstractClass{
+  def operation(a int) int
+}
+
+def doOperation(apTo int, an AbstractClass) =&gt; an.operation(apTo)
+
+mul = 4
+doOperation(2, new AbstractClass{def operation(a int) int =&gt; a*mul })
+
+//== 8
+</code></pre>
+<p>Generics may be used in anonymous classes as normal:</p>
+<pre><code class="lang-conc">class AbstractClass&lt;X&gt;{
+  def operation(a X) X
+}
+
+def doOperation(apTo int, an AbstractClass&lt;Integer&gt;) =&gt; an.operation(apTo)
+
+mul = 4
+doOperation(2, new AbstractClass&lt;Integer&gt;{ def operation(a Integer) Integer =&gt; a*mul })
+
+//== 8
+</code></pre>
+<p>Note that for an anonymous class definition both a class (inaccessible) and object of the anonymous class are created. As such the anonymous class may only have a zero arg constructor defined (if at all), it may not use augmented constructors.</p>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>In looking at a standard QWERTY keyboard you will notice that whilst \scantokens{<code class="lang-conc">-</code>} requires only one keystroke, \scantokens{<code class="lang-conc">~</code>} and \scantokens{<code class="lang-conc">+</code>} require two (shift and the \scantokens{<code class="lang-conc">+/~</code>} key). The choice of these characters for auto getter/setter generation is deliberate as the most common case for getters and setters is for fields to need only getters (with instantiation of state achieved via a constructor)</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul class="current">
+ <li class="toctree-l1 current"><a class="reference internal current" href="classes.html">Classes</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-objects-of-classes">Creating Objects of Classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-classes">Creating Classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#fields">Fields</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#overriding-fields">Overriding fields</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#setters-and-getters">Setters and Getters</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#constructors">Constructors</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#class-declaration-arguments">Class Declaration Arguments</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#inheritance">Inheritance</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#the-super-keyword">The super keyword</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#accessibility-modifiers1">Accessibility modifiers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#overriding-methods">Overriding methods</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#abstract-classes">Abstract classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#class-declaration-arguments-with-superclasses">Class Declaration Arguments with superclasses</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#automatically-generated-equals-and-hashcode-methods">Automatically generated equals and hashcode methods</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#init-block">init block</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#nested-classes">Nested Classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#local-classes">Local Classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#anonymous-classes">Anonymous Classes</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

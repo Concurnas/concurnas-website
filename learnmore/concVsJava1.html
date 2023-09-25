@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>Concurnas vs Java - Part 1</title>
+
+ 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="../css/conc.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/social.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+	<!-- Google -->
+	<meta name="description" content="An overview of the differences between Java and Concurnas and why Concurnas is recommended for modern software development on the JVM -  Part 1	"/>
+
+	<!-- OpenGraph -->
+	<meta property="og:title" content="Concurnas vs Java - Part 1"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:image" content="https://concurnas.com/img/articles/concVsJava.jpeg"/>
+	<meta property="og:description" content="An overview of the differences between Java and Concurnas and why Concurnas is recommended for modern software development on the JVM -  Part 1	"/>
+	<meta property="og:site_name" content="The Concurnas Programming Language"/>
+	<meta property="og:url" content="http://concurnas.com/learnmore/concVsJava1.html"/>
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+	
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="page-wrap">
+<div class="section site-content">			
+	<div class="container">	
+		<div class="row">
+			<div class="col-lg-2 tree-nav">
+			<ul>
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="overview.html">Overview</a></li>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava1.html">Concurnas vs</a></li>
+	<ul>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava1.html">Java pt.1</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava2.html">Java pt.2</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="concVsJava3.html">Java pt.3</a></li>
+	</ul>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="usecases.html">Use cases</a></li>
+	<ul>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="finance.html">Finance</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="sciComp.html">Science</a></li>
+		<li class=""><i class="far fa-file-alt fa-fw"></i><a href="startups.html">Startups</a></li>
+	</ul>
+
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="mailinglist.html">Mailing List</a></li>
+	
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="contribute.html">Contribute</a></li>
+</ul>
+			</div>
+			<div class="col-lg-10"><p align="center">
+  <img width="75%" src="../img/articles/concVsJava.jpeg">
+</p>
+
+<hr />
+<h1 id="concurnas-vs-java-part-1">Concurnas vs Java - Part 1</h1>
+<hr />
+<p><div class="sshare__cont" align="right">
+
+<!-- Sharingbutton Facebook -->
+<a class="sshare__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html" target="_blank" rel="noopener" aria-label="Facebook">
+  <div class="sshare sshare--facebook sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg></div>Facebook</div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="sshare__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html&amp;title=Concurnas%20vs%20Java%20-%20Part%201&amp;summary=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%201%09&amp;source=http%3A%2F%2Fconcurnas.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <div class="sshare sshare--linkedin sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg></div>LinkedIn</div>
+</a>
+
+<!-- Sharingbutton Twitter -->
+<a class="sshare__link" href="https://twitter.com/intent/tweet/?text=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%201%09&amp;url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html" target="_blank" rel="noopener" aria-label="Twitter">
+  <div class="sshare sshare--twitter sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg></div>Twitter</div>
+</a>
+
+<!-- Sharingbutton Reddit -->
+<a class="sshare__link" href="https://reddit.com/submit/?url=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html&amp;resubmit=true&amp;title=Concurnas%20vs%20Java%20-%20Part%201" target="_blank" rel="noopener" aria-label="Reddit">
+  <div class="sshare sshare--reddit sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg></div>Reddit</div>
+</a>
+
+<!-- Sharingbutton Hacker News -->
+<a class="sshare__link" href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html&amp;t=Concurnas%20vs%20Java%20-%20Part%201" target="_blank" rel="noopener" aria-label="Hacker News">
+  <div class="sshare sshare--hackernews sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg></div>Hacker News</div>
+</a>
+
+<!-- Sharingbutton WhatsApp -->
+<a class="sshare__link" href="whatsapp://send?text=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%201%09%20http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="sshare sshare--whatsapp sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg></div>WhatsApp</div>
+</a>
+
+<!-- Sharingbutton E-Mail -->
+<!--<a class="sshare__link" href="mailto:?subject=Concurnas%20vs%20Java%20-%20Part%201&amp;body=An%20overview%20of%20the%20differences%20between%20Java%20and%20Concurnas%20and%20why%20Concurnas%20is%20recommended%20for%20modern%20software%20development%20on%20the%20JVM%20-%20%20Part%201%09%20http%3A%2F%2Fconcurnas.com%2Flearnmore%2FconcVsJava1.html" target="_self" rel="noopener" aria-label="E-Mail">
+  <div class="sshare sshare--email sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg></div>E-Mail</div>
+</a>-->
+
+</div></p>
+<p>Launched in late 2019 <a href="https://concurnas.com">Concurnas</a> is an open source Java Virtual Machine (JVM) programming language designed for building reliable, scalable, high performance concurrent, distributed and parallel systems. It presents a progressive, dead easy model of Concurrent computing, offers first class GPU computing support and many more features suited for modern software systems engineering.</p>
+<p><a href="https://www.oracle.com/uk/java/">Java</a>, released in 1996, has become one of the world's most popular programming languages. This is for a multitude of reasons including its "write once run anywhere" philosophy, its standard library and in its separation as a language from its runtime, the JVM. This brilliant act of separation has enabled third party languages such as <a href="https://www.scala-lang.org/">Scala</a>, <a href="https://kotlinlang.org/">Kotlin</a> and now Concurnas to leverage the capabilities of the JVM all whilst maintaining, for the most part, full compatibility with Java and other JVM languages.</p>
+<p>In this three part series (<a href="concVsJava2.html">part 2</a>, <a href="concVsJava3.html">part 3</a>) we compare and contrast the key features of Concurnas against Java and show why you too will benefit from using Concurnas for your next JVM project!</p>
+<p>So let us begin!</p>
+<div class="toc">
+<ul>
+<li><a href="#concurnas-vs-java-part-1">Concurnas vs Java - Part 1</a><ul>
+<li><a href="#concurrent-programming">Concurrent Programming</a><ul>
+<li><a href="#isolates-and-refs">Isolates and Refs</a></li>
+<li><a href="#isolate-state">Isolate state</a></li>
+<li><a href="#reactive-computing">Reactive Computing</a></li>
+<li><a href="#distributed-computing">Distributed Computing</a></li>
+<li><a href="#actors">Actors</a></li>
+<li><a href="#parfor">parfor</a></li>
+</ul>
+</li>
+<li><a href="#gpu-computing">GPU computing</a></li>
+<li><a href="#imperative-programming">Imperative Programming</a></li>
+<li><a href="#type-inference">Type inference</a><ul>
+<li><a href="#usage-based-generic-type-inference">Usage based generic type inference</a></li>
+<li><a href="#everything-returns">Everything returns</a></li>
+<li><a href="#conditional-operator">Conditional Operator</a></li>
+<li><a href="#looping-structures">Looping structures</a><ul>
+<li><a href="#handling-an-empty-list">Handling an empty list</a></li>
+<li><a href="#loops-can-return">Loops can return</a></li>
+<li><a href="#loops-with-index-values">Loops with index values</a></li>
+</ul>
+</li>
+<li><a href="#toboolean">toBoolean</a><ul>
+<li><a href="#toboolean-for-lists">toBoolean for lists</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#functions">Functions</a><ul>
+<li><a href="#generic-functions">Generic Functions</a></li>
+<li><a href="#nested-functions">Nested functions</a></li>
+<li><a href="#default-arguments">Default arguments</a></li>
+<li><a href="#named-arguments">Named arguments</a></li>
+</ul>
+</li>
+<li><a href="#whats-next">What's next?</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h2 id="concurrent-programming">Concurrent Programming</h2>
+<p>One of the strongest points of Concurnas is in its <a href="../docs/concurrentProgramming.html">unique concurrency model</a>. Concurnas presents '<a href="../docs/concurrentProgramming.html#isolates">isolates</a>' as a means of performing concurrent computing. All code in Concurnas is executed within isolates. Isolates are like threads in Java but lightweight. They are multiplexed on to a number of hardware threads (the number of which is determined by the specification of the machine). From a syntax perspective, since making concurrent programming accessible to everyone has always been a core design goal of Concurnas it is very easy to create and work with isolates. Isolates will copy all mutable dependent data into themselves, thus preventing accidental sharing of state and non deterministic behavior. In this way we are able to write code in a largely sequential manner within isolates, safe in the knowledge that regardless of the underlying concurrent computing capacity of the hardware we are executing our code on, it will behave in the same way. We can spawn as many isolates as we have memory available on our machine, furthermore, from a performance perspective the approach presented in Concurnas is highly performant as isolates do not require switching into the operating system kernel upon context switch.</p>
+<p>Concurnas provides '<a href="../docs/concurrentProgramming.html#refs1">refs</a>' as a means of sharing concurrently changeable non deterministic state between isolates. Refs are built into the type system of Concurnas, when an isolate encounters a ref which has no value set upon it, it will block until a value has been set. Ref's have the unique property that they may be watched for changes. This enables the reactive programming paradigm to be supported within Concurnas.</p>
+<p>Concurnas also embraces the <a href="../docs/concurrentProgramming.html#actors1">actor model</a> of concurrent computation, which is tremendously useful for providing lightweight services. Furthermore, the actor support within Concurnas supports turning any conventional class (in any JVM language) into an actor.</p>
+<h3 id="isolates-and-refs">Isolates and Refs</h3>
+<p>Here is a simple isolate, the bang <code>!</code> operator is used to create an isolate:</p>
+<pre><code class="language-conc">{System.out.println(&quot;Hello world!&quot;)}! //! creates an isolate
+</code></pre>
+
+<p>The above will perform some I/O, printing out to console <code>Hello world!</code> concurrently.</p>
+<p>Let's now create an isolate which returns a ref:</p>
+<pre><code class="language-conc">msg = {&quot;Hello world!&quot;}! //! creates an isolate, which creates a String and returns it in a ref
+
+System.out.println(msg)//and print it out
+</code></pre>
+
+<p>The <code>System.out.println</code> call will halt until the value of the ref <code>msg</code> has been set by our spawned isolate. An alternative way to achieve this halting behavior is to use the <code>await</code> keyword:</p>
+<pre><code class="language-conc">//msg is a ref...
+await(msg)
+//...now carry on with the rest of the execution
+</code></pre>
+
+<p>Whilst an isolate is awaiting a value to be set (either implicitly or explicitly) as par above the underlying worker thread upon which its been multiplexed can context switch to execute other isolates.</p>
+<h3 id="isolate-state">Isolate state</h3>
+<p>Lets now create an isolate to produce a list of numbers:</p>
+<pre><code class="language-conc">class CounterHolder(public -n int)
+
+counter = CounterHolder(10)
+
+countDownStr := {
+    ret = StringBuilder()
+    while(counter.n-- &gt; 0){//we are changing the value of n
+        ret.append(counter.n)
+    }
+    ret.toString()//return a String
+}!
+
+System.out.println(&quot;countdown from: {counter.n} == {countDownStr}&quot;)
+//outputs: countdown from: 10 == 9876543210:
+</code></pre>
+
+<p>Notice how above we are changing the value of <code>n</code> in the <code>counter</code> instance object of type <code>CounterHolder</code> within the isolate. Since this object is mutable it is implicitly copied into the isolate, changes to its contents made by the isolate are visible within the isolate only, thus our output string is able to show the correct initial value when we later refer to it.</p>
+<p>Achieving the equivalent in Java requires a lot more code:</p>
+<pre><code class="language-java">public class ConcurrentCounter {
+    public static class CounterHolder{
+        public int n;
+        public CounterHolder(int n) {
+            this.n = n;
+        }
+    }
+
+    public static class IsolateEmulation implements Runnable{
+        String returnValue;
+        CounterHolder counter;
+
+        public IsolateEmulation(CounterHolder counter) {
+            this.counter = counter;
+        }
+
+        public void run() {
+            StringBuilder sb = new StringBuilder();
+            while(counter.n-- &gt; 0) {
+                sb.append(counter.n);
+            }
+            this.returnValue = sb.toString();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException{
+        CounterHolder counter = new CounterHolder(10);
+        //manually copy state into IsolateEmulation:
+        IsolateEmulation isoEmu = new IsolateEmulation(new CounterHolder(counter.n));
+
+        Thread runme = new Thread( isoEmu);
+        runme.start();
+
+        runme.join();
+        System.out.println(&quot;countdown from: &quot;+counter.n+&quot; == &quot; + isoEmu.returnValue);
+    }
+}
+</code></pre>
+
+<p>Even with the above implementation in Java there are still some non trivial problems to solve. 1). the thread model scales only to a limited extent, 2). it's very easy to accidentally share state between threads which can lead to non deterministic effects, you can see here that we have had to explicitly copy the value of <code>counter</code>. Both of these points make scaling and testing our solution a challenge.</p>
+<h3 id="reactive-computing">Reactive Computing</h3>
+<p>One of the awesome things about refs in Concurnas is that they can be watched for changes and other isolates may react to those changes triggering code as appropriate. This is known as <a href="../docs/concurrentProgramming.html#reactive-programming">reactive computing</a>. Here is an example where we can calculate a stream of resultant values:</p>
+<pre><code class="language-conc">x int:
+a int:
+
+y int: = every(x, a){
+    x**2 + a
+}
+
+x = 4
+a = 2
+
+assert y == 18
+</code></pre>
+
+<p>The <code>every</code> statement above will trigger the body of code whenever its input refs, <code>x</code> and/or <code>a</code> change, this code will itself then return a value which is set to the ref <code>y</code>. <code>y</code> now contains a stream of results of the <code>x**2 + a</code> equation.</p>
+<p>We can extend the above with a <code>every</code> statement hooked on to <code>y</code> to print out the stream of values set to it:</p>
+<pre><code class="language-conc">every(y){
+    System.out.println(&quot;{y}&quot;)
+}
+</code></pre>
+
+<p>Concurnas provides us with an even more compact form of this expression, we can shorten this <code>every</code> to the following:</p>
+<pre><code class="language-conc">y &lt;= x**2 + a
+</code></pre>
+
+<p>Whilst it is technically possible to implement the above in Java, it would require so much code to implement it to the same level that we'd end up running out of space to discuss anything else in this article! Furthermore, even if we were to do this, we'd only be solving the problem for this one instance, the fundamental problem would still persist as the Java model of concurrency is much more verbose than that presented in Concurnas.</p>
+<h3 id="distributed-computing">Distributed Computing</h3>
+<p>The isolate pattern using the bang <code>!</code> operator may be used in order to perform <a href="../docs/distComp.html">distributed computing</a>:</p>
+<pre><code class="language-conc">//A remote server:
+remServer = new com.concurnas.lang.dist.RemoteServer(port = 42001)
+remServer.startServer()
+
+//A client:
+rm = Remote('localhost', port = 42001)
+//execute code remotely, returning a ref
+ans int: = {10+10}!(rm.onfailRetry())
+
+//ans == 20
+</code></pre>
+
+<p>Concurnas will perform automatic data and code dependency distribution to the site of remote computation. Thus we can define classes,  data structures and instances of those classes which are totally alien to the <code>RemoteServer</code> which we have connected to, it will receive all the dependent code required to perform the execution. Achieving something similar in Java, even using many open source libraries to assist in this, is very challenging.</p>
+<h3 id="actors">Actors</h3>
+<p><a href="../docs/concurrentProgramming.html#actors1">Actors</a> present a neat way in which we can write lightweight services by implementing them like classes, and without explicit consideration for concurrency control.</p>
+<pre><code class="language-conc">actor CounterService{
+    -n = 0
+    def inc(){
+        ++n
+    }
+
+    def dec(){
+        --n
+    }
+
+    def get() =&gt; n
+}
+</code></pre>
+
+<p>Actors permit only one stream of concurrent execution to mutate their state at a time. Actors, by virtue of their implicit concurrency control, are another special type the instance objects of which may be used within isolates without copying required. For example:</p>
+<pre><code class="language-conc">cs = CounterService()
+
+sync{//sync ensures all spawned child isolates complete execution...
+    {cs.inc()}!
+    {cs.dec()}!
+    {cs.inc()}!
+}//the above 3 calls occur concurrently and non deterministically
+
+result = cs.get()
+</code></pre>
+
+<p>There is no scope for inconsistent state inside the <code>CounterService</code> actor.</p>
+<p>Actors may also be created of existing classes. For instance, if we wished to create an <code>ArrayList</code> as a service that can be shared between and used by many isolates. We can use the <code>actor</code> keyword in place of the <code>new</code> keyword:</p>
+<pre><code class="language-conc">myARService = actor java.util.ArrayList&lt;int&gt;()
+</code></pre>
+
+<p>Actors are not supported within Java, the best alternative is to use frameworks such as <a href="https://akka.io/">Akka</a>.</p>
+<h3 id="parfor">parfor</h3>
+<p><a href="../docs/concurrentProgramming.html#parfor">Parfor</a> is a nice little concurrency shortcut which can be used when one is performing a parallel operation on the CPU. For instance, to apply an equation to each element of a list:</p>
+<pre><code class="language-conc">inputs = [1, 2, 3, 4, 5, 4, 3, 2, 3, 4]
+
+result = parfor(inp in inputs){
+    inp**2 + 3
+}
+//result ==&gt; [4:, 7:, 12:, 19:, 28:, 19:, 12:, 7:, 12:, 19:]
+</code></pre>
+
+<p>Again, as with reactive computing whilst it is technically possible to implement the above <code>parfor</code> example in Java, it would require so much code to implement it to the same level that we'd end up running out of space to discuss anything else in this article!</p>
+<h2 id="gpu-computing">GPU computing</h2>
+<p>Java does not have native support for GPU computing though there are a number of third party libraries which one can use in order to perform GPU computing including <a href="https://github.com/beehive-lab/TornadoVM">
+TornadoVM</a> and <a href="http://www.jocl.org/">jocl</a> (which Concurnas leverages behind the scenes).</p>
+<p>Concurnas on the other hand has <a href="../docs/gpuParallelProgramming.html">first class citizen support for GPU computing</a>. We can write normal looking, idiomatic Concurnas code and have that code compiled along with the rest of our Concurnas code seamlessly for subsequent execution upon as many GPU's as we have access. Writing the following sort of code, for matrix multiplication using local memory on the GPU is quite straightforward:</p>
+<pre><code class="language-conc">val CacheSize = 16
+
+gpukernel 2 matMultLocal(M int, N int, K int, constant A float[2], constant B float[2], global out C float[2]) {
+    row = get_local_id(0)
+    col = get_local_id(1)
+    globalRow = CacheSize*get_group_id(0) + row //row of C (0..M)
+    globalCol = CacheSize*get_group_id(1) + col //col of C (0..N)
+
+    //local memory holding cache of CacheSize*CacheSize elements from A and B
+    local cacheA = float[CacheSize, CacheSize]
+    local cacheb = float[CacheSize, CacheSize]
+
+    acc = 0.0f
+
+    //loop over all tiles
+    cacheSize int = K/CacheSize
+    for (t=0; t&lt;cacheSize; t++) {
+        //cache a section of A and B from global memory into local memory 
+        tiledRow = CacheSize*t + row
+        tiledCol = CacheSize*t + col
+        cacheA[col][row] = A[tiledCol*M + globalRow]
+        cacheb[col][row] = B[globalCol*K + tiledRow]
+
+        barrier(true)//ensure all work items finished caching
+
+        for (k=0; k&lt;CacheSize; k++) {//accumulate result for matrix subsections
+            acc += cacheA[k][row] * cacheb[col][k]
+        }
+
+        barrier(true)//ensure all work items finished before moving on to next cache section
+    }
+
+    C[globalCol*M + globalRow] = acc
+}
+</code></pre>
+
+<h2 id="imperative-programming">Imperative Programming</h2>
+<p>Concurnas offers a number of innovations in the area of classical, imperative programming.</p>
+<h2 id="type-inference">Type inference</h2>
+<p>Concurnas is largely an optionally <a href="../docs/variableAssignment.html">typed language</a>. This is enabled through its support of type inference. Java has recently added this functionality, in Java 10, for local variables as follows:</p>
+<pre><code class="language-java">var myvar = 12;
+</code></pre>
+
+<p>Concurnas has a slightly more concise implementation of this, which also works for when defining <a href="../docs/arraysMatricesAndLists.html">arrays, matrices</a> and return types of functions:</p>
+<pre><code class="language-conc">myvar = 12
+
+myar = [1 2 3 4 5.0]//a double array
+mymat = [1 2 3 ; 4 5 6]//an integer matrix
+
+def doMath(upon int) =&gt; upon * 2 + 9//inferred as returning an integer
+</code></pre>
+
+<h3 id="usage-based-generic-type-inference">Usage based generic type inference</h3>
+<p>In Java we are obliged to qualify the generic types of generic instance objects at declaration time:</p>
+<pre><code class="language-java">public static class Holder&lt;X&gt;{
+    private java.util.ArrayList&lt;X&gt; li = new  java.util.ArrayList&lt;X&gt;();
+
+    public void add(X x) {
+        li.add(x);
+    }
+}
+
+Holder&lt;Integer&gt; hh = new Holder&lt;Integer&gt;();
+hh.add(12);
+hh.add(33);
+</code></pre>
+
+<p>With Concurnas we are able to omit this and have the generic types <a href="../docs/generics.html#inference-of-generic-types">inferred based on localized usage</a> of said object:</p>
+<pre><code class="language-conc">class Holder&lt;X&gt;{
+    li = list&lt;X&gt;()
+
+    def add(x X) void {
+        li.add(x)
+    }
+}
+
+hh = new Holder()//infered as being Holder&lt;int&gt;
+hh.add(12)
+hh.add(33)
+</code></pre>
+
+<h3 id="everything-returns">Everything returns</h3>
+<p>In Concurnas all blocks can return values. This also means that the return keyword can usually be omitted from function definitions. Through this feature it is easy to write concise code such as the following:</p>
+<pre><code class="language-conc">def choice(a int){//returns a String
+    if(a mod 2 == 0){
+        &quot;div by two&quot;
+    }else{
+        &quot;not div by two&quot;
+    }
+}
+
+result = {
+    a = 21
+    for(n in 0 to 10){
+        a += n
+    }
+    a//implicit return
+}
+</code></pre>
+
+<h3 id="conditional-operator">Conditional Operator</h3>
+<p>Concurnas features a more intuitive conditional operator. In Java this looks like the following:</p>
+<pre><code class="language-java">boolean result = something() &gt; 10 ? &quot;case one&quot; : &quot;case two&quot;;
+</code></pre>
+
+<p>The <a href="../docs/controlStatements.html#if-else-expression">equivalent in Concurnas</a> is:</p>
+<pre><code class="language-conc">result = &quot;case one&quot; if something() &gt; 10 else &quot;case two&quot;
+</code></pre>
+
+<h3 id="looping-structures">Looping structures</h3>
+<p>Concurnas has support for the same looping structures as Java and more! For instance, in Java if we want to write an infinite loop we must write:</p>
+<pre><code class="language-java">while(true){
+    doSomething();
+}
+</code></pre>
+
+<p>But in Concurnas a dedicated <code>loop</code> statement is <a href="../docs/controlStatements.html#loop">provided</a>:</p>
+<pre><code class="language-conc">loop{
+    doSomething()
+}
+</code></pre>
+
+<h4 id="handling-an-empty-list">Handling an empty list</h4>
+<p>Concurnas offers a handy solution to the following problem often seen in Java:</p>
+<pre><code class="language-java">java.util.ArrayList&lt;Integer&gt; myList = ...
+
+if(myList.isEmpty()){
+    callFunction(0);
+}else{
+    for(n in myList){
+        callFunction(n);
+    }
+}
+</code></pre>
+
+<p>In Concurnas we can use an <code>else</code> block to <a href="../docs/controlStatements.html#else-block">attach a condition</a> to cover the case where we wish to handle an empty list:</p>
+<pre><code class="language-conc">myList = ...
+
+for(n in myList){
+    callFunction(n)
+}else{
+    callFunction(0)
+}
+</code></pre>
+
+<h4 id="loops-can-return">Loops can return</h4>
+<p>Since all blocks are able to return values in Concurnas, we're able to write some <a href="../docs/controlStatements.html#returns-from-repeating-control-statements">elegant code</a>. For instance in Java where we would normally write:</p>
+<pre><code class="language-java">int[] myarray = new int[]{1, 2, 3, 4, 5};
+
+java.util.List&lt;Integer&gt; myList = new java.util.ArrayList&lt;Integer&gt;();
+
+for(int n : myarray){
+    if(n == 2){
+        myList.append(2);
+        continue;
+    }else if(n == 3){
+        continue;
+    }else if(n == 9){
+        myList.append(-1);
+        break;//terminate early
+    }
+    myList.append(n*10);
+}//myList ==&gt; [10, 2, 40, 50]
+</code></pre>
+
+<p>In Concurnas we can write:</p>
+<pre><code class="language-conc">myarray = [1 2 3 4 5]
+
+myList = for(n in myarray){
+    if(n == 2){
+        continue 2;//add 2 to list and carry on
+    }else if(n == 3){
+        continue;
+    }else if(n == 9){
+        break -1;//terminate early
+    }
+    n * 10
+}//myList ==&gt; [10, 2, 40, 50]
+</code></pre>
+
+<h4 id="loops-with-index-values">Loops with index values</h4>
+<p>Sometimes it's nice to use <a href="../docs/controlStatements.html#iterator-style-for">iterator style for loops</a>, but also have an index counter like with a <a href="../docs/controlStatements.html#c-style-for">c style for loop</a>. With Java we are obliged to use the following pattern (or a c style for loop):</p>
+<pre><code class="language-java">int[] myarray = new int[]{1, 2, 3, 4, 5};
+
+int idx=0;
+for(int n : myarray){
+    doSomething(n, idx);
+    doSomethingElse(n, idx);
+    idx++;
+}
+</code></pre>
+
+<p>Whereas in Concurnas this can be achieved with an <a href="../docs/controlStatements.html#the-index-variable">index variable</a> as follows:</p>
+<pre><code class="language-conc">myarray = [1 2 3 4 5]
+
+for(int n : myarray; idx){
+    doSomething(n, idx);
+    doSomethingElse(n, idx);
+}
+</code></pre>
+
+<h3 id="toboolean">toBoolean</h3>
+<p>Objects in both Java and Concurnas have a <code>toString</code> method, in Concurnas all objects also have an additional <code>toBoolean</code> method. This means that the following code in Java:</p>
+<pre><code class="language-java">class Holder&lt;X&gt;{
+    private X x;
+    public void setX(X x) {
+        this.x = x;
+    }
+
+    public boolean toBoolean() {
+        return this.x != null;
+    }
+}
+
+Holder&lt;Integer&gt; holder = new Holder&lt;Integer&gt;();
+
+if(holder.toBoolean()) {
+    //x has been set inside holder!
+}
+</code></pre>
+
+<p>May be <a href="../docs/others.html#cobject">simplified in Concurnas</a> as:</p>
+<pre><code class="language-conc">class Holder&lt;X&gt;{
+    +x X?
+    override toBoolean() =&gt; this.x &lt;&gt; null
+}
+
+holder = new Holder&lt;Integer&gt;()
+
+if(holder) {//equivalent to if(holder.toBoolean()){...
+    //x has been set inside holder!
+}
+</code></pre>
+
+<p>Furthermore, if the type of the expression being checked in the <code>if</code> statement is nullable, it shall first be examined to see if it's <code>null</code>. Thus the following is valid:</p>
+<pre><code class="language-conc">holder Holder&lt;Integer&gt;? = //...
+
+if(holder) {//equivalent to: holder &lt;&gt; null and holder.toBoolean()
+    //x has been set inside holder!
+}
+</code></pre>
+
+<h4 id="toboolean-for-lists">toBoolean for lists</h4>
+<p>Lists represent a special case in the aforementioned toBoolean logic. For lists, maps and sets toBoolean is mapped to <code>not _.isEmpty()</code>. Thus the equivalent of the following Java code:</p>
+<pre><code class="language-java">java.util.List&lt;Integer&gt; myList = new java.util.ArrayList&lt;Integer&gt;();
+//...
+if(!myList.isEmpty()){
+    //do something with non empty list
+}
+</code></pre>
+
+<p>Is the following in Concurnas:</p>
+<pre><code class="language-conc">myList = list&lt;int&gt;()
+//...
+if(myList){
+    //do something with non empty list
+}
+</code></pre>
+
+<h2 id="functions">Functions</h2>
+<p><a href="../docs/functions.html">Functions</a> and <a href="../docs/classes.html#methods">methods</a> in Concurnas can be an optionally concise. With Java we are obliged to stick to one verbose way of doing things:</p>
+<pre><code class="language-java">public static int doMath(int upon) {
+    return upon * 2 + 9;        
+}
+</code></pre>
+
+<p>Whereas in Concurnas we may be optionally concise. The following are functionally identical:</p>
+<pre><code class="language-conc">def doMath(upon int) int{//most verbose form
+    return upon * 2 + 9
+}
+
+def doMath(upon int){//inference of return type
+    return upon * 2 + 9
+}
+
+def doMath(upon int){
+    upon * 2 + 9//implicit returns
+}
+
+def doMath(upon int) =&gt; upon * 2 + 9//most compact definition
+</code></pre>
+
+<h3 id="generic-functions">Generic Functions</h3>
+<p>Like Java, Concurnas supports <a href="../docs/generics.html#generics-for-methods">generic functions</a>, here is a Java example:</p>
+<pre><code class="language-java">public static &lt;Gen&gt; java.util.ArrayList&lt;Gen&gt; makeList(Gen g) {
+    java.util.ArrayList&lt;Gen&gt; ret = new  java.util.ArrayList&lt;Gen&gt;();
+    ret.add(g);
+    return ret;
+}
+</code></pre>
+
+<p>The equivalent in Concurnas is slightly more intuitive in its positioning of the generic type qualification:</p>
+<pre><code class="language-conc">def makeList&lt;Gen&gt;(g Gen) =&gt; list&lt;Gen&gt;()..add(g)
+</code></pre>
+
+<h3 id="nested-functions">Nested functions</h3>
+<p>Concurnas has support for <a href="../docs/functions.html#nested-functions">nested functions</a>. They are a nice option for avoiding code duplication, they also make it easier to read code that uses companion functions (i.e. whose utility is restricted to assisting only the function within which they are nested):</p>
+<pre><code class="language-conc">def pairProcessor(items list&lt;int&gt;){
+    plusWhat = 10
+    def op(x int) =&gt; x*2 + plusWhat//nested function
+
+    for(n in items){
+        op(n), op(n+1)
+    }
+}
+
+//a call: pairProcessor([1, 2, 3]) returns: [(12, 14), (14, 16), (16, 18)]
+</code></pre>
+
+<p>Java does not support this functionality.</p>
+<h3 id="default-arguments">Default arguments</h3>
+<p>Concurnas has support for <a href="../docs/functions.html#default-arguments">default arguments</a>. Consider the following typical case of Java code:</p>
+<pre><code class="language-java">public static int doSomething(a int){
+    return a + 100;
+}
+
+public static int doSomething(){
+    return doSomething(12);
+}
+</code></pre>
+
+<p>The equivalent in Concurnas is much more compact:</p>
+<pre><code class="language-conc">def doSomething(a = 12) =&gt; a + 100
+</code></pre>
+
+<p>The above Concurnas code may be invoked as follows:</p>
+<pre><code class="language-conc">doSomething()
+doSomething(99)
+//etc...
+</code></pre>
+
+<h3 id="named-arguments">Named arguments</h3>
+<p><a href="../docs/functions.html#calling-functions-and-methods">Named arguments</a> are not a feature of Java. With Concurnas the following is possible:</p>
+<pre><code class="language-conc">def doSomething(a = 12, b = 100) =&gt; a + b
+
+doSomething(a=78)//equivalent to: doSomething(78, 100)
+</code></pre>
+
+<p>Java does not support this.</p>
+<h2 id="whats-next">What's next?</h2>
+<p>Checkout the <a href="concVsJava2.html">next article (part 2)</a> in the series for more differences between Concurnas and Java.</p>			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+<footer class="footer dark site-footer">
+	<div class="container">
+		<div class="sitemap clearfix">
+			<ul>
+	<li class="column">		
+			<h5><a href="../index.html">Home</a></h5>		
+			<h5><a href="../download.html">Download</a></h5>
+			<h5><a href="../docs/manual.html">Documentation</a></h5>	
+			<h5><a href="../video/index.html">Video</a></h5>		
+	</li>
+	
+	
+	<li class="column">
+		<h5><a href="../learnmore/overview.html">Learn More</a></h5>
+			<ul>
+				<li><a href="../learnmore/overview.html">Language Overview</a></li>	
+				<li><a href="../learnmore/concVsJava1.html">Concurnas vs Java</a></li>	
+				<li><a href="../learnmore/usecases.html">Use cases:</a></li>			
+				<li><a href="../learnmore/finance.html">&bull; Finance</a></li>			
+				<li><a href="../learnmore/sciComp.html">&bull; Scientific Computing</a></li>			
+				<li><a href="../learnmore/startups.html">&bull; Startups</a></li>	
+				<li><a href="../learnmore/mailinglist.html">Mailing List</a></li>
+				<li><a href="../learnmore/contribute.html">Contribute</a></li>			
+			</ul>
+	</li>	
+	
+	<li class="column">
+		<h5><a href="../docs/manual.html">Documentation</a></h5>
+		<ul>
+			<li><a href="../docs/manual.html">Reference Manual</a></li>
+			<li><a href="../video/index.html">Video</a></li>	
+			<li><a href="../docs/communitySupport.html">Community Support</a></li>
+		</ul>
+	</li>
+
+
+	<li class="column">
+		<h5><a href="../concurnasltd/introduction.html">Concurnas Ltd</a></h5>
+			<ul>
+				<li><a href="../concurnasltd/leadership.html">Leadership</a></li>		
+				<li><a href="../concurnasltd/careers.html">Careers</a></li>			
+				<li><a href="../concurnasltd/open-source.html">Open Source</a></li>			
+				<li><a href="../concurnasltd/support.html">Support</a></li>				
+				<li><a href="../concurnasltd/consulting.html">Consulting</a></li>
+				<li><a href="../concurnasltd/sponsorship.html">Sponsorship</a></li>		
+				<li><a href="../concurnasltd/contact.html">Contact</a></li>
+			</ul>
+	</li>
+
+	<li class="column">
+		<h5><a href="../news.html">News</a></h5>
+		<ul>
+			<li><a href="../news.html">Latest News</a></li>	
+			<li><a href="../newsletters/march2020.html">Newsletters</a></li>		
+			<li><a href="../rss.xml"><img src="../img/rss.gif" alt="rss"></li>	
+		</ul>
+	</li>
+
+
+	
+</ul>
+
+		</div>
+		<div class="copyright">
+			<small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/bootstrap-toc.min.js"></script>
+
+<script type="text/javascript" src="../js/prism.js"></script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="../js/client.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126537021-1');
+</script>
+
+
+
+
+
+<!--<script async src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+
+</body>
+</html>

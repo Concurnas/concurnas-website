@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html id="page">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width"/>
+	<title>March 2020 Concurnas Newsletter</title>
+
+ 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="../css/conc.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/social.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+	<link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+	<!-- Google -->
+	<meta name="description" content="Latest news as of March 2020 concerning Concurnas"/>
+
+	<!-- OpenGraph -->
+	<meta property="og:title" content="March 2020 Concurnas Newsletter"/>
+	<meta property="og:type" content="article"/>
+	<meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+	<meta property="og:description" content="Latest news as of March 2020 concerning Concurnas"/>
+	<meta property="og:site_name" content="The Concurnas Programming Language"/>
+	<meta property="og:url" content="http://concurnas.com/newsletters/march2020.html"/>
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -50) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+	
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav>
+
+<div class="page-wrap">
+<div class="section site-content">			
+	<div class="container">	
+		<div class="row">
+			<div class="col-lg-2 tree-nav">
+			<ul>
+	<li class=""><i class="far fa-file-alt fa-fw"></i><a href="march2020.html">March 2020</a></li>
+</ul>
+			</div>
+			<div class="col-lg-10"><p align="center">
+  <img width="15%" src="../img/logo.png">
+</p>
+
+<hr />
+<h1 id="concurnas-newsletter-march-2020">Concurnas newsletter - March 2020</h1>
+<hr />
+<p><div class="sshare__cont" align="right">
+
+<!-- Sharingbutton Facebook -->
+<a class="sshare__link" href="https://facebook.com/sharer/sharer.php?u=http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html" target="_blank" rel="noopener" aria-label="Facebook">
+  <div class="sshare sshare--facebook sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg></div>Facebook</div>
+</a>
+
+<!-- Sharingbutton LinkedIn -->
+<a class="sshare__link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html&amp;title=March%202020%20Concurnas%20Newsletter&amp;summary=Latest%20news%20as%20of%20March%202020%20concerning%20Concurnas&amp;source=http%3A%2F%2Fconcurnas.com" target="_blank" rel="noopener" aria-label="LinkedIn">
+  <div class="sshare sshare--linkedin sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg></div>LinkedIn</div>
+</a>
+
+<!-- Sharingbutton Twitter -->
+<a class="sshare__link" href="https://twitter.com/intent/tweet/?text=Latest%20news%20as%20of%20March%202020%20concerning%20Concurnas&amp;url=http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html" target="_blank" rel="noopener" aria-label="Twitter">
+  <div class="sshare sshare--twitter sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg></div>Twitter</div>
+</a>
+
+<!-- Sharingbutton Reddit -->
+<a class="sshare__link" href="https://reddit.com/submit/?url=http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html&amp;resubmit=true&amp;title=March%202020%20Concurnas%20Newsletter" target="_blank" rel="noopener" aria-label="Reddit">
+  <div class="sshare sshare--reddit sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 11.5c0-1.65-1.35-3-3-3-.96 0-1.86.48-2.42 1.24-1.64-1-3.75-1.64-6.07-1.72.08-1.1.4-3.05 1.52-3.7.72-.4 1.73-.24 3 .5C17.2 6.3 18.46 7.5 20 7.5c1.65 0 3-1.35 3-3s-1.35-3-3-3c-1.38 0-2.54.94-2.88 2.22-1.43-.72-2.64-.8-3.6-.25-1.64.94-1.95 3.47-2 4.55-2.33.08-4.45.7-6.1 1.72C4.86 8.98 3.96 8.5 3 8.5c-1.65 0-3 1.35-3 3 0 1.32.84 2.44 2.05 2.84-.03.22-.05.44-.05.66 0 3.86 4.5 7 10 7s10-3.14 10-7c0-.22-.02-.44-.05-.66 1.2-.4 2.05-1.54 2.05-2.84zM2.3 13.37C1.5 13.07 1 12.35 1 11.5c0-1.1.9-2 2-2 .64 0 1.22.32 1.6.82-1.1.85-1.92 1.9-2.3 3.05zm3.7.13c0-1.1.9-2 2-2s2 .9 2 2-.9 2-2 2-2-.9-2-2zm9.8 4.8c-1.08.63-2.42.96-3.8.96-1.4 0-2.74-.34-3.8-.95-.24-.13-.32-.44-.2-.68.15-.24.46-.32.7-.18 1.83 1.06 4.76 1.06 6.6 0 .23-.13.53-.05.67.2.14.23.06.54-.18.67zm.2-2.8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm5.7-2.13c-.38-1.16-1.2-2.2-2.3-3.05.38-.5.97-.82 1.6-.82 1.1 0 2 .9 2 2 0 .84-.53 1.57-1.3 1.87z"/></svg></div>Reddit</div>
+</a>
+
+<!-- Sharingbutton Hacker News -->
+<a class="sshare__link" href="https://news.ycombinator.com/submitlink?u=http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html&amp;t=March%202020%20Concurnas%20Newsletter" target="_blank" rel="noopener" aria-label="Hacker News">
+  <div class="sshare sshare--hackernews sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140"><path fill-rule="evenodd" d="M60.94 82.314L17 0h20.08l25.85 52.093c.397.927.86 1.888 1.39 2.883.53.994.995 2.02 1.393 3.08.265.4.463.764.596 1.095.13.334.262.63.395.898.662 1.325 1.26 2.618 1.79 3.877.53 1.26.993 2.42 1.39 3.48 1.06-2.254 2.22-4.673 3.48-7.258 1.26-2.585 2.552-5.27 3.877-8.052L103.49 0h18.69L77.84 83.308v53.087h-16.9v-54.08z"></path></svg></div>Hacker News</div>
+</a>
+
+<!-- Sharingbutton WhatsApp -->
+<a class="sshare__link" href="whatsapp://send?text=Latest%20news%20as%20of%20March%202020%20concerning%20Concurnas%20http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <div class="sshare sshare--whatsapp sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.1 3.9C17.9 1.7 15 .5 12 .5 5.8.5.7 5.6.7 11.9c0 2 .5 3.9 1.5 5.6L.6 23.4l6-1.6c1.6.9 3.5 1.3 5.4 1.3 6.3 0 11.4-5.1 11.4-11.4-.1-2.8-1.2-5.7-3.3-7.8zM12 21.4c-1.7 0-3.3-.5-4.8-1.3l-.4-.2-3.5 1 1-3.4L4 17c-1-1.5-1.4-3.2-1.4-5.1 0-5.2 4.2-9.4 9.4-9.4 2.5 0 4.9 1 6.7 2.8 1.8 1.8 2.8 4.2 2.8 6.7-.1 5.2-4.3 9.4-9.5 9.4zm5.1-7.1c-.3-.1-1.7-.9-1.9-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6s.3-.3.4-.5c.2-.1.3-.3.4-.5.1-.2 0-.4 0-.5C10 9 9.3 7.6 9 7c-.1-.4-.4-.3-.5-.3h-.6s-.4.1-.7.3c-.3.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.3-.3-.4-.6-.5z"/></svg></div>WhatsApp</div>
+</a>
+
+<!-- Sharingbutton E-Mail -->
+<!--<a class="sshare__link" href="mailto:?subject=March%202020%20Concurnas%20Newsletter&amp;body=Latest%20news%20as%20of%20March%202020%20concerning%20Concurnas%20http%3A%2F%2Fconcurnas.com%2Fnewsletters%2Fmarch2020.html" target="_self" rel="noopener" aria-label="E-Mail">
+  <div class="sshare sshare--email sshare--medium"><div aria-hidden="true" class="sshare__icon sshare__icon--solid">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg></div>E-Mail</div>
+</a>-->
+
+</div></p>
+<p>Welcome to the March newsletter!</p>
+<p>Since its launch in December 2019 the <a href="https://concurnas.com">Concurnas programming language</a> has seen tremendous growth, in the press, in visits to the Concurnas website and in downloads of the language itself. In this issue we examine:</p>
+<ul>
+<li>The content of the latest Concurnas release <a href="https://github.com/Concurnas/Concurnas/releases/tag/1.14.020">1.14.020</a>.</li>
+<li>Concurnas in the press.</li>
+<li>The growth of Concurnas.</li>
+<li>How you can contribute.</li>
+</ul>
+<hr />
+<h2 id="the-latest-concurnas-release">The latest Concurnas release</h2>
+<p>The latest <a href="https://concurnas.com/download.html">Concurnas release</a> broadens the scope of JDK compatibility to include all JDK versions from 8 through to 13 (the latest) inclusive. We also have the following enhancements:</p>
+<ul>
+<li>New tools for working with Strings including:<ul>
+<li>character iterators: <code>x for x in "myString"</code></li>
+<li>individual character referencing: <code>str[n]</code></li>
+<li>sublists: <code>str[n ... y]</code></li>
+</ul>
+</li>
+<li>Method/function references now have a nice toString() representation: <code>plus10 (int) int = def(a int) { a + 10 }; plus10.toString()//(java/lang/Integer) java/lang/Integer</code></li>
+<li>Minor bugfixes and line number references on multi line inputs for the Concurnas REPL.</li>
+</ul>
+<p>Download the latest version with <a href="https://sdkman.io/sdks#concurnas">SDKMAN!</a> or the <a href="https://concurnas.com/download.html">Concurnas website</a>.</p>
+<hr />
+<h2 id="concurnas-in-the-press">Concurnas in the press</h2>
+<p>Concurnas has recently seen an increased amount of attention from the press. Here is the summary of the latest coverage:</p>
+<ul>
+<li><a href="https://www.infoworld.com/article/3528755/concurnas-language-taps-jvm-for-high-performance-apps.html">InfoWorld</a> and <a href="https://www.javaworld.com/article/3528917/concurnas-language-taps-jvm-for-high-performance-apps.html">JavaWorld</a> - Introducing Concurnas.</li>
+<li><a href="https://concurnas.com/learnmore/concVsJava1.html">Concurnas vs Java</a>, also on <a href="https://medium.com/@jason.tatton_/concurnas-vs-java-part-1-f503a297848a">medium</a>  - Illustrating the differences between Java and Concurnas.</li>
+<li><a href="https://jaxenter.com/introducing-new-jvm-lanaguage-concurnas-167915.html">Jaxenter</a> - Introducing the basic syntax and features of Concurnas.</li>
+<li><a href="https://www.programmez.com/actualites/concurnas-un-langage-pour-la-jvm-dedie-la-programmation-parallele-et-distribuee-30276">Programmez</a> - Article introducing Concurnas.</li>
+<li><a href="https://www.reddit.com/r/programming/comments/eplfo3/new_jvm_programming_language_concurnas/">Reddit</a> and more <a href="https://www.reddit.com/r/ProgrammingLanguages/comments/e8a42b/new_programming_language_concurnas/">Reddit</a> - Critical reception of Concurnas amongst redditors.</li>
+<li><a href="https://news.efinancialcareers.com/uk-en/3003214/leave-algorithmic-trading-job">efinancialcareers</a> - Article discussing the motivations for creating Concurnas.</li>
+<li><a href="https://www.waterstechnology.com/operations/4856196/ex-jp-morgan-trader-tackles-complex-computing-with-new-programming-language">WatersTechnology</a> - Interview with <a href="https://concurnas.com/concurnasltd/leadership.html">Jason Tatton</a>, the creator of Concurnas.</li>
+</ul>
+<hr />
+<h2 id="the-growth-of-concurnas">The growth of Concurnas</h2>
+<p>Since its launch in December 2019 the <a href="https://concurnas.com">Concurnas programming language</a> has seen tremendous growth. We observe this both in terms of traffic to the <a href="https://concurnas.com/">Concurnas website</a> and downloads of the language itself from <a href="https://github.com/Concurnas/Concurnas">github</a>.</p>
+<p align="center">
+  <img class="responsiveImg" src="../img/newsletters/2020-03-downloads.png">
+</p>
+
+<p align="center">
+  <img class="responsiveImg" src="../img/newsletters/2020-03-visitors.png">
+</p>
+
+<hr />
+<h2 id="contributing">Contributing</h2>
+<p>Concurnas is an open source programming language, we are often asked how volunteers may <a href="https://concurnas.com/learnmore/contribute.html">contribute</a> to the language. Here are the top areas of focus right now:</p>
+<ol>
+<li>Writing articles/videos on how to use Concurnas, tutorials, how-to's, sample applications etc.</li>
+<li>Working directly on Concurnas, there are a few <a href="https://github.com/Concurnas/Concurnas/issues">github issues</a> currently, more will be added in the near future.</li>
+<li>Suggesting/researching improvements to Concurnas, extra features, tools etc.</li>
+<li>Using the language to build software and providing feedback on the usability of documentation.</li>
+</ol>
+<p>Get involved today!</p>
+<hr />
+<h2 id="sign-up">Sign Up</h2>
+<p>Be the first to receive the latest Concurnas newsletters straight to your inbox!
+<p class="signup-text">Sign up for updates, release information and news about Concurnas:</p>
+<input type="email" placeholder="E-Mail" class="signup-email" id="emailSignup"><a data-toggle="modal" data-target="#exampleModal" class="btn btn-emailSignup" id="emailSignupBtn"><i class="fa fa-caret-right"></i></a>
+<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div id="mc_embed_signup">
+                    <form action="https://concurnas.us4.list-manage.com/subscribe/post?u=171fca0b73e36836226dba18f&amp;id=bd1cedadc6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                            <p>Sign up for updates, release information and news about Concurnas</p>
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address</label>
+                                <input type="email" value="" name="EMAIL" class="required email signup-form-input" id="mce-EMAIL">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-FNAME">First Name </label>
+                                <input type="text" value="" name="FNAME" class="required signup-form-input" id="mce-FNAME">
+                            </div>
+                            <div class="mc-field-group">
+                                <label for="mce-LNAME">Last Name </label>
+                                <input type="text" value="" name="LNAME" class="required signup-form-input" id="mce-LNAME">
+                            </div>
+                            <div id="mce-responses" class="clear">
+                                <div class="response" id="mce-error-response" style="display:none"></div>
+                                <div class="response" id="mce-success-response" style="display:none"></div>
+                            </div>
+                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                                <input type="text" name="b_171fca0b73e36836226dba18f_bd1cedadc6" tabindex="-1" value="">
+                            </div>
+                            <div class="clear">
+                                <input type="submit" value="Sign Me Up" name="subscribe" id="mc-embedded-subscribe" class="btn btn-emailSignup">
+               					<button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close mailing list signup"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div></p>			</div>
+		</div>
+	</div>
+</div>
+
+
+</div>
+
+<footer class="footer dark site-footer">
+	<div class="container">
+		<div class="sitemap clearfix">
+			<ul>
+	<li class="column">		
+			<h5><a href="../index.html">Home</a></h5>		
+			<h5><a href="../download.html">Download</a></h5>
+			<h5><a href="../docs/manual.html">Documentation</a></h5>	
+			<h5><a href="../video/index.html">Video</a></h5>		
+	</li>
+	
+	
+	<li class="column">
+		<h5><a href="../learnmore/overview.html">Learn More</a></h5>
+			<ul>
+				<li><a href="../learnmore/overview.html">Language Overview</a></li>	
+				<li><a href="../learnmore/concVsJava1.html">Concurnas vs Java</a></li>	
+				<li><a href="../learnmore/usecases.html">Use cases:</a></li>			
+				<li><a href="../learnmore/finance.html">&bull; Finance</a></li>			
+				<li><a href="../learnmore/sciComp.html">&bull; Scientific Computing</a></li>			
+				<li><a href="../learnmore/startups.html">&bull; Startups</a></li>	
+				<li><a href="../learnmore/mailinglist.html">Mailing List</a></li>
+				<li><a href="../learnmore/contribute.html">Contribute</a></li>			
+			</ul>
+	</li>	
+	
+	<li class="column">
+		<h5><a href="../docs/manual.html">Documentation</a></h5>
+		<ul>
+			<li><a href="../docs/manual.html">Reference Manual</a></li>
+			<li><a href="../video/index.html">Video</a></li>	
+			<li><a href="../docs/communitySupport.html">Community Support</a></li>
+		</ul>
+	</li>
+
+
+	<li class="column">
+		<h5><a href="../concurnasltd/introduction.html">Concurnas Ltd</a></h5>
+			<ul>
+				<li><a href="../concurnasltd/leadership.html">Leadership</a></li>		
+				<li><a href="../concurnasltd/careers.html">Careers</a></li>			
+				<li><a href="../concurnasltd/open-source.html">Open Source</a></li>			
+				<li><a href="../concurnasltd/support.html">Support</a></li>				
+				<li><a href="../concurnasltd/consulting.html">Consulting</a></li>
+				<li><a href="../concurnasltd/sponsorship.html">Sponsorship</a></li>		
+				<li><a href="../concurnasltd/contact.html">Contact</a></li>
+			</ul>
+	</li>
+
+	<li class="column">
+		<h5><a href="../news.html">News</a></h5>
+		<ul>
+			<li><a href="../news.html">Latest News</a></li>	
+			<li><a href="../newsletters/march2020.html">Newsletters</a></li>		
+			<li><a href="../rss.xml"><img src="../img/rss.gif" alt="rss"></li>	
+		</ul>
+	</li>
+
+
+	
+</ul>
+
+		</div>
+		<div class="copyright">
+			<small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>
+		</div>
+	</div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/bootstrap-toc.min.js"></script>
+
+<script type="text/javascript" src="../js/prism.js"></script>
+<script type="text/javascript" src="../js/cookies.js"></script>
+<script type="text/javascript" src="../js/client.min.js"></script>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-126537021-1');
+</script>
+
+
+
+
+<script type="text/javascript" src="../js/emailSignup.js"></script>
+<script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+<!--<script async src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+
+</body>
+</html>

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Distributed Computing</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Distributed Computing"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Distributed Computing"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Distributed Computing"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/distComp.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="distributed-computing">Distributed Computing<a class="headerlink" href="#distributed-computing" title="Permalink to this headline" id="distributed-computing">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#distributed-computing">Distributed Computing</a>
+   <ul>
+   <li><a class="reference internal" href="#creating-a-remote-request">Creating a remote request</a>   <ul>
+   <li><a class="reference internal" href="#common-error-handling-techniques">Common error handling techniques</a>   </li>
+   <li><a class="reference internal" href="#network-errors-after-submission">Network errors after submission</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#creating-a-remote-server">Creating a remote server</a>   <ul>
+   <li><a class="reference internal" href="#security-managers">Security Managers</a>   </li>
+   <li><a class="reference internal" href="#request-dependencies">Request Dependencies</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>The tiger said, "Excuse me, but I'm very hungry.</p>
+<p>Do you think I could have tea with you?"</p><footer>- Judith Kerr. (1968). The Tiger Who Came to Tea. Harper Collins</footer></blockquote>
+<p>So far we have been looking at concurrent computing on a single physical machine. A natural extension of concurrent computing is distributed computing, where by computation is performed at a physical location which differs from that of the origin of the request to do so.</p>
+<p>In time, as the demands placed upon one's software increase, it is often necessary to scale one's solution beyond more than one machine. Additionally, from an architectural/cost perspective, it is often most sensible to centralize resources, whether it be data (in the form of databases) or high performance hardware (such as gpu cluster machines, multi physical cpu machines etc), and have clients access that resource in a controlled manner on a service basis (with associated monitoring, SLA's etc). With Concurnas this is made easy since distributed computing is treated like a first class citizen in the language.</p>
+<p>Since distributed computing is by nature non local to one's physical machine originating the need to perform distributed computing, a communication network must be utilized in order to initiate, coordinate and resolve that computation. This of course introduces a whole set of engineering problems which need to be overcome in order to create reliable software. Whereas with localized concurrent computing we need only concern ourselves with application level errors (errors in our logic or local parts of our computer we make use of), with distributed computing we must factor in inevitable errors of the communication network we are utilizing. Luckily Concurnas abstracts away most of the tedious boilerplate hard work allowing one to focus on what matters most.</p>
+<p>Whereas with a localized machine, we are unlikely to receive notification (and therefore be able to react to) a catastrophic unexpected error since it would most likely manifest in the form of our entire machine failing or it being in such a state so as to render it unusable thereafter. But, as with distributed computing, when we are utilizing a communication network we must factor in this source of error, as it is at least an order of magnitude or three (10x - 1,000x) more probable to occur. For example network failure or the physical machines we're trying to make use of becoming unavailable (scheduled maintenance/downtime etc). To this effect we will see that Concurnas has special first class citizen syntactical support requiring capture and response to these forms of expected, unpredictable failure.</p>
+<div class="section">
+<div class="section">
+<h2 id="creating-a-remote-request">Creating a remote request<a class="headerlink" href="#creating-a-remote-request" title="Permalink to this headline" id="creating-a-remote-request">?</a></h2>
+<p>We can connect to a remote host and perform remote computation via a remote isolate in much the same way as we can create a new isolate. The syntax is both elegant and concise. Let's look at an example:</p>
+<pre><code class="lang-conc">rm = Remote('localhost')//establish a connection to a remote Concurnas server
+rm.connect()//optionally called
+result int: = {1+1}!(rm.onfail(e=&gt;e.retry()))//result =&gt; 2
+rm.close()//close wait for result of our isolate above to be set
+</code></pre>
+<p>Alternatively we can define the isolate to execute as follows:</p>
+<pre><code class="lang-conc">rm = Remote('localhost')
+rm.connect()//optionally called
+def func() =&gt; 1+1
+result int: = func()!(rm.onfail(e=&gt;e.retry()))//result =&gt; 2
+rm.close()//close wait for result of our isolate above to be set
+</code></pre>
+<p>In the above cases, first we establish a connection to a remote Concurnas server by creating a <code class="lang-conc">Remote</code> connector with a hostname/ip address and optional port (which defaults to <code class="lang-conc">42000</code> if unspecified): <code class="lang-conc">Remote('localhost')</code>. Note that Remote is automatically imported.</p>
+<p>We next call <code class="lang-conc">connect()</code> to establish a network connection to our remote server. This is an optional step, it will be called upon first submission of an isolate if it a connection has not already been established.</p>
+<p>Next we attempt to submit the isolate <code class="lang-conc">{1+1}</code><code class="lang-conc">!</code> for execution remotely. This occurs as normal but except for us passing an executor on the right hand side of the bang <code class="lang-conc">!</code> operator. This executor is returned from the remote objects <code class="lang-conc">onfail</code> method, which obliges the remote request initiator to handle the error case of a isolate task submission failing at inception by passing an object of type <code class="lang-conc">com.concurnas.dist.RemoteFailureHandler</code> to handle this occurrence. <code class="lang-conc">RemoteFailureHandler</code> is a SAM type thus we are able to use the compact lambda syntax to pass in a handler above. Our error handling strategy above is to simply re-attempt to submit the isolate task if it cannot be initially submit or a server side execution error occurs.</p>
+<p>An object of type <code class="lang-conc">com.concurnas.dist.RemoteFailureContext</code> is passed to the provided <code class="lang-conc">RemoteFailureHandler</code>. This contains the following noteworthy utility methods:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">retry()</code> - Attempt to re run the isolate.</p>
+</li>
+  <li><p><code class="lang-conc">result()</code> - Returns the ref to which the return value of the remotely spawned isolate would have its return value assigned. Returns null if the isolate does not return a value.</p>
+</li>
+  <li><p><code class="lang-conc">reason()</code> - Returns the Exception indicating the cause of failure.</p>
+</li>
+</ul class="simple">
+<p>The error handler can even be stateful, for example:</p>
+<pre><code class="lang-conc">from com.concurnas.dist import RemoteFailureContext, RemoteFailureContext
+
+rem = Remote('localhost')
+result = {1+1}!(rem.onfail( new RemoteFailureHandler{  
+  attempts = 1
+	
+  def handle(e RemoteFailureContext){
+    if(attempts++ &gt; 10){//retry 10 times then give up
+      e.result():setException(e.reason())
+    }else{
+      e.retry()
+    }
+  }
+} ))
+//result == 2
+</code></pre>
+<p>If the error handler itself throws an exception, then this exception will be set on the ref returned from the isolate. If no ref is returned from the isolate, then this exception will be passed to the default isolate error handler (this is generally not a desirable situation).</p>
+<p>Remember that an exception occurring within the bounds of the isolate itself, does not constitute a distributed computing communication (or otherwise) failure, and is recorded on the exception value of the ref as normal - the error handler discussed here does not catch this.</p>
+<p>Being an isolate, of which the resultant type is a ref, allows us to otherwise carry on with execution asynchronously until the point where the value of the ref is required. This is an incredibly powerful mechanism, it's feasible to envisage hundreds or even thousands of these remote requests being spawned across thousands of machines in order to solve a complex problem.</p>
+<p>When we are finished with the remote connection we can call the <code class="lang-conc">close()</code> method in order to wait for the result of any pending isolates and finally disconnect from the remote server once the results (positive or an exception) are known. By implementing the close method in this way, we can use remote connections within try-with-resources blocks. For example:</p>
+<pre><code class="lang-conc">try(rm = Remote('localhost')){//close rm on completion of this block
+  rm.connect()//optionally called
+  result int: = {1+1}!(rem.onfail(e=&gt;e.retry()))//result =&gt; 2
+}
+</code></pre>
+<p>A second variant of the <code class="lang-conc">close()</code> method exists for remote connections. The <code class="lang-conc">close()</code> method takes a boolean parameter, <code class="lang-conc">close(hard boolean)</code>. If this is set to <code class="lang-conc">true</code> then the connection will be closed immediately, any outstanding remotely spawned isolates will have an exception set on their resultant ref:</p>
+<pre><code class="lang-conc">rm = Remote('localhost')
+rm.connect()//optionally called
+result int: = {1+1}!(rem.onfail(e=&gt;e.retry()))//result =&gt; 2
+rm.close(hard = true)//do not wait for the result above to complete
+</code></pre>
+<p>In the above case of an explicit hard disconnection any outstanding isolates will have an <code class="lang-conc">ClientPrematureDisconnection</code> exception set on their result refs.</p>
+<p>Some care should be taken with hard disconnections, since we are not waiting for the result of our submit isolate before closing our connection. Closing a connection will prevent as yet unstarted remote isolates from starting.</p>
+<p>It is essential to call the close method when one is finished using the remote connection because just like other forms of io (e.g. files), failing to do so will keep the connection open resulting in a resource leak.</p>
+<div class="section">
+<div class="section">
+<h3 id="common-error-handling-techniques">Common error handling techniques<a class="headerlink" href="#common-error-handling-techniques" title="Permalink to this headline" id="common-error-handling-techniques">?</a></h3>
+<p>The <code class="lang-conc">com.concurnas.dist.Remote</code> class comes with a number of pre packaged error handling mechanism. Here are two notable ones:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">onFailRetry()</code> - retry a remote request a fixed number of times (by default, 10) before giving up and setting the last reason for failure as the exception on the ref returned by the isolate.</p>
+</li>
+  <li><p><code class="lang-conc">onFailFail()</code> - If the initial execution attempt fails, give up and set the provided exception on the ref returned by the isolate.</p>
+</li>
+</ul class="simple">
+</div>
+<div class="section">
+<h3 id="network-errors-after-submission">Network errors after submission<a class="headerlink" href="#network-errors-after-submission" title="Permalink to this headline" id="network-errors-after-submission">?</a></h3>
+<p>So far we have covered errors occurring up to an isolate being successfully submit to, and executed by, a remote executor. Once the isolate has been received at the remote server and acknowledged as such a client remote connection will automatically reconnect to the remote server in the case of any networking disconnections.</p>
+<p>Submit isolates will be executed by the remote server even in the case of unexpected client disconnection, the result of said computation will be cached until the client reconnects or the remote server itself is closed. If a client explicitly hard closes a connection, then any outstanding isolates will be terminated.</p>
+</div>
+</div>
+<h2 id="creating-a-remote-server">Creating a remote server<a class="headerlink" href="#creating-a-remote-server" title="Permalink to this headline" id="creating-a-remote-server">?</a></h2>
+<p>A remote server can easily be created in Concurnas by using the following code:</p>
+<pre><code class="lang-conc">from com.concurnas.lang.dist import RemoteServer
+rmServer = RemoteServer()
+remServer.startServer()//start remote server
+//...use remote server...
+rmServer.close()
+</code></pre>
+<p>A port may optionally be specified, if not then the server will be spawned on port: <code class="lang-conc">42000</code>.</p>
+<p>It is essential to call the close method when one is finished using the remote server because just like other forms of I/O (e.g. files), failing to do so will keep all its client connections open resulting in a resource leak.</p>
+<div class="section">
+<div class="section">
+<h3 id="security-managers">Security Managers<a class="headerlink" href="#security-managers" title="Permalink to this headline" id="security-managers">?</a></h3>
+<p>Since when we are creating a remote server we are opening up our machine for external access. It's often beneficial to exert some additional control over this code which we may not fully trust. To this end one can pass a <code class="lang-conc">java.security.PermissionCollection</code> to the <code class="lang-conc">com.concurnas.lang.dist.RemoteServer</code> instance. For example:</p>
+<pre><code class="lang-conc">from java.security import PermissionCollection, Permissions, AllPermission
+perms = Permissions()
+perms.add(new AllPermission())
+
+remServer = RemoteServer(permissions = perms)
+</code></pre>
+<p>In the above example, in using a <code class="lang-conc">AllPermission</code> object we are giving our remote code the privileges as the spawned server executing it. In practice this scope can of course be narrowed. For more details on security managers see here: <a href="others.html#security-managers1">Concurnas Security Managers</a> and here: <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/spec/security-spec.doc3.html">Java security managers</a></p>
+<p>In the case where no security policy is defined above, remote code will be executed with the same privileges as the spawned server.</p>
+</div>
+<div class="section">
+<h3 id="request-dependencies">Request Dependencies<a class="headerlink" href="#request-dependencies" title="Permalink to this headline" id="request-dependencies">?</a></h3>
+<p>Distributed computing in Concurnas is agnostic to the origin of the source code being submit. Remote servers are treated almost like dumb terminals though usually with a tremendous amount of compute power and exposure of special resources (databases, custom hardware etc). In practice this means that a connecting client may submit whatever code they like, with whatever code dependencies they deem appropriate.</p>
+<p>The server will interact with the requesting client so as to obtain a copy of the bytecode required in order to execute the service if it doesn't already have a copy locally for the connected client. This is part of the protocol implemented by the client and server components of the distributed computing framework in Concurnas and occurs automatically behind the scenes. Any specified code will be executed by the remote server provided that it complies with any security policies defined. The dependency provision protocol itself is quite sophisticated and in the interests of performance is able to perform static code dependency analysis in order to determine and preemptively provide upfront the code that is required in order to execute a request.</p>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="distComp.html">Distributed Computing</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-a-remote-request">Creating a remote request</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#common-error-handling-techniques">Common error handling techniques</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#network-errors-after-submission">Network errors after submission</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-a-remote-server">Creating a remote server</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#security-managers">Security Managers</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#request-dependencies">Request Dependencies</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Language Extensions</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Language Extensions"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Language Extensions"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Language Extensions"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/langExtensions.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="language-extensions">Language Extensions<a class="headerlink" href="#language-extensions" title="Permalink to this headline" id="language-extensions">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#language-extensions">Language Extensions</a>
+   <ul>
+   <li><a class="reference internal" href="#using-language-extensions">Using language extensions</a>   <ul>
+   <li><a class="reference internal" href="#using-imported-language-extensions">Using imported language extensions</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#creating-language-extensions">Creating language extensions</a>   <ul>
+   <li><a class="reference internal" href="#defining-language-extensions">Defining language extensions</a>   </li>
+   <li><a class="reference internal" href="#errors-and-warnings">Errors and warnings</a>   </li>
+   <li><a class="reference internal" href="#practical-tips">Practical tips</a>   <ul>
+   <li><a class="reference internal" href="#abstract-syntax-trees">Abstract syntax trees</a>   </li>
+   <li><a class="reference internal" href="#the-visitor-pattern">The visitor pattern</a>   </li>
+   <li><a class="reference internal" href="#iterative-compilation">Iterative compilation</a>   </li>
+   <li><a class="reference internal" href="#focus-of-effort">Focus of effort</a>   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#example-language-extension">Example language extension</a>   <ul>
+   <li><a class="reference internal" href="#using-our-example-language-extension">Using our example language extension</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>He was kind of foreign, you know? Like the Hub people. Bald as a coot. I remember thinking, 'you look like a young man, mister, but you look like you've been a young man for a long, long time if I'm any judge.' Normally I wouldn't have any man there, but he sat and talked to her in his foreign lingo and sang her songs and little poems and soothed her, and back she came, out of thin air, and I was ready and it was one, two, done. And then she was gone. Except that she was still there, I think. In the air.</p><footer>- Pratchett, Terry. (2001). Thief of Time. Harper Collins</footer></blockquote>
+<p>A really useful and exciting component of Concurnas is its support for language extensions. These enable us to embed code defined in other programming languages directly within Concurnas. This provides us with the following advantages:</p>
+<ul class="simple">
+  <li><p><b>Convenience</b> - By using language extensions we avoid the need to switch to other tools/toolchains, products etc. this greatly simplifies our working environment and build process.</p>
+</li>
+  <li><p><b>Appropriateness</b> - By using language extensions we're able to use the right language for the task at hand, without having to try and fit our solution around the language we're mainly programming in.</p>
+</li>
+  <li><p><b>Allows for compile time checking of code</b> - It's always better to know about errors ahead of runtime. Language extensions may be integrated such that they can report errors back to the core Concurnas compiler for highlighting at compile time.</p>
+</li>
+  <li><p><b>Compiles down to bytecode</b> - Language extensions are compiled to bytecode and are thus executed at the same speed as 'native' high performance Concurnas code.</p>
+</li>
+  <li><p><b>Easy to integrate</b> - With Concurnas language extensions we need only concern ourselves with the tokenization, parsing and some semantic analysis of our guest language. We can avoid bytecode or machine code generation, as we instead output Concurnas code. This generated Concurnas code is checked and treated as par normal Concurnas code in the subsequent analysis and compilation stages of the core Concurnas compiler. This removes the majority of the hard work from the process of supporting guest languages and allows us to focus on the more interesting part concerning language structure and semantics.</p>
+</li>
+</ul class="simple">
+<div class="section">
+<div class="section">
+<h2 id="using-language-extensions">Using language extensions<a class="headerlink" href="#using-language-extensions" title="Permalink to this headline" id="using-language-extensions">?</a></h2>
+<p>We can make use of pre defined language extensions by importing them in much the same way as conventional <code class="lang-conc">import</code> statements. We simply need use the <code class="lang-conc">using</code> keyword to import the appropriate language extension class. The following is valid:</p>
+<pre><code class="lang-conc">using com.myorg.langs.mylang
+using com.myorg.langs.mylang as MyLanguage
+
+from com.myorg.langs using mylang
+from com.myorg.langs using mylang as MyLanguage
+
+from com.mycode using *
+using com.mycode.*
+</code></pre>
+<p>In addition to the above, language extensions may be imported using the regular <code class="lang-conc">import</code> syntax and used as regular classes.</p>
+<div class="section">
+<div class="section">
+<h3 id="using-imported-language-extensions">Using imported language extensions<a class="headerlink" href="#using-imported-language-extensions" title="Permalink to this headline" id="using-imported-language-extensions">?</a></h3>
+<p>The syntax for using an imported language extension within a language extension expression is as follows:</p>
+<center>
+<p><code class="lang-conc">LangExtentionName '||' code '||'</code></p>
+</center>
+<p>For example, a lisp like language may be used within a language extension expression as follows:</p>
+<pre><code class="lang-conc">using com.myorg.langs.mylisp
+
+result = mylisp||(+ 1 2 3 )||
+</code></pre>
+<p>The code expressed within the pair of <code class="lang-conc">||</code>'s is to be defined in that of the guest language extension, in the above example, <code class="lang-conc">mylisp</code>. At compilation time, this code is passed to an instance of the <code class="lang-conc">mylisp</code> language extension which itself (after any appropriate error checking and other operations it performs) returns a String output of Concurnas code - this Concurnas code is then handled as normal by the Concurnas compiler.</p>
+<p>Language extensions may be used at any point within a Concurnas program, provided that the guest language extension supports it. I.e. at top level, within a function, within an extension function/method, at field level of a class and within a method. Language extensions may only be referenced as names as par above - they may not include parameters since they are not treated as variables/classes etc.</p>
+<p>As with Strings when defining code in a guest language the backslash may be used as an escape character, for instance to escape the pipe operator:</p>
+<pre><code class="lang-conc">using com.myorg.langs.usesPipe
+
+result = usesPipe||something \| something ||//escape the |
+</code></pre>
+<p>Language extensions are executed as par normal Concurnas code, i.e as isolates.</p>
+</div>
+</div>
+<h2 id="creating-language-extensions">Creating language extensions<a class="headerlink" href="#creating-language-extensions" title="Permalink to this headline" id="creating-language-extensions">?</a></h2>
+<p>Concurnas offers a powerful and concise API (exposed under: <code class="lang-conc">com.concurnas.lang.langExt</code>) for implementing language extensions, of either existing programming languages or totally new ones! Let us first familiarise ourselves with the typical phases of language compilation and execution implemented in some manor by most language compilers/runtimes, from the perspective of Concurnas:</p>
+<ol class="arabic">
+  <li><p><b>Lexical analysis</b>. Splitting the input code into parable segments. ( <code class="lang-conc">val a = 10</code> -&gt; <code class="lang-conc">'val', 'a', '=', '10'</code> )</p>
+</li>
+  <li><p><b>Parsing</b>. Turning our stream of tokens from the previous stage into a verifiably syntactically correct structure.</p>
+</li>
+  <li><p><b>Semantic analysis</b>. Attributes meaning to our previously defined structure and verifies consistency of that meaning (e.g. variable types, scopes).</p>
+</li>
+  <li><p><b>Intermediate code generation (optional)</b>. Transcompiling our previous data structure to another format for easier working in downstream phases.</p>
+</li>
+  <li><p><b>Bytecode generation</b>. The final stage of the Concurnas compiler outputs <i>executable</i> bytecode.</p>
+</li>
+  <li><p><b>Code optimization</b>. The Concurnas runtime (operating on the JVM) verifies the integrity of the previously output bytecode whilst performing some runtime transformations and optimizations.</p>
+</li>
+  <li><p><b>Machine code generation</b>. The JVM creates optimized machine code from the previous bytecode and executes this machine code upon the CPU and GPUs available.</p>
+</li>
+</ol class="arabic">
+<p><i>Aside: We see above that there are a large number of phases to the compilation process, in fact, within the Concurnas compiler (and most other compilers) these steps are often themselves broken down into further sub phases. Execution of these phases takes a non epsilon amount of time. It is for this reason (amongst others) that, in the interests of the high performance computing which Concurnas offers, steps 1-5 of 7 are performed at compilation time, once only, and the steps 6 and 7 are performed only infrequently and in a highly optimized manner, at runtime. This approach of course gives a natural performance boost over a runtime based scripting language which if naively implemented would implement all 7 of these stages (and perhaps not even implementing the final stage if it were a fully interpreted language) at runtime.</i></p>
+<p>The good news is that with Concurnas language extensions we need focus our effort upon only steps 1, 2 and step 3 to some extent (depending on the complexity of our language), before finally outputting a String of Concurnas code as our intermediate code for step 4. Concurnas will then handle steps 5 onwards (whilst also implicitly performing steps 1 - 3 on the provided output Concurnas code). The first 3 phases tend to be where the most interesting and value added work regarding programming languages reside and so this puts us in a good position.</p>
+<div class="section">
+<div class="section">
+<h3 id="defining-language-extensions">Defining language extensions<a class="headerlink" href="#defining-language-extensions" title="Permalink to this headline" id="defining-language-extensions">?</a></h3>
+<p>Language extension classes can be defined using idiomatic Concurnas code, affording us all the features of normal Concurnas code. Furthermore, Language extension classes are executed like normal Concurnas code, within an isolate - which greatly eases state management.</p>
+<p>Language extension classes are required to output Concurnas code in the form of a String. Within that String of valid Concurnas code any aspect of Concurnas may be used. For instance, we can create new variables, classes, methods, functions etc as well as use those defined outside the definition of any language extension expressions.</p>
+<p>Language extension classes must implement the <code class="lang-conc">com.concurnas.lang.langExt.LanguageExtension</code> trait and expose a publicly accessible zero argument constructor. This trait stipulates the following two methods which must be implemented:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">def initialize(line int, col int, loc SourceLocation, src String) Result</code></p>
+</li>
+  <li><p><code class="lang-conc">def iterate(ctx Context) IterationResult</code></p>
+</li>
+</ul class="simple">
+<p>When a language extension expression is encountered Concurnas will create one instance of the appropriate imported class (imported via the aforementioned <code class="lang-conc">using</code> keyword) via its publicly accessible zero argument constructor. After this, the <code class="lang-conc">initialize</code> method is called once. This provides the following parameters:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">line int</code> - The line number at the start of the <code class="lang-conc">||</code> block.</p>
+</li>
+  <li><p><code class="lang-conc">col int</code> - The column number at the start of the <code class="lang-conc">||</code> block.</p>
+</li>
+  <li><p><code class="lang-conc">loc com.concurnas.lang.langExt.SourceLocation</code> - The location of the language extension expression - either:</p>
+<ul class="simple">
+  <li><p>At top level</p>
+</li>
+  <li><p>Within a function</p>
+</li>
+  <li><p>Within an extension function/method</p>
+</li>
+  <li><p>At field level of a class</p>
+</li>
+  <li><p>Within a method</p>
+</li>
+</ul class="simple">
+</li>
+  <li><p><code class="lang-conc">src String</code> - The code of the language extension expression defined within the bounds of the <code class="lang-conc">||</code> block.</p>
+</li>
+</ul class="simple">
+<p>A <code class="lang-conc">com.concurnas.lang.langExt.Result</code> object must be returned from the <code class="lang-conc">initialize</code> method. This includes a list of any errors, warnings which may have been encountered during initial compilation - for instance if the code is syntactically invalid (if analysed at this point) or defined at an unsupportable source location.</p>
+<p>Next, Concurnas will call the <code class="lang-conc">iterate</code> method. Concurnas is an iterative compilation compiler, as such multiple calls to the <code class="lang-conc">iterate</code> method may be made in the process of compiling the source file in which the language extension expression is defined as more information regarding the context of the defined code becomes known. A language extension implementation may need to account for this.</p>
+<p>A <code class="lang-conc">com.concurnas.lang.langExt.Context</code> object is provided to the <code class="lang-conc">iterate</code> method. This allows the language extension implementation to interrogate the host Concurnas compiler at the point of usage of the language extension via a language extension expression. The following methods are exposed on the <code class="lang-conc">Context</code> object and can be of particular use in this regard:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">def getVariable(name String) Variable?</code> - Returns the variable (if any) in scope matching the provided name.</p>
+</li>
+  <li><p><code class="lang-conc">def getclass(name String) Class?</code> - Returns the class (if any) in scope matching the provided name.</p>
+</li>
+  <li><p><code class="lang-conc">def getMethods(name String) List&lt;Method&gt;</code> - Returns all callable methods in scope matching the provided name.</p>
+</li>
+  <li><p><code class="lang-conc">def getNesting() List&lt;Location&gt;</code> - Returns a list of the nesting hierarchy in terms of methods and classes in which the language extension expression code resides.</p>
+</li>
+</ul class="simple">
+<p>Where relevant the aforementioned <code class="lang-conc">Variable</code> and <code class="lang-conc">Method</code> classes contain type information. This type information is expressed as a java bytecode field descriptor String, details of this can be found here:\\ <a href="https://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html#jvms-4.3.2">JVM Spec</a>.</p>
+<p>The <code class="lang-conc">iterate</code> method is required to output a String of Concurnas code <sup><a href="#fn1">1</a></sup> each time it is called. This String is then passed to the core Concurnas compiler for subsequent compilation.</p>
+<p>The <code class="lang-conc">iterate</code> method is expected to return a <code class="lang-conc">com.concurnas.lang.langExt.IterationResult</code> object. This includes a list of any errors, warnings which may have been encountered during iterative compilation (for instance scope/type errors, usage context warnings etc). Additionally this object is to include a reference to the aforementioned output String of Concurnas code.</p>
+</div>
+<div class="section">
+<h3 id="errors-and-warnings">Errors and warnings<a class="headerlink" href="#errors-and-warnings" title="Permalink to this headline" id="errors-and-warnings">?</a></h3>
+<p>One of the most important jobs of any language compiler is the verification and validation of code. This can take place in either the initialization or iterative compilation stages of a Concurnas language extension, i.e. within the the <code class="lang-conc">initialize</code> and <code class="lang-conc">iterate</code> methods respectfully.</p>
+<p>Problems in the verification and validation of code may take the form of errors or warnings, multiple of which may be outputted by the compilation phases, the <code class="lang-conc">Result</code> class (of which <code class="lang-conc">IterationResult</code> inherits) contains two list fields for holding these errors and warnings.</p>
+<p>These errors and warnings are then propagated back via the instances of the <code class="lang-conc">Result</code> class returned from the <code class="lang-conc">initialize</code> and <code class="lang-conc">iterate</code> methods back to the main Concurnas compiler and prefixed with the name of the language extension referenced within the language extension expression.</p>
+<p>If either the <code class="lang-conc">initialize</code> or <code class="lang-conc">iterate</code> methods throw an exception, this will be caught by the core Concurnas compiler and wrapped up as an error originating from the language extension (and prefixed as such). If the <code class="lang-conc">initialize</code> throws an exception then subsequent compilation (i.e. invoking of the <code class="lang-conc">iterate</code>) will not take place.</p>
+</div>
+<div class="section">
+<h3 id="practical-tips">Practical tips<a class="headerlink" href="#practical-tips" title="Permalink to this headline" id="practical-tips">?</a></h3>
+<p>There are some practical tips which can be considered when we're building language extensions:</p>
+<div class="section">
+<div class="section">
+<h4 id="abstract-syntax-trees">Abstract syntax trees<a class="headerlink" href="#abstract-syntax-trees" title="Permalink to this headline" id="abstract-syntax-trees">?</a></h4>
+<p>Abstract syntax trees or ATS's are an excellent intermediate data format representation. Many compilers make use of these. More information regarding this may be found here: <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a></p>
+</div>
+<div class="section">
+<h4 id="the-visitor-pattern">The visitor pattern<a class="headerlink" href="#the-visitor-pattern" title="Permalink to this headline" id="the-visitor-pattern">?</a></h4>
+<p>The visitor pattern crops up time and time again as a really useful method for navigating the aforementioned ATS. More information regarding this may be found here: <a href="https://en.wikipedia.org/wiki/Visitor_pattern">Visitor pattern</a></p>
+</div>
+<div class="section">
+<h4 id="iterative-compilation">Iterative compilation<a class="headerlink" href="#iterative-compilation" title="Permalink to this headline" id="iterative-compilation">?</a></h4>
+<p>Since Concurnas is an iterative compiler it is to be expected that multiple calls to our aforementioned <code class="lang-conc">iterate</code> method will be made during the course of compilation. It is possible that a type of a dependant class, variable etc which was previously unknown will become known during this iterative compilation. Our language extension compiler may need to take this into account - i.e. by avoiding repeating work which it has already completed or by say caching a previous compilation result if it is agnostic to these iterative calls. It may also be appropriate to output a known to be incorrect variant of the expected output code (with errors flagged as appropriate) such that dependant code may be allowed to continue iterative compilation in some manner.</p>
+</div>
+<div class="section">
+<h4 id="focus-of-effort">Focus of effort<a class="headerlink" href="#focus-of-effort" title="Permalink to this headline" id="focus-of-effort">?</a></h4>
+<p>Given that our language extension will be outputting Concurnas code, and that this Concurnas code will be passed to the core Concurnas compiler for further compilation as par normal Concurnas code, it is recommended that attention be focused on generating syntactically valid Concurnas code over semantically correct. In effect the core Concurnas compiler acts like a safety net for any problems which may have been missed during processing of the language extension code. The language extension doesn't have to be perfect, the core Concurnas compiler will do this hard work for us.</p>
+</div>
+</div>
+</div>
+<h2 id="example-language-extension">Example language extension<a class="headerlink" href="#example-language-extension" title="Permalink to this headline" id="example-language-extension">?</a></h2>
+<p>Here is a full example of a very simple lisp like language <code class="lang-conc">com.mycompany.myproduct.langExts.miniLisp</code>.</p>
+<p>In the interests of brevity this example focuses upon only a small subsection of syntax and takes a few shortcuts (imperfect parsing, operates upon numerical types only, no variable assignment/function definitions) etc, but it nevertheless serves nicely to illustrate the typical phases of compilation as well as the sorts of verification and validation we must perform within a language extension.</p>
+<pre><code class="lang-conc">from com.concurnas.lang.LangExt import LanguageExtension, Context, SourceLocation
+from com.concurnas.lang.LangExt import ErrorOrWarning, Result, IterationResult
+from com.concurnas.lang.LangExt import Variable, Method, MethodParam
+from java.util import Stack, Scanner, ArrayList, List
+
+/*
+* sample inputs:
+*  (+ 1 2 3 )
+*  (+ 1 2 n )
+*  (+ 1 2 ( * 3 5) )
+*  (+ 1 2 ( methodCall 3 5) )
+*/
+
+/////////////////   AST  /////////////////
+enum MathOps(code String){PLUS("+"), MINUS("-"), MUL("*"), DIV("/"), POW("**");
+  override toString() =&gt; code
+}
+
+open class ASTNode(-line int, -col int){
+  nodes = new ArrayList&lt;ASTNode&gt;()
+  def add(toAdd ASTNode){
+    nodes.add(toAdd)
+  }
+	
+  def accept(visitor Visitor) Object 
+}
+
+class LongNode(line int, col int, along Long) &lt; ASTNode(line, col){
+  def accept(vis Visitor) Object =&gt; vis.visit(this);
+}
+
+class MathNode(line int, col int, what MathOps) &lt; ASTNode(line, col){
+  def accept(vis Visitor) Object =&gt; vis.visit(this);
+}
+
+class MethodCallNode(line int, col int, methodName String) &lt; ASTNode(line, col){
+  def accept(vis Visitor) Object =&gt; vis.visit(this);
+}
+
+class NamedNode(line int, col int, name String) &lt; ASTNode(line, col){
+  def accept(vis Visitor) Object =&gt; vis.visit(this);
+}
+
+
+///////////////// Parser /////////////////
+
+def parse(line int, col int, source String) (ASTNode, Result) {
+  rootNode ASTNode?=null
+	
+  warnings = new ArrayList&lt;ErrorOrWarning&gt;()
+  errors = new ArrayList&lt;ErrorOrWarning&gt;()
+	
+  sc = new Scanner(source)
+  nodes = Stack&lt;ASTNode&gt;()
+	
+  while(sc.hasNext()){
+    if(sc.hasNextInt()){
+      llong = sc.nextLong()
+			
+      if(nodes.isEmpty()){
+        errors.add(new ErrorOrWarning(line, col, "unexpected token: {llong}"))
+      }
+      else{
+        nodes.peek().add(LongNode(line, col, llong))
+      }
+    }else{
+      str = sc.next()
+      match(str){
+        ")" =&gt; {
+					
+          if(nodes.isEmpty()){
+            errors.add(new ErrorOrWarning(line, col, "unexpected token: {str}"))
+          }else{
+            rootNode = nodes.pop()
+            if(rootNode &lt;&gt; null and not nodes.isEmpty()){
+              nodes.peek().add(rootNode)
+            }
+          }
+        }
+        else =&gt; match(str){
+          "( +" =&gt; nodes.push(MathNode(line, col, MathOps.PLUS))
+          "( -" =&gt; nodes.push(MathNode(line, col, MathOps.MINUS))
+          "( *" =&gt; nodes.push(MathNode(line, col, MathOps.MUL))
+          "( /" =&gt; nodes.push(MathNode(line, col, MathOps.DIV))
+          "( **" =&gt; nodes.push(MathNode(line, col, MathOps.POW))
+          else =&gt;{
+            if(str.startsWith("(")){
+              str = str.substring(1, str.length());
+              nodes.push(MethodCallNode(line, col, str))
+            }else{
+              if(nodes.isEmpty()){
+                errors.add(new ErrorOrWarning(line, col, "unexpected token: {str}"))
+              }else{
+                nodes.peek().add(NamedNode(line, col, str))
+              }
+            }
+          } 
+        }
+      }
+    }
+  }
+		
+  rootNode?:LongNode(0, 0, 0), new Result(errors, warnings)
+}
+
+/////////////////Visitors/////////////////
+
+trait Visitor{
+  def visit(longNode LongNode) Object
+  def visit(mathNode MathNode) Object
+  def visit(namedNode NamedNode) Object
+  def visit(methodNode MethodCallNode) Object
+}
+
+class CodeGennerator ~ Visitor{
+  def visit(longNode LongNode) Object{
+    "{longNode.along}"
+  }
+	
+  def visit(mathNode MathNode) Object{
+    String.join("{mathNode.what}", ("" + x.accept(this)) for x in mathNode.nodes)
+  }
+	
+  def visit(methodCall MethodCallNode) Object{
+    "{methodCall.methodName}(" + String.join(", ", ("" + x.accept(this)) for x in methodCall.nodes ) + ")"
+  }
+	
+  def visit(namedNode NamedNode) Object{
+    "{namedNode.name}"
+  }
+}
+cg = CodeGennerator()
+
+private numericalTypes = new set&lt;String&gt;()
+{
+  numericalTypes.add("I")
+  numericalTypes.add("J")
+  numericalTypes.add("Ljava/lang/Long;")
+  numericalTypes.add("Ljava/lang/Integer;")
+}
+
+class NodeChecker(ctx Context) ~ Visitor{
+  errors = ArrayList&lt;ErrorOrWarning&gt;()
+  warnings =  ArrayList&lt;ErrorOrWarning&gt;()
+	
+  def visit(longNode LongNode) Object =&gt; "I"
+  def visit(mathNode MathNode) Object{
+    for( x in mathNode.nodes){
+      x.accept(this)
+    }
+		
+    "I"
+  }
+	
+  private def raiseError(line int, col int, str String){
+    errors.add(new ErrorOrWarning(line, col, str))
+  }
+	
+  def visit(namedNode NamedNode) Object{
+    vari Variable? = ctx.getVariable(namedNode.name)
+    type = vari?.type
+		
+    if(type){
+      if(type not in numericalTypes){
+        raiseError(namedNode.line, namedNode.col, "Variable: {namedNode.name} is expected to be of numerical type")
+      }
+    }else{
+      raiseError(namedNode.line, namedNode.col, "Unknown variable: {namedNode.name}")
+    }
+		
+    return type
+  }
+	
+	
+  def visit(methodCall MethodCallNode) Object{
+    meths List&lt;Method&gt; = ctx.getMethods(methodCall.methodName)
+		
+    found = false
+		
+    argsWanted = methodCall.nodes
+    wantedSize = argsWanted.size()
+		
+    for(method in meths){
+      ret = method.returnType
+      if(ret=="V" or ret in numericalTypes){
+        margs ArrayList&lt;String&gt; = method.arguments
+        if(wantedSize == margs.size()){
+          found=true
+        }else{
+          //check to see if an arg is an array - then can attempt to vararg in
+          found = margs.stream().anyMatch(a =&gt; a &lt;&gt; null and a.startsWith("["))				
+        }
+				
+        if(found){
+          break
+        }
+      }
+    }
+		
+    if(not found){
+      raiseError(methodCall.line, methodCall.col, "Cannot find method: {methodCall.methodName}")
+    }
+		
+    for(arg in argsWanted; idx){
+      atype = ""+arg.accept(this)
+      if(atype not in numericalTypes){
+        raiseError(methodCall.line, methodCall.col, "method argument {idx+1} is expected to be of numerical type not: {atype}")
+      }
+    }
+		
+    return "I"
+  }
+}
+
+
+///////////////// Lang  /////////////////
+
+class SimpleLisp ~ LanguageExtension{
+  line int
+  col int
+  rootNode ASTNode?=null
+	
+  def initialize(line int, col int, location SourceLocation, source String) Result {
+    this.line = line
+    this.col = col
+		
+    //build abstract syntax tree...
+    (this.rootNode, result) = parse(line, col, source)
+		
+    result
+  }
+	
+  def iterate(ctx Context) IterationResult {
+    rootn = rootNode
+    if(rootn){
+      nc = NodeChecker(ctx)
+      rootn.accept(nc)
+			
+      code = ""
+      if(nc.errors.isEmpty() and nc.warnings.isEmpty()){
+        code = ""+rootn.accept(cg)
+      }
+			
+      new IterationResult(nc.errors, nc.warnings, code)
+			
+    }else{
+      errors = ArrayList&lt;ErrorOrWarning&gt;()
+      warnings =  ArrayList&lt;ErrorOrWarning&gt;()
+      new IterationResult(errors, warnings, "")
+    }
+  }
+}
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="using-our-example-language-extension">Using our example language extension<a class="headerlink" href="#using-our-example-language-extension" title="Permalink to this headline" id="using-our-example-language-extension">?</a></h3>
+<p>We can now use or previously defined language extension:</p>
+<pre><code class="lang-conc">from com.mycompany.myproduct.langExts.miniLisp using SimpleLisp
+
+result = SimpleLisp||(+ 1 2 (* 3 3 ) )||
+//result == 9
+</code></pre>
+</div>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>this technically makes language extensions transpilers</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="langExtensions.html">Language Extensions</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#using-language-extensions">Using language extensions</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#using-imported-language-extensions">Using imported language extensions</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#creating-language-extensions">Creating language extensions</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#defining-language-extensions">Defining language extensions</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#errors-and-warnings">Errors and warnings</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#practical-tips">Practical tips</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#abstract-syntax-trees">Abstract syntax trees</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#the-visitor-pattern">The visitor pattern</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#iterative-compilation">Iterative compilation</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#focus-of-effort">Focus of effort</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#example-language-extension">Example language extension</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#using-our-example-language-extension">Using our example language extension</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

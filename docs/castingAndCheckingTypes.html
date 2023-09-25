@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Casting and Checking Types</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Casting and Checking Types"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Casting and Checking Types"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Casting and Checking Types"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/castingAndCheckingTypes.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="casting-and-checking-types">Casting and Checking Types<a class="headerlink" href="#casting-and-checking-types" title="Permalink to this headline" id="casting-and-checking-types">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#casting-and-checking-types">Casting and Checking Types</a>
+   <ul>
+   <li><a class="reference internal" href="#primitive-type-implicit-and-explicit-conversions">Primitive type Implicit and Explicit conversions</a>   <ul>
+   <li><a class="reference internal" href="#casting-boxed-types">Casting boxed types</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#primitive-type-operators">Primitive type operators</a>   </li>
+   <li><a class="reference internal" href="#checking-and-casting-for-non-primitive-types">checking and casting for non-primitive Types</a>   </li>
+   <li><a class="reference internal" href="#checking-for-multiple-types">Checking for multiple types</a>   </li>
+   <li><a class="reference internal" href="#casting-arrays">Casting Arrays</a>   </li>
+   <li><a class="reference internal" href="#is-with-automatic-cast">Is with automatic cast</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Casting and checking of types enable us to take one type and either check it can be treated as another (via <code class="lang-conc">is</code> and <code class="lang-conc">isnot</code>) or actually be treated as another type (via <code class="lang-conc">as</code>). Intuitively this sounds like not something of much use, however consider the case where an object of type <code class="lang-conc">java.lang.Object</code> is passed to a function which expects an <code class="lang-conc">java.lang.Object</code> argument, but, contingent upon the type of said object uses that object differently. For example:</p>
+<pre><code class="lang-conc">def doSomething(an Object){
+  if(an is String){
+    aString = an as String
+    //...
+  }else if(an is Integer){
+    anInt = an as Integer
+    //...
+  }
+}
+</code></pre>
+<p>To implement the above we needed to use both <code class="lang-conc">is</code> and <code class="lang-conc">as</code><sup><a href="#fn1">1</a></sup>.</p>
+<div class="section">
+<div class="section">
+<h2 id="primitive-type-implicit-and-explicit-conversions">Primitive type Implicit and Explicit conversions<a class="headerlink" href="#primitive-type-implicit-and-explicit-conversions" title="Permalink to this headline" id="primitive-type-implicit-and-explicit-conversions">?</a></h2>
+<p>Generally speaking we can use a lower bit width value where a larger bit width value is expected (e.g. in assignment). For example we can implicitly 'upcast 'like this:</p>
+<pre><code class="lang-conc">anint int =123
+along long = anint //implicity 'upcast' to a long
+</code></pre>
+<p>We see above that the value of <code class="lang-conc">anint</code> is converted ('upcast') to a long value. Of course, this makes the following code possible:</p>
+<pre><code class="lang-conc">expectLong long = 123 //123 is converted to a long value
+
+def operateOnLong(along long) =&gt; along+1
+
+operateOnLong(123) //123 is converted to a long value
+</code></pre>
+<p>Note however that if we were to attempt a 'downcast' it would be considered a compilation error, as there is the potential for data loss (imagine a long value larger than \(2^{31} - 1\) being stored in an int variable, it's not possible as we don't have enough bits of information):</p>
+<pre><code class="lang-conc">along = 100l
+anint int = along //compilation error!
+</code></pre>
+<p>The way to achieve the above is to use an explicit cast in order to convert the value:</p>
+<pre><code class="lang-conc">along = 100l
+anint int = along as int
+</code></pre>
+<p>But generally speaking this is not considered a good idea.</p>
+<div class="section">
+<div class="section">
+<h3 id="casting-boxed-types">Casting boxed types<a class="headerlink" href="#casting-boxed-types" title="Permalink to this headline" id="casting-boxed-types">?</a></h3>
+<p>Boxed types may be explicitly cast to other boxed types follows:</p>
+<pre><code class="lang-conc">anInt = Integer(20)
+asDouble = anInt as Double
+</code></pre>
+<p>This conversion can take place on an implicit basis as long as the cast operation is an 'upcast' (e.g. <code class="lang-conc">Integer</code> to <code class="lang-conc">Long</code>, <code class="lang-conc">Integer</code> to <code class="lang-conc">Double</code> etc). So the following is perfectly acceptable:</p>
+<pre><code class="lang-conc">def expectsDouble(an Double) =&gt; an
+
+anInt = Integer(20)
+expectsDouble(anInt)//this is ok the Integer is 'upcast' to Double
+</code></pre>
+<p>But of the following, representing a 'downcast' is only possible via an explicit cast operation:</p>
+<pre><code class="lang-conc">def takesInteger(an Integer) =&gt; an
+
+aDouble = Double(0.32)
+takesInteger(aDouble) //this is not ok as an implicit 'downcast' is required, potentially losing data
+takesInteger(aDouble as Integer) //this will work, though is inadvisable
+</code></pre>
+</div>
+</div>
+<h2 id="primitive-type-operators">Primitive type operators<a class="headerlink" href="#primitive-type-operators" title="Permalink to this headline" id="primitive-type-operators">?</a></h2>
+<p>Something that often catches out new programmers is the following scenario, say we wish to perform division, we'd use code like the following and expect to get the result <code class="lang-conc">0.25</code>:</p>
+<pre><code class="lang-conc">1/4
+</code></pre>
+<p>But actually we'd get the result 0. This is because, by virtue of the fact that both our input primitive types to the division operator are integer, whole number division is applied. If we wish to perform fractional division then we'd need to convert at least one of the inputs to the division operator a floating point number, this is easy to achieve:</p>
+<pre><code class="lang-conc">1/4.
+</code></pre>
+<p>Now we get the desired result: <code class="lang-conc">0.25</code></p>
+</div>
+<div class="section">
+<h2 id="checking-and-casting-for-non-primitive-types">checking and casting for non-primitive Types<a class="headerlink" href="#checking-and-casting-for-non-primitive-types" title="Permalink to this headline" id="checking-and-casting-for-non-primitive-types">?</a></h2>
+<p>Any object subtype may be implicitly upcast to a supertype. Also, as has been touched upon earlier all non-primitive types are subclasses of type <code class="lang-conc">java.lang.Object</code>. As such this is perfectly valid code:</p>
+<pre><code class="lang-conc">open class SuperClass
+class ChildClass &lt; SuperClass
+
+inst1 SuperClass = new ChildClass()
+inst2 Object = new ChildClass()
+</code></pre>
+<p>In cases where we are converting to a non supertype, then the <code class="lang-conc">is</code> and <code class="lang-conc">isnot</code> operators come into play as follows:</p>
+<pre><code class="lang-conc">something Object = "hi"
+
+assert something is String
+assert something isnot Integer
+</code></pre>
+<p>Once we are sure of the type (either by using <code class="lang-conc">is</code> or by another means) we may wish to cast the object to the type of interest such that we can use it as such (i.e. access fields call methods etc):</p>
+<pre><code class="lang-conc">something Object = "hi"
+asString = something as String
+</code></pre>
+<p>When it comes to objects with generic types, we cannot perform a cast on generic type qualifiers. As such types requiring generic type qualification cannot be expressed with qualifiers:</p>
+<pre><code class="lang-conc">class MyGenClass&lt;X&gt;
+
+anObj Object = MyGenClass&lt;String&gt;()
+
+check = anObj is MyGenClass&lt;String&gt; //not valid
+convert = anObj as MyGenClass&lt;String&gt; //also not valid
+
+okcheck = anObj is MyGenClass&lt;?&gt; //ok
+okconvert = anObj as MyGenClass&lt;?&gt; //ok
+</code></pre>
+<p>Function refs, tuples, refs and actors are reified types which makes code like the following possible:</p>
+<pre><code class="lang-conc">afuncRef Object = def (a int, b int) =&gt; a+b
+
+checkfuncRef = afuncRef is (int, int) int
+asafuncRef = afuncRef as (int, int) int
+
+
+aTuple Object = 12, "hi", false
+
+checkTuple = aTuple is (int, String, bool)
+asaTuple (int, String, bool) = aTuple as (int, String, bool)
+
+
+aRef Object = 12:
+
+checkRef = aRef is int:
+asaRef = aRef as int:
+
+
+anActor = actor String()
+
+checkActor = anActor is actor String
+asaActor = anActor as actor String
+</code></pre>
+<p>We can cast an array to be a supertype (unlike lists - due to the restrictions of generic types previously outlined), but care must be taken when assigning values to said array since upon assignment type of the value will be checked so as to ensure that it matches the real component type of the array. This is because when we are casting Objects (which arrays are - they are a Subtype of <code class="lang-conc">java.lang.Object</code>) we are treating them as another type, we are not actually transforming the type itself, thus an <code class="lang-conc">int[]</code> array stays as an <code class="lang-conc">Integer[]</code> array when we cast it to an <code class="lang-conc">Object[]</code>.</p>
+<pre><code class="lang-conc">anArray Object[] = [ 1 2 3 4 5 6 ] as Object[] //this is ok
+anArray[0] = 99 //this is ok as the type of the array is really Integer[]
+anArray[1] = "hi" //this is not ok as we cannot set a String value in an Integer[] array
+</code></pre>
+<p>A variable holding a value null can be cast to anything, it will remain null:</p>
+<pre><code class="lang-conc">nullObj Object = null
+stillnull String = nullObj as String
+</code></pre>
+<p>Null is considered an instance of any object type:</p>
+<pre><code class="lang-conc">nullObj Object = null
+
+assert nullObj is Integer
+assert nullObj is String
+</code></pre>
+</div>
+<div class="section">
+<h2 id="checking-for-multiple-types">Checking for multiple types<a class="headerlink" href="#checking-for-multiple-types" title="Permalink to this headline" id="checking-for-multiple-types">?</a></h2>
+<p>Multiple types may be checked for at the same time by using the <code class="lang-conc">or</code> keyword to chain the types together as follows:</p>
+<pre><code class="lang-conc">open class A
+trait TT
+class B &lt; A
+
+an Object = new B()
+
+inst = an is A or TT
+</code></pre>
+</div>
+<div class="section">
+<h2 id="casting-arrays">Casting Arrays<a class="headerlink" href="#casting-arrays" title="Permalink to this headline" id="casting-arrays">?</a></h2>
+<p>Although it is not possible to directly cast an n dimensional array of primitive type to a differing n dimensional array of primitive type. The effect can nevertheless be achieved via use of vectorization. This will of course create a new n dimensional array:</p>
+<pre><code class="lang-conc">vec = [ 1.0 2.0 ; 3.0 4.0]
+res = vec^ as int
+
+//res == [ 1 2; 3 4 ]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="is-with-automatic-cast">Is with automatic cast<a class="headerlink" href="#is-with-automatic-cast" title="Permalink to this headline" id="is-with-automatic-cast">?</a></h2>
+<p><code class="lang-conc">is</code> with automatic cast is a massive time saving feature of Concurnas in cases where one has already tested to ensure a variable is of a certain type and now needs to perform operations on said variable with it as cast to the type tested for. If the <code class="lang-conc">is</code> operator is used on a variable in an <code class="lang-conc">if</code> or <code class="lang-conc">elif</code> test, then throughout the remainder of the test and the block associated with the test that variable will be automatically cast for us as the type checked against. Example:</p>
+<pre><code class="lang-conc">class Dog(~age int)
+
+def getAge(an Object){
+  if(an is Dog){an.age} //an is automatically as cast to type Dog. Thus we do not need an explicit cast
+  else{"unknown"}
+}
+
+getAge(Dog(3)) //returns 3
+</code></pre>
+<p>This also applies to if expressions:</p>
+<pre><code class="lang-conc">class Dog(~age int)
+
+def getAge(an Object){
+  an.age if(an is Dog) else "unknown" //an is automatically as cast to Dog 
+}
+
+getAge(Dog(3))//returns 3
+</code></pre>
+<p>The automatic cast resulting from the is test applies to the remaining body of an if test:</p>
+<pre><code class="lang-conc">class Treatment(~level int)
+
+def matcher(an Object) 
+  =&gt; 'match' if an is Treatment and an.level &gt; 5 else 'none'
+
+[matcher(Treatment(7)), matcher(Treatment(2))] //resolsves to [match, none]
+</code></pre>
+<p>Note that this only applies if the is operator is used on a variable. e.g. This does not apply to values resulting from function calls, array indexes etc.</p>
+<p>This also does not apply to is operators used within tests which can be short circuited if the is is referenced past a short-circuit point. For example, the following is invalid:</p>
+<pre><code class="lang-conc">class Dog(~age int)
+
+maybe = true
+
+def getAge(an Object){
+  if(maybe or an is Dog){an.age} //compilation error as  required as cast to be used in this way
+  else{"unknown"}
+}
+
+getAge(Dog(3))
+</code></pre>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>Actually, as we shall see in the Is with automatic cast section later on, the as cast was unnecessary.</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="castingAndCheckingTypes.html">Casting and Checking Types</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#primitive-type-implicit-and-explicit-conversions">Primitive type Implicit and Explicit conversions</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#casting-boxed-types">Casting boxed types</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#primitive-type-operators">Primitive type operators</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#checking-and-casting-for-non-primitive-types">checking and casting for non-primitive Types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#checking-for-multiple-types">Checking for multiple types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#casting-arrays">Casting Arrays</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#is-with-automatic-cast">Is with automatic cast</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

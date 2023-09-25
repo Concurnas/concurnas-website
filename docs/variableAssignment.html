@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Variable Assignment</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Variable Assignment"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Variable Assignment"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Variable Assignment"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/variableAssignment.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="variable-assignment">Variable Assignment<a class="headerlink" href="#variable-assignment" title="Permalink to this headline" id="variable-assignment">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#variable-assignment">Variable Assignment</a>
+   <ul>
+   <li><a class="reference internal" href="#scopes">Scopes</a>   </li>
+   <li><a class="reference internal" href="#assigning-values">Assigning values</a>   </li>
+   <li><a class="reference internal" href="#val-and-var">val and var</a>   </li>
+   <li><a class="reference internal" href="#unassigned-declared-variables">Unassigned declared variables</a>   </li>
+   <li><a class="reference internal" href="#multi-assignment">Multi Assignment</a>   </li>
+   <li><a class="reference internal" href="#compound-assignment">Compound assignment</a>   </li>
+   <li><a class="reference internal" href="#lazy-variables">Lazy variables</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>We don't need to be related to relate</p>
+<p>We don't need to share genes or a surname</p>
+<p>You are, you are</p>
+<p>My chosen, chosen family</p><footer>- Chosen Family from Sawayama by Rina Sawayama (2018)</footer></blockquote>
+<p>Let us first define what is means to declare a variable. A variable declaration consists of a variable name and a type. Variable names can be any combination of standard ASCII alphanumeric characters or non ASCII Unicode characters. Types may be either primitive, tuples, typedefs, Object types (which includes user defined classes) or refs to the aforementioned types. For example:</p>
+<pre><code class="lang-conc">anint int //a primative type
+atuple (String, int) //a tuple
+
+typedef MyMap = java.lang.HashMap&lt;String, String&gt; //a typedef
+aMyMap MyMap //use of a typedef
+
+class MyClass //a class declaration
+anObject MyClass //use of a class
+
+aref int: //a ref of type int
+</code></pre>
+<div class="section">
+<div class="section">
+<h2 id="scopes">Scopes<a class="headerlink" href="#scopes" title="Permalink to this headline" id="scopes">?</a></h2>
+<p>Usually if we declare a variable then we'd wish to assign a value to it at some point during the bounded scope of said variable. The bounded scope constitutes the inner most pair of curly braces and any nested braces within in which the variable is declared. Variables can only be assigned to and used within their bounded scope.</p>
+<pre><code class="lang-conc">if(something()){
+  anint = 99
+  if(somethingelse()){
+    anint = anint + 1
+  }
+}
+//anint cannot be used after this point as that usage would be outside its bounded scope, the following is invalid:
+res = anint//invalid useage
+</code></pre>
+<p>It can sometimes be useful to define a scope on its own (i.e. not associated with a control structure such as a if else statement or a function definition etc). This can be achieved as follows:</p>
+<pre><code class="lang-conc">{
+  anint = 99
+  //do somethiing with anint
+}
+//anint is no longer in scope at this point...
+</code></pre>
+</div>
+<div class="section">
+<h2 id="assigning-values">Assigning values<a class="headerlink" href="#assigning-values" title="Permalink to this headline" id="assigning-values">?</a></h2>
+<p>We can assign a value to a predeclared variable using the assignment operator <code class="lang-conc">=</code> as follows:</p>
+<pre><code class="lang-conc">avar int//declaration
+
+avar = 99 //assignment
+</code></pre>
+<p>More commonly we perform the initial assignment and variable declaration in the same step. This has the added advantage of allowing Concurnas to use type inference (if we wish) in order to determine the type of the variable for us, saving us the effort of having to write out a verbose type and increasing readability of our code.</p>
+<p>So instead of this:</p>
+<pre><code class="lang-conc">avar int = 99
+</code></pre>
+<p>We can write this:</p>
+<pre><code class="lang-conc">avar = 99
+</code></pre>
+<p>Concurnas is an optionally type inferred language. What this means in practice is that 90% of the time it's not necessary to explicitly specify the type of a variable</p>
+<p>The optionality in Concurnas' design regarding inference is useful for describing problems with complex typing structure which otherwise would not be obvious to determine from reading the code.</p>
+</div>
+<div class="section">
+<h2 id="val-and-var">val and var<a class="headerlink" href="#val-and-var" title="Permalink to this headline" id="val-and-var">?</a></h2>
+<p>The <code class="lang-conc">val</code> and <code class="lang-conc">var</code> keywords are useful in two ways. First, either one make it explicitly clear that one is defining a new variable and secondly, the <code class="lang-conc">val</code> keyword stipulates that no assignment post initial declaration/assignment is permitted. For example:</p>
+<pre><code class="lang-conc">var anint = 99
+val another = 99
+</code></pre>
+<p>Both the above variables are new (it would be a compilation error if they had already been declared in the scope prior to the above code), and in the case of the <code class="lang-conc">another</code> variable, it cannot be reassigned.</p>
+</div>
+<div class="section">
+<h2 id="unassigned-declared-variables">Unassigned declared variables<a class="headerlink" href="#unassigned-declared-variables" title="Permalink to this headline" id="unassigned-declared-variables">?</a></h2>
+<p>It's considered a compilation error to define a variable but never assign a value to it (or to attempt to use a variable at a point after declaration when it's possible that execution of the code has progressed through a path in which a value is not assigned). The only case in which it's valid to declare a variable but not assign it a value is where the variable is a of a ref type (used to communicate between isolates - the principle unit of concurrency in Concurnas). For example:</p>
+<pre><code class="lang-conc">def assignIntRef(an int:){//function to assign a value to a ref
+  an = 15
+}
+
+aint int: //declaration of a local ref
+
+onchange(aint) =&gt; System out println "aint was assigned: {aint}"
+
+assignIntRef(aint)
+</code></pre>
+</div>
+<div class="section">
+<h2 id="multi-assignment">Multi Assignment<a class="headerlink" href="#multi-assignment" title="Permalink to this headline" id="multi-assignment">?</a></h2>
+<p>Sometimes it can be useful to assign a value to more than one variables. To this end Concurnas supports multi assignment:</p>
+<pre><code class="lang-conc">a = b = 20
+
+//a == 20
+//b == 20
+</code></pre>
+<p>We can have as many expressions as we like on the left hand side of the multi assignment before the final expression which we are assigning from. The expressions on the left hand side chain can be of any format normally valid on the left hand side of an expression:</p>
+<pre><code class="lang-conc">ar = new int[10](0)
+val aval = ar[1] = ar[5] = 30
+
+//aval == 30
+//ar == [0 30 0 0 0 30 0 0 0 0]
+</code></pre>
+<p>Note that the expression on the right hand side is only evaluated once, the assignees on the left hand side chain receive the same reference to the right hand side value, i.e. No copy is made.</p>
+<pre><code class="lang-conc">myArray = [1 2 3]
+b = c = myArray
+
+b[0] = 99
+
+//b == [99 2 3]
+//c == [99 2 3]
+</code></pre>
+<p>One is not limited to the use of just the <code class="lang-conc">=</code> assignment, one may use any valid assignor in the chain:</p>
+<pre><code class="lang-conc">a = 100
+a += b = 2
+
+//a == 102
+//b == 2
+</code></pre>
+</div>
+<div class="section">
+<h2 id="compound-assignment">Compound assignment<a class="headerlink" href="#compound-assignment" title="Permalink to this headline" id="compound-assignment">?</a></h2>
+<p>Compound assignment refers to assignments performed on variables which have been defined already and which apply an operator in addition to assigning a new value to said variable. These are: <code class="lang-conc">+=</code>, <code class="lang-conc">-=</code>, <code class="lang-conc">*=</code>, <code class="lang-conc">/=</code>, <code class="lang-conc">**=</code>, <code class="lang-conc">mod=</code>, <code class="lang-conc">or=</code>, <code class="lang-conc">and=</code>, <code class="lang-conc">&lt;&lt;=</code>, <code class="lang-conc">&gt;&gt;=</code>, <code class="lang-conc">&gt;&gt;&gt;=</code>, <code class="lang-conc">band=</code>, <code class="lang-conc">bor=</code>, <code class="lang-conc">bxor=</code>. Taking the addition assignment operator, <code class="lang-conc">+=</code> as an example, the following two statements are functionally identical:</p>
+<pre><code class="lang-conc">a1 = a2 = 10
+
+a1 += 1
+a2 = a2 + 1
+
+assert a1 == a2
+</code></pre>
+<p>That is to say, <code class="lang-conc">a1 += 1</code> is essentially shorthand for: <code class="lang-conc">a1 = a1 + 1</code>.</p>
+<p>The compound assignment operators may be applied to array reference operations as follows:</p>
+<pre><code class="lang-conc">a1 = [1 2 3]
+
+a1[0] += 1
+
+assert a1 == [2 2 3]
+</code></pre>
+<p>Again, <code class="lang-conc">a1[0] += 1</code> is essentially shorthand for: <code class="lang-conc">a1[0] = a1[0] + 1</code>.</p>
+</div>
+<div class="section">
+<h2 id="lazy-variables">Lazy variables<a class="headerlink" href="#lazy-variables" title="Permalink to this headline" id="lazy-variables">?</a></h2>
+<p>The form of evaluation used in Concurnas is "eager evaluation" - i.e. as soon as an expression is bound to a variable, it is evaluated. Additionally, this can occur concurrently in the case of ref assignments occurring in differing iso's. Let's look at an ordinary example:</p>
+<pre><code class="lang-conc">myvar = {1+3}
+</code></pre>
+<p>In the above example, after the <code class="lang-conc">1+3</code> expression is bound to the variable myvar, it is executed. Thereafter myvar holds the value of 4.</p>
+<p>There are some problems for which this form of eager evaluation is inappropriate and for which we'd prefer to defer execution of the expression until the associated bound variable is accessed. This is lazy evaluation and Concurnas offers a controlled form of this expressed in the form of lazy variables.</p>
+<p>We can define a lazy variable as follows:</p>
+<pre><code class="lang-conc">lazy myvar = {1+3}
+</code></pre>
+<p>Now, only when myvar is accessed is the bound expression <code class="lang-conc">1+3</code> evaluated. Note also that this evaluation occurs only once. Subsequent assignments to the variable are possible and the associated bound expressions will only be evaluated once the variable is accessed, just like the initial assignment.</p>
+<p>Let's look at a more interesting example. First, normal execution without a lazy variable:</p>
+<pre><code class="lang-conc">a = 100
+myvar = {a=400; 22}//assign, with side effect of re-assigning a
+
+res = [a myvar a] //lets create an array holding the value of a, the evaluated myvar and a again
+
+//res == [400 22 400]
+</code></pre>
+<p>In the above case we see that in assigning a value to <code class="lang-conc">myvar</code>, we invoke the side effect of assigning a new value to a. Since this occurs as <code class="lang-conc">myvar</code> is initially created, before we have a chance to first access <code class="lang-conc">a</code>, we only see a as having the new value of <code class="lang-conc">400</code>. And this is reflected in the first and last elements of the <code class="lang-conc">res</code> array referring to the value of variable <code class="lang-conc">a</code>. Let's change this with a lazy variable:</p>
+<pre><code class="lang-conc">a = 100
+lazy myvar = {a=400; 22}//assign, with side effect of re-assigning a
+
+res = [a myvar a] //lets create an array holding the value of a, the evaluated myvar and a again
+
+//res == [100 22 400]
+</code></pre>
+<p>Now we can see that we can see the initial value of a, since when we are creating our <code class="lang-conc">res</code> array, we access a before we access <code class="lang-conc">myvar</code>, since the expression bound to <code class="lang-conc">myvar</code> is lazy evaluated and has not yet been evaluated, the side effect assigning the value of <code class="lang-conc">400</code> to a has not yet occurred. However, after accessing <code class="lang-conc">myvar</code> for our second array value, a is not assigned the value <code class="lang-conc">400</code> and this is reflected when we extract the value for the final element of the array.</p>
+<p>Where function or method parameters are defined as being lazy, the passed bindings are only evaluated upon use within the function or method. For example:</p>
+<pre><code class="lang-conc">a = 100
+
+def makeArray(lazy operate int) =&gt; [a operate a]
+
+res = makeArray({a=400; 22})
+
+//res == [100 22 400]
+</code></pre>
+<p>We see in the above example, that the block passed as an argument to the <code class="lang-conc">makeArray</code> function is only evaluated during execution of said function - and not initial invocation of the function.</p>
+<p>Behind the scenes, in order to implement lazy variables, we are overloading the unassign operator(see operator overloading). What if we don't want to evaluate the bound expression of a lazy variable when we refer to it, for instance when passing it to a function invocation? In this case we can use the <code class="lang-conc">:</code> operator as follows:</p>
+<pre><code class="lang-conc">a = 100
+lazy myvar = {a=400; 22}//assign, with side effect of re-assigning a
+
+def makeArray(lazy operate int) =&gt; [a operate a]
+
+res = makeArray(myvar:)
+
+//res == [100 22 400]
+</code></pre>
+<p>Here we are preventing unassignment of <code class="lang-conc">myvar</code>, instead this (and therefore execution of the binding of <code class="lang-conc">myvar</code>) is allowed to occur within the <code class="lang-conc">makeArray</code> function.</p>
+<p>We can make use of lazy variables within function/method references as follows:</p>
+<pre><code class="lang-conc">a = 88
+
+def afunc(lazy operate int) =&gt; [a operate a]
+
+xx = afunc&amp;(lazy int)
+res = xx({a=400; 22})
+
+//res == [100 22 400]
+</code></pre>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="variableAssignment.html">Variable Assignment</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#scopes">Scopes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#assigning-values">Assigning values</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#val-and-var">val and var</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#unassigned-declared-variables">Unassigned declared variables</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#multi-assignment">Multi Assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#compound-assignment">Compound assignment</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#lazy-variables">Lazy variables</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

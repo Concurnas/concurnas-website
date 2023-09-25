@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Types</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Types"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Types"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Types"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/types.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="types">Types<a class="headerlink" href="#types" title="Permalink to this headline" id="types">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#types">Types</a>
+   <ul>
+   <li><a class="reference internal" href="#primitive-types">Primitive Types</a>   <ul>
+   <li><a class="reference internal" href="#char's">Char's</a>   </li>
+   <li><a class="reference internal" href="#booleans">Booleans</a>   </li>
+   <li><a class="reference internal" href="#bytes">Bytes</a>   </li>
+   <li><a class="reference internal" href="#choosing-primitives">Choosing primitives</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#strings">Strings</a>   <ul>
+   <li><a class="reference internal" href="#the-escape-character">The escape character</a>   </li>
+   <li><a class="reference internal" href="#the-string-concatenation-operator-+">The String concatenation operator +</a>   </li>
+   <li><a class="reference internal" href="#assignment-plus-+=">Assignment plus +=</a>   </li>
+   <li><a class="reference internal" href="#string-is-an-object">String is an Object</a>   </li>
+   <li><a class="reference internal" href="#code-in-strings">Code in Strings</a>   <ul>
+   <li><a class="reference internal" href="#escaping-code-in-strings">Escaping code in Strings</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#format-strings">Format Strings</a>   </li>
+   <li><a class="reference internal" href="#additional-operations-on-strings">Additional operations on Strings</a>   <ul>
+   <li><a class="reference internal" href="#contains">Contains</a>   </li>
+   <li><a class="reference internal" href="#character-at">Character at</a>   </li>
+   <li><a class="reference internal" href="#substring">Substring</a>   </li>
+   <li><a class="reference internal" href="#substring-from">Substring from</a>   </li>
+   <li><a class="reference internal" href="#substring-to">Substring to</a>   </li>
+   <li><a class="reference internal" href="#iteration">Iteration</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#more-information-on-strings">More information on Strings</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#regex">Regex</a>   </li>
+   <li><a class="reference internal" href="#object-types">Object Types</a>   </li>
+   <li><a class="reference internal" href="#null">null</a>   </li>
+   <li><a class="reference internal" href="#(un)boxed-primitive-types">(Un)Boxed primitive types</a>   <ul>
+   <li><a class="reference internal" href="#boxing">Boxing</a>   </li>
+   <li><a class="reference internal" href="#unboxing">Unboxing</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#arrays">Arrays</a>   </li>
+   <li><a class="reference internal" href="#method-references">Method References</a>   <ul>
+   <li><a class="reference internal" href="#composite-types-of-method-references">Composite types of Method References</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#generic-types">Generic Types</a>   </li>
+   <li><a class="reference internal" href="#tuples">Tuples</a>   </li>
+   <li><a class="reference internal" href="#typedefs">Typedefs</a>   </li>
+   <li><a class="reference internal" href="#refs">Refs</a>   </li>
+   <li><a class="reference internal" href="#actors">Actors</a>   </li>
+   <li><a class="reference internal" href="#pass-by-value/reference">Pass by value/reference</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>In a sense, all programming is about data. As such the way in which we represent data, via types, is a fundamental concept in any programming language. In Concurnas, roughly speaking we have two foundation types: primitive and object types. From which we are able to derive six composite types of: arrays, method references, generics, actors, references and tuples.</p>
+<p>Why does Concurnas support both primitive types and Object types (after all, primitive types can all be represented via object types). Two reasons: performance and memory utilization. Generally speaking if we represent data which can be expressed as a primitive type using an object, then we consume more memory than we need to and can make the job of memory management (garbage collection, heap vs stack allocation etc) more difficult than it needs to be. Additionally our CPU processors are designed to perform operations on primitive type data, so by using objects we are adding a level of indirection which of course has a (relatively minor) performance penalty. In any case, although behind the scenes via a compiler/runtime optimization this penalty is mostly eliminated, it is still useful to be able to give the programmer control over the use of primitive or object types.</p>
+<p>That being said there are some circumstances in which using primitive types may seem to be a good idea, but we are forced instead to implicitly use object types - for instance, with generics. This is generally done to make code and libraries easier to understand, utilize and to eliminate code duplication.</p>
+<div class="section">
+<div class="section">
+<h2 id="primitive-types">Primitive Types<a class="headerlink" href="#primitive-types" title="Permalink to this headline" id="primitive-types">?</a></h2>
+<p>Let us first begin with the numerical primitive types of which there are eight:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Type Name</p>
+</th class="head">
+<th class="head">
+<p> Bit width(bytes)</p>
+</th class="head">
+<th class="head">
+<p> Min/max values</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">bool</code> or <code class="lang-conc">boolean</code>\(^{a}\)</p>
+</td>
+<td>
+<p> 32 (1) </p>
+</td>
+<td>
+<p><code class="lang-conc">true</code> or <code class="lang-conc">false</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">char</code></p>
+</td>
+<td>
+<p> 16 (2) </p>
+</td>
+<td>
+<p>\({-2^{16}, 2^{16} - 1}\)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">byte</code></p>
+</td>
+<td>
+<p> 8 (1) </p>
+</td>
+<td>
+<p>\({-2^7, 2^7 - 1}\)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">short</code></p>
+</td>
+<td>
+<p> 16 (2) </p>
+</td>
+<td>
+<p>\({-2^{15}, 2^{15} - 1}\)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">int</code>\(^{b}\)</p>
+</td>
+<td>
+<p> 32 (4) </p>
+</td>
+<td>
+<p>\({-2^{31}, 2^{31} - 1}\)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">long</code></p>
+</td>
+<td>
+<p> 64 (8) </p>
+</td>
+<td>
+<p>\({-2^{63}, 2^{63} - 1}\)</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">float</code></p>
+</td>
+<td>
+<p> 32 (4) </p>
+</td>
+<td>
+<p><a href="https://en.wikipedia.org/wiki/IEEE_754">see IEEE_754 docs</a></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">double</code>\(^{c}\)</p>
+</td>
+<td>
+<p> 64 (8) </p>
+</td>
+<td>
+<p><a href="https://en.wikipedia.org/wiki/IEEE_754">see IEEE_754 docs</a></p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<small>
+<p>\(^{a}\)internally to Concurnas (or to be more precise, the JVM) a 32-bit int is used to represent a boolean.</p>
+<p>\(^{b}\)int is the default type used when an integer literal is expressed.</p>
+<p>\(^{c}\)double is the default type used when a decimal number literal is expressed.</p>
+</small>
+<p>The byte, short, int and long types allows us to store integers (whole number) values accurately. If one wishes to store real numbers (i.e. with a decimal point), then the float and double types are available (with double offering more precision) - though they can only offer a finite degree of precision post the decimal point. For an accurate decimal representation to a fixed degree, using a fixed point decimal representation such as the object type: java.math.BigDecimal is recommended.</p>
+<ul class="simple">
+  <li><p>A <b>int</b> literal can be expressed as:</p>
+<ul class="simple">
+  <li><p>Decimal: <code class="lang-conc">123</code></p>
+</li>
+  <li><p>Binary: <code class="lang-conc">0b010110</code></p>
+</li>
+  <li><p>Hexadecimal: <code class="lang-conc">0x0E</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p>A <b>long</b> literal can be expressed as:</p>
+<ul class="simple">
+  <li><p>Decimal: <code class="lang-conc">123l</code> or <code class="lang-conc">123L</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p>A <b>short</b> literal can be expressed as:</p>
+<ul class="simple">
+  <li><p>Decimal: <code class="lang-conc">16s</code> or <code class="lang-conc">16S</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p>A <b>byte</b> literal must be cast from:</p>
+<ul class="simple">
+  <li><p>An int of value between \({-2^7, 2^7 - 1}\) using the cast operator <code class="lang-conc">as</code>. e.g.: <code class="lang-conc">12 as byte</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p>A <b>float</b> literal can be expressed as:</p>
+<ul class="simple">
+  <li><p>Decimal: <code class="lang-conc">12f</code> or <code class="lang-conc">12F</code></p>
+</li>
+  <li><p>Real: <code class="lang-conc">12.2f</code> or <code class="lang-conc">12.2F</code></p>
+</li>
+  <li><p>Engineering: <code class="lang-conc">12e6f</code> or <code class="lang-conc">12e6F</code></p>
+</li>
+</ul class="simple">
+</li>
+  <li><p>A <b>double</b> literal can be expressed as:</p>
+<ul class="simple">
+  <li><p>Decimal: <code class="lang-conc">12.</code> or <code class="lang-conc">12d</code> or <code class="lang-conc">12D</code></p>
+</li>
+  <li><p>Real: <code class="lang-conc">12.2</code> or <code class="lang-conc">12.2d</code> or <code class="lang-conc">12.2D</code></p>
+</li>
+  <li><p>Engineering: <code class="lang-conc">12e6</code> or <code class="lang-conc">12e6d</code> or <code class="lang-conc">12e6D</code></p>
+</li>
+</ul class="simple">
+</li>
+</ul class="simple">
+<div class="section">
+<div class="section">
+<h3 id="char's">Char's<a class="headerlink" href="#char's" title="Permalink to this headline" id="char's">?</a></h3>
+<p>Characters are represented by the primitive type <code class="lang-conc">char</code>, are 32 bits wide and can be expressed as a single character surrounded by either a pair of <code class="lang-conc">''</code> or <code class="lang-conc">""</code>:</p>
+<pre><code class="lang-conc">achar = 'a'
+achar = "a"
+</code></pre>
+<p>Characters are of some use in modern programming, but Unicode Strings (as seen later) are usually more useful.</p>
+</div>
+<div class="section">
+<h3 id="booleans">Booleans<a class="headerlink" href="#booleans" title="Permalink to this headline" id="booleans">?</a></h3>
+<p>Booleans are represented by the primitive type <code class="lang-conc">boolean</code> or <code class="lang-conc">bool</code> (use of which is a matter of personal preference), and are expressible as: <code class="lang-conc">true</code> or <code class="lang-conc">false</code>:</p>
+<pre><code class="lang-conc">abool = true
+another boolean = false
+</code></pre>
+</div>
+<div class="section">
+<h3 id="bytes">Bytes<a class="headerlink" href="#bytes" title="Permalink to this headline" id="bytes">?</a></h3>
+<p>Bytes are represented by the primitive type <code class="lang-conc">byte</code>, and are creatable via a cast:</p>
+<pre><code class="lang-conc">mybyte = 0x011010 as byte
+</code></pre>
+</div>
+<div class="section">
+<h3 id="choosing-primitives">Choosing primitives<a class="headerlink" href="#choosing-primitives" title="Permalink to this headline" id="choosing-primitives">?</a></h3>
+<p>When choosing which primitive type to represent our numerical data with, it is important to consider the range of values that our data can have and choose the smallest bit width type which best aligns to that data (so as to conserve memory). This is especially the case when defining large n dimensional arrays of data. However, these days our systems are generally non-memory bound, and as such over allocating and say using an <code class="lang-conc">int</code> where a <code class="lang-conc">short</code> would be more appropriate is not considered a problem. If in doubt over allocate, and don't worry too much.</p>
+</div>
+</div>
+<h2 id="strings">Strings<a class="headerlink" href="#strings" title="Permalink to this headline" id="strings">?</a></h2>
+<p>It turns out that in modern programming Strings are so proliferant that they deserve their own first-class citizen support (believe it or not, but there was a time when this was not the case!). In Concurnas there are a few handy special considerations to the language just to aid in working with Strings. Note that strings themselves are objects (covered in the next section).</p>
+<p>At the most basic level, Strings can be defined via use of either <code class="lang-conc">''</code> or <code class="lang-conc">""</code>. For example:</p>
+<pre><code class="lang-conc">astring = 'Hello World!'
+another = "I'm also a String"
+</code></pre>
+<p>Note above that by permitting both <code class="lang-conc">""</code> and <code class="lang-conc">''</code> for string defining, we're able to use <code class="lang-conc">'</code> and <code class="lang-conc">"</code> respectfully in our Strings. But, if one does not wish to switch between one style or another in order to use these characters inside a string, or has both a <code class="lang-conc">'</code> and a <code class="lang-conc">"</code> in the string one is defining, then an escape character \ may be used. For example:</p>
+<pre><code class="lang-conc">astring = 'I\'m also a String'
+</code></pre>
+<p>So as to disambiguate between the definition of a String and a character, for cases of single character length strings, using the <code class="lang-conc">''</code> denotes a character, and <code class="lang-conc">""</code> denotes a String. For example:</p>
+<pre><code class="lang-conc">aString = "c"
+aChar   = 'c'
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="the-escape-character">The escape character<a class="headerlink" href="#the-escape-character" title="Permalink to this headline" id="the-escape-character">?</a></h3>
+<p>As we have already seen the escape character \ can be used to input a <code class="lang-conc">'</code> or <code class="lang-conc">"</code> inside a <code class="lang-conc">''</code> or <code class="lang-conc">""</code> string. It may also be used to input a range of special characters including the newline character: \n and Unicode, UTF-16 characters. For example:</p>
+<pre><code class="lang-conc">anewline = "Hello\nworld!"
+/*=&gt;Hello
+world!*/
+aString = "\u0048\u0065\u006c\u006c\u006f \u0077\u006f\u0072\u006c\u0064\u0021" //"=&gt;Hello world!"
+</code></pre>
+</div>
+<div class="section">
+<h3 id="the-string-concatenation-operator-+">The String concatenation operator +<a class="headerlink" href="#the-string-concatenation-operator-+" title="Permalink to this headline" id="the-string-concatenation-operator-+">?</a></h3>
+<p>We can compose strings by using the concatenation <code class="lang-conc">+</code> operator. This is useful for mixing raw text or pre-existing string variables and variables/expression values together. For instance:</p>
+<pre><code class="lang-conc">avar = 8
+str = " there m"
+aString = "hi" + str + avar
+//aString =="hi there m8"
+</code></pre>
+<p>In order for string concatenation via the <code class="lang-conc">+</code> operator to work, at least one of the right-hand side or left-hand side arguments must be a String, however, even an empty String <code class="lang-conc">""</code> is acceptable.</p>
+<p>In the case where an object type is involved in String concatenation the object's <code class="lang-conc">toString</code> method is invoked. This method is included for all objects by virtue of the fact that they all inherit from Class <code class="lang-conc">java.lang.Object</code> where a default implementation returning the objects class name and hexadecimalized hashCode is returned as a string.</p>
+<p>In the case where an n dimensional array is on the left or right hand side of the concatenation it will be converted into a formatted String. For example:</p>
+<pre><code class="lang-conc">mat = [ 1 2 ; 3 4]
+
+asStr = "" + mat
+//asStr == "[[1 2] [3 4]]"
+</code></pre>
+<p>Note that since strings are immutable objects, a new String is created as a result of the <code class="lang-conc">+</code> operator being applied.</p>
+</div>
+<div class="section">
+<h3 id="assignment-plus-+=">Assignment plus +=<a class="headerlink" href="#assignment-plus-+=" title="Permalink to this headline" id="assignment-plus-+=">?</a></h3>
+<p>The assignment plus operator <code class="lang-conc">+=</code> operates in a similar manner. If the item on the left-hand side of the plus assignment operator is a String, then the item on the right-hand side of the plus assignment operator is appended to the left-hand side and a new string is assigned to the left-hand side item.</p>
+</div>
+<div class="section">
+<h3 id="string-is-an-object">String is an Object<a class="headerlink" href="#string-is-an-object" title="Permalink to this headline" id="string-is-an-object">?</a></h3>
+<p>The type String is an object - therefore it can be created in the usual way for Objects:</p>
+<pre><code class="lang-conc">str = new java.lang.String(23)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="code-in-strings">Code in Strings<a class="headerlink" href="#code-in-strings" title="Permalink to this headline" id="code-in-strings">?</a></h3>
+<p>Another handy trick when creating strings is to nest raw code within the string itself. This is great for including variables directly in strings without having to resort to the somewhat cumbersome usage of multiple <code class="lang-conc">+</code> operators as par above.</p>
+<pre><code class="lang-conc">avar = 8
+str = " there m"
+aString = "hi {str} {avar}"
+//aString == "hi there m8"
+</code></pre>
+<p>We can include more complex expressions as follows:</p>
+<pre><code class="lang-conc">aString = "addition result: {1+2}"
+//aString == "addition result: 3"
+</code></pre>
+<p>Code in Strings can be applied everywhere except for when defining Strings for default annotation parameters - as these are required to be fully-defined constants at compilation time. Code within strings nest, that is to say that; code embedded within the string may nest other strings which may optionally have code within them too.</p>
+<div class="section">
+<div class="section">
+<h4 id="escaping-code-in-strings">Escaping code in Strings<a class="headerlink" href="#escaping-code-in-strings" title="Permalink to this headline" id="escaping-code-in-strings">?</a></h4>
+<p>Code in Strings may be escaped by prefixing said code with a \:</p>
+<pre><code class="lang-conc">aString = "addition result: \{1+2}"
+//aString == "addition result: {1+2}"
+</code></pre>
+</div>
+</div>
+<h3 id="format-strings">Format Strings<a class="headerlink" href="#format-strings" title="Permalink to this headline" id="format-strings">?</a></h3>
+<p>One final mechanism by which we can create Strings is via the format, static method of <code class="lang-conc">java.lang.String</code></p>
+<pre><code class="lang-conc">var1 = 99
+var2 = 234.
+String.format("var1: %s var2: %s", var1, var2)
+</code></pre>
+</div>
+<div class="section">
+<h3 id="additional-operations-on-strings">Additional operations on Strings<a class="headerlink" href="#additional-operations-on-strings" title="Permalink to this headline" id="additional-operations-on-strings">?</a></h3>
+<p>Concurnas supports the additional following set of basic operations on Strings:</p>
+<div class="section">
+<div class="section">
+<h4 id="contains">Contains<a class="headerlink" href="#contains" title="Permalink to this headline" id="contains">?</a></h4>
+<p>A substring may be checked for:</p>
+<pre><code class="lang-conc">cont = "de" in "abcdefg"
+</code></pre>
+</div>
+<div class="section">
+<h4 id="character-at">Character at<a class="headerlink" href="#character-at" title="Permalink to this headline" id="character-at">?</a></h4>
+<p>The character at a specific point in a String may be determined:</p>
+<pre><code class="lang-conc">achar = "abcdefg"[2] //c
+</code></pre>
+</div>
+<div class="section">
+<h4 id="substring">Substring<a class="headerlink" href="#substring" title="Permalink to this headline" id="substring">?</a></h4>
+<p>A substring between two points:</p>
+<pre><code class="lang-conc">substr = "abcdefg"[2 ... 4] //cd
+</code></pre>
+</div>
+<div class="section">
+<h4 id="substring-from">Substring from<a class="headerlink" href="#substring-from" title="Permalink to this headline" id="substring-from">?</a></h4>
+<p>A substring from a point to the end of a string:</p>
+<pre><code class="lang-conc">substr = "abcdefg"[4 ... ] //efg
+</code></pre>
+</div>
+<div class="section">
+<h4 id="substring-to">Substring to<a class="headerlink" href="#substring-to" title="Permalink to this headline" id="substring-to">?</a></h4>
+<p>A substring from the start to a point:</p>
+<pre><code class="lang-conc">substr = "abcdefg"[ ... 4] //abcd
+</code></pre>
+</div>
+<div class="section">
+<h4 id="iteration">Iteration<a class="headerlink" href="#iteration" title="Permalink to this headline" id="iteration">?</a></h4>
+<p>Iteration over all characters of a String:</p>
+<pre><code class="lang-conc">elms = (x, x == 'b') for x in "abcdefg"
+//elms ==&gt; [(a, false), (b, true), (c, false), (d, false), (e, false), (f, false), (g, false)]
+</code></pre>
+</div>
+</div>
+<h3 id="more-information-on-strings">More information on Strings<a class="headerlink" href="#more-information-on-strings" title="Permalink to this headline" id="more-information-on-strings">?</a></h3>
+<p>Strings in Concurnas are supported by the JVM, for more information on Strings see: <a href="https://docs.oracle.com/javase/tutorial/java/data/strings.html">Oracle Java String documentation</a>.</p>
+</div>
+</div>
+<h2 id="regex">Regex<a class="headerlink" href="#regex" title="Permalink to this headline" id="regex">?</a></h2>
+<p>Regex, or regular expressions, are another area of modern programming so proliferant that Concurnas has special first-class citizen support. We can define a regex in much the same way as a String, by prepending the regex String within <code class="lang-conc">''</code> or <code class="lang-conc">""</code> with <code class="lang-conc">r</code>, to make <code class="lang-conc">r''</code> or <code class="lang-conc">r""</code> for example:</p>
+<pre><code class="lang-conc">aregex = r"ab*a"
+...
+amatch = aregex.matcher("abbbba").matches()
+</code></pre>
+<p>This syntax produces an object of type <code class="lang-conc">java.util.regex.Pattern</code>. More details of this can be found <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/regex/Pattern.html">here</a>. For more details on the variant of regex supported by Concurnas, see <a href="https://docs.oracle.com/en/java/javase/12/docs/api/java.base/java/util/regex/Pattern.html">here</a>. Note that it's relatively expensive to construct regex objects since they are compiled at runtime upon definition so its recommended that they be created as top level variables or cached and/or otherwise reused.</p>
+</div>
+<div class="section">
+<h2 id="object-types">Object Types<a class="headerlink" href="#object-types" title="Permalink to this headline" id="object-types">?</a></h2>
+<p>Objects and Classes are covered in more detail <a href="classes.html#classes">in the classes section</a>. This is a brief introduction:</p>
+<pre><code class="lang-conc">open class MyClass(public an int)
+class ChildClass extends MyClass(88){
+  def amethod() =&gt; "returns something"
+}
+
+myObject1 = MyClass(12)
+myObject2 Object = MyClass(12)
+myChildObj1 = ChildClass()
+myChildObj2 MyClass = ChildClass()
+</code></pre>
+<p><code class="lang-conc">myObject1</code> and <code class="lang-conc">myObject2</code> are instance objects of type class <code class="lang-conc">MyClass</code>. However, in the case of <code class="lang-conc">myObject2</code> since it has been declared as being of type <code class="lang-conc">Object</code> - it can only be used as an instance of Object, the <code class="lang-conc">an</code> field is not accessible unless the object is cast to an instance of <code class="lang-conc">MyClass</code>.</p>
+<p><code class="lang-conc">myObject1</code> and <code class="lang-conc">myObject2</code> are instance objects of type <code class="lang-conc">ChildClass</code>. However, in the case of <code class="lang-conc">myChildObj2</code> since it has been declared as being of type <code class="lang-conc">MyClass</code> - it can only be used as an instance of <code class="lang-conc">MyClass</code>, the <code class="lang-conc">amethod</code> method is not callable unless the variable is cast to an instance of <code class="lang-conc">ChildClass</code>. For <code class="lang-conc">myChildObj1</code> we can access the field <code class="lang-conc">an</code> from the superclass <code class="lang-conc">MyClass</code>.</p>
+<p>Note that <code class="lang-conc">java.lang.Object</code> is an implicit superclass of every class if a super type is not defined. As such it is the superclass of every instance object.</p>
+</div>
+<div class="section">
+<h2 id="null">null<a class="headerlink" href="#null" title="Permalink to this headline" id="null">?</a></h2>
+<p>Null is a special type of Object and is represented simply by the keyword <code class="lang-conc">null</code>. Any object may be assigned a value of <code class="lang-conc">null</code> as it is a subtype of all Object types (including arrays). Attempting to call a method or access a field on a nullable object which is <code class="lang-conc">null</code> will result in a <code class="lang-conc">java.lang.NullPointerException</code> object being thrown. This means that where one suspects an object may be null, it is necessary to check for the null state. As such null should only be used sparingly.</p>
+<p>Generally speaking, the conventional wisdom of modern software engineering is that null should be used sparingly. As such if one wishes for a variable to be potentially nullable, its type must be declared as being nullable, this is denoted by appending a <code class="lang-conc">?</code> to the type. For example:</p>
+<pre><code class="lang-conc">aString  String  = "hi"
+nullable String? = null
+nullable         = "no longer null"
+</code></pre>
+<p>The subject of null safety is covered in detail in the <a href="nullsafe.html#null-safety">null safety chapter</a>. For now let's look at how we can use <code class="lang-conc">null</code>:</p>
+<pre><code class="lang-conc">assignedNull String = null //an Object of type null assigned a String
+aArray int[]? = null
+aMatrix int[2]? = null
+
+class User(name String, age int)
+
+def extractName(user User?){//function taking an object argument which may resolve to null
+  "unknown" if user == null else user.name //testing for nullability
+}
+
+def extractAge(user User? = null){//function with a default parameter resolving to null
+  0 if user == null else user.age
+}
+
+name = extractName(null)//passing null as an argument to a function
+age = extractAge()//the single argument to the function call will be populated with its default value of null
+</code></pre>
+</div>
+<div class="section">
+<h2 id="(un)boxed-primitive-types">(Un)Boxed primitive types<a class="headerlink" href="#(un)boxed-primitive-types" title="Permalink to this headline" id="(un)boxed-primitive-types">?</a></h2>
+<p>For every primitive type, there exists an Object type. Concurnas allows either to be used on an interchangeable basis via a process known as boxing and unboxing.</p>
+<p>The pairs of primitive and object types are as follows:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Primitive Type</p>
+</th class="head">
+<th class="head">
+<p>Object Type</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">byte</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Byte</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">short</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Short</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">int</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Integer</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">long</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Long</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">float</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Float</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">double</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Double</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">char</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Character</code></p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">boolean</code> or <code class="lang-conc">bool</code></p>
+</td>
+<td>
+<p><code class="lang-conc">java.lang.Boolean</code></p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>These can be used interchangeability for example:</p>
+<div class="section">
+<div class="section">
+<h3 id="boxing">Boxing<a class="headerlink" href="#boxing" title="Permalink to this headline" id="boxing">?</a></h3>
+<pre><code class="lang-conc">def opOnInteger(an Integer) =&gt; an+1
+
+opOnInteger(12)
+</code></pre>
+<p>Above, the value passed as an argument in the call to <code class="lang-conc">opOnInteger</code> is 'boxed' to type Integer. Behind the scenes the code is converted into the form:</p>
+<pre><code class="lang-conc">opOnInteger(new Integer(12))
+</code></pre>
+</div>
+<div class="section">
+<h3 id="unboxing">Unboxing<a class="headerlink" href="#unboxing" title="Permalink to this headline" id="unboxing">?</a></h3>
+<pre><code class="lang-conc">def givesAnInteger(from int) =&gt; new Integer(from)
+
+avar int = givesAnInteger(12)
+</code></pre>
+<p>Above, the value returned from <code class="lang-conc">givesAnInteger</code>, of type <code class="lang-conc">Integer</code>, is 'unboxed' to type <code class="lang-conc">int</code>. Behind the scenes the code is converted into the form: <code class="lang-conc">givesAnInteger(12).intValue()</code></p>
+<p>Autoboxing and unboxing also conveniently allows us to use primitive types as generic type qualifiers. For example:</p>
+<pre><code class="lang-conc">anAr = new java.util.Arraylist&lt;int&gt;()
+</code></pre>
+</div>
+</div>
+<h2 id="arrays">Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline" id="arrays">?</a></h2>
+<p>Arrays are covered in more detail <a href="arraysMatricesAndLists.html#arrays-matrices-and-lists">in the arrays section</a>. This is a brief explanation.</p>
+<p>When we refer to arrays we are typically referring to a one dimensional array. For example:</p>
+<pre><code class="lang-conc">arra1 int[]  = [1 2 3 4 5]
+arra2 int[1] = [1 2 3 4 5]
+</code></pre>
+<p>The Array type is simply: normal type with <code class="lang-conc">[]</code> postfixed or <code class="lang-conc">[1]</code> - indicating one level of dimensionality.</p>
+<p>When it comes to n dimensional arrays, for instance a matrix (n=2), the type syntax is very similar:</p>
+<pre><code class="lang-conc">mat1 int[][] = [1 2 ; 3 4]
+mat2 int[2] = [1 2 ; 3 4]
+</code></pre>
+<p>Hence, the syntax to define an n dimensional array is: normal type, with n <code class="lang-conc">[]</code>'s or <code class="lang-conc">[n]</code>.</p>
+<p>An array can be composed of any type - in other words, you can have an array of elements of any type in Concurnas. However, all the elements of said array need to be of the same type. For example the type of this array:</p>
+<pre><code class="lang-conc">["hi", 23]
+</code></pre>
+<p>Is <code class="lang-conc">java.lang.Object</code>, since this is the most specific type which is a supertype of all elements of the array (the second <code class="lang-conc">int</code> item will be boxed to an Integer, which is a subtype of <code class="lang-conc">java.lang.Object</code>).</p>
+<p>We can extract an array from a matrix and an individual item from a matrix as follows:</p>
+<pre><code class="lang-conc">mat int[2] = [1 2 ; 3 4]
+ar int[] = mat[1]
+item int = mat[1, 2]
+</code></pre>
+<p>When we perform an m level extraction we are returning a type: composed[n-m], and where n-m == 0 the composed type itself is returned.</p>
+<p>When we set values of n dimensional matrices, they do not have to match 1:1 with the declared type of the matrix, but they may be subtypes. For example:</p>
+<pre><code class="lang-conc">objAr Object[] = [ "hi", "there", 123]
+objAr[2] = "friend"//replace last item with a String
+</code></pre>
+</div>
+<div class="section">
+<h2 id="method-references">Method References<a class="headerlink" href="#method-references" title="Permalink to this headline" id="method-references">?</a></h2>
+<p>Method (or function) references can be created via a number of mechanisms; In addition to being the types of method references they are the types of lambda definitions. They take the form of a list of input arguments (which may be empty) and a return type. For example:</p>
+<pre><code class="lang-conc">def plusTogether(a int, b int) =&gt; a+b
+
+ref (int, int) int = plusTogether&amp;//create a function reference to plusTogether
+
+aslambda (int, int) int = def(a int, b int) =&gt; a + b//create a lambda
+</code></pre>
+<p>They are handy types and can be passed around our program and invoked as follows:</p>
+<pre><code class="lang-conc">ans1 int = ref(1, 1)
+ans2 int = aslambda(1, 1)
+</code></pre>
+<p>All method references are a subtype of <code class="lang-conc">lambda</code> which is itself a shortcut for</p>
+<p><code class="lang-conc">com.concurnas.bootstrap.lang.Lambda</code>:</p>
+<pre><code class="lang-conc">def doer(a int) =&gt; a*2
+
+afuncref lambda = doer&amp;
+afuncref com.concurnas.bootstrap.lang.Lambda = doer&amp;
+</code></pre>
+<p>An alternative representation for a method reference is to use their associated object type. For a method reference returning a non void type:</p>
+<pre><code class="lang-conc">def doer(a int) =&gt; a*2
+
+afuncref (int) int = doer&amp;
+altrep Function1&lt;int, int&gt; = afuncref
+</code></pre>
+<p>And for a method reference returning void:</p>
+<pre><code class="lang-conc">def doer(a int) void {}
+
+afuncref (int) void = doer&amp;
+altrep Function1v&lt;int&gt; = afuncref
+</code></pre>
+<div class="section">
+<div class="section">
+<h3 id="composite-types-of-method-references">Composite types of Method References<a class="headerlink" href="#composite-types-of-method-references" title="Permalink to this headline" id="composite-types-of-method-references">?</a></h3>
+<p>A type which is composed of method references can be defined by surrounding the method reference in parentheses. This is handy for defining array or method references with arguments or return types themselves being method references:</p>
+<pre><code class="lang-conc">def applyMethodRefs(what ((int) int)[]) //takes an array of (int) int method refernces as input
+  =&gt; w(20) for w in what
+
+duplicator ((int) int) ((int) int)[] = def ( input (int) int ) =&gt; [input input]
+duplicatorDup (((int) int) ((int) int)[])[] = [duplicator&amp; duplicator&amp;]
+</code></pre>
+</div>
+</div>
+<h2 id="generic-types">Generic Types<a class="headerlink" href="#generic-types" title="Permalink to this headline" id="generic-types">?</a></h2>
+<p>Generics are covered in more detail in the <a href="generics.html#generics">Generics</a> chapter. This is a brief explanation.</p>
+<p>Let us create an instance object of a class that supports Generics:</p>
+<pre><code class="lang-conc">class MyGenClass&lt;X&gt;
+
+instObj1 MyGenClass&lt;String&gt; = new MyGenClass&lt;String&gt;()
+</code></pre>
+<p>Above we create an object <code class="lang-conc">instObj1</code> which is of type <code class="lang-conc">MyGenClass</code> and having generic qualification <code class="lang-conc">String</code> since <code class="lang-conc">MyGenClass</code> requires one generic type qualification which it refers to internally as <code class="lang-conc">X</code>. When creating instance objects of classes requiring generic type qualification - these generic types must be provided.</p>
+<p>Bear in mind that <code class="lang-conc">MyGenClass&lt;String&gt;</code> is not a subtype of <code class="lang-conc">MyGenClass&lt;Object&gt;</code> - the generic type qualifications must match, they cannot be subtypes.</p>
+<p>In instances, except creation, where we really do not know the generic type, or don't care for it, then we can use the wildcard <code class="lang-conc">?</code> in place of their declaration. For example:</p>
+<pre><code class="lang-conc">instObj2 MyGenClass&lt;?&gt; = new MyGenClass&lt;String&gt;()
+</code></pre>
+</div>
+<div class="section">
+<h2 id="tuples">Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline" id="tuples">?</a></h2>
+<p>Tuples are covered in more detail <a href="tuples.html#tuples1">in the tuples section</a>. This is a brief explanation:</p>
+<pre><code class="lang-conc">atuple = 12, "hi"
+another (int, String) = 12, "hi"
+another2 Tuple2&lt;int, String&gt; = 12, "hi"
+</code></pre>
+<p>All three above are equivalent and resolve to a tuple with two elements of Type: <code class="lang-conc">(Integer, String)</code>.</p>
+</div>
+<div class="section">
+<h2 id="typedefs">Typedefs<a class="headerlink" href="#typedefs" title="Permalink to this headline" id="typedefs">?</a></h2>
+<p>Typedefs are covered in more detail <a href="typedefs.html#typedefs1">in the Typedefs section</a>. They are most commonly used in order to avoid code duplication in writing long type definitions (particularly those with many complex generic type qualifications) so as to improve code readability. Let's briefly create and use a typedef:</p>
+<pre><code class="lang-conc">typedef MyMap = java.util.HashMap&lt;String, java.Util.HashSet&lt;int&gt;&gt;
+
+am MyMap = new MyMap()
+am2 java.util.HashMap&lt;String, java.Util.HashSet&lt;int&gt;&gt; = new java.util.HashMap&lt;String, java.Util.HashSet&lt;int&gt;&gt;(); 
+</code></pre>
+<p><code class="lang-conc">am</code> and <code class="lang-conc">am2</code> are essentially equivalent to one another in type. At compilation time the first definition and assignment to <code class="lang-conc">am</code> is expanded into the second form of <code class="lang-conc">am2</code>.</p>
+<p>At this point the key thing to note with typedefs is that they are essentially shortcuts ('drop in replacements') for otherwise longer, more verbose type definitions.</p>
+</div>
+<div class="section">
+<h2 id="refs">Refs<a class="headerlink" href="#refs" title="Permalink to this headline" id="refs">?</a></h2>
+<p>Refs are covered in more detail in the <a href="concurrentProgramming.html#refs1">Refs section</a>. For now let's look at a brief introduction to refs from a typing perspective:</p>
+<pre><code class="lang-conc">aref1 int: //defined but unassigned local ref of type int
+aref2 int := 21 //defined and assigned local ref of type int
+aref3 := 21 //assigned local ref of inferred type int
+aref4 = 21: //assigned variable of inferred type int: with the right-hand side being a ref creation expression
+aref5 = {21}! //assigned variable of inferred type int: - right-hand side being a ref returned from an isolate - this is the most computationally expensive variety of ref creation - if you find yourself doing this to create simple refs from expressions that don't require concurrent execution, consider using the preceding form
+</code></pre>
+<p>All the refs above are of type <code class="lang-conc">int:</code>. As can be seen above, the key when creating refs is the use of <code class="lang-conc">:</code> postfixed to a type or prefixed to the assignment operator <code class="lang-conc">=</code> - this tells the compiler that we wish to create a ref type.</p>
+<p>Refs enable us to do two very useful things core to the operation of most programs written in Concurnas:</p>
+<p>They provide a mechanism by which differing isolates (pieces of code which are executed at the same time) can communicate between each other. For now, consider that isolates are concurrently executed blocks of code indicated by post-pending the block with the isolate creation bang <code class="lang-conc">!</code>. e.g <code class="lang-conc">{1+1}</code><code class="lang-conc">!</code></p>
+<p>They enable reactive computing, via use of onchange, every, async and await (this topic is explored later in the Concurrency section).</p>
+<p>Refs have posses an very important feature which helps to enable the above. When we wish to perform an operation on a ref variable, or pass a ref to a function which is not expecting a ref - the ref will be unassigned. But, if no value has yet been assigned to the ref further execution will be blocked until a value is available.</p>
+<p>It is for this reason that the following code will fail at compilation time with an error:</p>
+<pre><code class="lang-conc">a int:
+b = a //fails as a has not been assigned and and we will never be able to unassign from a to b, causing us to wait forever 
+</code></pre>
+<p>Type wise, when unassigning a ref with type <code class="lang-conc">X:</code>, the type of the value returned will be <code class="lang-conc">X</code>. For <code class="lang-conc">int:</code> this is <code class="lang-conc">int</code>. For example:</p>
+<pre><code class="lang-conc">a int:
+
+{a = 99}! //execute our ref assignment in a separate isolate
+
+b int = a //a is unassigned when our isolate spawned above completes execution
+</code></pre>
+<p>If we wish to prevent this unassignment we can use the <code class="lang-conc">:</code> operator when referencing the variable. For example:</p>
+<pre><code class="lang-conc">a int: = 12
+b = a:
+c := a
+
+//the &amp;== operator tests for equality by object reference and not by object value as the == operator does
+assert b: &amp;== a: //a and b are references to the same ref
+assert c: &amp;== a: //a and c are references to the same ref
+</code></pre>
+</div>
+<div class="section">
+<h2 id="actors">Actors<a class="headerlink" href="#actors" title="Permalink to this headline" id="actors">?</a></h2>
+<p>Actors are covered in more detail <a href="concurrentProgramming.html#actors1">in the Actors section</a>. In summary, they are a hybrid between isolates and objects.</p>
+<p>Method calls on actor objects occur within one dedicated isolate for the actor. Only one method is executed per actor at any point in time, as such actors can be shared between isolates. Method calls to actor methods return refs. An example actor:</p>
+<pre><code class="lang-conc">class NormalClass(counter = 0){
+  def inc() =&gt; ++counter
+}
+
+anActor actor NormalClass = new actor NormalClass()
+anotherActor = new actor NormalClass()//the type of anotherActor is inferred as: actor NormalClass
+
+aref = anActor.inc() //aref is infered as type int:
+</code></pre>
+<p>All actors are a subtype of <code class="lang-conc">actor</code> which is itself a shortcut for <code class="lang-conc">com.concurnas.lang.Actor</code>:</p>
+<pre><code class="lang-conc">class MyClass()
+
+act1 actor = new actor MyClass()
+act2 com.concurnas.lang.Actor = new actor MyClass()	
+</code></pre>
+</div>
+<div class="section">
+<h2 id="pass-by-value/reference">Pass by value/reference<a class="headerlink" href="#pass-by-value/reference" title="Permalink to this headline" id="pass-by-value/reference">?</a></h2>
+<p>Concurnas applies pass by value or pass by reference contingent on the type being referred to. Primitive types are passed by value, everything else (including primitive type arrays) are passed by reference. Therefore the following conditions hold true:</p>
+<p>Concerning primitive types, a copy of the value is made:</p>
+<pre><code class="lang-conc">anint1 = 99
+anint2 = anint1 //copy value of anint1 to anint2
+
+anint2++ //increment anint2
+
+assert anint2 == 100
+assert anint1 == 99
+</code></pre>
+<p>We see above that the original value held by variable <code class="lang-conc">anint1</code> is unchanged by the operation applied to the value of <code class="lang-conc">anint2</code>.</p>
+<p>However, the behaviour is different with objects:</p>
+<pre><code class="lang-conc">class MyClass(~avar int)
+
+mcvar1 = MyClass(99)
+mcvar2 = mcvar1
+
+mcvar2.avar++
+
+assert mcvar1.avar == mcvar2.avar
+</code></pre>
+<p>We see here that the internal state of the object referred to by <code class="lang-conc">mcvar1</code> is the same as that of <code class="lang-conc">mcvar2</code> - this is because a reference has been passed to <code class="lang-conc">mcvar2</code> upon assignment - a copy of the value of <code class="lang-conc">mcvar1</code> is not made.</p>
+<p>Sometimes this behaviour is undesirable and we'd want <code class="lang-conc">mcvar2</code> to be a copy of the <code class="lang-conc">mcvar1</code>. This can easily be achieved by tweaking our code above to include the copy operator <code class="lang-conc">@</code>:</p>
+<pre><code class="lang-conc">class MyClass(~avar int)
+
+mcvar1 = MyClass(99)
+mcvar2 = mcvar1@
+
+mcvar2.avar++
+
+assert mcvar1.avar &lt;&gt; mcvar2.avar
+</code></pre>
+<p>Above we see that the state of <code class="lang-conc">mcvar1</code> and <code class="lang-conc">mcvar2</code> is no longer the same, as they refer to different objects.</p>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="types.html">Types</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#primitive-types">Primitive Types</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#char's">Char's</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#booleans">Booleans</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#bytes">Bytes</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#choosing-primitives">Choosing primitives</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#strings">Strings</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#the-escape-character">The escape character</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#the-string-concatenation-operator-+">The String concatenation operator +</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#assignment-plus-+=">Assignment plus +=</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#string-is-an-object">String is an Object</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#code-in-strings">Code in Strings</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#escaping-code-in-strings">Escaping code in Strings</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#format-strings">Format Strings</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#additional-operations-on-strings">Additional operations on Strings</a>
+   <ul>
+   <li class="toctree-l4"><a class="reference internal" href="#contains">Contains</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#character-at">Character at</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#substring">Substring</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#substring-from">Substring from</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#substring-to">Substring to</a>
+   </li>
+   <li class="toctree-l4"><a class="reference internal" href="#iteration">Iteration</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#more-information-on-strings">More information on Strings</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#regex">Regex</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#object-types">Object Types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#null">null</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#(un)boxed-primitive-types">(Un)Boxed primitive types</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#boxing">Boxing</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#unboxing">Unboxing</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#arrays">Arrays</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#method-references">Method References</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#composite-types-of-method-references">Composite types of Method References</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-types">Generic Types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#tuples">Tuples</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#typedefs">Typedefs</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#refs">Refs</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#actors">Actors</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#pass-by-value/reference">Pass by value/reference</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

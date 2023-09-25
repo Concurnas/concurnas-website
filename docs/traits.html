@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Traits</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Traits"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Traits"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Traits"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/traits.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="traits">Traits<a class="headerlink" href="#traits" title="Permalink to this headline" id="traits">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#traits">Traits</a>
+   <ul>
+   <li><a class="reference internal" href="#defining-traits">Defining traits</a>   </li>
+   <li><a class="reference internal" href="#using-traits">Using traits</a>   </li>
+   <li><a class="reference internal" href="#generic-traits">Generic traits</a>   </li>
+   <li><a class="reference internal" href="#resolving-ambiguous-trait-method-definitions">Resolving ambiguous trait method definitions</a>   </li>
+   <li><a class="reference internal" href="#stateful-traits">Stateful traits</a>   </li>
+   <li><a class="reference internal" href="#local-class-definitions">Local class definitions</a>   </li>
+   <li><a class="reference internal" href="#anonymous-class-definitions">Anonymous class definitions</a>   </li>
+   <li><a class="reference internal" href="#stacking-traits">Stacking traits</a>   </li>
+   <li><a class="reference internal" href="#linearization">Linearization</a>   </li>
+   <li><a class="reference internal" href="#using-non-concurnas-traits/interfaces">Using non Concurnas traits/interfaces</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>Black feathers in the storm, where will we fall?</p>
+<p>Will we ever be home?</p>
+<p>Let's let the wind decide, where we are going to fall</p>
+<p>Soaring to a destination</p>
+<p>She takes me away</p><footer>- Black Feathers from Black Anima by Lacuna Coil  (2019)</footer></blockquote>
+<p>Traits allow us to define elements of reusable functionality (both methods and state) which can be mixed-in to classes. They are themselves not instantiable as, like abstract classes, they represent incomplete fragments of functionality. Unlike abstract classes however, a class may be composed of (aka mixed-in) more than one trait. Traits are useful as they encourage and facilitate software creation via composition as opposed to inheritance, which generally speaking is a better design pattern in object oriented programming.</p>
+<p>Traits can be compared to interfaces with default methods such as in languages like Java. However, they differ in that they can be chained together, may extend non trait classes and allow classes to be composed of stacked trait super method calls.</p>
+<div class="section">
+<div class="section">
+<h2 id="defining-traits">Defining traits<a class="headerlink" href="#defining-traits" title="Permalink to this headline" id="defining-traits">?</a></h2>
+<p>Traits are defined in a similar way to classes. But they may not be nested as they don't have access to nested state. Like abstract classes, they may define both concrete and abstract methods.</p>
+<pre><code class="lang-conc">trait Eater{
+  def eat() String =&gt; "eating {favouriteFood()}" //concrete method
+  def favouriteFood() String //abstract method to be implemented by composing class
+}
+</code></pre>
+<p>Above we have defined a trait, Eater having both a concrete method implementation and an abstract method.</p>
+<p>Like classes, traits may inherit from other traits, and call super etc as normal:</p>
+<pre><code class="lang-conc">trait Animal &lt; Eater{
+  override def eat() String =&gt; "animal is " + super.eat()
+  def age() =&gt; 12 //all animals are the same age in this example, we will improve this later on
+}
+</code></pre>
+<p>Also like classes, traits may inherit from classes (either abstract or concrete):</p>
+<pre><code class="lang-conc">abstract class NonAnimalEntity{
+  def nonAnimalType() String
+}
+
+trait Plant extends NonAnimalEntity with Eater{
+  def nonAnimalType() =&gt; "Plant"
+  override def eat() String =&gt; "plant is" + super.eat()
+  def favouriteFood() String =&gt; "carbon dioxide"
+}
+</code></pre>
+<p>Note in the above example, for our Plant trait we are implementing the abstract class <code class="lang-conc">LivingEntity</code>, and the trait Eater, by using the with keyword. We will look into using the with keyword (and it's abbreviation ~) in more detail below. We also choose to implement the abstract method, <code class="lang-conc">favouriteFood</code> at this level, though it can of course be overridden again in any composing classes or traits.</p>
+<p>Traits cannot be directly instantiated, rather they are composed or mixed-in to other concrete or abstract classes. For this reason they do not have constructors. They also cannot have <code class="lang-conc">init</code> blocks.</p>
+</div>
+<div class="section">
+<h2 id="using-traits">Using traits<a class="headerlink" href="#using-traits" title="Permalink to this headline" id="using-traits">?</a></h2>
+<p>Following on from our previous examples. Let us now create a concrete class, composed of a trait, and make use of it. In order to compose a class of a trait we use the <code class="lang-conc">with</code> keyword, the abbreviation of which being <code class="lang-conc">~</code>. Multiple different traits may be used in the definition of a class, by separating them with a comma <code class="lang-conc">,</code>.</p>
+<pre><code class="lang-conc">trait FourLegged ~ Animal
+
+class Dog with Animal, FourLegged {
+  def favouriteFood() =&gt; "sausages"
+}
+
+fido = new Dog()
+fido.eat()//eat returns: "animal is eating sausages"
+</code></pre>
+<p>The following code is perfectly valid since an object of <code class="lang-conc">Dog</code> class is composed of the <code class="lang-conc">Animal</code> trait:</p>
+<pre><code class="lang-conc">def animalFoo(animal Animal) =&gt; animal.eat()
+
+fido = new Dog()
+animalFoo(fido)
+
+//returns: "animal is eating sausages"
+</code></pre>
+<p>We can use traits as types. Hence, we are able to use <code class="lang-conc">is</code> and <code class="lang-conc">as</code> with them:</p>
+<pre><code class="lang-conc">something Object = new Dog()
+
+ageIfAnimal = (something as Animal).age() if(something is Animal) else "not an animal"
+</code></pre>
+<p>When trait methods are called, they take precedence over matching superclass method definitions. They may also call superclass method instances. The exact order of method invocation is contingent on how the class upon which they are composed with has ordered its composed traits as par a feature called linearization described in more detail later on below.</p>
+<pre><code class="lang-conc">trait SuperTrait{
+  def foo() String =&gt; "superTrait method called"
+}
+
+trait ATrait &lt; SuperTrait{
+  override def foo() =&gt; "trait method called " + super.foo()
+}//override keyword must be used since we are overriding the definition from the super trait: SuperTrait
+
+class AClass with ATrait
+
+AClass().foo()
+//returns: trait method called, superTrait method called
+</code></pre>
+<p>As stated previously, traits may extend non trait classes, i.e. concrete and abstract classes. If a concrete class is composed of a trait which extends a non trait classes, and it itself does not extend a class, then it will implicitly extend the trait classes' non trait superclass.</p>
+<pre><code class="lang-conc">abstract class AbstractClass{
+  def foo() String =&gt; "superTrait method called"
+}
+
+
+trait ATrait &lt; AbstractClass{
+  override def foo() =&gt; "trait method called, " + super.foo()
+}
+
+class AClass ~ ATrait 
+
+aInstance AbstractClass = AClass() 
+aInstance.foo()
+//returns: trait method called, superTrait method called
+</code></pre>
+<p>Above, <code class="lang-conc">AClass</code> implicitly extends <code class="lang-conc">AbstractClass</code>.</p>
+<p>Care should be taken with traits that extend non trait classes as they bind all composing classes to the inheritance chain implied by the superclass which they extend. Since Concurnas does not permit multiple class inheritance via extension (so as to avoid the diamond pattern problem - which is itself solved by using traits) this means that usually only one non trait extending trait may be referenced in the composition of the composing class - assuming of course that the composing class does itself not explicitly extend an unrelated superclass.</p>
+<p>Note that the above pattern can still work with a class which itself explicitly extends a superclass, or with more than one trait, provided that the inheritance hierarchy implied for the concrete class remains avoids multiple class inheritance. For example, consider the following cases:</p>
+<pre><code class="lang-conc">abstract class Super1
+abstract class Super2
+abstract class Child1 &lt; Super1
+abstract class Child2 &lt; Super2
+
+trait Trait1 &lt; Super1
+trait Trait2 &lt; Super2
+trait Trait3 &lt; Child2 ~  Trait2
+
+
+class Concrete1 &lt; Super1 ~ Trait2 //this cannot work as Super1 and Super2 (implicit from Trait1) are not hierarchically related 
+
+class Concrete2 &lt; Child1 ~ Trait1//this works as Child1 &lt; Super2 (implicit from Trait2)
+
+class Concrete3 ~ Trait2, Trait3//this works as Child2 (from Trait3) &lt; Super2 (from Trait2) 
+</code></pre>
+</div>
+<div class="section">
+<h2 id="generic-traits">Generic traits<a class="headerlink" href="#generic-traits" title="Permalink to this headline" id="generic-traits">?</a></h2>
+<p>Traits, like classes, may make full use of <a href="generics.html#generics">Generics</a>. For example:</p>
+<pre><code class="lang-conc">trait Incrementor&lt;X Number&gt;{
+  def operation(a X) =&gt; a.doubleValue()+1
+}
+
+class IntIncrementor ~ Incrementor&lt;int&gt;
+
+new IntIncrementor().operation(12)
+//returns: 13.0
+</code></pre>
+<p>It's possible to compose concrete classes with reference to a trait more than once in a class definition. Normally this is not a problem but with generics this can result in an incompatible generic type qualification for the trait in question. For example:</p>
+<pre><code class="lang-conc">trait A&lt;X&gt;
+trait B ~ A&lt;int&gt;//valid
+trait C ~ A&lt;double&gt;//valid
+
+abstract class Class1 ~ B//valid
+abstract class Class2 ~ C//valid
+
+abstract class Class3 ~ B, C//NOT valuid
+abstract class Class4 &lt; Class1 ~ C//NOT valuid
+</code></pre>
+<p>Classes <code class="lang-conc">Class3</code> and <code class="lang-conc">Class4</code> are not valid as in resolving the generic type qualification of trait A, we see that it has to be qualified as both <code class="lang-conc">int</code> and <code class="lang-conc">double</code>, which is not possible - only one generic qualification in an inheritance/composition tree is permitted.</p>
+</div>
+<div class="section">
+<h2 id="resolving-ambiguous-trait-method-definitions">Resolving ambiguous trait method definitions<a class="headerlink" href="#resolving-ambiguous-trait-method-definitions" title="Permalink to this headline" id="resolving-ambiguous-trait-method-definitions">?</a></h2>
+<p>Sometimes, in cases where one composes a class of multiple traits, an ambiguity can arise where two (or more!) traits or superclasses define methods with the same signature (name, and input parameters). In this case manual disambiguation is required by defining an implementation in the concrete class being composed and, if appropriate, directing the call flow to the required method(s). For example:</p>
+<pre><code class="lang-conc">trait A{
+  def foo() =&gt; "version A"
+}
+trait B{
+  def foo() =&gt; "version B"
+}
+
+class FooClass with A, B{
+  override def foo() =&gt; "version FooClass"
+}
+
+FooClass().foo()
+//returns: version FooClass
+</code></pre>
+<p>An alternative strategy is to declare the offending method or holding class to be abstract - leaving resolution to a concrete class:</p>
+<pre><code class="lang-conc">abstract class AbstractFooClass{
+  def foo() =&gt; "version AbstractFooClass"
+}
+
+trait A{
+  def foo() =&gt; "version A"
+}
+trait B{
+  def foo() =&gt; "version B"
+}
+
+abstract class FooClass &lt; AbstractFooClass with B, A
+
+class RealFooClass &lt; FooClass {
+  override def foo() =&gt; "version RealFooClass"
+}
+
+RealFooClass().foo()
+//returns: version RealFooClass
+</code></pre>
+<p>Often, we'd just like to call the rightmost defined trait version of foo by using the super keyword:</p>
+<pre><code class="lang-conc">abstract class AbstractFooClass{
+  def foo() =&gt; "version AbstractFooClass"
+}
+
+trait A{
+  def foo() =&gt; "version A"
+}
+trait B{
+  def foo() =&gt; "version B"
+}
+
+class FooClassA &lt; AbstractFooClass with B, A{
+  override def foo() =&gt; super.foo()
+}
+
+class FooClassB &lt; AbstractFooClass with A, B{
+  override def foo() =&gt; super.foo()
+}
+
+fc.foo() for fc in [FooClassA(), FooClassB()]
+//returns: [version A, version B]
+</code></pre>
+<p>The above are fine solutions, but usually we'd like to call one, or more, versions from the offending method from the traits by referring to them explicitly. To this end we can use the qualified super syntax:</p>
+<center>
+<p><code class="lang-conc"> Super [ className ] </code></p>
+</center>
+<p>Using qualified super we may refer to any superclasses or traits referenced in the current class definition. For example:</p>
+<pre><code class="lang-conc">abstract class AbstractFooClass{
+  def foo() =&gt; "version AbstractFooClass"
+}
+
+trait A{
+  def foo() =&gt; "version A"
+}
+trait B{
+  def foo() =&gt; "version B"
+}
+
+class FooClass &lt; AbstractFooClass with B, A{
+  override def foo() =&gt; "" + [super[AbstractFooClass].foo(), super[A].foo(),super[B].foo()]
+}
+
+FooClass().foo()
+//returns: [version AbstractFooClass, version A, version B]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="stateful-traits">Stateful traits<a class="headerlink" href="#stateful-traits" title="Permalink to this headline" id="stateful-traits">?</a></h2>
+<p>Traits may have state, i.e. fields. They must either be assigned a value when defined within the trait or be assigned a value within a class composed with the trait. E.g.</p>
+<pre><code class="lang-conc">trait IndAncDec{
+  -count int
+  -countdown int =0
+  def inc() =&gt; ++count + countdown
+  def dec() =&gt; --countdown + count
+}
+
+class HasIncAndDec ~ IndAncDec{
+  override count = 0
+}
+
+with(HasIncAndDec()){ inc(), inc(), dec(), count, countdown }
+//returns: (1, 2, 1, 2, -1)
+</code></pre>
+<p>Note above that when a field in a trait is overridden in a subclass or trait, it must be declared as overridden using the override keyword (note that when classes <code class="lang-conc">override</code> superclass fields the use of the override keyword is optional).</p>
+</div>
+<div class="section">
+<h2 id="local-class-definitions">Local class definitions<a class="headerlink" href="#local-class-definitions" title="Permalink to this headline" id="local-class-definitions">?</a></h2>
+<p>Local classes may make use of traits in a similar manner to how they can extend superclasses:</p>
+<pre><code class="lang-conc">trait IndAncDec{
+  -count int
+  -countdown int =0
+  def inc() =&gt; ++count + countdown
+  def dec() =&gt; --countdown + count
+}
+
+HasIncAndDec = class ~ IndAncDec{
+  override count = 0
+}
+
+with(HasIncAndDec()){ inc(), inc(), dec(), count, countdown }
+//returns: (1, 2, 1, 2, -1)
+</code></pre>
+</div>
+<div class="section">
+<h2 id="anonymous-class-definitions">Anonymous class definitions<a class="headerlink" href="#anonymous-class-definitions" title="Permalink to this headline" id="anonymous-class-definitions">?</a></h2>
+<p>Anonymous classes can make use of traits as follows:</p>
+<pre><code class="lang-conc">abstract class Operator{
+  def operate(a int) int =&gt; a
+}
+
+open class ID &lt; Operator{
+  override def operate(a int) =&gt; a
+}
+
+trait PlusOne  &lt; Operator{ override def operate(a int) =&gt; super.operate(a)+1  }
+trait Square   &lt; Operator{ override def operate(a int) =&gt; super.operate(a)**2 }
+trait MinusOne &lt; Operator{ override def operate(a int) =&gt; super.operate(a)-1  }
+trait DivTwo   &lt; Operator{ override def operate(a int) =&gt; super.operate(a)/2  }
+
+x = new ID ~ PlusOne, Square, MinusOne, DivTwo // (((x/2) - 1) ** 2) + 1
+y = new ID ~ DivTwo, MinusOne, Square, PlusOne //reverse operator application
+z = new ID ~ DivTwo, MinusOne, Square, PlusOne{
+  override def operate(a int) =&gt; super.operate(a)+1000
+}//reverse operator application with additional operation
+
+inst.operate(10) for inst in [x y z]
+//returns: [60, 17, 1017]
+</code></pre>
+<p>They can even implicitly be composed of traits as follows:</p>
+<pre><code class="lang-conc">trait IndAncDec{
+  -count int
+  -countdown int =0
+  def inc() =&gt; ++count + countdown
+  def dec() =&gt; --countdown + count
+}
+
+xx = new IndAncDec{ //implicit composition
+  override count = 0
+}
+
+"" + with(xx ){ inc(), inc(), dec(), count, countdown }
+
+//returns: (1, 2, 1, 2, -1)
+</code></pre>
+<p>And, like all anonymous classes, may be used as expressions:</p>
+<pre><code class="lang-conc">trait IndAncDec{
+  -count int
+  -countdown int =0
+  def inc() =&gt; ++count + countdown
+  def dec() =&gt; --countdown + count
+}
+
+"" + with(new IndAncDec{ 
+  override count = 0
+} ){ inc(), inc(), dec(), count, countdown }
+
+//returns: (1, 2, 1, 2, -1)
+</code></pre>
+</div>
+<div class="section">
+<h2 id="stacking-traits">Stacking traits<a class="headerlink" href="#stacking-traits" title="Permalink to this headline" id="stacking-traits">?</a></h2>
+<p>A really useful design pattern afforded by the implementation approach taken to traits in Concurnas is that of the stacking of trait-super method calls. Here is an example with a simple unary operator:</p>
+<pre><code class="lang-conc">abstract class Operator{
+  def operate(a int) int
+}
+
+open class ID &lt; Operator{
+  def operate(a int) =&gt; a
+}
+
+trait PlusOne   &lt; Operator{  def operate(a int) =&gt; super.operate(a+1) }
+trait Square    &lt; Operator{  def operate(a int) =&gt; super.operate(a**2) }
+trait MinusOne  &lt; Operator{  def operate(a int) =&gt; super.operate(a-1) }
+trait DivTwo    &lt; Operator{  def operate(a int) =&gt; super.operate(a/2) }
+</code></pre>
+<p>We can now create a concrete class which brings together the above traits:</p>
+<pre><code class="lang-conc">class DMSP &lt; ID ~ PlusOne, Square, MinusOne, DivTwo
+
+DMSP().operate(10)
+//returns: 17
+</code></pre>
+<p>Similarly, if we wish to apply the operations in a different order:</p>
+<pre><code class="lang-conc">class class PSMD &lt; ID ~ DivTwo, MinusOne, Square, PlusOne
+
+PSMD ().operate(10)
+//returns: 60
+</code></pre>
+<p>The neat thing about stacking traits, as we can see above, is the makeup of our concrete class can be very easily and dramatically changed by simply changing the order of composed traits - in fact in the above example where we have four trait references, this works out as <code class="lang-conc">4! =&gt; (4*3*2) =&gt; 24</code> variants!</p>
+</div>
+<div class="section">
+<h2 id="linearization">Linearization<a class="headerlink" href="#linearization" title="Permalink to this headline" id="linearization">?</a></h2>
+<p>The exact mechanism by which method invocation chains are resolved such as in the above example is contingent on an algorithm called Linearization. This is more relevant for complex trait compositions. For example, let's look at a trait/class structure:</p>
+<pre><code class="lang-conc">abstract class Abstract //implicitly extends Object
+trait A &lt; Abstract
+trait B &lt; Abstract
+trait C &lt; B
+
+class Concrete &lt; Abstract ~ A, C
+</code></pre>
+<p>From the perspective of our Concrete class, there are two ways to look at this structure. A Conventional inheritance hierarchy and the same from a linearized perspective:</p>
+<div class="container">
+ <center>
+  <div class="row">
+   <div class="col" >
+<center><img src="images/linear1.jpg"></center><p><p><center>Inheritance hierarchy</center></p></p>
+   </div>
+   <div class="col" >
+<center><img src="images/linear2.jpg"></center><p><p><center>Linearization</center></p></p>
+   </div>
+  </div>
+ </center>
+</div>
+<p>When we are invoking a method with a super chain (if any) the following, flattened chain, will be checked in order to satisfy an invocation: Concrete, C, B, A, Abstract, Object.</p>
+<p><b>Linearization algorithm</b>. It's not necessary to fully understand the details of the linearization algorithm in order to make use of stacked traits, but the algorithm itself is interesting...</p>
+<p>Let's define the Linearization function, acting on a class \(C\) as \(Lin\):</p>
+<center>
+<p>\(Lin(C) = C, Lin(C_n) \leftarrow \dots \leftarrow Lin(C_0)\)</p>
+</center>
+<p>Where \(C_0 \dots C_n\) denotes the superclass and composing traits of class \(C\), defined on a left to right basis. The operator \(\leftarrow\) is defined as follows:</p>
+<center>
+\(\begin{align*}\left \{a, A \right \} \leftarrow B &= a, (A \leftarrow B) \text{ if } a \text{ is not inside } B\\&= A \leftarrow B \text{ if a is inside } B\text{, then } a \text{ is replaced by } B\end{align*}\)</center>
+<p>Let's now look at this for class Concrete as defined above:</p>
+<center>
+<p>\(Lin(Concrete) = Concrete, Lin(C) \leftarrow Lin(A) \leftarrow Lin(Abstract)\)</p>
+</center>
+<p>Let's now recursivity apply the \(Lin\) operator to each element on the right hand side of the above:</p>
+<center>
+\(\begin{align*}Lin(Abstract) &= Abstract, Lin(Object)\\&= Abstract, Object\\\\Lin(A) &= A, Lin(Abstract)\\&= A, Abstract, Object\\\\Lin(C) &= C, Lin(B)\\&= C, B, Lin(Abstract)\\&= C, B, Abstract, Object\end{align*}\)</center>
+<p>Putting this all together we arrive at the following:</p>
+<center>
+<p>\(Lin(Concrete) = Concrete, C, B, Abstract, Object \leftarrow A, Abstract, Object \leftarrow Abstract, Object\)</p>
+</center>
+<p>Finally, applying the \(\leftarrow\) operator results in the following flattened, linearized, definition for Concrete:</p>
+<center>
+<p>\(Lin(Concrete) = Concrete, C, B, A, Abstract, Object\)</p>
+</center>
+</div>
+<div class="section">
+<h2 id="using-non-concurnas-traits/interfaces">Using non Concurnas traits/interfaces<a class="headerlink" href="#using-non-concurnas-traits/interfaces" title="Permalink to this headline" id="using-non-concurnas-traits/interfaces">?</a></h2>
+<p>Traits may be defined and used within Concurnas to a limited extent. These may originate from other JVM languages such as Java, Kotlin etc. In the case of Java interfaces there are some caveats one needs to bear in mind when using them inside Concurnas:</p>
+<ul class="simple">
+  <li><p>They may not have non static state of any kind.</p>
+</li>
+  <li><p>They cannot be stacked.</p>
+</li>
+  <li><p>Superclass methods take precedence over trait methods if defined.</p>
+</li>
+</ul class="simple">
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="traits.html">Traits</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#defining-traits">Defining traits</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#using-traits">Using traits</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generic-traits">Generic traits</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#resolving-ambiguous-trait-method-definitions">Resolving ambiguous trait method definitions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#stateful-traits">Stateful traits</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#local-class-definitions">Local class definitions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#anonymous-class-definitions">Anonymous class definitions</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#stacking-traits">Stacking traits</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#linearization">Linearization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#using-non-concurnas-traits/interfaces">Using non Concurnas traits/interfaces</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

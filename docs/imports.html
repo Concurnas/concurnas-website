@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Imports</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Imports"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Imports"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Imports"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/imports.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="imports">Imports<a class="headerlink" href="#imports" title="Permalink to this headline" id="imports">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#imports">Imports</a>
+   <ul>
+   <li><a class="reference internal" href="#import">Import</a>   </li>
+   <li><a class="reference internal" href="#from-import">From Import</a>   </li>
+   <li><a class="reference internal" href="#star-import">Star Import</a>   </li>
+   <li><a class="reference internal" href="#import-sites">Import sites</a>   </li>
+   <li><a class="reference internal" href="#using-imports">Using imports</a>   </li>
+   <li><a class="reference internal" href="#packages">Packages</a>   </li>
+   <li><a class="reference internal" href="#accessibility-modifiers">Accessibility Modifiers</a>   </li>
+   <li><a class="reference internal" href="#default-imports">Default imports</a>   <ul>
+   <li><a class="reference internal" href="#prohibited-imports">Prohibited imports</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>When writing software it is generally considered best practice to separate our code into differing physical or logical files, generally with code relating to the same sub problem in the same file or directory structure. This improves code reuse and maintenance. Then, when we wish to make use of code defined in a separate module (likely within a package) we can make use of the variants of import statement which Concurnas supports, described herein.</p>
+<p>We can import the following assets from other files: functions (including extension functions), classes, module variables (including those referring to function references), typedefs, enums and annotations.</p>
+<p>Imports are essentially referential sugar. They help us to avoid the need to type the fully-qualified path of the asset we are making use of, instead being able to refer to the asset by its short name (the text after the full package name final dot) or by a name we assign at import point (via the <code class="lang-conc">as</code> keyword). At compile time any references to the short name we are making use of are mapped to the fully-qualified path before being passed to the classloader (default or otherwise) for loading. For example, a fully-qualified package name for class <code class="lang-conc">MyClass</code> might be: <code class="lang-conc">com.mycode.MyClass</code>, the short name is <code class="lang-conc">MyClass</code>.</p>
+<p>Since Concurnas can run on the JVM, it is compatible with all other code compiled in JVM languages such as Scala, Kotlin, Clojure etc and of course Java. All that is necessary to import other JVM compiled code is is the compiled class itself (and appropriately supporting classloader).</p>
+<p>There are three supported import statements. All but the star import may use the <code class="lang-conc">as</code> clause to override the short name of the imported asset. In the following examples we import a class asset, but this may just as well be a function, module variable etc:</p>
+<div class="section">
+<div class="section">
+<h2 id="import">Import<a class="headerlink" href="#import" title="Permalink to this headline" id="import">?</a></h2>
+<pre><code class="lang-conc">import com.mycode.MyClass //MyClass will be imported with a short name of: MyClass
+import com.mycode.MyClass as ImportedClass //using 'as' enables us to override the short name of the asset imported
+</code></pre>
+<p>Recall that importing an asset allows us to use it within having to refer to the fully-qualified name of the asset. So the following are equivalent:</p>
+<pre><code class="lang-conc">import com.mycode.MyClass as ImportedClass //using as enables us to override the short name of the asset imported
+
+inst1 = new ImportedClass()//mapped to: com.mycode.MyClass behind the scences 
+inst2 = new com.mycode.MyClass()
+</code></pre>
+</div>
+<div class="section">
+<h2 id="from-import">From Import<a class="headerlink" href="#from-import" title="Permalink to this headline" id="from-import">?</a></h2>
+<p>From import is particularly useful where we wish to import more than one asset from the same package path:</p>
+<pre><code class="lang-conc">from com.mycode import MyClass 
+from com.mycode import MyOtherClass, MyOtherClass2
+
+//As with conventional import we can override the short names of the imported assets:
+from com.mycode import MyClass as ImportedClass
+from com.mycode import MyOtherClass  as ImportedClass, MyOtherClass2  as ImportedClass2
+</code></pre>
+</div>
+<div class="section">
+<h2 id="star-import">Star Import<a class="headerlink" href="#star-import" title="Permalink to this headline" id="star-import">?</a></h2>
+<p>If we wish to import all assets under a package name path, then we can use the star notation:</p>
+<pre><code class="lang-conc">from com.mycode import *
+import com.mycode.*
+</code></pre>
+<p>Import star should be used with careful consideration as it can easily cause problems with overuse as short names may conflict with one another.</p>
+</div>
+<div class="section">
+<h2 id="import-sites">Import sites<a class="headerlink" href="#import-sites" title="Permalink to this headline" id="import-sites">?</a></h2>
+<p>The variants of the aforementioned import statements may be used at any point in Concurnas code. They follow the normal scoping rules:</p>
+<pre><code class="lang-conc">def myfunc(){
+  from com.mycode import MyClass
+  mc = MyClass() //MyClass can now be used within the { } and any nested scopes
+  if(acondition){
+    mc2 = MyClass() //MyClass may be used here
+  }
+}
+//MyClass may not be be used from this point onwards as this is outside the imported scope
+</code></pre>
+<p>Most of the time however, convention dictates that imports are best placed at the top of a module code file for global usage inside said module.</p>
+</div>
+<div class="section">
+<h2 id="using-imports">Using imports<a class="headerlink" href="#using-imports" title="Permalink to this headline" id="using-imports">?</a></h2>
+<p>The <code class="lang-conc">import</code> statement is "side effect free" - that is to say that no code will be directly run at the point in which an asset is imported, instead this only takes place when the asset is used for the first time. This behaviour is in contrast to the likes of Python which, at the point where code is imported, any top level code present within the imported script will be executed.</p>
+<p>It is not essential to use import statements in one's code, one could simply refer to the fully-qualified paths of the assets of interest. For example, instead of importing <code class="lang-conc">java.util.ArrayList</code> for use in a new object instantiation, one could just use the fully-qualified name, i.e: <code class="lang-conc">mylist = new java.utils.ArrayList&lt;String&gt;()</code></p>
+</div>
+<div class="section">
+<h2 id="packages">Packages<a class="headerlink" href="#packages" title="Permalink to this headline" id="packages">?</a></h2>
+<p>An asset's fully-qualified importable package name is a function of its name within the module it's declared within, the module name and its path relative to the root of compilation at compilation time. Note that Concurnas does not have a package keyword, instead it relies upon the directory structure relative to the root of compilation in order to determine this. So for example, using a conventional directory structure (found in almost all operating systems) when we compile our code if our root was set to <code class="lang-conc">/home/project/src</code> and our code within this root, in a directory structure <code class="lang-conc">./com/mycode.conc</code> (i.e. file <code class="lang-conc">mycode.conc</code> is within subdirectory <code class="lang-conc">com</code> containing the class definition <code class="lang-conc">MyClass</code>) - then the fully qualified package name of the class at compilation time would be <code class="lang-conc">com.mycode.MyClass</code>.</p>
+</div>
+<div class="section">
+<h2 id="accessibility-modifiers">Accessibility Modifiers<a class="headerlink" href="#accessibility-modifiers" title="Permalink to this headline" id="accessibility-modifiers">?</a></h2>
+<p>Accessibility Modifiers play an important role in determining what assets can and cannot be imported. The following chart shows what can be imported from where:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Accessibility Modifier</p>
+</th class="head">
+<th class="head">
+<p>Importable from</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p><code class="lang-conc">public</code></p>
+</td>
+<td>
+<p>public assets may be imported into anywhere</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">package</code></p>
+</td>
+<td>
+<p>package assets may be imported into modules within the same package/module only</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">protected</code></p>
+</td>
+<td>
+<p>protected assets may be imported into modules within the same package/module only</p>
+</td>
+</tr>
+<tr>
+<td>
+<p><code class="lang-conc">private</code></p>
+</td>
+<td>
+<p>Assets marked as private may not be imported</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+</div>
+<div class="section">
+<h2 id="default-imports">Default imports<a class="headerlink" href="#default-imports" title="Permalink to this headline" id="default-imports">?</a></h2>
+<p>The following packages are imported by default for all Concurnas code. Thus the short names of the Classes within these paths are directly usable within Concurnas code without an explicit import being required:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">java.lang.*</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.lang.*</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.lang.datautils.*</code></p>
+</li>
+</ul class="simple">
+<div class="section">
+<div class="section">
+<h3 id="prohibited-imports">Prohibited imports<a class="headerlink" href="#prohibited-imports" title="Permalink to this headline" id="prohibited-imports">?</a></h3>
+<p>There are some Classes which one may not directly use in ones Concurnas code for various practical reasons:</p>
+<ul class="simple">
+  <li><p><code class="lang-conc">java.lang.Thread</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.runtime.cps.IsoRegistrationSet</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.runtime.ConcImmutable</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.runtime.ConcurnificationTracker</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.bootstrap.runtime.cps.Fiber</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.lang.ParamName</code></p>
+</li>
+  <li><p><code class="lang-conc">java.util.concurrent.ForkJoinWorkerThread</code></p>
+</li>
+  <li><p><code class="lang-conc">com.concurnas.bootstrap.runtime.InitUncreatable</code></p>
+</li>
+</ul class="simple">
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="imports.html">Imports</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#import">Import</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#from-import">From Import</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#star-import">Star Import</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#import-sites">Import sites</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#using-imports">Using imports</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#packages">Packages</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#accessibility-modifiers">Accessibility Modifiers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#default-imports">Default imports</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#prohibited-imports">Prohibited imports</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

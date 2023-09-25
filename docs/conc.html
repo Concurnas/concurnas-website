@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Running Concurnas Programs</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Running Concurnas Programs"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Running Concurnas Programs"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Running Concurnas Programs"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/conc.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="running-concurnas-programs">Running Concurnas Programs<a class="headerlink" href="#running-concurnas-programs" title="Permalink to this headline" id="running-concurnas-programs">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#running-concurnas-programs">Running Concurnas Programs</a>
+   <ul>
+   <li><a class="reference internal" href="#running-code-with-concurnas">Running code with Concurnas</a>   </li>
+   <li><a class="reference internal" href="#bootstrapping-code">Bootstrapping Code</a>   </li>
+   <li><a class="reference internal" href="#command-line-options">Command line options</a>   </li>
+   <li><a class="reference internal" href="#examples1">Examples</a>   <ul>
+   <li><a class="reference internal" href="#single-file-programs">Single file programs</a>   </li>
+   <li><a class="reference internal" href="#multi-file-programs">Multi file programs</a>   </li>
+   <li><a class="reference internal" href="#multi-file-programs-in-jar's">Multi file programs in jar's</a>   </li>
+   <li><a class="reference internal" href="#running-programs-in-server-mode">Running programs in server mode</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#terminating-code">Terminating Code</a>   </li>
+   <li><a class="reference internal" href="#starting-conc-in-interactive-repl-mode">Starting conc in interactive REPL mode</a>   </li>
+   <li><a class="reference internal" href="#jvm-arguments1">JVM arguments</a>   </li>
+   <li><a class="reference internal" href="#system-properties1">System properties</a>   </li>
+   <li><a class="reference internal" href="#adding-conc-to-the-path">Adding conc to the path</a>   </li>
+   <li><a class="reference internal" href="#notes2">Notes</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Compiled programs written in Concurnas may be executed via the <code class="nonecodeinline">conc</code> tool. For example, in conjunction with the <code class="nonecodeinline">concc</code> tool for compilation:</p>
+<p>Using example code, <code class="nonecodeinline">hello.conc</code>:</p>
+<pre><code class="lang-conc">System.out.println("Hello World!")
+</code></pre>
+<p>We can compile and execute this as follows:</p>
+<pre><code class="nonecode">D:\work\bin&gt;concc hello.conc
+D:\work\bin&gt;conc hello
+Hello World!
+D:\work\bin&gt;
+</code></pre>
+<p>The syntax for the <code class="nonecodeinline">conc</code> tool is as follows:</p>
+<center>
+<p><code class="nonecodeinline">conc options* entryPoint? cmdLineArguments*</code></p>
+</center>
+<p>Let us now look in detail at what is taking place above:</p>
+<div class="section">
+<div class="section">
+<h2 id="running-code-with-concurnas">Running code with Concurnas<a class="headerlink" href="#running-code-with-concurnas" title="Permalink to this headline" id="running-code-with-concurnas">?</a></h2>
+<p>Compiled Concurnas code can be run with Concurnas via the <code class="nonecodeinline">conc</code> command which comes as standard as part of the Concurnas distribution. We can also run <code class="nonecodeinline">conc</code> in interactive Read-Evaluate-Print Loop (REPL) mode, this is explored <a href="replIde.html#the-concurnas-repl">in the REPL chapter</a>. Here we focus upon non-interactive execution of pre compiled code. If <code class="nonecodeinline">conc</code> has not been added to the path (the default during installation), the tool may be started from within that directory. If Concurnas has not already completed its installation for the detected JDK which it is being run under, it will first complete that process (this may take a few minutes).</p>
+<p>We use the <code class="nonecodeinline">conc</code> command with an entry-point class or jar file reference in order to start <code class="nonecodeinline">conc</code> in non-interactive execution mode:</p>
+<pre><code class="nonecode">D:\work&gt;conc myClass
+D:\work&gt;conc myClass.class
+D:\work&gt;conc myJar
+D:\work&gt;conc myJar.jar
+</code></pre>
+<p>A full list of optional options for <code class="nonecodeinline">conc</code> is found under the <a href="conc.html#command-line-options">Command line options</a> section.</p>
+</div>
+<div class="section">
+<h2 id="bootstrapping-code">Bootstrapping Code<a class="headerlink" href="#bootstrapping-code" title="Permalink to this headline" id="bootstrapping-code">?</a></h2>
+<p>In order to run a program with Concurnas via the <code class="nonecodeinline">conc</code> tool we must pass an entry-point class or jar file reference. For a jar file to be used in this manner it requires a class within it to be nominated as its entry point. This entry point reference is then examined and one of the following is executed in order of precedence:</p>
+<ol class="arabic">
+  <li><p><code class="lang-conc">def main(args String[]) ANY_TYPE</code></p>
+</li>
+  <li><p><code class="lang-conc">def main() ANY_TYPE</code></p>
+</li>
+  <li><p>Top level code</p>
+</li>
+</ol class="arabic">
+<p>We see above that specifying a <code class="lang-conc">main</code> method within our entry-point class is not a requirement, and if one is not defined then this will result in any top level code of the class file being invoked upon execution instead. However, using a <code class="lang-conc">main</code> method is recommended in cases where we wish to use a referenced piece of code as both a library and program. This is because, where the code within the <code class="lang-conc">.class</code> file is used like a library, upon first execution of something imported from that library class, all the top level code will be executed, including our code we wish to execute as a program - something which is rarely desirable. An explicit <code class="lang-conc">main</code> method on the other hand must be explicitly invoked, thus avoiding this problem.</p>
+<p>The <code class="lang-conc">main</code> method declaration may return a value of any type. The <code class="lang-conc">.toString()</code> method will be called on the returned value and will be output to stdout (the console). If <code class="lang-conc">null</code> is returned then '<code class="lang-conc">null</code>' will be output.</p>
+<p>If the <code class="lang-conc">main</code> method declaration returns an <code class="lang-conc">int</code> this will not be output but will rather be used as the exit code of the program itself. Note that the expectation on POSIX systems is that an exit code of <code class="lang-conc">0</code> indicates successful execution, with any number from <code class="lang-conc">1</code> to <code class="lang-conc">255</code> indicating a specific failure case.</p>
+<p>The <code class="lang-conc">main</code> method declaration will receive any command line parameters passed to the program upon execution if its signature is declared as: <code class="lang-conc">def main(args String[]) ANY_TYPE</code>.</p>
+</div>
+<div class="section">
+<h2 id="command-line-options">Command line options<a class="headerlink" href="#command-line-options" title="Permalink to this headline" id="command-line-options">?</a></h2>
+<p>There can be zero to many options specified on a call to <code class="nonecodeinline">conc</code>:</p>
+<ul class="simple">
+  <li><p><b>-classpath path</b> or <b>-cp path</b>: The classpath option enables one to override the CLASSPATH environment variable. Elements are delimited via <code class="nonecodeinline">;</code> and must be surrounded by <code class="nonecodeinline">""</code> under Unix based operating systems. Elements may consist of directories, <code class="lang-conc">.class</code> file references or <code class="lang-conc">.jar</code> file references.</p>
+</li>
+  <li><p><b>-s</b>: Server mode. When running in non interactive mode (i.e an entry point is provided) Concurnas will not terminate the process upon the entry point main method (or alternative) completing execution.</p>
+</li>
+  <li><p><b>-bc</b>: Print bytecode. This option is applicable when running in REPL mode. Print the bytecode generated from the provided input.</p>
+</li>
+  <li><p><b>-J</b>: JVM argument. Prefix jvm arguments with -J in order to pass them to the underlying JVM. e.g. <code class="lang-conc">-J-Xms2G -J-Xmx5G</code>.</p>
+</li>
+  <li><p><b>-D</b>: System property. Prefix system properties with -D in order to pass them to the underlying JVM. e.g. <code class="lang-conc">-Dcom.mycompany.mysetting=108</code>.</p>
+</li>
+  <li><p><b>--help</b>: List documentation for options above.</p>
+</li>
+</ul class="simple">
+</div>
+<div class="section">
+<h2 id="examples1">Examples<a class="headerlink" href="#examples1" title="Permalink to this headline" id="examples1">?</a></h2>
+<div class="section">
+<div class="section">
+<h3 id="single-file-programs">Single file programs<a class="headerlink" href="#single-file-programs" title="Permalink to this headline" id="single-file-programs">?</a></h3>
+<p>We can compile and execute our simple hello world (named littlehello.conc) as follows:</p>
+<pre><code class="nonecode">D:\work&gt;concc littlehello.conc
+Finished compilation of: D:\work\littlehello.conc -&gt; D:\work\littlehello.class [littlehello]
+
+D:\work&gt;conc littlehello
+hello world
+
+D:\work&gt;
+</code></pre>
+<p>In practice it is very rare that we will write single file programs.</p>
+</div>
+<div class="section">
+<h3 id="multi-file-programs">Multi file programs<a class="headerlink" href="#multi-file-programs" title="Permalink to this headline" id="multi-file-programs">?</a></h3>
+<p>Lets take a slightly more involved hello world example (named <code class="nonecodeinline">hello.conc</code>) which compiles into multiple class files thus requiring us to make of the classpath argument:</p>
+<pre><code class="lang-conc">class SayHello{
+  def do(args String[]){
+    System.err.println("hello world received args: "+ args)
+  }
+}
+
+def main(args String[]){
+  new SayHello().do(args)
+}
+</code></pre>
+<p>We can compile and execute this code as follows:</p>
+<pre><code class="nonecode">D:\work&gt;concc hello.conc
+Finished compilation of: D:\work\hello.conc -&gt; D:\work\hello$SayHello.class [hello$SayHello], D:\work\hello.class [hello]
+
+D:\work&gt;conc -cp ./ hello
+hello world got args: null
+
+D:\work&gt;
+</code></pre>
+<p>Notice above that we must make use of the <code class="nonecodeinline">-cp</code> argument in order to specify the current directory as holding both our entry point class: <code class="lang-conc">hello.class</code> and supporting <code class="lang-conc">SayHello</code> class: <code class="lang-conc">hello$SayHello.class</code>.</p>
+<p>Note that whilst it is best practice to specify a <code class="nonecodeinline">-cp</code> argument, in the above case it may be omitted as Concurnas will automatically add the current directory to the classpath in instances where no <code class="nonecodeinline">-cp</code> argument is provided and the entry class is within the current working directory<sup><a href="#fn1">1</a></sup>:</p>
+<pre><code class="nonecode">D:\work&gt;conc hello
+hello world got args: null
+
+D:\work&gt;
+</code></pre>
+<p>We can pass command line arguments to our hello world class since its main method takes a String array argument:</p>
+<pre><code class="nonecode">D:\work&gt;conc -cp ./ hello there
+hello world got args: [there]
+
+D:\work&gt;
+</code></pre>
+</div>
+<div class="section">
+<h3 id="multi-file-programs-in-jar's">Multi file programs in jar's<a class="headerlink" href="#multi-file-programs-in-jar's" title="Permalink to this headline" id="multi-file-programs-in-jar's">?</a></h3>
+<p>In practice it is often most convenient for the purposes of software distribution and organization, to package code up within jar's, these can be executed via the use of the <code class="nonecodeinline">-jar</code> argument as illustrated here. Let's take our <code class="nonecodeinline">hello.conc</code> we previously implemented:</p>
+<pre><code class="nonecode">D:\work&gt;concc -jar helloWorld[hello] hello.conc
+Finished compilation of: D:\work\hello.conc -&gt; D:\work\hello$SayHello.class [hello$SayHello], D:\work\hello.class [hello]
+
+D:\work&gt;conc helloWorld.jar
+hello world got args: null
+
+D:\work&gt;conc helloWorld.jar there
+hello world got args: [there]
+
+D:\work&gt;
+</code></pre>
+</div>
+<div class="section">
+<h3 id="running-programs-in-server-mode">Running programs in server mode<a class="headerlink" href="#running-programs-in-server-mode" title="Permalink to this headline" id="running-programs-in-server-mode">?</a></h3>
+<p>Normally, when running in non-interactive mode (i.e an entry point is provided) Concurnas will terminate the process upon the entry point main method (or alternative) completing execution. To suppress this behaviour, for instance, for a server application, we use the  <code class="nonecodeinline">-s</code> argument as follows:</p>
+<pre><code class="nonecode">D:\work&gt;conc -s helloWorld.jar there
+hello world got args: [there]
+
+
+</code></pre>
+<p>The above program will not terminate until it receives as a kill signal from the operating system.</p>
+</div>
+</div>
+<h2 id="terminating-code">Terminating Code<a class="headerlink" href="#terminating-code" title="Permalink to this headline" id="terminating-code">?</a></h2>
+<p>If we are running a Concurnas application in server mode (as par above) it can often be useful to register shutdown handlers. These are invoked upon receiving a SIGTERM signal from the operating system (check your operating system documentation for details on how to do this). More details on shutdown handlers can be found in the <a href="others.html#shutdown-handlers">shutdown handlers</a> section.</p>
+</div>
+<div class="section">
+<h2 id="starting-conc-in-interactive-repl-mode">Starting conc in interactive REPL mode<a class="headerlink" href="#starting-conc-in-interactive-repl-mode" title="Permalink to this headline" id="starting-conc-in-interactive-repl-mode">?</a></h2>
+<p>The <code class="nonecodeinline">conc</code> tool has the ability to run compiled Concurnas code as we have seen in this chapter. It also has the ability to run in interactive REPL mode. More information about running in interactive REPL mode can be found in the <a href="replIde.html#the-concurnas-repl">The Concurnas REPL</a> section.</p>
+</div>
+<div class="section">
+<h2 id="jvm-arguments1">JVM arguments<a class="headerlink" href="#jvm-arguments1" title="Permalink to this headline" id="jvm-arguments1">?</a></h2>
+<p>Arguments (for example garbage collection and memory allocation tuning) may be applied to the underlying JVM executing <code class="nonecodeinline">conc</code> by prefixing them with <code class="nonecodeinline">-J</code>. For example:</p>
+<pre><code class="nonecode">D:\work&gt;conc -J-Xmx2g helloWorld.jar there
+hello world got args: [there]
+
+D:\work&gt;
+</code></pre>
+</div>
+<div class="section">
+<h2 id="system-properties1">System properties<a class="headerlink" href="#system-properties1" title="Permalink to this headline" id="system-properties1">?</a></h2>
+<p>System properties may be specified on the command line when running <code class="nonecodeinline">conc</code> by prefixing them with <code class="nonecodeinline">-D</code>. For example:</p>
+<pre><code class="nonecode">D:\work&gt;conc -Dcom.mycompany.mysetting=108 helloWorld.jar there
+hello world got args: [there]
+
+D:\work&gt;
+</code></pre>
+</div>
+<div class="section">
+<h2 id="adding-conc-to-the-path">Adding conc to the path<a class="headerlink" href="#adding-conc-to-the-path" title="Permalink to this headline" id="adding-conc-to-the-path">?</a></h2>
+<p>It is recommended that the <code class="nonecodeinline">&lt;installDir&gt;/bin</code> be added to the system path in order to permit <code class="nonecodeinline">/conc</code> to be run from any directory. Check your operating system documentation for details of how to do this. The <a href="https://concurnas.com/download.html">Windows installer</a> for Concurnas will perform this automatically, as will installation via the <a href="https://sdkman.io/sdks#concurnas">SDKMAN! platform</a>.</p>
+</div>
+<div class="section">
+<h2 id="notes2">Notes<a class="headerlink" href="#notes2" title="Permalink to this headline" id="notes2">?</a></h2>
+<p>The first time the <code class="nonecodeinline">conc</code> tool is executed, or when a new JVM environment upon which is its being executed is detected, an 'installation' will take place wherein Concurnas will set itself up to execute efficiently upon said JVM environment by caching a copy of the JDK. This can take up to a few minutes to complete.</p>
+</div>
+</div>
+<hr></hr><h3>Footnotes</h3>
+<small><p><sup><a id="fn1"></a>1</sup>This feature has been added so as to aid newcomers to the programming language</p>
+</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="conc.html">Running Concurnas Programs</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#running-code-with-concurnas">Running code with Concurnas</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#bootstrapping-code">Bootstrapping Code</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#command-line-options">Command line options</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#examples1">Examples</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#single-file-programs">Single file programs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#multi-file-programs">Multi file programs</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#multi-file-programs-in-jar's">Multi file programs in jar's</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#running-programs-in-server-mode">Running programs in server mode</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#terminating-code">Terminating Code</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#starting-conc-in-interactive-repl-mode">Starting conc in interactive REPL mode</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#jvm-arguments1">JVM arguments</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#system-properties1">System properties</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#adding-conc-to-the-path">Adding conc to the path</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#notes2">Notes</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

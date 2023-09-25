@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Arrays Matrices and Lists</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Arrays Matrices and Lists"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Arrays Matrices and Lists"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Arrays Matrices and Lists"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/arraysMatricesAndLists.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="arrays-matrices-and-lists">Arrays Matrices and Lists<a class="headerlink" href="#arrays-matrices-and-lists" title="Permalink to this headline" id="arrays-matrices-and-lists">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#arrays-matrices-and-lists">Arrays Matrices and Lists</a>
+   <ul>
+   <li><a class="reference internal" href="#array-and-matrix-types">Array and Matrix Types</a>   </li>
+   <li><a class="reference internal" href="#array-and-matrix-creation-with-default-initialization">Array and Matrix Creation with default Initialization</a>   </li>
+   <li><a class="reference internal" href="#list-creation-with-default-initialization">List creation with default Initialization</a>   </li>
+   <li><a class="reference internal" href="#array-and-list-creation-with-initialization">Array and List creation with initialization</a>   </li>
+   <li><a class="reference internal" href="#array-creation-with-element-wise-initialization">Array creation with element wise initialization</a>   </li>
+   <li><a class="reference internal" href="#matrix-creation-with-initialization">Matrix creation with initialization</a>   </li>
+   <li><a class="reference internal" href="#array-concatenation-and-appending">Array concatenation and appending</a>   </li>
+   <li><a class="reference internal" href="#array-and-list-lengths">Array and List Lengths</a>   </li>
+   <li><a class="reference internal" href="#array-and-list-indexing">Array and List indexing</a>   </li>
+   <li><a class="reference internal" href="#the-del-statement">The del statement</a>   </li>
+   <li><a class="reference internal" href="#operations-on-arrays-and-lists">Operations on arrays and lists</a>   <ul>
+   <li><a class="reference internal" href="#assignment-operators1">Assignment operators</a>   </li>
+   </ul>
+   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>There are said to be two schools of thought with regards to linear or serial collections of data. 1). Arrays, in which data is stored in memory in a linear (and often continuous) manner where post creation the size of the structure cannot be changed and 2). lists, where though often not as performant as arrays, permit more flexibility in changing their size and are generally easier to work with. For historical as well as practical reasons, arrays tend to be more popular in the scientific and numerical computing communities and lists more popular with enterprise engineering.</p>
+<p>With Concurnas, we provide native support for both structures as well as a simple syntax which makes them equally quick and easy to work with.</p>
+<div class="section">
+<div class="section">
+<h2 id="array-and-matrix-types">Array and Matrix Types<a class="headerlink" href="#array-and-matrix-types" title="Permalink to this headline" id="array-and-matrix-types">?</a></h2>
+<p>In Concurnas, one can define a one dimensional of any type. For example an array of integers is defined as <code class="lang-conc">int[]</code>. A <code class="lang-conc">n &gt; 1</code> dimensional array can be defined by specifying the dimensionality between the brackets, e.g. a two dimensional String array: <code class="lang-conc">String[2]</code>. Alternatively a multidimensional array may be represented by using empty brackets, e.g. a two dimensional String array: <code class="lang-conc">String[][]</code> - but of course, for declarations involving many dimensions, it can be more convenient to use the numerical representation instead of the brackets.  Example:</p>
+<pre><code class="lang-conc">res1 int[][][]
+res2 int[3]
+</code></pre>
+<p><code class="lang-conc">res1</code> and <code class="lang-conc">res2</code> above are of the same equivalent type a 3 dimensional int array.</p>
+<p>A two dimensional array is special in that it's also known as a matrix (structurally, in memory it is an array of arrays). Higher orders of n than 2 are possible and as with single dimensional arrays, these are multidimensional arrays and they are definable for any type.</p>
+</div>
+<div class="section">
+<h2 id="array-and-matrix-creation-with-default-initialization">Array and Matrix Creation with default Initialization<a class="headerlink" href="#array-and-matrix-creation-with-default-initialization" title="Permalink to this headline" id="array-and-matrix-creation-with-default-initialization">?</a></h2>
+<p>In Concurnas n-dimensional arrays are objects. As such they can be created using the new keyword as follows:</p>
+<pre><code class="lang-conc">myArray int[] = new int[10] //single dimensional array with 10 elements
+</code></pre>
+<p>And, like all other objects, the new keyword may be omitted:</p>
+<pre><code class="lang-conc">myArray int[] = int[10] //single dimensional array with 10 elements
+</code></pre>
+<p>If we wish to define a multidimensional array we must specify the length of the dimensions. These are delimited using a comma:</p>
+<pre><code class="lang-conc">myMatrix1 int[2] = new int[2, 10]//2d matrix 2 rows of 10 columns each
+myMatrix2 int[2] = new int[2][10]//2d matrix 2 rows of 10 columns each
+</code></pre>
+<p>The default value for each of the elements in the array, when instantiated in this manner, are is as follows:</p>
+<div class="wy-table-responsive">
+<table border="1" class="docutils"><thead valign="bottom">
+<tr>
+<th class="head">
+<p>Type</p>
+</th class="head">
+<th class="head">
+<p>Default Array Value</p>
+</th class="head">
+</tr>
+</thead><tbody valign="top">
+<tr>
+<td>
+<p>Primitive numerical: <code class="lang-conc">short, int, long, float, double</code></p>
+</td>
+<td>
+<p>0</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Primitive <code class="lang-conc">char</code></p>
+</td>
+<td>
+<p>0</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Primitive <code class="lang-conc">boolean</code></p>
+</td>
+<td>
+<p>false</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Primitive <code class="lang-conc">byte</code></p>
+</td>
+<td>
+<p>0</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Boxed Primitive Type</p>
+</td>
+<td>
+<p>null</p>
+</td>
+</tr>
+<tr>
+<td>
+<p>Non primitive types (e.g. Objects)</p>
+</td>
+<td>
+<p>null</p>
+</td>
+</tr>
+</tbody></table></div>
+</div>
+<p>Note that the final dimension does not need to be qualified, in this case the final dimension(s) of array omitted will resolve to null:</p>
+<pre><code class="lang-conc">myMatrix1 int[2] = new int[3][]
+myMatrix2 int[2] = new int[3,]
+
+//both myMatrix1 and myMatrix2 == null null null
+</code></pre>
+</div>
+<div class="section">
+<h2 id="list-creation-with-default-initialization">List creation with default Initialization<a class="headerlink" href="#list-creation-with-default-initialization" title="Permalink to this headline" id="list-creation-with-default-initialization">?</a></h2>
+<p>In order to maintain compatibility with other JVM languages, lists in Concurnas are provided via use of the <code class="lang-conc">java.lang.List implementations</code>. For example, if one wishes to create an empty array list one can do so as par a normal object:</p>
+<pre><code class="lang-conc">mylist = new ArrayList&lt;int&gt;();//create and empty arraylist holding Integers
+</code></pre>
+</div>
+<div class="section">
+<h2 id="array-and-list-creation-with-initialization">Array and List creation with initialization<a class="headerlink" href="#array-and-list-creation-with-initialization" title="Permalink to this headline" id="array-and-list-creation-with-initialization">?</a></h2>
+<p>Arrays and lists can be initialized with non default values using very similar convenient syntax. The elements of a list must be delimited using a comma, whereas we use a space for arrays.</p>
+<pre><code class="lang-conc">myArray = [1 2 3]
+myList = [1, 2, 3]
+</code></pre>
+<p>Arrays can be created using comma delimiters, this is enabled by prefixing the initial bracket with an <code class="lang-conc">a</code>. This is useful when the contents of the array contain many expression lists or invocations to extension functions and otherwise using brackets to bind these would appear inelegant:</p>
+<pre><code class="lang-conc">mySimpleArray = a[1, 2, 3]
+
+def int powAndPlus(pow int, plus int) =&gt; (this ** pow) + plus
+
+anotherArray = a[10 powAndPlus 2 4, 2 powAndPlus 3 6]
+</code></pre>
+<p>If possible, Concurnas will automatically cast all of the subelements of an array or list to be the same component type when stored as appropriate. In order to do so it will find the most generic type which is equal to or is the supertype of all the elements. In the degenerate case this of course would be Object. For example, here all of the elements are converted to double:</p>
+<pre><code class="lang-conc">mydoubleArray = [1. 2 3]//mydoubleArray  resolves to [1.0 2.0 3.0]
+</code></pre>
+<p>In the case where one or more elements is a boxed variant of a primitive type, all elements will be boxed to the relevant Object type:</p>
+<pre><code class="lang-conc">res = [1 2 Integer(3)] //this array is of type Integer[]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="array-creation-with-element-wise-initialization">Array creation with element wise initialization<a class="headerlink" href="#array-creation-with-element-wise-initialization" title="Permalink to this headline" id="array-creation-with-element-wise-initialization">?</a></h2>
+<p>Often it can be useful to create array or lists with each element initialized to the same logical value. In Concurnas this is supported for both primitive and object type n dimensional arrays as follows:</p>
+<pre><code class="lang-conc">Class MyClass(a int, b int){ override toString() =&gt; 'mc {a:b}' }
+
+myArrayPrim = new int[2,3](99)
+myArrayObj  = new MyClass[2,3](new MyClass(99, 1))
+
+
+//myArrayPrim =&gt; [[99, 99, 99], [99, 99, 99]]
+//myArrayObj  =&gt; [[mc 99:1, mc 99:1, mc 99:1], [mc 99:1, mc 99:1, mc 99:1]]
+</code></pre>
+<p>In the above case, for the object type array, <code class="lang-conc">myArrayObj</code>, the value resulting from the call of the <code class="lang-conc">MyClass</code> constructor call is copied for each element. Each element of the matrix is its own object, copies are not shared between array elements.</p>
+</div>
+<div class="section">
+<h2 id="matrix-creation-with-initialization">Matrix creation with initialization<a class="headerlink" href="#matrix-creation-with-initialization" title="Permalink to this headline" id="matrix-creation-with-initialization">?</a></h2>
+<p>Given the importance of matrix operations in numerical computing, Concurnas has special support for matrices. One can create a matrix with initial value as follows:</p>
+<pre><code class="lang-conc">A = [ 1 2 ; 3 4]
+
+//A resolves to:
+//1  2
+//3  4
+</code></pre>
+<p>If one prefers to use commas as an array delimiter then the above may be achieved as follows:</p>
+<pre><code class="lang-conc">A = a[ a[1, 2] , a[3, 4]]
+
+//A resolves to:
+//1  2
+//3  4
+</code></pre>
+</div>
+<div class="section">
+<h2 id="array-concatenation-and-appending">Array concatenation and appending<a class="headerlink" href="#array-concatenation-and-appending" title="Permalink to this headline" id="array-concatenation-and-appending">?</a></h2>
+<p>In Concurnas, the semicolon operator <code class="lang-conc">;</code> within the context of a n dimensional array element definition inside a pair of square brackets <code class="lang-conc">[ ]</code> has special significance as a concatenation operator. To add a row to a matrix we do the following</p>
+<pre><code class="lang-conc">m = [ 1 2; 3 4 ]
+added = [m ; 5 6]
+
+//added resolves to:
+//1 2
+//3 4
+//5 6
+</code></pre>
+<p>This is known as vertical concatenation. Note that in conrunas for matrixes or other n&gt; 1 dimensional arrays, same number of columns per row is not required in order to be able to perform a concatenation.</p>
+<p>It is possible to concatenate arrays of higher dimensionality than 2. Note however that the the elements being concatenated cannot vary by more than one dimension degree, it's not possible to concatenate a matrix with a 4 dimensional array.</p>
+<p>Concurnas also supports appending elements to arrays, also known as horizontal concatenation. The number of rows needs to match in order to do this however the number of columns per row does not..</p>
+<pre><code class="lang-conc">m = [ 1 2 ; 3 4]
+res = [m m]
+
+//res ==
+//1 2 1 2
+//3 4 3 4
+</code></pre>
+<p>This also works for when one needs to add a single item to an array:</p>
+<pre><code class="lang-conc">a = [ 1 2 3 ]
+appended = [ a 34 ]
+
+//appended resolves to:
+//1  2  3  34
+</code></pre>
+<p>In cases where it is not possible to perform a horizontal concatenation, say due to array dimensionality, at attempt to mix primitive type arrays with object arrays or differing primitive type arrays, then a generalized append will take place:</p>
+<pre><code class="lang-conc">a = [1 2 ; 3 4]
+b = [5 6]
+
+myAr = [ a b]//myAr is now of type Object[] as it's not possible to perform a horizontal concatenation
+</code></pre>
+<p>Compiler note: Concurnas automatically resolves the potential for ambiguity in cases where one wishes to concatenate a variable and an array, which would normally be interpreted as a array/list indexing operation:</p>
+<pre><code class="lang-conc">a = 9
+res = [a [1 7] ]
+</code></pre>
+<p>Nevertheless a array indexing operation will take precedence if it is semantically valid (i.e. a resolves to a list map or array and the expression contained within the bracket is suitable as an index).</p>
+<p>Developer note: Using arrays as a data structure where a lot of adding/removing of elements is taking place is discouraged for performance reasons (a new array must be created for every <code class="lang-conc">[ ... ;. ...]</code> call). Using an appropriate implementation of a list would be more sensible solution for these types of problem.</p>
+</div>
+<div class="section">
+<h2 id="array-and-list-lengths">Array and List Lengths<a class="headerlink" href="#array-and-list-lengths" title="Permalink to this headline" id="array-and-list-lengths">?</a></h2>
+<p>The length of an array is obtainable be referencing the <code class="lang-conc">length</code> synthetic field. Note that it is not possible to change the length of an array by attempting to assign a value:</p>
+<pre><code class="lang-conc">myAr = [1 2 3]
+size = mylist.length
+
+//size == 3
+</code></pre>
+<p>The JDK Java List interface API specifies the length of a list is obtainable by calling the size method on the object:</p>
+<pre><code class="lang-conc">mMylist = [1, 2, 3]
+size = mylist.size()
+
+//size resolves to: 3
+</code></pre>
+</div>
+<div class="section">
+<h2 id="array-and-list-indexing">Array and List indexing<a class="headerlink" href="#array-and-list-indexing" title="Permalink to this headline" id="array-and-list-indexing">?</a></h2>
+<p>Concurnas supports the same array indexing operations for both lists and arrays. These operators are useful for performing array assignment and extracting values from arrays. As par conventional programming languages array indexes start from zero:</p>
+<pre><code class="lang-conc">mylist = [1,2,3]
+myarray = [ 1 2 3]
+
+mylist[1] = 99
+myarray[1] = 99
+
+fromlist = mylist[0] //obtain the first element of the list
+fromarray = myarray[0] //obtain the first element of the array
+
+//mylist == [1, 99, 3]
+//myarray  == [1 99 3]
+//fromlist == 1
+//fromarray == 1
+</code></pre>
+<p>Ranges of arrays and lists can be extracted as follows:</p>
+<pre><code class="lang-conc">myarray  = [1 2 3 4 5 6 7 8 9 10]//this applies to lists as well
+
+range = myarray[ 3 ...  6]
+prear = myarray[ ... 6]
+postar = myarray[ 6 ...]
+
+
+//range == [4 5 6 7]
+//prear  == [1 2 3 4 5 6 7]
+//postar == [7 8 9 10]
+</code></pre>
+<p>More than one dimension must be specified if the array is of more than one dimension:</p>
+<pre><code class="lang-conc">myar = [1 2 3; 3 4 5]
+v = myar[1,1]
+
+//v == 4
+</code></pre>
+<p>The expression selecting elements in the selector may also specify a complete subsection of a matrix using <code class="lang-conc">;</code>:</p>
+<pre><code class="lang-conc">myar = [1 2 3; 3 4 5; 6 7 8]
+v = myar[;,1]
+
+//v == [2 4 7]
+</code></pre>
+<p>Ranges can be specified in this form:</p>
+<pre><code class="lang-conc">myar = [1 2 3; 3 4 5; 6 7 8]
+v = myar[1 ... ,1]
+
+//v == [4 7]
+</code></pre>
+</div>
+<div class="section">
+<h2 id="the-del-statement">The del statement<a class="headerlink" href="#the-del-statement" title="Permalink to this headline" id="the-del-statement">?</a></h2>
+<p>The del statement can be applied to a list in order to remove an item.</p>
+<pre><code class="lang-conc">mylist = [1, 2, 3, 4]
+del mylist[2]
+//mylist == [1, 2, 4]
+</code></pre>
+<p>This is semantically equivalent to calling <code class="lang-conc">mylist.remove(2)</code>.</p>
+</div>
+<div class="section">
+<h2 id="operations-on-arrays-and-lists">Operations on arrays and lists<a class="headerlink" href="#operations-on-arrays-and-lists" title="Permalink to this headline" id="operations-on-arrays-and-lists">?</a></h2>
+<p>In addition to assignment and obtination of values in an array. All the Concurnas operators are provided for array and list elements.</p>
+<div class="section">
+<div class="section">
+<h3 id="assignment-operators1">Assignment operators<a class="headerlink" href="#assignment-operators1" title="Permalink to this headline" id="assignment-operators1">?</a></h3>
+<p>The assignment operators as well a pre/post dec/incrementors can be used on array and list elements, for example:</p>
+<pre><code class="lang-conc">myarray = [1 2 3 4 5 6]
+myarray[0]  += 1
+myarray[1] **=2
+myarray[3]++
+++myarray[4]
+res = myarray[5]--
+
+//myarray == [2 4 3 5 6 5]
+//res == 6
+</code></pre>
+</div>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#array-and-matrix-types">Array and Matrix Types</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-and-matrix-creation-with-default-initialization">Array and Matrix Creation with default Initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#list-creation-with-default-initialization">List creation with default Initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-and-list-creation-with-initialization">Array and List creation with initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-creation-with-element-wise-initialization">Array creation with element wise initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#matrix-creation-with-initialization">Matrix creation with initialization</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-concatenation-and-appending">Array concatenation and appending</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-and-list-lengths">Array and List Lengths</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#array-and-list-indexing">Array and List indexing</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#the-del-statement">The del statement</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#operations-on-arrays-and-lists">Operations on arrays and lists</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#assignment-operators1">Assignment operators</a>
+   </li>
+   </ul>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

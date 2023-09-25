@@ -1,0 +1,110 @@
+nav {
+	font-family: "Roboto", sans-serif;
+	font-size: 16px;
+	margin:0;
+}
+
+nav .fa {
+	color:#777;
+	margin-right:5px;
+}
+
+body nav * {
+	line-height:20px;
+}
+
+nav .navbar-inverse {
+	background:#13110f;
+	border:0;
+	min-height:49px;
+	position: relative;
+}
+
+nav .navbar-brand {
+	padding: 0;
+}
+
+nav .navbar .nav {
+	margin:0;
+}
+
+nav .dropdown-menu {
+	background:#2c2722;
+	font-size: 14px;
+	border-radius:0px 0px 2px 2px;
+	padding:10px 0px;
+	border:1px solid #2c2722;
+	margin-top:-1px;
+}
+
+.topnav .navbar-nav .nav-item>a,  .topnav .nav-link {
+	padding: 4px 12px 0px 12px !important;
+	color:#ccc !important;
+}
+
+.dropdown-menu>a {
+	color: #b8b5b5;
+	padding:0px 15px;
+}
+nav .divider {
+	background-color:transparent;
+	border-right:1px solid #39332d;
+	margin:5px 20px 5px 10px;
+	padding: 8px 0px 4px 5px !important;
+}
+
+nav .dropdown-menu .divider, .dropdown-divider {
+	background-color:transparent;
+	border:0;
+	border-bottom:1px solid #39332d;
+	margin:5px 0;
+}
+
+nav .navbar-inverse .active>a, nav .navbar-inverse .active>a:hover, nav .navbar-inverse .active>a:focus, nav .navbar-inverse li.dropdown.open>.dropdown-toggle, nav .navbar-inverse li.dropdown.active>.dropdown-toggle, nav .navbar-inverse li.dropdown.open.active>.dropdown-toggle {
+	color: #fff;
+	background-color:transparent;
+	background-image:none;
+}
+
+ nav .navbar-inverse .active>a:hover  {
+	background:#39332d;
+}
+
+nav .dropdown-menu>.active>a, nav .dropdown-menu>.active>a:hover, nav .dropdown-menu>.active>a:focus {
+	font-weight:bold;
+	color: #fff;
+	background-image:none;
+	background:#39332d;
+}
+
+nav .dropdown-menu a:hover, .dropdown-menu a:focus, nav .dropdown-submenu:hover a, nav .dropdown-submenu:focus a {
+	background:#39332d;
+}
+
+nav .navbar li .dropdown-menu:after {
+	border-bottom-color:#2c2722;
+}
+
+/** MEDIA Q **/
+
+@media (max-width: 979px)
+{
+	nav .navbar-fixed-top .navbar-inner, nav .navbar-fixed-bottom .navbar-inner {
+	  padding: 0px;
+	}
+	nav .navbar-fixed-top {
+	  margin-bottom: 0;
+	}
+}
+
+/** Extra **/
+
+
+.dropdown:hover>.dropdown-menu {
+ display: block;
+}
+
+.dropdown-item.active, .dropdown-item:active {
+
+    background-color: #4D64AE;
+}

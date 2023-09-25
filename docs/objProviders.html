@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Object Providers</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Object Providers"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Object Providers"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Object Providers"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/objProviders.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="object-providers">Object Providers<a class="headerlink" href="#object-providers" title="Permalink to this headline" id="object-providers">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#object-providers">Object Providers</a>
+   <ul>
+   <li><a class="reference internal" href="#the-case-for-dependency-injection">The case for Dependency Injection</a>   </li>
+   <li><a class="reference internal" href="#injectable-classes">Injectable Classes</a>   </li>
+   <li><a class="reference internal" href="#injectable-elements">Injectable elements</a>   </li>
+   <li><a class="reference internal" href="#providers">Providers</a>   </li>
+   <li><a class="reference internal" href="#qualified-providers">Qualified Providers</a>   </li>
+   <li><a class="reference internal" href="#transient-dependencies">Transient dependencies</a>   </li>
+   <li><a class="reference internal" href="#provider-specific-dependency-qualifiers">Provider specific dependency qualifiers</a>   </li>
+   <li><a class="reference internal" href="#named-dependency-qualifiers">Named dependency qualifiers</a>   </li>
+   <li><a class="reference internal" href="#type-only-dependency-qualifiers">Type only dependency qualifiers</a>   </li>
+   <li><a class="reference internal" href="#object-provider-arguments">Object Provider arguments</a>   </li>
+   <li><a class="reference internal" href="#scoped-providers">Scoped providers</a>   <ul>
+   <li><a class="reference internal" href="#single">single</a>   </li>
+   <li><a class="reference internal" href="#shared">shared</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#providers-for-actors-and-refs">Providers for Actors and refs</a>   </li>
+   <li><a class="reference internal" href="#generics1">Generics</a>   </li>
+   <li><a class="reference internal" href="#special-types">Special Types</a>   <ul>
+   <li><a class="reference internal" href="#lazy-variables1">Lazy variables</a>   </li>
+   <li><a class="reference internal" href="#provider-type">Provider type</a>   </li>
+   <li><a class="reference internal" href="#optional-type">Optional type</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#object-providers-with-java-classes">Object Providers with Java Classes</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<blockquote><p>I am not the villain in this story.</p>
+<p>I do what I do because there is no choice.</p><footer>- Samuel Hayden. Doom. Id Software (2016)</footer></blockquote>
+<p>Concurnas has first class citizen support for dependency injection which we term, Object Providers. Readers familiar with frameworks in other languages such as <a href="https://spring.io">Spring</a>, <a href="https://github.com/google/guice">Google Guice</a> and <a href="https://github.com/google/dagger">Google Dagger</a> will no doubt be sold on the benefits of dependency injection and how they become essential for the structuring of large, or even small to medium sized projects. Let's now look at why dependency injection is so useful...</p>
+<div class="section">
+<div class="section">
+<h2 id="the-case-for-dependency-injection">The case for Dependency Injection<a class="headerlink" href="#the-case-for-dependency-injection" title="Permalink to this headline" id="the-case-for-dependency-injection">?</a></h2>
+<p>First let us define what we mean by a dependency. A dependency is considered a unit of related functionality that another unit of functionality in a system relies upon. For example, let's say we have a <code class="lang-conc">MessageProcessor</code> function, which takes a message, potentially performs some processing before passing it on somewhere else.</p>
+<p>One way of writing this <code class="lang-conc">MessageProcessor</code> would be as follows (of course, in real life this would be much more complex, but this example is to illustrate dependencies and the case for dependency injection):</p>
+<pre><code class="lang-conc">class MessageProcessor {
+  public def processMessage(){//processing
+    sendMessage(getMessage()) //probably some more complex processing here in real life...
+  }
+  private def getMessage() String {//obtination
+    return "A message"
+  }
+  private def sendMessage(msg String) void {//deliverance
+    System.out.println(msg)
+  }
+}
+</code></pre>
+<p>The above serves its purpose from a function perspective. However, there are a number of problems, which would be magnified in a real life situation.</p>
+<ol class="arabic">
+  <li><p><b>Reasoning</b>. The Message "Processor" above actually contains both the obtination and deliverance functions, which makes reasoning about the functionality harder than it needs to be.</p>
+</li>
+  <li><p><b>Testing</b>. The above is very hard to test, since we have no way of easily mocking up the message obtination and message sending mechanism above we have no way of testing the <code class="lang-conc">processMessage</code> functionality in isolation. Furthermore, in real systems where there are side effects, these are unavoidably triggered when we attempt to test the message processing functionality.</p>
+</li>
+  <li><p><b>Reusability</b>. Perhaps we'd like to reuse of the three elements of functionality (obtination, processing, deliverance) could be reused elsewhere in the our overall system we're likely building, but this is extremely difficult with the above design.</p>
+</li>
+</ol class="arabic">
+<p>We can rewrite the above example, splitting out the three components of functionality which make up the overall function (obtination, processing and deliverance) as follows:</p>
+<pre><code class="lang-conc">class MessageProcessor(obtainer MessageGetter, sender MessageSender){
+  public def processMessage(){//processing
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+trait MessageGetter {
+  public def getMessage() String
+}
+
+trait MessageSender{
+  public def sendMessage(msg String) void
+}
+
+class SimpleMG ~ MessageGetter {
+  def getMessage() String =&gt; 'A message'
+}
+
+class MessagePrinter ~ MessageSender{
+  def sendMessage(msg String) void =&gt; System.out.println(msg)
+}
+
+//to be used as follows:
+getter = SimpleMG()
+printer = MessagePrinter()
+mp = new MessageProcessor(getter, printer )
+mp.processMessage()
+</code></pre>
+<p>If we take <code class="lang-conc">MessageProcessor</code> above as being the central component of interest, we can say that the <code class="lang-conc">MessageGetter</code> and <code class="lang-conc">MessageSender</code> are dependences of the <code class="lang-conc">MessageProducer</code>. The above design is nice as it solves all the problems previously identified:</p>
+<ol class="arabic">
+  <li><p><b>Reasoning</b>. It's clear what all the above components do. And there is no pollution of concerns, senders send, getters get and processors process.</p>
+</li>
+  <li><p><b>Testing</b>. By using traits for our <code class="lang-conc">MessageGetter</code> and <code class="lang-conc">MessageSender</code> we can provide mock implementations when we are testing our <code class="lang-conc">MessageProcessor</code> which allows that testing to take place in isolation, side effect free and with controlled inputs and outputs which we can validate against.</p>
+</li>
+  <li><p><b>Reusability</b>. We can easily reuse the <code class="lang-conc">MessageProcessor</code> functionality above by simply defining different <code class="lang-conc">MessageGetter</code> and <code class="lang-conc">MessageSender</code> implementations.</p>
+</li>
+</ol class="arabic">
+<p>Whilst the above is a nice design approach, one disadvantage is that one has to manually create a lot of objects and do a lot of "wiring"/"plumbing" every time one wishes to create a <code class="lang-conc">MessageProcessor</code>. This of course decreases our ratio of useful domain specific work to non domain specific work, and in practical programs the number of lines of code responsible for this wiring can number in the thousands... But lucky for us, with Concurnas we can use Object Providers to make this much easier for us, as we can automatically inject these dependencies and skip all the plumbing! Here is what we need to change in order to use this:</p>
+<pre><code class="lang-conc">inject class MessageProcessor(obtainer MessageGetter, sender MessageSender){
+  public def processMessage(){//processing
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+provider MPProvider{
+  provide MessageProcessor //provide objects of this type
+  MessageGetter =&gt; new SimpleMG()//dependency satisfaction for MessageProcessor 
+  MessageSender =&gt; new MessagePrinter()//dependency satisfaction for MessageProcessor
+}
+
+//to be used as follows:
+mpProvider = new MPProvider()
+mp = mpProvider.MessageProcessor()
+///business as usual...
+</code></pre>
+<p>Now not only do we have all the advantages outlined above, but we have eliminated the plumbing which use would have had to have done every time we wish to create a new <code class="lang-conc">MessageProcessor</code> instance, instead we can simply use an instance of the <code class="lang-conc">MPProvider</code>.</p>
+<p>We will now look in detail at this new object provider mechanism...</p>
+<p>Note that there other Dependency injection frameworks which are written in Java and are therefore compatible with Concurnas. Some rely on separate configuration files coded in XML, some rely upon runtime reflection and some avoid this. All of these solutions are however library based. Concurnas on the other hand has dependency injection built in and treated with first class citizen support. This of course means that we are able to perform the plumping associated with dependency injection at compile time, via generated code, which makes for a very efficient runtime implementation. This is particularly handy in cases where one is building large complex systems, creating thousands or even millions of objects (and so requires an efficient dependency injection implementation to create those). An additional benefit of providing first class citizen support is that it makes that it easy to track down how dependencies are being injected at compilation and runtime. With library based solutions relying upon reflection, this can be challenging.</p>
+</div>
+<div class="section">
+<h2 id="injectable-classes">Injectable Classes<a class="headerlink" href="#injectable-classes" title="Permalink to this headline" id="injectable-classes">?</a></h2>
+<p>In order to be able to render a class compatible with Object Providers we must tag at most one constructor with the keyword <code class="lang-conc">inject</code> before the accessibility modifier (<code class="lang-conc">public</code>, <code class="lang-conc">private</code>, <code class="lang-conc">protected</code>, <code class="lang-conc">package</code>, or nothing - which will default to <code class="lang-conc">public</code>). This has to be done even if we have a zero argument constructor. For example:</p>
+<pre><code class="lang-conc">class MyClass{
+  inject this(proc Processor){
+    //...
+  }
+  //...
+}
+</code></pre>
+<p>In cases where no constructors are explicitly defined (for instance, when we are defining class definition level arguments), then we can tag the class itself with inject:</p>
+<pre><code class="lang-conc">inject class MyClass(proc Processor)
+</code></pre>
+</div>
+<div class="section">
+<h2 id="injectable-elements">Injectable elements<a class="headerlink" href="#injectable-elements" title="Permalink to this headline" id="injectable-elements">?</a></h2>
+<p>In addition to constructors, both fields and methods having injectable arguments can be marked as inject (and again are implicitly marked as being publicly accessible):</p>
+<pre><code class="lang-conc">inject class MessageProcessor{
+  inject obtainer MessageGetter
+  private sender MessageSender
+  inject MSSetter(sender MessageSender){ this.sender = sender }
+}
+</code></pre>
+<p>In the above case, the <code class="lang-conc">MessageSender</code> is now considered a dependency since it's an argument of an injectable method and the <code class="lang-conc">MessageGetter</code> is also a dependency as it's the type of an injectable field.</p>
+<p>At first glance it would seem clumsy so as to require dependencies to be explicitly marked with the inject keyword. But it's actually incredibly useful as firstly it gets one thinking early on in the construction of one's software from the perspective of dependency injection and how that software will be tested so as to validate its function, and secondly because it makes the expected dependencies of a class very explicit - thus improving readability for whomever will be using and supporting the software in the future.</p>
+</div>
+<div class="section">
+<h2 id="providers">Providers<a class="headerlink" href="#providers" title="Permalink to this headline" id="providers">?</a></h2>
+<p>Now that we have marked our classes as being injectable, and tagged our dependencies as appropriate above (whether they be passed in via constructors, methods or directly as fields), we can now move on to defining the Object Providers themselves.</p>
+<p>Object Providers are made up of two components, objects to provide, and dependency qualifiers to satisfy those dependencies of the the objects being provided.</p>
+<pre><code class="lang-conc">provider MPProvider{
+  provide MessageProcessor //provide objects of this type
+  //dependency qualifiers for MessageProcessor...
+  MessageGetter =&gt; {
+    new SimpleMG()
+  }//a block may be used
+  MessageSender =&gt; new MessagePrinter()//a single line may be used
+}
+</code></pre>
+<p>Providers may provide many Objects of differing type, but they must provide at least one. Also, only non-array object types may be provided. In the above example we're providing one Object of type <code class="lang-conc">MessageProcessor</code>. In exampling the dependency tree of <code class="lang-conc">MessageProcessor</code> we see that it have two injectable dependencies on objects of  type <code class="lang-conc">MessageGetter</code> and <code class="lang-conc">MessageSender</code>. These are qualified via dependency qualifiers.</p>
+<p>Dependency qualifiers are type names which are not prefixed with the keyword <code class="lang-conc">provide</code> and which use <code class="lang-conc">=&gt;</code> to resolve to an expression which must return something equal to or a subtype of the dependency type being qualified. In the above example it's <code class="lang-conc">new SimpleMG()</code> and <code class="lang-conc">new MessagePrinter()</code> qualifying  <code class="lang-conc">MessageGetter</code> and <code class="lang-conc">MessageSender</code> respectfully. All declared dependency qualifiers must be used in the dependency tree of the objects being provided.</p>
+<p>Note that although it is possible to perform complex computation within the dependency qualifier (as any valid expression or block is permitted), it is inadvisable to do so since then one would be mixing computation with one's dependency injection mechanism and this can make reasoning about system behaviour challenging.</p>
+<p>At compilation time, the provider block is transformed into a class with generated code to satisfy the object graphs of the defined providers. In this example the name of the provider is <code class="lang-conc">MPProvider</code> and so a class of that name is created and can be used just like a normal class. As such all the usual restrictions regarding class names being unique per module etc apply. Note that the class is a subtype of <code class="lang-conc">com.concurnas.lang.ObjectProvider</code>.</p>
+<p>The specified provide instances are exposed in this provider (as a class) in the form of a series of public methods returning an instance of the class being provided. So for the above provider we can obtain a new provided instance of a <code class="lang-conc">MessageProcessor</code> by using code like the following:</p>
+<pre><code class="lang-conc">mpProvider = new MPProvider()
+mp = mpProvider.MessageProcessor()
+</code></pre>
+<p>Note that all calls to <code class="lang-conc">MessageProcessor</code> will by default provide a new instance of the <code class="lang-conc">MessageProcessor</code>. If we want to provide just one unique instance for all calls, then we can use a scoped provider described below.</p>
+<p>We can override the name of the method by prefixing the class name with our choice of name. For example:</p>
+<pre><code class="lang-conc">provider MPProvider{
+  provide normalMP MessageProcessor//chance name of method to normalMP 
+  MessageGetter =&gt; new SimpleMG()
+  MessageSender =&gt; new MessagePrinter()
+}
+
+mpProvider = new MPProvider()
+mp = mpProvider.normalMP()//method is now called normalMP instead of MessageProcessor
+</code></pre>
+<p>This extends mechanism extends us a tremendous amount of flexibility in terms of automatically generating the wiring/plumbing code for our object dependency graphs. For instance, when it comes to testing, we need simply define a provider with our mock instances in place of our real dependencies for the functionality we wish to focus our testing on.</p>
+</div>
+<div class="section">
+<h2 id="qualified-providers">Qualified Providers<a class="headerlink" href="#qualified-providers" title="Permalink to this headline" id="qualified-providers">?</a></h2>
+<p>It can often be useful to fully qualify a provider and cut out the dependency injection mechanism all together, additionally, since dependency qualifiers themselves cannot be exposed as external methods using a provider can be a nice solution to this. Note that provide instances themselves may be used as dependency qualifiers by the Object Provider if appropriate. For instance we could do the following if needed:</p>
+<pre><code class="lang-conc">provider MPProvider{
+  provide MessageProcessor =&gt; new MessageProcessor(new SimpleMG(), new MessagePrinter())
+}
+</code></pre>
+<p>Providers may be marked as private in order to suppress public method generation for them (note that the associated method will still be generated, but it will be private).</p>
+</div>
+<div class="section">
+<h2 id="transient-dependencies">Transient dependencies<a class="headerlink" href="#transient-dependencies" title="Permalink to this headline" id="transient-dependencies">?</a></h2>
+<p>In the examples previously explored we have seen that the dependencies of <code class="lang-conc">MessageProcessor</code> have been directly qualified in the object provider. But this can also be achieved on a transient basis, or in other words, indirectly provided that the intermediate classes involved are injectable. For example:</p>
+<pre><code class="lang-conc">trait MessageSender{
+  public def sendMessage(msg String) String
+}
+
+inject class MessageProcessor(obtainer SimpleMG, sender MessageSender){
+  public def processMessage(){//processing
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+inject class SimpleMG(theMessage String){
+  def getMessage() String =&gt; theMessage
+}
+
+class MessagePrinter ~ MessageSender{
+  def sendMessage(msg String) String =&gt; msg
+}
+
+provider MPProvider{
+  provide MessageProcessor
+  MessageSender =&gt; new MessagePrinter()
+  String =&gt; 'a message'
+}
+</code></pre>
+<p>Above we see that there is no dependency qualifier for <code class="lang-conc">SimpleMG</code>. But this is ok, because <code class="lang-conc">SimpleMG</code> is itself injectable and all of its dependencies (one String) are fully qualified within the provider.</p>
+<p>Another way to think about the dependency injection supported by Concurnas Object Providers is as a forest, the providers being the trunk of the trees, the branches the intermediate injectable classes (and type only dependency qualifiers), and the leaves the fully qualified dependencies.</p>
+</div>
+<div class="section">
+<h2 id="provider-specific-dependency-qualifiers">Provider specific dependency qualifiers<a class="headerlink" href="#provider-specific-dependency-qualifiers" title="Permalink to this headline" id="provider-specific-dependency-qualifiers">?</a></h2>
+<p>The dependency qualifiers we've seen in the previous examples have all been 'global' qualifiers. Meaning that they apply for all providers and to satisfy all dependencies of those respective provider graphs within the Object provider. If we want to be more specific and define dependency qualifiers which are for use only by only one provider we can do so by specifying some or all of its dependencies in a block as follows:</p>
+<pre><code class="lang-conc">provider MPProvider{
+  provide normalMP MessageProcessor{
+    MessageGetter =&gt; new SimpleMG()
+    MessageSender =&gt; new MessagePrinter()
+  }
+}
+
+mpProvider = new MPProvider()
+mp = mpProvider.normalMP()//method is now called normalMP instead of MessageProcessor
+</code></pre>
+<p>This block may contain only dependency qualifiers or type only dependency qualifiers, not provide instances.</p>
+</div>
+<div class="section">
+<h2 id="named-dependency-qualifiers">Named dependency qualifiers<a class="headerlink" href="#named-dependency-qualifiers" title="Permalink to this headline" id="named-dependency-qualifiers">?</a></h2>
+<p>Dependency qualifiers may specify a parameter name string to which they will bind their dependencies. This further specializes what dependency they qualify. This is particularly useful in instances where we need to qualify a dependency of the same type but used for different purposes. The named qualifier is defined as follows:</p>
+<pre><code class="lang-conc">inject class User(firstName String, sirName String)
+
+provider UserProvider{
+  provide User
+  'firstName' String =&gt; "freddie"
+  'sirName' String =&gt; "Brown"
+}
+</code></pre>
+<p>In the above example when User is provided, <code class="lang-conc">firstName</code> is mapped to the qualified String resolving to <code class="lang-conc">"freddie"</code> and <code class="lang-conc">sirName</code> to <code class="lang-conc">"Brown"</code>. Note that the named dependency maps to the argument name of the injected constructor, the same applies to injectable method arguments. In the case of fields the field name is used.</p>
+<p>This behaviour of mapping the dependency qualifier name to an argument, can be overridden by using the <code class="lang-conc">@Named</code> annotation (which is an auto import in Concurnas) on the field or constructor/method argument name. For example:</p>
+<pre><code class="lang-conc">inject class User(@Named('The first name') firstName String, sirName String)
+
+provider UserProvider{
+  provide User
+  'The first name' String =&gt; "freddie"
+  'sirName' String =&gt; "Brown"
+}
+</code></pre>
+<p>Providers being used to satisfy dependencies may also specify a qualification String as follows:</p>
+<pre><code class="lang-conc">provider MCProvider{
+  provide 'aString' String =&gt; "A String"
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="type-only-dependency-qualifiers">Type only dependency qualifiers<a class="headerlink" href="#type-only-dependency-qualifiers" title="Permalink to this headline" id="type-only-dependency-qualifiers">?</a></h2>
+<p>In some cases, instead of qualifying a dependency using a dependency qualifier, it can be preferable to direct the dependency to a subtype of that needing qualification. This is particularly the case if one has a trait type which needs qualifying and where there are [potentially] multiple different implementing that trait which would be suitable and which themselves support injection. Let's look at an example of this:</p>
+<pre><code class="lang-conc">trait MessageGetter {
+  public def getMessage() String
+}
+
+trait MessageSender{
+  public def sendMessage(msg String) String
+}
+
+inject class MessageProcessor(obtainer MessageGetter, sender MessageSender){
+  public def processMessage(){//processing
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+inject class SimpleMG(theMessage String) ~ MessageGetter {
+  def getMessage() String =&gt; theMessage
+}
+
+class MessagePrinter ~ MessageSender{
+  def sendMessage(msg String) String =&gt;  msg
+}
+
+provider MPProvider{
+  provide MessageProcessor
+  MessageSender =&gt; new MessagePrinter()
+  MessageGetter &lt;= SimpleMG//type only dependency qualification
+  'theMessage' String =&gt; 'a message'
+}
+
+//to be used as:
+mpProvider = new MPProvider()
+mp = mpProvider.MessageProcessor()
+</code></pre>
+<p>We see above that the <code class="lang-conc">MessageProcessor</code> is injected with an instance of a <code class="lang-conc">MessageGetter</code> trait. We've made the <code class="lang-conc">SimpleMG</code> class injectable and qualified its only dependency (argument name <code class="lang-conc">theMessage</code> of type String) is qualified to a String. The Object Provider knows which type to qualify the <code class="lang-conc">MessageGetter</code> with since we provide a type only dependency qualifier linking this as: <code class="lang-conc">MessageGetter &lt;= SimpleMG</code>. Type specific dependency qualifiers are of the form: <code class="lang-conc">type &lt;= type</code>. The type on the right hand side of the definition must be equal to or a subtype of the left hand side type.</p>
+<p>Type only dependency qualifiers may have their own specific dependency qualifier blocks just like provider declarations. For example:</p>
+<pre><code class="lang-conc">trait MessageGetter {
+  public def getMessage() String
+}
+
+trait MessageSender{
+  public def sendMessage(msg String) String
+}
+
+inject class MessageProcessor(obtainer MessageGetter, sender MessageSender){
+  public def processMessage(){//processing
+    this.sender.sendMessage(this.obtainer.getMessage())
+  }
+}
+
+inject class SimpleMG(theMessage String) ~ MessageGetter {
+  def getMessage() String =&gt; theMessage
+}
+
+class MessagePrinter ~ MessageSender{
+  def sendMessage(msg String) String =&gt;  msg
+}
+
+provider MPProvider{
+  provide MessageProcessor
+  MessageSender =&gt; new MessagePrinter()
+  MessageGetter &lt;= SimpleMG{
+    'theMessage' String =&gt; 'a message'
+  }
+}
+
+mpProvider = new MPProvider()
+mp = mpProvider.MessageProcessor()
+</code></pre>
+</div>
+<div class="section">
+<h2 id="object-provider-arguments">Object Provider arguments<a class="headerlink" href="#object-provider-arguments" title="Permalink to this headline" id="object-provider-arguments">?</a></h2>
+<p>Object providers behave a lot like normal classes. As such we are able to provide arguments to them at the point of creation, these arguments can be used within the individual dependency qualifiers or any fully qualified provider. For example:</p>
+<pre><code class="lang-conc">provider MPProvider(theMessage String){
+  provide MessageProcessor
+  MessageSender =&gt; new MessagePrinter()
+  MessageGetter &lt;= SimpleMG
+  SimpleMG =&gt; new SimpleMG(theMessage)
+}
+
+//used as:
+mpp = new MPProvider("My message")
+mpp.MessageProcessor()
+//as normal...
+</code></pre>
+</div>
+<div class="section">
+<h2 id="scoped-providers">Scoped providers<a class="headerlink" href="#scoped-providers" title="Permalink to this headline" id="scoped-providers">?</a></h2>
+<p>Concurnas provides two mechanisms where by objects can be scoped, via the <code class="lang-conc">single</code> and <code class="lang-conc">shared</code> keywords. Using either of these keywords will result in a singular instance of an object being provided or injected as a dependency by an object provider. These keywords can be used as both dependency qualifiers and provide instances.</p>
+<p>How the scopes differ is in terms of the 'lifetime' of the identicality of objects provided. For cases where the <code class="lang-conc">single</code> keyword is used, all calls to the provider will resolve to the same provided/injected object, throughout the lifetime of the provider itself. For the <code class="lang-conc">shared</code> keyword, the same object will be provided/injected for the duration of the external call to the provider only - i.e. the object graph will be populated with the same instance of an object for that call only.</p>
+<p>Provider specific dependency qualifiers may be scoped, that is to say, the <code class="lang-conc">single</code> and <code class="lang-conc">shared</code> keywords may be used within Provider specific dependency qualifier blocks.</p>
+<div class="section">
+<div class="section">
+<h3 id="single">single<a class="headerlink" href="#single" title="Permalink to this headline" id="single">?</a></h3>
+<p>Where the <code class="lang-conc">single</code> keyword is used, all calls to the provider will resolve to the same provided/injected object, throughout the lifetime of the provider itself. This can be applied to both dependency qualifiers and provide instances. Simply prefix the entity with the keyword <code class="lang-conc">single</code>. For example:</p>
+<pre><code class="lang-conc">inject class AgeHolder(age Integer)
+inject class User(name String, ah AgeHolder)
+
+provider UserProvider{
+  single provide User
+  String =&gt; "freddie"
+  AgeHolder =&gt; new AgeHolder(22)
+}
+
+up = new UserProvider()
+inst1 = up.User()
+inst2 = up.User()
+
+assert inst1 &amp;== inst2//true, both User objects are the same
+</code></pre>
+<p>The above will resolve true as both variables point to the same object.</p>
+<p>We can also apply this to dependency qualifiers as follows:</p>
+<pre><code class="lang-conc">inject class AgeHolder(age Integer)
+inject class User(name String, public ah AgeHolder)
+
+provider UserProvider{
+  provide User
+  String =&gt; "freddie"
+  single AgeHolder =&gt; new AgeHolder(22)
+}
+
+up = new UserProvider()
+inst1 = up.User()
+inst2 = up.User()
+
+assert inst1 &amp;&lt;&gt; inst2 //true, the two User instances are different objects
+assert inst1.ah  &amp;== inst2.ah//true, the two AgeHolders resolve to the same object
+</code></pre>
+<p>Above, the <code class="lang-conc">User</code> objects returned from the provider above are unique, but their dependant <code class="lang-conc">AgeHolder</code> instance objects are the same across both instances.</p>
+<p>We can apply the <code class="lang-conc">single</code> keyword to a dependency even without a qualification on the right hand side as follows:</p>
+<pre><code class="lang-conc">inject class Bean{
+  count = 0
+  def increment() void =&gt; count++ 
+}
+
+inject class BeanCounter(-red Bean, -blue Bean)
+
+provider CounterProvider{
+  provide BeanCounter
+  single Bean 
+}
+
+bcProvider = new CounterProvider()
+bcInst1 = bcProvider.BeanCounter()
+bcInst2 = bcProvider.BeanCounter()
+
+assert bcInst1.red &amp;== bcInst1.blue //both Bean instances of BeanCounter are the same
+assert bcInst2.red &amp;== bcInst1.red //all Bean instances of BeanCounter are the same across all instances
+</code></pre>
+</div>
+<div class="section">
+<h3 id="shared">shared<a class="headerlink" href="#shared" title="Permalink to this headline" id="shared">?</a></h3>
+<p>Where the <code class="lang-conc">shared</code> keyword is used, the same object will be provided/injected for the duration of the external call to the provider. In other words, all instances of the object in the object graph returned from the provider will be identical. However, unlike the <code class="lang-conc">single</code> keyword, subsequent calls to the provider will provide a different object. As with the <code class="lang-conc">single</code> keyword, <code class="lang-conc">shared</code> can be applied to both dependency qualifiers and provide instances. Simply prefix the entity with the keyword <code class="lang-conc">shared</code>.</p>
+<p>For example, a provide expression may be tagged as being shared - this is useful when the provide expression itself is called by another provide expression in the provider:</p>
+<pre><code class="lang-conc">inject class Bean{
+  count = 0
+  def increment() void =&gt; count++ 
+}
+
+inject class BeanCounter(-red Bean, -blue Bean)
+
+provider CounterProvider{
+  provide BeanCounter
+  shared Bean =&gt; new Bean()
+}
+
+bcProvider = new CounterProvider()
+bcInst1 = bcProvider.BeanCounter()
+bcInst2 = bcProvider.BeanCounter()
+
+assert bcInst1.red &amp;== bcInst1.blue //same bean for single object
+assert bcInst2.red &amp;&lt;&gt; bcInst1.red  //the two beans on separate invocations of the provider differ
+</code></pre>
+<p>Above we see that a single instance of the <code class="lang-conc">BeanCounter</code> class has the same <code class="lang-conc">Bean</code> instance objects, but different <code class="lang-conc">BeanCounter</code> instance objects have different <code class="lang-conc">Bean</code> instance objects (if we were using the <code class="lang-conc">single</code> keyword then all the <code class="lang-conc">Bean</code> instance objects would be the same).</p>
+<p>We can apply the <code class="lang-conc">shared</code> keyword to a dependency qualification as follows:</p>
+<pre><code class="lang-conc">inject class Bean{
+  count = 0
+  def increment() void =&gt; count++ 
+}
+
+inject class BeanCounter(-red Bean, -blue Bean)
+
+inject class PairOfBeans(-left BeanCounter, -right BeanCounter)
+
+provider CounterProvider{
+  provide PairOfBeans
+  single  Bean =&gt; new Bean()
+}
+
+bcProvider = new CounterProvider()
+bcInst1 = bcProvider.BeanCounter()
+bcInst2 = bcProvider.BeanCounter()
+
+assert bcInst1.red &amp;== bcInst1.blue //resolves to true
+assert bcInst2.red &amp;&lt;&gt; bcInst1.red  //resolves to true, the two beans on seperate invokations of the provider differ
+</code></pre>
+<p>The effect is the same as our previous example.</p>
+<p>We can apply the <code class="lang-conc">shared</code> keyword to a dependency qualification without a right hand side qualification as follows:</p>
+<pre><code class="lang-conc">inject class Bean{
+  count = 0
+  def increment() void =&gt; count++ 
+}
+
+inject class BeanCounter(-red Bean, -blue Bean)
+
+inject class PairOfBeans(-left BeanCounter, -right BeanCounter)
+
+provider CounterProvider{
+  provide PairOfBeans
+  single 'red' Bean
+}
+
+bcProvider = new CounterProvider()
+bcInst1 = bcProvider.BeanCounter()
+bcInst2 = bcProvider.BeanCounter()
+
+assert bcInst1.red &amp;== bcInst1.blue //resolves to true
+assert bcInst2.red &amp;&lt;&gt; bcInst1.red  //resolves to true, the two beans on seperate invokations of the provider differ
+</code></pre>
+<p>Again, the effect is the same effect as the previous two examples.</p>
+</div>
+</div>
+<h2 id="providers-for-actors-and-refs">Providers for Actors and refs<a class="headerlink" href="#providers-for-actors-and-refs" title="Permalink to this headline" id="providers-for-actors-and-refs">?</a></h2>
+<p>Actor instances and refs, being object types, can be provided by Object Providers, both as provided instances and dependencies. Additionally, for refs which themselves are injectable, their dependencies can also be satisfied by a provider.</p>
+</div>
+<div class="section">
+<h2 id="generics1">Generics<a class="headerlink" href="#generics1" title="Permalink to this headline" id="generics1">?</a></h2>
+<p>Generics may be used within Object Providers in any place where you would normally use generics in relation to the use of types. For example:</p>
+<pre><code class="lang-conc">class GenericHolder&lt;X&gt;(xxx X)
+
+inject class MyClass&lt;X&gt;(gh GenericHolder&lt;X&gt;)
+
+inject class MyGenericThing&lt;X&gt;(an X)
+
+provider ManyProvides&lt;X&gt;(item X){
+  provide java.util.ArrayList&lt;X&gt; =&gt; new java.util.ArrayList&lt;X&gt;()
+  provide java.util.Set&lt;String&gt; =&gt; new  java.util.Set&lt;String&gt;()
+  provide MyClass&lt;X&gt;{	
+    GenericHolder&lt;X&gt; =&gt; new GenericHolder&lt;X&gt;(item)
+  }
+  provide MyGenericThing&lt;String&gt;{
+    String =&gt; "a string"
+  }
+}
+</code></pre>
+<p>Localized generics are also permitted by postfixing the provide keyword with the list of generic types:</p>
+<pre><code class="lang-conc">provider ARProvider{
+  provide&lt;Y&gt; java.util.ArrayList&lt;Y&gt; =&gt; new java.util.ArrayList&lt;Y&gt;()
+}
+</code></pre>
+<p>Generic types may be qualified with <code class="lang-conc">in out</code> and upper bounds etc as normal.</p>
+</div>
+<div class="section">
+<h2 id="special-types">Special Types<a class="headerlink" href="#special-types" title="Permalink to this headline" id="special-types">?</a></h2>
+<p>There are three classes for which special behaviour/support is provided:</p>
+<div class="section">
+<div class="section">
+<h3 id="lazy-variables1">Lazy variables<a class="headerlink" href="#lazy-variables1" title="Permalink to this headline" id="lazy-variables1">?</a></h3>
+<p>Lazy variables which are dependencies can be assigned to lazily in Object providers, therefore maintaining their lazy binding quality. Here is an example:</p>
+<pre><code class="lang-conc">avar = 88
+
+class MyClass{
+  inject this(){}
+  inject lazy an String
+  override toString() =&gt; "" + [avar an avar]
+}
+
+provider MCPRovider{
+  provide MyClass
+  lazy String =&gt; {avar = 99; "ok"}
+}
+
+
+apu1 = MCPRovider()
+res = "" + apu1.MyClass()
+}
+
+//res == [88 "ok" 99]
+</code></pre>
+<p>It's not necessary to explicitly define the String above as being lazy. As the lazy type can be considered a transient dependency. As such we can simplify our provider as follows:</p>
+<pre><code class="lang-conc">provider MCPRovider{
+  provide MyClass
+  String =&gt; {avar = 99; "ok"}
+}
+</code></pre>
+<p>Note that if the lazy String dependency qualifier above was marked as <code class="lang-conc">single</code> then the lazy String dependency would be qualified with only one lazy String instance, and the code in the associated block executed only once upon first unassignment of the lazy variable.</p>
+</div>
+<div class="section">
+<h3 id="provider-type">Provider type<a class="headerlink" href="#provider-type" title="Permalink to this headline" id="provider-type">?</a></h3>
+<p>The provider type is handy if you wish to produce more than one instance of an object instead of just one injected. The <code class="lang-conc">com.concurnas.lang.types.Provider&lt;X&gt;</code> type takes a function reference or lambda as its single input and invokes this on every call to its <code class="lang-conc">get() X</code> method. For example:</p>
+<pre><code class="lang-conc">cnt = 0
+
+typedef Provider&lt;X&gt; = com.concurnas.lang.types.Provider&lt;X&gt;
+
+inject class MyClass(an Provider&lt;String&gt;){
+  inject an2 Provider&lt;String&gt;
+  private an3 Provider&lt;String&gt;
+
+  inject def SetThingamy(an3 Provider&lt;String&gt;){
+    this.an3 = an3
+  }
+	
+  override toString() =&gt; "" + [cnt an.get() an2.get() an3.get() cnt]
+}
+
+provider MCPRovider{
+  provide MyClass
+  Provider&lt;String&gt; =&gt; new Provider&lt;String&gt;(def () {cnt++; "ok"} )
+}
+
+apu1 = MCPRovider()
+res = apu1.MyClass() + ""
+
+//res == [0 ok ok ok 3]
+</code></pre>
+<p>Again, just like with lazy variables, the provider generic type qualification only need be specified:</p>
+<pre><code class="lang-conc">provider MCPRovider{
+  provide MyClass
+  String =&gt; {cnt++; "ok"}
+}
+</code></pre>
+<p>Also, as with lazy types if the qualifier is marked as being <code class="lang-conc">single</code> then only one instance of the qualifier block will ever be executed. No matter how many times get is called.</p>
+</div>
+<div class="section">
+<h3 id="optional-type">Optional type<a class="headerlink" href="#optional-type" title="Permalink to this headline" id="optional-type">?</a></h3>
+<p>If you are running Concurnas on an Oracle JVM greater than or equal to version 1.8 then the <code class="lang-conc">java.util.Optional&lt;X&gt;</code> type (<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html">https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html</a>) may be used to denote an object which will either contain an instance of type <code class="lang-conc">X</code> or <code class="lang-conc">null</code>. Dependencies which are of Optional type may have their dependencies omitted in Object Providers. Here is an example:</p>
+<pre><code class="lang-conc">from java.util import Optional
+
+inject class MyClass(an Optional&lt;String&gt;){
+  override toString() =&gt; "" +an.isPresent()
+}
+
+provider MCPRovider{
+  provide present MyClass{
+    String =&gt; "hi"
+  }
+  provide notPresent MyClass
+}
+
+apu1 = MCPRovider()
+inst1 = apu1.present()
+inst2 = apu1.notPresent()
+
+res = ""+ [inst1 inst2]
+
+//res == [true false]
+</code></pre>
+</div>
+</div>
+<h2 id="object-providers-with-java-classes">Object Providers with Java Classes<a class="headerlink" href="#object-providers-with-java-classes" title="Permalink to this headline" id="object-providers-with-java-classes">?</a></h2>
+<p>If you have Java classes or classes in a standard Java format produced by another JVM compatible language (such as Clojure, Scala or Kotlin) then these can be made compatible with Object Providers by ensuring the following:</p>
+<p>At least one public constructor is decorated with the <code class="lang-conc">com.concurnas.lang.Inject</code> Annotation.</p>
+<p>Any public methods with arguments requiring injection or public fields needing injection are marked with the <code class="lang-conc">com.concurnas.lang.Inject</code> Annotation.</p>
+<p>In order to use Named dependencies, the injected arguments/fields must be decorated with either the <code class="lang-conc">@Named</code> or <code class="lang-conc">@FuncParam</code> annotation.</p>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="controlStatements.html">Control Statements</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="objProviders.html">Object Providers</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#the-case-for-dependency-injection">The case for Dependency Injection</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#injectable-classes">Injectable Classes</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#injectable-elements">Injectable elements</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#providers">Providers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#qualified-providers">Qualified Providers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#transient-dependencies">Transient dependencies</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#provider-specific-dependency-qualifiers">Provider specific dependency qualifiers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#named-dependency-qualifiers">Named dependency qualifiers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#type-only-dependency-qualifiers">Type only dependency qualifiers</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#object-provider-arguments">Object Provider arguments</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#scoped-providers">Scoped providers</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#single">single</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#shared">shared</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#providers-for-actors-and-refs">Providers for Actors and refs</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#generics1">Generics</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#special-types">Special Types</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#lazy-variables1">Lazy variables</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#provider-type">Provider type</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#optional-type">Optional type</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#object-providers-with-java-classes">Object Providers with Java Classes</a>
+   </li>
+   </ul>
+</li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+

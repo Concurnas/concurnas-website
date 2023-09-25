@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Concurnas: Control Statements</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-toc.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/conc-nav.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/doctheme.css" />
+    <link rel="stylesheet" type="text/css" href="../css/docpygments.css" />
+    <link rel="stylesheet" type="text/css" href="../css/prism-theme.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+
+    <!-- Google -->
+    <meta name="description" content="The Concurnas Language Reference chapter covering: Control Statements"/>
+
+    <!-- OpenGraph -->
+    <meta property="og:title" content="Concurnas: Control Statements"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:image" content="http://www.concurnas.com/img/logo.png"/>
+    <meta property="og:description" content="The Concurnas Language Reference chapter covering: Control Statements"/>
+    <meta property="og:site_name" content="The Concurnas Programming Language"/>
+    <meta property="og:url" content="http://concurnas.com/docs/controlStatements.html" />
+
+
+  <script>
+    var shiftWindow = function() { scrollBy(0, -65) };
+    window.addEventListener("hashchange", shiftWindow);
+    function load() { if (window.location.hash) shiftWindow(); }
+  </script>
+
+</head>
+
+<body class="wy-body-for-nav" onload="load()">
+
+<nav class="section nav dark navbar fixed-top navbar-expand-xl navbar-dark topnav">
+    <a class="navbar-brand" href="../index.html"><img alt="Concurnas" height="21" onerror="this.src=&#039;../img/logo-on-dark.png&#039;" src="../img/logo-on-dark.svg" width="107" /></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item"><a class="nav-link" href="../index.html" class="">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="../download.html">Download</a></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../learnmore/overview.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Learn More</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../learnmore/overview.html">Language Overview</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">Concurnas vs Java</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava1.html">&bull; part 1</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava2.html">&bull; part 2</a>
+                    <a class="dropdown-item" href="../learnmore/concVsJava3.html">&bull; part 3</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/usecases.html">Use cases</a>
+                    <a class="dropdown-item" href="../learnmore/finance.html">&bull; Finance</a>
+                    <a class="dropdown-item" href="../learnmore/sciComp.html">&bull; Scientific Computing</a>
+                    <a class="dropdown-item" href="../learnmore/startups.html">&bull; Startups</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/mailinglist.html">Mailing List</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../learnmore/contribute.html">Contribute</a>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../docs/manual.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Documentation</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../docs/manual.html">Reference Manual</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../video/index.html">Video</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../docs/communitySupport.html">Community Support</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../news.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../news.html">Latest News</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../newsletters/march2020.html">Newsletters</a>
+                </div>
+            </li>
+
+            <li class=" divider"></li>
+            <li class="nav-item"><a class="nav-link" href="../video/index.html" class="">Video</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/introduction.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Concurnas Ltd</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../concurnasltd/introduction.html">Concurnas Ltd</a>
+                    <a class="dropdown-item" href="../concurnasltd/leadership.html">Leadership</a>
+                    <a class="dropdown-item" href="../concurnasltd/careers.html">Careers</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/open-source.html">Open Source</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/support.html">Support</a>
+                    <a class="dropdown-item" href="../concurnasltd/consulting.html">Consulting</a>
+                    <a class="dropdown-item" href="../concurnasltd/sponsorship.html">Sponsorship</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/support.html" class="">Support</a></li>
+            <li class="nav-item"><a class="nav-link" href="../concurnasltd/consulting.html" class="">Consulting</a></li>
+            <li class=" divider"></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="../concurnasltd/contact.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Connect</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas"><i class="fab fa-github fa-fw"></i> GitHub</a>
+                    <a class="dropdown-item" href="https://github.com/Concurnas/Concurnas/issues"><i class="fab fa-github fa-fw"></i> Bug reports</a>
+                    <a class="dropdown-item" href="https://stackoverflow.com/questions/tagged/concurnas"><i class="fab fa-stack-overflow fa-fw"></i> Stack Overflow</a>
+                    <a class="dropdown-item" href="https://discord.gg/jFHfsqR"><i class="fab fa-discord fa-fw"></i> Discord</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.reddit.com/r/Concurnas/"><i class="fab fa-reddit fa-fw"></i> Reddit</a>
+                    <a class="dropdown-item" href="https://www.facebook.com/concurnas/"><i class="fab fa-facebook fa-fw"></i> Facebook</a>
+                    <a class="dropdown-item" href="https://www.linkedin.com/company/concurnas/"><i class="fab fa-linkedin fa-fw"></i> Linkedin</a>
+                    <a class="dropdown-item" href="https://twitter.com/concurnas"><i class="fab fa-twitter fa-fw"></i> Twitter</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://vimeo.com/concurnas"><i class="fab fa-vimeo fa-fw"></i> Vimeo</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="../concurnasltd/contact.html">Contact</a>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+
+</nav> 
+
+    <div class="wy-grid-for-nav">
+
+
+        <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+
+
+
+            <div class="wy-nav-content">
+
+                <div class="rst-content">
+
+                    <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+                        <div itemprop="articleBody">
+
+                            <div class="section" id="paragraph-level-markup">
+<div class="section">
+<h1 id="control-statements">Control Statements<a class="headerlink" href="#control-statements" title="Permalink to this headline" id="control-statements">?</a></h1>
+<div class="contents topic" id="table-of-contents">
+ <p class="topic-title first">Table of Contents</p>
+ <ul class="simple">
+  <li><a class="reference internal" href="#control-statements">Control Statements</a>
+   <ul>
+   <li><a class="reference internal" href="#blocks">Blocks</a>   </li>
+   <li><a class="reference internal" href="#anonymous-blocks">Anonymous Blocks</a>   </li>
+   <li><a class="reference internal" href="#if-elif-else">If elif else</a>   </li>
+   <li><a class="reference internal" href="#if-else-expression">If else expression</a>   </li>
+   <li><a class="reference internal" href="#single-expression-test">Single expression test</a>   </li>
+   <li><a class="reference internal" href="#toboolean">toBoolean</a>   </li>
+   <li><a class="reference internal" href="#loop">Loop</a>   </li>
+   <li><a class="reference internal" href="#while">While</a>   </li>
+   <li><a class="reference internal" href="#for">For</a>   <ul>
+   <li><a class="reference internal" href="#c-style-for">C style for</a>   </li>
+   <li><a class="reference internal" href="#iterator-style-for">Iterator style for</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#parallel-for">Parallel for</a>   <ul>
+   <li><a class="reference internal" href="#parforsync">Parforsync</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#repeating-control-statements-extra-features">Repeating Control Statements Extra Features</a>   <ul>
+   <li><a class="reference internal" href="#else-block">else block</a>   </li>
+   <li><a class="reference internal" href="#returns-from-repeating-control-statements">Returns from repeating control statements</a>   </li>
+   <li><a class="reference internal" href="#the-index-variable">The index variable</a>   </li>
+   </ul>
+   </li>
+   <li><a class="reference internal" href="#with-statement">With statement</a>   </li>
+   <li><a class="reference internal" href="#break-and-continue">Break and Continue</a>   </li>
+   </ul>
+  </li>
+ </ul>
+</div>
+<p>Crucial to imperative programming is the concept of control flow within a function or method. To this end a number of branching statements are provided within Concurnas. These are: <code class="lang-conc">if elif else</code>, the <code class="lang-conc">if else</code> expression, <code class="lang-conc">while</code>, <code class="lang-conc">loop</code>, <code class="lang-conc">for</code>, <code class="lang-conc">parfor</code>, <code class="lang-conc">match</code> and <code class="lang-conc">with</code>. First, lets examine the blocks which these control statements are composed of.</p>
+<div class="section">
+<div class="section">
+<h2 id="blocks">Blocks<a class="headerlink" href="#blocks" title="Permalink to this headline" id="blocks">?</a></h2>
+<p>Blocks form the foundation of control flow statements. They serve two purposes:</p>
+<ol class="arabic">
+  <li><p>Defining scope - Variables and functions declared within a block cannot be used outside of that block. But code within a scope can use the functions and variables defined in parent nestor scopes.</p>
+</li>
+  <li><p>Returning of values.</p>
+</li>
+</ol class="arabic">
+<p>Simply put a block is a pair of curly braces:</p>
+<pre><code class="lang-conc">{
+  //more code in here	
+}
+</code></pre>
+<p>Concurnas also offers a compact, single line block format <code class="lang-conc">=&gt;</code> which can be used as follows:</p>
+<pre><code class="lang-conc">def myMath(a int, b int, c int) =&gt; a*b+c
+
+def mypy(a int, b int) =&gt; res = a**2 + b**2; return res**.5
+</code></pre>
+<p>Blocks are able (but not obliged) to return values if their final logical line of code returns something:</p>
+<pre><code class="lang-conc">result = {
+  a = 2+3; 
+  a**2
+}//result is assigned value 25
+</code></pre>
+<p>Blocks which are used as part of control statements (soon to be elaborated) may return values as well, this becomes a very useful programming construct for creating concise units of code. For example:</p>
+<pre><code class="lang-conc">result = if(cond1){
+  "condition 1 met"
+}elif(cond2){
+  "condition 2 met"
+}else{
+  "no conditions met"
+}
+</code></pre>
+<p>In the case where there are two or more different types returned by the individual blocks associated with a control statement, the most specific type which can satisfy all the available returned types is chosen as the overall return type of the statement:</p>
+<pre><code class="lang-conc">something Number = if(xyz()){
+  82//this is boxed to an Integer, which is a subtype of the more general type Number
+}else{
+  new Float(0.2)//Float is a subtype of Number
+}
+</code></pre>
+<p>All branches must return something for the above sort of code to be valid, if at least one branch does not return something, then this approach cannot be used (unless another flow of control statement causing breakout is encountered such as <code class="lang-conc">return</code>, <code class="lang-conc">throw</code> etc as the final line of the offending branch).</p>
+<p>Since blocks return values, and lambdas/functions/methods are composed of a name (except for lambdas), signature and block, then we can skip having to use the <code class="lang-conc">return</code> statement in our function/method definitions.</p>
+<p>So instead of:</p>
+<pre><code class="lang-conc">def plusTwo(an int){
+  return an + 2
+}
+</code></pre>
+<p>We can write:</p>
+<pre><code class="lang-conc">def plusTwo(an int){
+  an + 2
+}
+</code></pre>
+<p>In fact, with Concurnas, we can take this a step further by using the compact block form of <code class="lang-conc">=&gt;</code>:</p>
+<pre><code class="lang-conc">def plusTwo(an int) =&gt; an + 2
+</code></pre>
+<p>Note that the return type in the <code class="lang-conc">plusTwo</code> function definitions is inferred as <code class="lang-conc">int</code>. Sometimes however this auto-return behaviour is undesirable. Say we are trying to implement a function returning void and our last expression can return something, here we can use nop <code class="lang-conc">;;</code> to suppress this being returned:</p>
+<pre><code class="lang-conc">count = 0
+def incrementor() =&gt; count++;;
+</code></pre>
+<p>Alternatively, we can specify the type for our function:</p>
+<pre><code class="lang-conc">count = 0
+def incrementor() void =&gt; count++
+</code></pre>
+</div>
+<div class="section">
+<h2 id="anonymous-blocks">Anonymous Blocks<a class="headerlink" href="#anonymous-blocks" title="Permalink to this headline" id="anonymous-blocks">?</a></h2>
+<p>It's often useful to specify a block on its own, without an attached control statement or association to a lambda/function/method etc. This provides one a bounded scope which is handy if one is working on a large/complex section of code and wishes to make clear a certain part of code is 'separate' functionality wise from the rest, and enable variable names to be potentially reused. It also allows one to return a value. For example:</p>
+<pre><code class="lang-conc">//complex code here
+
+oddcalc = {
+  a = 23
+  a*2 + a
+}
+
+anotherone = {
+  a = 57
+  b = 99
+  a*b-1
+}
+</code></pre>
+<p>In fact, this turns out to be especially useful functionality in so far as defining isolates is concerned. For it enables us to write this kind of code:</p>
+<pre><code class="lang-conc">res = {
+  //complex code here
+  a= 99
+  a + 1
+}!//Use the ! operator to create an isolate
+</code></pre>
+</div>
+<div class="section">
+<h2 id="if-elif-else">If elif else<a class="headerlink" href="#if-elif-else" title="Permalink to this headline" id="if-elif-else">?</a></h2>
+<p>If, else, if else is a branching control statement. It is composed of a if test and block, optionally any number of elif  (or else if) test and blocks and may optionally include an else block for when all the if test and any defined elif tests resolve to false. For example:</p>
+<pre><code class="lang-conc">def fullif(an int) String {
+  if(an == 1){
+    "one"
+  } elif (an==2){
+    "two"
+  } else if(an ==3){//'elif' and 'else if' are considered to be syntactically identical
+    "three"
+  } else{
+    "other"
+  }
+}
+
+def ifelse(an int) String {
+  if(an == 1){
+    "one"
+  } else{
+    "other"
+  }
+}
+
+def ifelif(an int) String {
+  res = "unknown"
+  if(an == 1){
+    res = "one"
+  } elif (an==2){
+    res = "two"
+  }
+}
+
+def justif(an int) String {
+  res = "unknown"
+  if(an == 1){
+    res = "one"
+  }
+}
+</code></pre>
+<p>In the final two examples above <code class="lang-conc">ifelif</code> and <code class="lang-conc">justif</code>, since no else block is provided, there is no certainty that all paths will resolve to return a value (it's possible that all the if and elif tests will fail) - so we cannot return a value from the if statements.</p>
+</div>
+<div class="section">
+<h2 id="if-else-expression">If else expression<a class="headerlink" href="#if-else-expression" title="Permalink to this headline" id="if-else-expression">?</a></h2>
+<p>The if else expression, whilst not a statement, is translated into a if elif else statement (without any elif units) and behaves otherwise identically to an if-elif-else statement. An if test and else case must be included. For example:</p>
+<pre><code class="lang-conc">avar = 12 if xyz() else 13
+</code></pre>
+<p>Functionally, this is identical to writing:</p>
+<pre><code class="lang-conc">avar = if(xyz()){ 12 } else{ 13 }
+</code></pre>
+</div>
+<div class="section">
+<h2 id="single-expression-test">Single expression test<a class="headerlink" href="#single-expression-test" title="Permalink to this headline" id="single-expression-test">?</a></h2>
+<p>In Concurnas, a expression may be referenced in isolation within a test requiring a boolean value, e.g. an <code class="lang-conc">if</code>, <code class="lang-conc">elif</code> or <code class="lang-conc">while</code> test expression:</p>
+<pre><code class="lang-conc">def gcd(x int, y int){
+  while(y){//translated to y &lt;&gt; 0
+    x, y = y, x mod y
+  }
+  x
+}
+</code></pre>
+<p>In cases such as these where the value resulting from evaluating the test expression is non <code class="lang-conc">boolean</code> and in fact integral in nature, this is compared against the value <code class="lang-conc">0</code>, if the result is non zero the expression resolves to true.</p>
+</div>
+<div class="section">
+<h2 id="toboolean">toBoolean<a class="headerlink" href="#toboolean" title="Permalink to this headline" id="toboolean">?</a></h2>
+<p>As a corollary and in aid of our <a href="controlStatements.html#single-expression-test">Single expression test</a> above, all objects in Concurnas have a <code class="lang-conc">toBoolean</code> method automatically defined. This returns a single <code class="lang-conc">boolean</code> value resolving to <code class="lang-conc">true</code>. This value method may be overridden, for instance if one were defining a data structure, one may wish to define the <code class="lang-conc">toBoolean</code> as returning <code class="lang-conc">false</code> if the structure were empty.</p>
+<p>The <code class="lang-conc">toBoolean</code> method is called when a single object is referenced where a boolean value is expected. Additionally, if the object is nullable, then it is checked for nullability, only if these two conditions are met is a value of  <code class="lang-conc">true</code> returned. For example:</p>
+<pre><code class="lang-conc">class MyCounter(cnt = 0){
+  def inc(){
+    cnt++
+  }
+  override toBoolean(){
+    cnt &gt; 0
+  }
+}
+
+counter = MyCounter()
+
+result = if(counter){//equivilent to: counter &lt;&gt; null and counter.toBoolean()
+  'counter is greater than one' 
+}else{
+  'counter is zero'
+}
+</code></pre>
+<p>The behaviour for Strings, arrays, lists, sets and maps in Concurnas is slightly different from the above. In order to return true for:</p>
+<ul class="simple">
+  <li><p>Strings. The value must be non-null and non zero (i.e. not an empty String)</p>
+</li>
+  <li><p>Arrays. The value must be non-null and the <code class="lang-conc">length</code> field must be greater than 0.</p>
+</li>
+  <li><p>Lists, sets and maps. For <code class="lang-conc">java.lang.List</code>, <code class="lang-conc">java.lang.Set</code>, <code class="lang-conc">java.lang.Map</code>'s the value must be non-null and a call to the <code class="lang-conc">isEmpty</code> method must return <code class="lang-conc">false</code>.</p>
+</li>
+</ul class="simple">
+</div>
+<div class="section">
+<h2 id="loop">Loop<a class="headerlink" href="#loop" title="Permalink to this headline" id="loop">?</a></h2>
+<p>The <code class="lang-conc">loop</code> statement is our first repeating control statement. It will execute the block of code attached to it repeatedly until either the code breaks out from the loop (by using the <code class="lang-conc">return</code>, <code class="lang-conc">break</code> or by throwing an exception) or the program is terminated - which is the less common use case. For example:</p>
+<pre><code class="lang-conc">count=0
+loop{
+  System out println ++count
+  if(count == 100){
+    break
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h2 id="while">While<a class="headerlink" href="#while" title="Permalink to this headline" id="while">?</a></h2>
+<p>The <code class="lang-conc">while</code> statement is our second repeating control statement. It behaves in a similar way to loop but has a test at the start of the loop which if passed results in the attached block being called, at the end of the block the test is attempted again and if it passes then the block is called again, etc. If the test ever fails then repetition ceases. For example:</p>
+<pre><code class="lang-conc">count = 0
+while(++count &lt;= 100){//test
+  System out println count
+}//block to execute
+</code></pre>
+</div>
+<div class="section">
+<h2 id="for">For<a class="headerlink" href="#for" title="Permalink to this headline" id="for">?</a></h2>
+<p>The <code class="lang-conc">for</code> loop statement is our third and final repeating control statement. There are two variants of for loop: c style for and iterator style for.</p>
+<div class="section">
+<div class="section">
+<h3 id="c-style-for">C style for<a class="headerlink" href="#c-style-for" title="Permalink to this headline" id="c-style-for">?</a></h3>
+<p>C style for is the syntactically older of the two variants of for loop. In addition to its main block to repeat, it is composed of three key components:</p>
+<ol class="arabic">
+  <li><p>An initialization expression, this is executed once at the start of the for loop. If a variable is created here it is bounded to the scope of the main block.</p>
+</li>
+  <li><p>A termination expression. For as long as this resolves to <code class="lang-conc">true</code> the loop is repeated, it is executed at the start of each potential repetition of the loop.</p>
+</li>
+  <li><p>A post expression. This is executed at the end of the loop.</p>
+</li>
+</ol class="arabic">
+<p>Here is a typical instance of a c style for loop:</p>
+<pre><code class="lang-conc">for(an = 0; an &lt; 10; an++){
+  System out println an	
+}
+</code></pre>
+<p>Note that it's perfectly acceptable to omit any or all of the key components above, the following is equivalent to our loop example explored previously:</p>
+<pre><code class="lang-conc">count=0
+for(;;){
+  System out println ++count
+  if(count == 100){
+    break
+  }
+}
+</code></pre>
+</div>
+<div class="section">
+<h3 id="iterator-style-for">Iterator style for<a class="headerlink" href="#iterator-style-for" title="Permalink to this headline" id="iterator-style-for">?</a></h3>
+<p>The iterator style for is great for performing an operation per instance of an item in a list, array or otherwise iterable object - which is often the case about 80% of the time in modern programming with for loops. Instead of the three separate key components as par the c style for loop above, we just have one, an iterator expression using the <code class="lang-conc">in</code> keyword, which creates a new variable with scope bound to the main block of the for loop:</p>
+<pre><code class="lang-conc">for(x in [1 2 3 4 5 6 7 8 9 10]){
+  System out println x
+}
+
+for(x int in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]){//here we choose to specify the type of our new variable x
+  System out println x
+}
+</code></pre>
+<p>In the above instances we are choosing to iterate over an n dimensional array and a list respectfully. We can also iterate over any object that implements the <code class="lang-conc">java.util.Iterator</code> interface, for example a range object:</p>
+<pre><code class="lang-conc">for(x in 1 to 10){
+  System out println x
+}
+</code></pre>
+</div>
+</div>
+<h2 id="parallel-for">Parallel for<a class="headerlink" href="#parallel-for" title="Permalink to this headline" id="parallel-for">?</a></h2>
+<p><code class="lang-conc">parfor</code> looks a lot like a repeating control statement and indeed it does largely behave like a for loop in so far as iteration is concerned - indeed, both styles of for iteration are permitted, c style and iterator style. But execution of the main block is quite different. <code class="lang-conc">parfor</code> will spawn the maximum number of isolates it sensibly can (i.e. no more than one per processor core), and will assign each of the iterations of the for loop to these isolates in a round robin fashion, equally distributing the workload. Let's look at an example:</p>
+<pre><code class="lang-conc">result1 = parfor(x=1; x &lt;= 100; x++){
+  1 + x*10
+}
+
+result2 = parfor(x in 1 to 100){
+  1 + x*10
+}
+</code></pre>
+<p>Bear in mind that code expressed in the main block that attempts to interact with the iteration operation (i.e. the value of <code class="lang-conc">x</code> in the first <code class="lang-conc">parfor</code> statement above) will not behave in the same way as an ordinary for loop. Likewise, break and continue are not permitted within a <code class="lang-conc">parfor</code> loop because the execution of the main block across a number of differing isolates occurs on a concurrent and non deterministic basis.</p>
+<p>Instead of returning a <code class="lang-conc">java.util.List&lt;X&gt;</code> object, as par a regular for loop, an array of ref's corresponding to each 'iteration' of the main block is returned of type: <code class="lang-conc">X:[]</code> - where <code class="lang-conc">X</code> is the type returned from the main block.</p>
+<div class="section">
+<div class="section">
+<h3 id="parforsync">Parforsync<a class="headerlink" href="#parforsync" title="Permalink to this headline" id="parforsync">?</a></h3>
+<p><code class="lang-conc">parforsync</code> behaves in the same way as <code class="lang-conc">parfor</code>, but all the ref's returned from the 'iterations' of the main block must have a value set on them before execution may continue past the statement - i.e. all iterations must have completed. Example:</p>
+<pre><code class="lang-conc">result1 = parforsync(x=1; x &lt;= 100; x++){
+  1 + x*10
+}
+
+result2 = parforsync(x in 1 to 100){
+  1 + x*10
+}
+</code></pre>
+</div>
+</div>
+<h2 id="repeating-control-statements-extra-features">Repeating Control Statements Extra Features<a class="headerlink" href="#repeating-control-statements-extra-features" title="Permalink to this headline" id="repeating-control-statements-extra-features">?</a></h2>
+<p>The Repeating control statements; <code class="lang-conc">loop</code>, <code class="lang-conc">while</code>, <code class="lang-conc">for</code>, <code class="lang-conc">parfor</code> and <code class="lang-conc">parforsync</code> share some common extra features which make them especially useful.</p>
+<div class="section">
+<div class="section">
+<h3 id="else-block">else block<a class="headerlink" href="#else-block" title="Permalink to this headline" id="else-block">?</a></h3>
+<p>An <code class="lang-conc">else</code> block can be attached to all the repeating control statements, except <code class="lang-conc">loop</code>, <code class="lang-conc">parfor</code> and <code class="lang-conc">parforsync</code>, and allows one to cater for cases where the attached main block is never entered into (i.e. the relevant test resolves to false on the first attempt):</p>
+<pre><code class="lang-conc">res = ""
+while(xyz()){
+  res += "x"	
+}else{
+  res = "fail"
+}
+</code></pre>
+<pre><code class="lang-conc">res = ""
+for(x in xyz()){
+  res += x	
+}else{
+  res = "fail"
+}
+</code></pre>
+</div>
+<div class="section">
+<h3 id="returns-from-repeating-control-statements">Returns from repeating control statements<a class="headerlink" href="#returns-from-repeating-control-statements" title="Permalink to this headline" id="returns-from-repeating-control-statements">?</a></h3>
+<p>The repeating control statements may return a list of type <code class="lang-conc">java.util.List&lt;X&gt;</code> where <code class="lang-conc">X</code> is the type returned by the attached loop block - <code class="lang-conc">int</code> in the below example:</p>
+<pre><code class="lang-conc">count=0
+series = loop{
+  if(count == 100){
+    break
+  }
+  ++count//returns a value of type int
+}
+</code></pre>
+<p>For <code class="lang-conc">series</code> above the type is <code class="lang-conc">java.util.List&lt;int&gt;</code></p>
+<p>when used in a for loop:</p>
+<pre><code class="lang-conc">series = for(a in 1 to 100){ a }
+</code></pre>
+<p>Note that <code class="lang-conc">parfor</code> and <code class="lang-conc">parforsync</code> have their own, different, return logic covered previously.</p>
+</div>
+<div class="section">
+<h3 id="the-index-variable">The index variable<a class="headerlink" href="#the-index-variable" title="Permalink to this headline" id="the-index-variable">?</a></h3>
+<p>All the repeating control statements (except the c style for loop) may have an attached index variable. This is handy in cases where one say wishes to use the Iterator style for loop, but also have a counter for the number of iterations so far. The index may have any name and by default the type of the index is <code class="lang-conc">int</code>. <code class="lang-conc">long</code> is a popular choice if you need to explicitly define the type of the index where working with very large iterations. An initial value assignment expression may be defined, if one is not then the value of the index is set to <code class="lang-conc">0</code>. For example, with a for loop:</p>
+<pre><code class="lang-conc">items = [2 3 4 5 2 1 3 4 2 2 1]
+
+res1 = for(x in items; idx) { "{x, idx}" }//idx implicitly set to 0
+res2 = for(x in items; idx long) { "{x, idx}" }//idx implicitly set to 0L
+res3 = for(x in items; idx = 100) { "{x, idx}" }
+res4 = for(x in items; idx long = 100) { "{x, idx}" }
+
+alreadyIdx = 10//index tobe used defined outside of loop
+res5 = for(x in items; alreadyIdx) { "{x, alreadyIdx}" }//alreadyIdx already defined
+</code></pre>
+<p>Index variables may be applied to loops and while loops in a similar fashion to iterator style for loops:</p>
+<pre><code class="lang-conc">items = [2 3 4 5 2 1 3 4 2 2 1]
+n=0; res1 = while(n++ &lt; 10; idx) { "{n, idx}" }//idx implicitly set to 0
+n=0; res2 = loop(idx) {if(n++ &gt; 10){break} "{n, idx}" }//idx implicitly set to 0
+</code></pre>
+</div>
+</div>
+<h2 id="with-statement">With statement<a class="headerlink" href="#with-statement" title="Permalink to this headline" id="with-statement">?</a></h2>
+<p>The with statement which, though not being an actual control statement, does look a lot like one, and for that reason is included here. This is particularly useful in cases where one must call many methods, or interact with many fields of an object  in a block of code. Using the with statement allows us to skip having to explicitly reference the object variable of interest:</p>
+<pre><code class="lang-conc">class Details(~age int, ~name String){
+  def getSummary() =&gt; "{name}: {age}"
+  def rollage() =&gt; age++;;
+}
+
+det = new Details(23, "dave")
+
+with(det){
+  name = "david"
+  rollage()
+}
+
+det.getSummary()
+/
+=&gt; "david: 24"
+</code></pre>
+<p>With statements, as with all block based code in Concurnas can return values:</p>
+<pre><code class="lang-conc">class Details(~age int, ~name String){
+  def getSummary() =&gt; "{name}: {age}"
+  def rollage() =&gt; age++;;
+}
+
+det = new Details(23, "dave")
+
+summary = with(det){
+  name = "david"
+  rollage()
+  getSummary()
+}
+//summary == "david: 24"
+</code></pre>
+<p>With statement may be nested. In instances where there is an identically callable method in the nesting layers, then the innermost layer is prioritized.</p>
+</div>
+<div class="section">
+<h2 id="break-and-continue">Break and Continue<a class="headerlink" href="#break-and-continue" title="Permalink to this headline" id="break-and-continue">?</a></h2>
+<p>The <code class="lang-conc">break</code> and <code class="lang-conc">continue</code> keywords may be used within all the repeating control statements: loop, while, for (but not <code class="lang-conc">parfor</code> or <code class="lang-conc">parforsync</code>) in order to affect the flow of control within the main block of the statements.</p>
+<p>The <code class="lang-conc">break</code> keyword allows us to break out (escape from) from the inner most repeating control statement main block, and continue on with execution of the code post the control statement.</p>
+<p>The <code class="lang-conc">continue</code> keyword allows us to terminate the current repetition of the inner most repeating statement main block and carry on execution as if we had reached the end of the main block attached to the statement normally - so for a <code class="lang-conc">loop</code> this would be the start of the main block, for a <code class="lang-conc">while</code> it would be the beginning of the test etc.</p>
+<p>Let's look at an example of <code class="lang-conc">continue</code> and <code class="lang-conc">break</code>:</p>
+<pre><code class="lang-conc">items = x for x in 1 to 50
+
+for(x in items){
+  if(x &lt;== 5){
+    continue //go back to the start of the loop, i.e. skip the code which outputs to console
+  }elif(x == 9){
+    break//go to the code after the for loop
+  }
+  System out println x
+}
+</code></pre>
+<p>The <code class="lang-conc">continue</code> and <code class="lang-conc">break</code> keywords may be used when the repeating control structures which return a value for each iteration in the following manner:</p>
+<pre><code class="lang-conc">series = for(x in items){
+  if(x &lt;== 5){
+    continue x//continue but add a value to the result list
+  }elif(x == 6){
+    continue//continue and don't add a value to the result list
+  }elif(x == 9){
+    break x//break but add a final value to the result list
+  }elif(x == 10){
+    break//break and don't bother to return a value to the result list
+  }
+  x//if we've made it throught the above, then this value is added to the result list
+}
+</code></pre>
+</div>
+</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            <footer>
+                <center>
+                    <div class="copyright" role="contentinfo">
+                        <small>&copy; 2018<script>new Date().getFullYear()>2018&&document.write("-"+new Date().getFullYear());</script> Concurnas Ltd. All rights reserved. <a href="../legal/tos.html">Terms of Service</a> | <a href="../legal/privacy.html">Privacy Policy</a> | <a href="../legal/cookies.html">Cookie Policy</a></small>           
+                        </p>
+                    </div>
+                </center>
+            </footer>
+
+            </div>
+
+
+        <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+            <div class="wy-side-scroll">
+                <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+
+                    <ul>
+                        <li class="toctree-l1"><a class="reference internal" href="manual.html">Introduction</a></li>
+                    </ul>
+<p class="caption"><span class="caption-text">The Basics</span></p>
+<ul class="current">
+ <li class="toctree-l1"><a class="reference internal" href="theBasics.html">Overview</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="variableAssignment.html">Variable Assignment</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="types.html">Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="nullsafe.html">Null Safety</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="tuples.html">Tuples</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="typedefs.html">Typedefs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="multitypes.html">Multitypes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="castingAndCheckingTypes.html">Casting and Checking Types</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="classKeyword.html">The class keyword</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="imports.html">Imports</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="operators.html">Operators</a></li>
+ <li class="toctree-l1 current"><a class="reference internal current" href="controlStatements.html">Control Statements</a>
+   <ul>
+   <li class="toctree-l2"><a class="reference internal" href="#blocks">Blocks</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#anonymous-blocks">Anonymous Blocks</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#if-elif-else">If elif else</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#if-else-expression">If else expression</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#single-expression-test">Single expression test</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#toboolean">toBoolean</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#loop">Loop</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#while">While</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#for">For</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#c-style-for">C style for</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#iterator-style-for">Iterator style for</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#parallel-for">Parallel for</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#parforsync">Parforsync</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#repeating-control-statements-extra-features">Repeating Control Statements Extra Features</a>
+   <ul>
+   <li class="toctree-l3"><a class="reference internal" href="#else-block">else block</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#returns-from-repeating-control-statements">Returns from repeating control statements</a>
+   </li>
+   <li class="toctree-l3"><a class="reference internal" href="#the-index-variable">The index variable</a>
+   </li>
+   </ul>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#with-statement">With statement</a>
+   </li>
+   <li class="toctree-l2"><a class="reference internal" href="#break-and-continue">Break and Continue</a>
+   </li>
+   </ul>
+</li>
+ <li class="toctree-l1"><a class="reference internal" href="listComprehensions.html">List Comprehensions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="arraysMatricesAndLists.html">Arrays Matrices and Lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="maps.html">Maps</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="delete.html">Delete</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="functions.html">Functions</a></li>
+</ul><p class="caption"><span class="caption-text">Object-oriented</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="traits.html">Traits</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="specialClasses.html">Special Classes</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="accessModifiers.html">Accessibility Modifiers</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="enums.html">Enumerations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="annotations.html">Annotations</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="copy.html">Copying Objects</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="objProviders.html">Object Providers</a></li>
+</ul><p class="caption"><span class="caption-text">Advanced Techniques</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="vectorization.html">Vectorization</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="ranges.html">Ranges</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="datautils.html">Datautils</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="patternMatching.html">Pattern Matching</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="methodReferences.html">Method References</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="offHeap.html">Off Heap Memory</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="expressionLists.html">Expression lists</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="extensionFunctions.html">Extension functions</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="langExtensions.html">Language Extensions</a></li>
+</ul><p class="caption"><span class="caption-text">Concurrent, Distributed and GPU</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concurrentProgramming.html">Concurrent Programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="gpuParallelProgramming.html">GPU/Parallel programming</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="distComp.html">Distributed Computing</a></li>
+</ul><p class="caption"><span class="caption-text">Tools</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="concc.html">Compiling Concurnas code</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="conc.html">Running Concurnas Programs</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="replIde.html">The Concurnas REPL</a></li>
+</ul><p class="caption"><span class="caption-text">Others</span></p>
+<ul>
+ <li class="toctree-l1"><a class="reference internal" href="warn.html">Compiler Warnings</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="dsl.html">Domain Specific Languages</a></li>
+ <li class="toctree-l1"><a class="reference internal" href="others.html">Other</a></li>
+</ul>
+
+                </div>
+            </div>
+        </nav>
+
+            
+        </section>
+
+    <script type="text/javascript" src="../js/modernizr.min.js"></script>
+    <script type="text/javascript" id="documentation_options" src="../js/documentation_options.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../js/underscore.js"></script>
+    <script type="text/javascript" src="../js/doctools.js"></script>
+    <script type="text/javascript" src="../js/client.min.js"></script>
+    <script type="text/javascript" src="../js/doctheme.js"></script>
+    <script type="text/javascript" src="../js/prism.js"></script>
+    <script type="text/javascript" src="../js/cookies.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- add extra scripts here -->
+    <!--<script async="async" src="https://cse.google.com/cse.js?cx=017863714325068112727:9mx2x5kwoyu"></script>-->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126537021-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-126537021-1');
+    </script>
+
+    <script type="text/javascript">
+        jQuery(function() {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+
+</body>
+
+</html>
+
+
